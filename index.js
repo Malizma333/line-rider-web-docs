@@ -1,81 +1,81 @@
 class Actions {
-  analyticsSaveTrack = () => ({ type: 'ANALYTICS_SAVE_TRACK' })
-  analyticsSaveTrackFile = () => ({ type: 'ANALYTICS_SAVE_TRACK_FILE' })
-  analyticsLoadTrack = () => ({ type: 'ANALYTICS_LOAD_TRACK' })
-  analyticsLoadTrackFile = () => ({ type: 'ANALYTICS_LOAD_TRACK_FILE' })
-  analyticsCopyLink = (linkType) => ({
+  static analyticsSaveTrack = () => ({ type: 'ANALYTICS_SAVE_TRACK' })
+  static analyticsSaveTrackFile = () => ({ type: 'ANALYTICS_SAVE_TRACK_FILE' })
+  static analyticsLoadTrack = () => ({ type: 'ANALYTICS_LOAD_TRACK' })
+  static analyticsLoadTrackFile = () => ({ type: 'ANALYTICS_LOAD_TRACK_FILE' })
+  static analyticsCopyLink = (linkType) => ({
     type: 'ANALYTICS_COPY_LINK',
     payload: linkType
   })
 
-  audioLoadFail = (e) => ({
+  static audioLoadFail = (e) => ({
     type: 'LOAD_AUDIO_FAIL',
     payload: e,
     error: true
   })
 
-  loadAudioPending = () => ({ type: 'LOAD_AUDIO_PENDING' })
+  static loadAudioPending = () => ({ type: 'LOAD_AUDIO_PENDING' })
 
-  toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
-  removeAudio = () => ({ type: 'REMOVE_AUDIO' })
+  static toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
+  static removeAudio = () => ({ type: 'REMOVE_AUDIO' })
 
-  setAudioOffset = (offset) => ({
+  static setAudioOffset = (offset) => ({
     type: 'SET_AUDIO_OFFSET',
     payload: offset
   })
 
-  loadAudio = (name, arraybuffer) => ({
+  static loadAudio = (name, arraybuffer) => ({
     type: 'LOAD_AUDIO',
     payload: { name, arraybuffer }
   })
 
-  loadLocalAudioAction = (path, name) => ({
+  static loadLocalAudioAction = (path, name) => ({
     type: 'LOAD_LOCAL_AUDIO',
     payload: {path, name}
   })
 
-  setAudioVolume = (volume) => ({
+  static setAudioVolume = (volume) => ({
     type: 'SET_AUDIO_VOLUME',
     payload: volume
   })
 
   // TODO: this doesn't actually clear autosave, rename to "disable" maybe
-  clearAutosave = () => ({
+  static clearAutosave = () => ({
     type: 'CLEAR_AUTOSAVE'
   })
 
-  loadAutosave = () => ({
+  static loadAutosave = () => ({
     type: 'LOAD_AUTOSAVE'
   })
 
-  setEditorCamera = (position, zoom) => ({
+  static setEditorCamera = (position, zoom) => ({
     type: 'SET_EDITOR_CAMERA',
     payload: { position, zoom }
   })
-  setEditorFollowerFocus = (focusIndex) => ({
+  static setEditorFollowerFocus = (focusIndex) => ({
     type: 'SET_EDITOR_FOLLOWER_FOCUS',
     payload: focusIndex
   })
-  setPlaybackZoom = (zoom) => ({
+  static setPlaybackZoom = (zoom) => ({
     type: 'SET_PLAYBACK_ZOOM',
     payload: zoom
   })
-  setPlaybackPan = (pan) => ({
+  static setPlaybackPan = (pan) => ({
     type: 'SET_PLAYBACK_PAN',
     payload: pan
   })
-  setPlaybackFollowerFocus = (focusList) => ({
+  static setPlaybackFollowerFocus = (focusList) => ({
     type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
     payload: focusList
   })
-  toggleEditorFollower = () => ({ type: 'TOGGLE_EDITOR_FOLLOWER' })
+  static toggleEditorFollower = () => ({ type: 'TOGGLE_EDITOR_FOLLOWER' })
 
-  setPlaybackDimensions = (dimensions) => ({
+  static setPlaybackDimensions = (dimensions) => ({
     type: 'SET_PLAYBACK_DIMENSIONS',
     payload: dimensions
   })
 
-  triggerCommand = (command) => {
+  static triggerCommand = (command) => {
     return {
       type: 'TRIGGER_COMMAND',
       payload: command,
@@ -83,7 +83,7 @@ class Actions {
     }
   }
 
-  beginModifierCommand = (command, e) => {
+  static beginModifierCommand = (command, e) => {
     return {
       type: 'BEGIN_MODIFIER_COMMAND',
       payload: command,
@@ -91,7 +91,7 @@ class Actions {
     }
   }
 
-  endModifierCommand = (command) => {
+  static endModifierCommand = (command) => {
     return {
       type: 'END_MODIFIER_COMMAND',
       payload: command,
@@ -99,7 +99,7 @@ class Actions {
     }
   }
 
-  toggleModifierCommand = (command) => {
+  static toggleModifierCommand = (command) => {
     return {
       type: 'TOGGLE_MODIFIER_COMMAND',
       payload: command,
@@ -109,7 +109,7 @@ class Actions {
 
   // TODO: this is unused
   // object where the keys are commands and the values are hotkey bindings
-  setCommandHotkeys = (commandHotkeys) => {
+  static setCommandHotkeys = (commandHotkeys) => {
     return {
       type: 'SET_COMMAND_HOTKEYS',
       payload: commandHotkeys
@@ -117,104 +117,104 @@ class Actions {
   }
 
   // fired at startup on Macs to replace 'ctrl' in hotkeys with 'cmd'
-  replaceCtrlKey = (replacementKey) => {
+  static replaceCtrlKey = (replacementKey) => {
     return {
       type: 'REPLACE_CTRL_KEY',
       payload: replacementKey
     }
   }
 
-  toggleTrackLinesLocked = () => ({ type: 'TOGGLE_TRACK_LINES_LOCKED' })
+  static toggleTrackLinesLocked = () => ({ type: 'TOGGLE_TRACK_LINES_LOCKED' })
 
-  selectLineType = (lineType) => ({
+  static selectLineType = (lineType) => ({
     type: 'SELECT_LINE_TYPE',
     payload: lineType
   })
 
-  setTool = (tool) => ({
+  static setTool = (tool) => ({
     type: 'SET_TOOL',
     payload: tool
   })
 
-  setToolState = (toolId, state) => ({
+  static setToolState = (toolId, state) => ({
     type: 'SET_TOOL_STATE',
     payload: state,
     meta: { id: toolId }
   })
 
-  updateLines = (name, linesToRemove, linesToAdd, initialLoad = false) => ({
+  static updateLines = (name, linesToRemove, linesToAdd, initialLoad = false) => ({
     type: 'UPDATE_LINES',
     payload: { linesToRemove, linesToAdd, initialLoad },
     meta: { name }
   })
 
-  addLine = (line) => this.updateLines('ADD_LINE', null, [line])
+  static addLine = (line) => this.updateLines('ADD_LINE', null, [line])
 
-  loadLines = (lines) => this.updateLines('LOAD_LINES', null, lines, true)
+  static loadLines = (lines) => this.updateLines('LOAD_LINES', null, lines, true)
 
-  addLines = (lines) => this.updateLines('ADD_LINES', null, lines)
-  duplicateLines = (lines) => this.updateLines('DUPLICATE_LINES', null, lines)
+  static addLines = (lines) => this.updateLines('ADD_LINES', null, lines)
+  static duplicateLines = (lines) => this.updateLines('DUPLICATE_LINES', null, lines)
 
-  removeLine = (lineId) => this.updateLines('REMOVE_LINE', [lineId], null)
+  static removeLine = (lineId) => this.updateLines('REMOVE_LINE', [lineId], null)
 
-  removeLines = (lineIds) => this.updateLines('REMOVE_LINES', lineIds, null)
+  static removeLines = (lineIds) => this.updateLines('REMOVE_LINES', lineIds, null)
 
   // for lines that already have IDs
-  setLines = (lines) => this.updateLines('SET_LINES', null, lines)
+  static setLines = (lines) => this.updateLines('SET_LINES', null, lines)
 
-  replaceLine = (prevLineId, line) => this.updateLines('REPLACE_LINE', [prevLineId], [line])
+  static replaceLine = (prevLineId, line) => this.updateLines('REPLACE_LINE', [prevLineId], [line])
 
-  undoAction = () => ({ type: 'UNDO' })
+  static undoAction = () => ({ type: 'UNDO' })
 
-  redoAction = () => ({ type: 'REDO' })
+  static redoAction = () => ({ type: 'REDO' })
 
-  commitTrackChanges = () => ({ type: 'COMMIT_TRACK_CHANGES' })
+  static commitTrackChanges = () => ({ type: 'COMMIT_TRACK_CHANGES' })
 
-  revertTrackChanges = () => ({ type: 'REVERT_TRACK_CHANGES', meta: { ignorable: true } })
+  static revertTrackChanges = () => ({ type: 'REVERT_TRACK_CHANGES', meta: { ignorable: true } })
 
-  addLayer = () => ({ type: 'ADD_LAYER' })
-  removeLayer = (id) => ({
+  static addLayer = () => ({ type: 'ADD_LAYER' })
+  static removeLayer = (id) => ({
     type: 'REMOVE_LAYER',
     payload: {id}
   })
-  moveLayer = (id, index) => ({
+  static moveLayer = (id, index) => ({
     type: 'MOVE_LAYER',
     payload: {id, index}
   })
-  renameLayer = (id, name) => ({
+  static renameLayer = (id, name) => ({
     type: 'RENAME_LAYER',
     payload: {id, name}
   })
-  setLayerActive = (id) => ({
+  static setLayerActive = (id) => ({
     type: 'SET_LAYER_ACTIVE',
     payload: {id}
   })
-  setLayerVisible = (id, visible) => ({
+  static setLayerVisible = (id, visible) => ({
     type: 'SET_LAYER_VISIBLE',
     payload: {id, visible}
   })
-  setLayerEditable = (id, editable) => ({
+  static setLayerEditable = (id, editable) => ({
     type: 'SET_LAYER_EDITABLE',
     payload: {id, editable}
   })
 
-  setRiders = (riders) => ({
+  static setRiders = (riders) => ({
     type: 'SET_RIDERS',
     payload: riders
   })
 
-  triggerHint = (hint, tooltip = null) => ({
+  static triggerHint = (hint, tooltip = null) => ({
     type: 'TRIGGER_HINT',
     payload: {hint, tooltip}
   })
 
-  showHint = () => ({
+  static showHint = () => ({
     type: 'SHOW_HINT'
   })
 
   // input actions aren't used by any reducers, but they're used by the tool middleware
 
-  pointerDown = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
+  static pointerDown = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
     type: 'POINTER_DOWN',
     payload: {
       pointerType,
@@ -225,7 +225,7 @@ class Actions {
     }
   })
 
-  pointerUp = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
+  static pointerUp = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
     type: 'POINTER_UP',
     payload: {
       pointerType,
@@ -236,17 +236,17 @@ class Actions {
     }
   })
 
-  makePointerArg = ({ pointerType, pointerId, x, y, buttons }) =>
+  static makePointerArg = ({ pointerType, pointerId, x, y, buttons }) =>
     ({ pointerType, pointerId, x, y, buttons })
 
-  pointerHover = ({ x, y }) => ({
+  static pointerHover = ({ x, y }) => ({
     type: 'POINTER_HOVER',
     payload: {
       pos: { x, y }
     }
   })
 
-  pointerDrag = ({ pointerType, pointerId, x, y, buttons }, isPrimary) => ({
+  static pointerDrag = ({ pointerType, pointerId, x, y, buttons }, isPrimary) => ({
     type: 'POINTER_DRAG',
     payload: {
       pointerType,
@@ -257,10 +257,10 @@ class Actions {
     }
   })
 
-  makeWheelArg = ({ clientX, clientY, deltaX, deltaY, deltaMode, ctrlKey }) =>
+  static makeWheelArg = ({ clientX, clientY, deltaX, deltaY, deltaMode, ctrlKey }) =>
     ({ clientX, clientY, deltaX, deltaY, deltaMode, ctrlKey })
 
-  wheel = (e, trackpad) => ({
+  static wheel = (e, trackpad) => ({
     type: 'WHEEL',
     payload: {
       pos: {
@@ -276,88 +276,88 @@ class Actions {
     }
   })
 
-  keyDown = (key) => ({
+  static keyDown = (key) => ({
     type: 'KEY_DOWN',
     payload: key,
     meta: { ignorable: true }
   })
 
-  keyUp = (key) => ({
+  static keyUp = (key) => ({
     type: 'KEY_UP',
     payload: key,
     meta: { ignorable: true }
   })
 
-  showNotification = (message, autoHide = true, progressId) => ({
+  static showNotification = (message, autoHide = true, progressId) => ({
     type: 'notifications/SHOW_NOTIFICATION',
     payload: { message, autoHide, progressId }
   })
 
-  hideNotification = (message) => ({
+  static hideNotification = (message) => ({
     type: 'notifications/HIDE_NOTIFICATION',
     payload: message
   })
 
-  setPlayerFps = (fps) => ({
+  static setPlayerFps = (fps) => ({
     type: 'SET_PLAYER_FPS',
     payload: fps
   })
-  toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' })
-  setInterpolate = payload => ({ type: 'SET_INTERPOLATE', payload })
-  toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' })
-  incPlayerIndex = () => ({ type: 'INC_PLAYER_INDEX' })
-  decPlayerIndex = () => ({ type: 'DEC_PLAYER_INDEX' })
-  startPlayer = () => ({ type: 'START_PLAYER' })
-  stopPlayer = () => ({ type: 'STOP_PLAYER' })
-  setFlag = () => ({ type: 'SET_FLAG' })
+  static toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' })
+  static setInterpolate = payload => ({ type: 'SET_INTERPOLATE', payload })
+  static toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' })
+  static incPlayerIndex = () => ({ type: 'INC_PLAYER_INDEX' })
+  static decPlayerIndex = () => ({ type: 'DEC_PLAYER_INDEX' })
+  static startPlayer = () => ({ type: 'START_PLAYER' })
+  static stopPlayer = () => ({ type: 'STOP_PLAYER' })
+  static setFlag = () => ({ type: 'SET_FLAG' })
 
-  setFrameIndex = (index) => ({
+  static setFrameIndex = (index) => ({
     type: 'SET_PLAYER_INDEX',
     payload: index
   })
 
-  setPlayerMaxIndex = (maxIndex) => ({
+  static setPlayerMaxIndex = (maxIndex) => ({
     type: 'SET_PLAYER_MAX_INDEX',
     payload: maxIndex
   })
 
-  setFlagIndex = (flagIndex) => ({
+  static setFlagIndex = (flagIndex) => ({
     type: 'SET_FLAG_INDEX',
     payload: flagIndex
   })
 
-  setPlayerRunning = (running) => ({
+  static setPlayerRunning = (running) => ({
     type: 'SET_PLAYER_RUNNING',
     payload: running
   })
 
-  setPlayerScrubbing = (scrubbing) => ({
+  static setPlayerScrubbing = (scrubbing) => ({
     type: 'SET_PLAYER_SCRUBBING',
     payload: scrubbing
   })
 
-  setPlayerFastForward = (fastForward) => ({
+  static setPlayerFastForward = (fastForward) => ({
     type: 'SET_PLAYER_FAST_FORWARD',
     payload: fastForward
   })
 
-  setPlayerRewind = (rewind) => ({
+  static setPlayerRewind = (rewind) => ({
     type: 'SET_PLAYER_REWIND',
     payload: rewind
   })
 
-  setPlayerStopAtEnd = (stopAtEnd) => ({
+  static setPlayerStopAtEnd = (stopAtEnd) => ({
     type: 'SET_PLAYER_STOP_AT_END',
     payload: stopAtEnd
   })
 
   // for mods
-  setPlayerSettings = (settings) => ({
+  static setPlayerSettings = (settings) => ({
     type: 'SET_PLAYER_SETTINGS',
     payload: settings
   })
 
-  setViewOption = (viewOption, value) => ({
+  static setViewOption = (viewOption, value) => ({
     type: 'SET_VIEW_OPTION',
     payload: {
       key: viewOption,
@@ -365,76 +365,76 @@ class Actions {
     }
   })
 
-  setRendererFlag = (showFlag) => this.setViewOption('flag', showFlag)
-  toggleColorPlayback = () => this.setViewOption('colorPlayback', null)
-  togglePlaybackPreview = () => this.setViewOption('playbackPreview', null)
+  static setRendererFlag = (showFlag) => this.setViewOption('flag', showFlag)
+  static toggleColorPlayback = () => this.setViewOption('colorPlayback', null)
+  static togglePlaybackPreview = () => this.setViewOption('playbackPreview', null)
 
-  setPixelRatio = (pixelRatio) => ({
+  static setPixelRatio = (pixelRatio) => ({
     type: 'SET_PIXEL_RATIO',
     payload: pixelRatio
   })
 
   // TODO: this is unused
-  setRendererScene = (key, scene) => ({
+  static setRendererScene = (key, scene) => ({
     type: 'SET_RENDERER_SCENE',
     payload: { key, scene }
   })
-  enableMillions = () => ({
+  static enableMillions = () => ({
     type: 'SET_MILLIONS',
     payload: true
   })
 
-  disableMillions = () => ({
+  static disableMillions = () => ({
     type: 'SET_MILLIONS',
     payload: false
   })
 
-  setSpriteSheets = (spriteSheets) => ({
+  static setSpriteSheets = (spriteSheets) => ({
     type: 'SET_SPRITE_SHEETS',
     payload: spriteSheets
   })
 
-  setOnionSkin = (onionSkin) => ({
+  static setOnionSkin = (onionSkin) => ({
     type: 'SET_ONION_SKIN',
     payload: onionSkin
   })
 
-  setSkeleton = (skeleton) => ({
+  static setSkeleton = (skeleton) => ({
     type: 'SET_SKELETON',
     payload: skeleton
   })
 
-  setOnionSkinFramesBefore = (framesBefore) => ({
+  static setOnionSkinFramesBefore = (framesBefore) => ({
     type: 'SET_ONION_SKIN_FRAMES_BEFORE',
     payload: framesBefore
   })
 
-  setOnionSkinFramesAfter = (framesAfter) => ({
+  static setOnionSkinFramesAfter = (framesAfter) => ({
     type: 'SET_ONION_SKIN_FRAMES_AFTER',
     payload: framesAfter
   })
 
-  setAutosaveEnabled = (enabled) => ({
+  static setAutosaveEnabled = (enabled) => ({
     type: 'SET_AUTOSAVE_ENABLED',
     payload: enabled
   })
 
-  loadSavedTracks = (savedTracks) => ({
+  static loadSavedTracks = (savedTracks) => ({
     type: 'LOAD_SAVED_TRACKS',
     payload: savedTracks
   })
 
-  putSavedTrack = (trackData) => ({
+  static putSavedTrack = (trackData) => ({
     type: 'PUT_SAVED_TRACK',
     payload: trackData
   })
 
-  removeSavedTrack = (trackData) => ({
+  static removeSavedTrack = (trackData) => ({
     type: 'REMOVE_SAVED_TRACK',
     payload: trackData
   })
 
-  newTrack = (isV61 = false) => ({
+  static newTrack = (isV61 = false) => ({
     type: 'NEW_TRACK',
     payload: {
       startPosition: { x: 0, y: 0 },
@@ -449,7 +449,7 @@ class Actions {
     }
   })
 
-  loadTrackAction = (trackData) => ({
+  static loadTrackAction = (trackData) => ({
     type: 'LOAD_TRACK',
     payload: {
       viewOnly: trackData["for viewing only, please don't steal tracks"] === true,
@@ -457,14 +457,14 @@ class Actions {
     }
   })
 
-  saveTrackAction = () => ({ type: 'SAVE_TRACK' })
+  static saveTrackAction = () => ({ type: 'SAVE_TRACK' })
 
-  setCloudInfo = (cloudInfo) => ({
+  static setCloudInfo = (cloudInfo) => ({
     type: 'trackData/SET_CLOUD_INFO',
     payload: cloudInfo
   })
 
-  setTrackDetails = (title, creator, description, cloudInfo = null, derivedFrom = null) => ({
+  static setTrackDetails = (title, creator, description, cloudInfo = null, derivedFrom = null) => ({
     type: 'trackData/SET_TRACK_DETAILS',
     payload: {
       title,
@@ -475,35 +475,35 @@ class Actions {
     }
   })
 
-  setLocalFile = (saveToFile) => ({
+  static setLocalFile = (saveToFile) => ({
     type: 'trackData/SET_LOCAL_FILE',
     payload: saveToFile
   })
 
-  setTrackScript = (script) => ({
+  static setTrackScript = (script) => ({
     type: 'trackData/SET_TRACK_SCRIPT',
     payload: script
   })
 
-  resize = ({ width, height }) => ({
+  static resize = ({ width, height }) => ({
     type: 'RESIZE',
     payload: { width, height }
   })
 
-  setControlsActive = (active) => ({
+  static setControlsActive = (active) => ({
     type: 'SET_CONTROLS_ACTIVE',
     payload: active
   })
 
-  toggleControlsActive = () => ({
+  static toggleControlsActive = () => ({
     type: 'TOGGLE_CONTROLS_ACTIVE'
   })
 
-  ping = (pointerType) => ({ type: 'PING', payload: pointerType })
+  static ping = (pointerType) => ({ type: 'PING', payload: pointerType })
 
-  editCopy = () => ({ type: 'EDIT_COPY' })
+  static editCopy = () => ({ type: 'EDIT_COPY' })
 
-  loadSettings = (settings) => ({ type: 'LOAD_SETTINGS', payload: settings})
-  setSetting = (key, value) => ({ type: 'SET_SETTING', payload: {key, value}})
-  toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
+  static loadSettings = (settings) => ({ type: 'LOAD_SETTINGS', payload: settings})
+  static setSetting = (key, value) => ({ type: 'SET_SETTING', payload: {key, value}})
+  static toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
 }
