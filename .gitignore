@@ -5,4 +5,4 @@ package-lock.json
 
 # Linting
 jsconfig.json
-.eslintrc.js
+.eslintrc.json
