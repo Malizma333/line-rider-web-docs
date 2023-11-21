@@ -507,3 +507,383 @@ class Actions {
   static setSetting = (key, value) => ({ type: 'SET_SETTING', payload: {key, value}})
   static toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
 }
+
+class Selectors {
+  static getAudioEnabled = state => state.audio.enabled
+  static getAudioOffset = state => state.audio.offset
+
+  static isAudioFileLoading = state => state.audioFileLoader.loadingFile
+
+  static getAudioProps = state => state.audio
+  static getAudioFileLoading = state => state.audioFileLoader
+
+  static getLocalAudioProps = state => {
+    const {name, path, offset} = state.audio
+    if (path) {
+      return {name, path, offset}
+    }
+    return null
+  }
+
+  static getEditorZoom = state => state.camera.editorZoom
+  static getEditorPosition = state => state.camera.editorPosition
+
+  static getEditorCamera = createSelector(
+    state => state.camera.editorPosition,
+    this.getEditorZoom,
+    (position, zoom) => ({ position, zoom })
+  )
+
+  static getUseEditorFollower = state => state.settings['cam.useEditorFollower']
+
+  static getEditorDimensions = state => state.camera.editorDimensions
+  static getEditorFollowerFocus = state => Math.min(this.getNumRiders(state) - 1, state.camera.editorFollowerFocus)
+
+  static getPlaybackZoom = state =>
+    window.getAutoZoom ? window.getAutoZoom(this.getPlayerIndex(state)) : state.camera.playbackZoom
+  static getPlaybackFixedPosition = state => state.camera.playbackFixedPosition
+  static getPlaybackIsFixedPosition = state => state.camera.playbackFollower.isFixed()
+
+  static hasPlaybackDimensions = state => state.camera.playbackDimensions != null
+
+  // TODO: handle custom camera dimensions with cropping like in thumbnail choosing mode
+  static getPlaybackDimensions = state => state.camera.playbackDimensions || this.getEditorDimensions(state)
+
+  static getPlaybackCameraParams = createSelector(
+    this.getPlaybackZoom,
+    this.getPlaybackDimensions,
+    (zoom, { width, height }) => ({ zoom, width, height })
+  )
+
+  static getPlaybackCamera = createSelector(
+    state => state.camera.playbackFollower,
+    this.getSimulatorTrack,
+    this.getPlayerIndex,
+    this.getPlaybackZoom,
+    this.getPlaybackCameraParams,
+    this.getPlaybackFixedPosition,
+    (playbackFollower, track, index, zoom, params, pan) => ({
+      position: playbackFollower.isFixed() ? pan : playbackFollower.getCamera(track, params, index),
+      zoom
+    })
+  )
+  static getPlaybackCameraFocus = state => state.camera.playbackFollower.focus
+
+  static getCurrentCamera = state => this.getPlayerRunning(state) ? this.getPlaybackCamera(state) : this.getEditorCamera(state)
+
+  static getCommandsToHotkeys = createSelector(
+    state => state.command.hotkeys,
+    (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
+  )
+
+  static getTriggerCounts = (state, trigger) => state.command.triggerCounts.get(trigger, 0)
+
+  static getModifier = (state, modifier) => state.command.activeModifiers.has(modifier)
+
+  static getModifiersActive = state => !state.command.activeModifiers.isEmpty()
+
+  static getZoomSliderActive = state => this.getModifier(state, 'modifiers.zoom')
+
+  static getNotification = createSelector(
+    state => state.notifications.message,
+    state => state.notifications.autoHide,
+    state => state.notifications.open,
+    (message, autoHide, open) => ({ message, autoHide, open })
+  )
+
+  static getNotificationProgressId = state => state.notifications.progressId
+
+  static getNotificationsCount = state => state.notifications.count
+
+  static getPlayerRunning = state => state.player.running
+
+  static getPlayerIndex = state => state.player.index
+
+  static getPlayerMaxIndex = state => Math.ceil(state.player.maxIndex)
+  static getPlayerFlagIndex = state => state.player.flagIndex
+  static getPlayerFlagActive = state => this.getPlayerFlagIndex(state) !== 0
+
+  static getPlayerSlowMotion = state => state.player.slowMotion
+  static getPlayerReversed = state => (state.player.reverse || state.player.rewind) && !state.player.fastForward
+  static getPlayerFrameRateSetting = state => state.renderer.skeleton === 0 ? state.player.settings.interpolate : false
+  static getPlayerSettings = state => state.player.settings
+
+  static getPlayerFps = state => state.player.settings.fps
+
+  static getPlayerTime = createSelector(
+    this.getPlayerIndex,
+    this.getPlayerFps,
+    (index, fps) => index / fps
+  )
+
+  static getCurrentPlayerRate = createSelector(
+    state => state.player.settings.baseRate,
+    state => state.player.settings.slowMotionRate,
+    state => state.player.settings.fastForwardRate,
+    state => state.player.slowMotion,
+    state => state.player.fastForward,
+    state => state.player.rewind,
+    this.getPlayerRunning,
+    (baseRate, slowMotionRate, fastForwardRate, slowMotion, fastForward, rewind, running) => {
+      if (slowMotion) {
+        baseRate *= slowMotionRate
+      }
+      if (running && (fastForward || rewind)) {
+        baseRate *= fastForwardRate
+      }
+      return baseRate
+    }
+  )
+
+  static getTrackSaverProgress = state => state.progress['SAVE_TRACK']
+  static getTrackSaverInProgress = state => state.progress['SAVE_TRACK'].percent != null
+
+  static getTrackLoaderProgress = state => state.progress['LOAD_TRACK']
+
+  static getAutosaveProgress = state => state.progress['AUTOSAVE']
+
+  static getProgress = (state, progressId) => {
+    let progress = state.progress[progressId]
+
+    if (!progress) throw new Error('unknown progressId:', progressId)
+
+    return progress
+  }
+
+  static getPixelRatio = state => state.renderer.pixelRatio
+
+  static getRendererScenes = createStructuredSelector({
+    customEditScene: state => state.renderer.edit,
+    customPlaybackScene: state => state.renderer.playback
+  })
+
+  static getMillionsEnabled = state => state.renderer.millionsEnabled
+
+  static getSpriteSheet = createSelector(
+    this.getNumRiders,
+    state => state.renderer.spriteSheets,
+    (numRiders, spriteSheets) => {
+      if (!spriteSheets) {
+        return null
+      }
+      if (numRiders === 1) {
+        return [spriteSheets[0]]
+      } else {
+        let out = []
+        for (let i = 0; i < numRiders; i++) {
+          let index = (i + 1) % (spriteSheets.length)
+          out.push(spriteSheets[index])
+        }
+        return out
+      }
+    }
+  )
+
+  static getOnionBeginIndex = state => Math.max(0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore)
+  static getOnionEndIndex = state => Math.min(state.player.maxIndex, Math.max(0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter))
+  static getOnionSkinActive = state => state.renderer.onionSkin
+
+  static getPlaybackPreview = state => state.renderer.playbackPreview
+  static getColorPlayback = state => state.renderer.colorPlayback
+
+  static getViewOptions = createStructuredSelector({
+    color: state => this.getPlayerRunning(state) ? this.getColorPlayback(state) : !this.getPlaybackPreview(state),
+    flag: state => state.renderer.flag != null ? state.renderer.flag : !(this.getInViewer(state) && this.getPlayerRunning(state)),
+    skeleton: state => state.renderer.skeleton
+  })
+
+  static getSimulatorTrack = state => state.simulator.engine
+  static getSimulatorCommittedTrack = state => state.simulator.committedEngine
+
+  static getSimulatorLines = state => state.simulator.engine.linesList
+  static getSimulatorCommittedLines = state => state.simulator.committedEngine.linesList
+
+  // for compatibility
+  static getSimulatorStartPos = state => state.simulator.engine.start.position
+  static getSimulatorVersion = state => state.simulator.engine.isLegacy() ? '6.1' : '6.2'
+
+  static getSimulatorTrackTotalLineCount = state => state.simulator.engine.linesList.size()
+
+  static getTrackIsEmpty = state => this.getSimulatorTrackTotalLineCount(state) === 0
+  static getTrackIsDirty = state => state.simulator.committedEngine !== state.simulator.lastSavedEngine
+
+  static getSimulatorLineCount = this.createSelector(
+    state => state.simulator.engine,
+    (engine) => {
+      let { total, ...lineCounts } = engine.getLineCounts()
+      return { total, lineCounts }
+    }
+  )
+
+  static getSimulatorTotalLineCount = state => this.getSimulatorLineCount(state).total
+
+  static getTrackLayers = state => this.getSimulatorTrack(state).engine.state.layers
+  static getTrackActiveLayerId = state => this.getSimulatorTrack(state).engine.state.activeLayerId
+  static getActiveLayerEditable = state => {
+    const id = this.getTrackActiveLayerId(state)
+    const layers = this.getTrackLayers(state)
+
+    const index = layers.findIndex(layer => layer.id === id)
+
+    if (index >= 0) {
+      const layer = layers.get(index)
+      return layer.visible && layer.editable
+    }
+  }
+  static getSimulatorHasUndo = createSelector(
+    state => state.simulator.history,
+    state => state.simulator.committedEngine,
+    (history, engine) => history.findIndex(e => e === engine) > 0
+  )
+
+  static getSimulatorHasRedo = createSelector(
+    state => state.simulator.history,
+    state => state.simulator.committedEngine,
+    (history, engine) => history.findIndex(e => e === engine) < history.length - 1
+  )
+
+  static getRiders = state => state.simulator.engine.engine.state.riders
+  static getCommittedRiders = state => state.simulator.committedEngine.engine.state.riders
+  static getNumRiders = (state) => this.getRiders(state).length
+
+  static getSavedTracks = state => state.savedTracks
+
+  static getSavedTracksAvailable = state => !!state.savedTracks
+
+  static getAutosaveEnabled = state => state.autosaveEnabled
+
+  // import { Tools } from 'middleware/tools'
+
+  static getToolState = (state, toolId) => state.toolState[toolId]
+
+  static getSelectedTool = state => state.selectedTool
+
+  static colorPickerOpenSelector = createSelector(
+    this.getSelectedTool,
+    (selectedTool) => Tools[selectedTool].usesSwatches
+  )
+
+  static getLineTypePickerActive = this.colorPickerOpenSelector
+
+  static getTrackLinesLocked = state => state.trackLinesLocked
+
+  // Defaults to scenery if track lines locked
+  static getSelectedLineType = state => this.getTrackLinesLocked(state) ? 2 : state.selectedLineType
+
+  static getCursor = state => Tools[state.selectedTool].getCursor(state)
+
+  static getToolSceneLayer = state => Tools[state.selectedTool].getSceneLayer(state)
+
+  static getTrackIsLocalFile = state => state.trackData.localFile
+  static getTrackScript = state => state.trackData.script
+
+  static getTrackProps = createStructuredSelector({
+    riders: this.getCommittedRiders,
+    version: this.getSimulatorVersion,
+    audio: this.getLocalAudioProps,
+    layers: this.getTrackLayers,
+    script: this.getTrackScript
+  })
+
+  static getTrackDetails = createStructuredSelector({
+    title: state => state.trackData.label,
+    creator: state => state.trackData.creator,
+    description: state => state.trackData.description
+  })
+
+  static getTrackCloudInfo = createSelector(
+    state => state.trackData.cloudInfo,
+    state => state.trackData.derivedFrom,
+    state => state.trackData.saveTime,
+    (cloudInfo, derivedFrom, saveTime) => {
+      if (derivedFrom) {
+        return { saveTime, ...cloudInfo, derivedFrom }
+      }
+      if (cloudInfo) {
+        return { saveTime, ...cloudInfo }
+      }
+      if (saveTime) {
+        return { saveTime }
+      }
+      return undefined
+    }
+  )
+
+  static getTrackShareLinks = createSelector(
+    state => this.getTrackDetails(state).title,
+    this.getTrackCloudInfo,
+    (title, cloudInfo) => {
+      if (!cloudInfo) return {}
+
+      title = cloudInfo.versionTitle || title
+      title = title ? slugify(title) : ''
+
+      let origin = window.location.origin
+      return {
+        edit: `${origin}/edit/${cloudInfo.versionId}/${title}?k=${cloudInfo.derivativeKey}`,
+        view: `${origin}/view/${cloudInfo.versionId}/${title}`
+      }
+    }
+  )
+
+  static getTrackDetailsWithCloudInfo = createStructuredSelector({
+    details: this.getTrackDetails,
+    cloudInfo: this.getTrackCloudInfo
+  })
+
+  static getTrackInfo = createStructuredSelector({
+    duration: state => this.getPlayerMaxIndex(state)
+  })
+
+  static getTrackObjectForAutosave = createStructuredSelector({
+    props: this.getTrackProps,
+    details: this.getTrackDetails,
+    info: this.getTrackInfo,
+    cloudInfo: this.getTrackCloudInfo,
+    localFile: this.getTrackIsLocalFile
+  })
+
+  static getTrackObjectForSaving = (state, trackDetails) => ({
+    label: trackDetails.title, 
+    creator: trackDetails.creator,
+    description: trackDetails.description,
+    duration: this.getPlayerMaxIndex(state),
+    version: this.getSimulatorVersion(state),
+    audio: this.getLocalAudioProps(state),
+    startPosition: this.getSimulatorStartPos(state),
+    riders: this.getCommittedRiders(state),
+    lines: this.getSimulatorLines(state).toJS(),
+    layers: this.getTrackLayers(state).toJS(),
+    script: this.getTrackScript(state)
+  })
+
+  static getControlsActive = state => state.ui.controlsActive
+
+  // import * as Views from 'utils/views'
+
+  static getViews = state => state.views
+
+  static getSidebarPage = state => this.getViews(state)[Views.Sidebar]
+
+  static getMainPage = state => this.getViews(state)[Views.Main]
+
+  static getPageRoute = state => this.Views.viewsToPath(state.views)
+
+  static getInEditor = state => state.views[Views.Main] === Views.Pages.Main.Editor
+
+  static getInViewer = state => state.views[Views.Main] === Views.Pages.Main.Viewer || state.views[Views.Main] === Views.Pages.Main.EditableViewer
+
+  static getInTrackSaver = state => state.views[Views.TrackSaver] === Views.Pages.TrackSaver.Save
+
+  static getInTrackLoader = state => state.views[Views.TrackLoader] === Views.Pages.TrackLoader.Load
+
+  static getInVideoExporter = state => state.views[Views.VideoExporter] === Views.Pages.VideoExporter.Export
+
+  static getHasOverlay = state => (
+    state.views[Views.About] ||
+    state.views[Views.TrackLoader] ||
+    state.views[Views.TrackSaver] ||
+    state.views[Views.VideoExporter] ||
+    state.views[Views.ReleaseNotes]
+  )
+}
