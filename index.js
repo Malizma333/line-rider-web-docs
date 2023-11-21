@@ -150,21 +150,21 @@ const Actions = (function() {
     meta: { name }
   })
 
-  const addLine = (line) => this.updateLines('ADD_LINE', null, [line])
+  const addLine = (line) => updateLines('ADD_LINE', null, [line])
 
-  const loadLines = (lines) => this.updateLines('LOAD_LINES', null, lines, true)
+  const loadLines = (lines) => updateLines('LOAD_LINES', null, lines, true)
 
-  const addLines = (lines) => this.updateLines('ADD_LINES', null, lines)
-  const duplicateLines = (lines) => this.updateLines('DUPLICATE_LINES', null, lines)
+  const addLines = (lines) => updateLines('ADD_LINES', null, lines)
+  const duplicateLines = (lines) => updateLines('DUPLICATE_LINES', null, lines)
 
-  const removeLine = (lineId) => this.updateLines('REMOVE_LINE', [lineId], null)
+  const removeLine = (lineId) => updateLines('REMOVE_LINE', [lineId], null)
 
-  const removeLines = (lineIds) => this.updateLines('REMOVE_LINES', lineIds, null)
+  const removeLines = (lineIds) => updateLines('REMOVE_LINES', lineIds, null)
 
   // for lines that already have IDs
-  const setLines = (lines) => this.updateLines('SET_LINES', null, lines)
+  const setLines = (lines) => updateLines('SET_LINES', null, lines)
 
-  const replaceLine = (prevLineId, line) => this.updateLines('REPLACE_LINE', [prevLineId], [line])
+  const replaceLine = (prevLineId, line) => updateLines('REPLACE_LINE', [prevLineId], [line])
 
   const undoAction = () => ({ type: 'UNDO' })
 
@@ -367,9 +367,9 @@ const Actions = (function() {
     }
   })
 
-  const setRendererFlag = (showFlag) => this.setViewOption('flag', showFlag)
-  const toggleColorPlayback = () => this.setViewOption('colorPlayback', null)
-  const togglePlaybackPreview = () => this.setViewOption('playbackPreview', null)
+  const setRendererFlag = (showFlag) => setViewOption('flag', showFlag)
+  const toggleColorPlayback = () => setViewOption('colorPlayback', null)
+  const togglePlaybackPreview = () => setViewOption('playbackPreview', null)
 
   const setPixelRatio = (pixelRatio) => ({
     type: 'SET_PIXEL_RATIO',
@@ -533,38 +533,38 @@ const Selectors = (function() {
 
   const getEditorCamera = Reselect.createSelector(
     state => state.camera.editorPosition,
-    this.getEditorZoom,
+    getEditorZoom,
     (position, zoom) => ({ position, zoom })
   )
 
   const getUseEditorFollower = state => state.settings['cam.useEditorFollower']
 
   const getEditorDimensions = state => state.camera.editorDimensions
-  const getEditorFollowerFocus = state => Math.min(this.getNumRiders(state) - 1, state.camera.editorFollowerFocus)
+  const getEditorFollowerFocus = state => Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus)
 
   const getPlaybackZoom = state =>
-    window.getAutoZoom ? window.getAutoZoom(this.getPlayerIndex(state)) : state.camera.playbackZoom
+    window.getAutoZoom ? window.getAutoZoom(getPlayerIndex(state)) : state.camera.playbackZoom
   const getPlaybackFixedPosition = state => state.camera.playbackFixedPosition
   const getPlaybackIsFixedPosition = state => state.camera.playbackFollower.isFixed()
 
   const hasPlaybackDimensions = state => state.camera.playbackDimensions != null
 
   // TODO: handle custom camera dimensions with cropping like in thumbnail choosing mode
-  const getPlaybackDimensions = state => state.camera.playbackDimensions || this.getEditorDimensions(state)
+  const getPlaybackDimensions = state => state.camera.playbackDimensions || getEditorDimensions(state)
 
   const getPlaybackCameraParams = Reselect.createSelector(
-    this.getPlaybackZoom,
-    this.getPlaybackDimensions,
+    getPlaybackZoom,
+    getPlaybackDimensions,
     (zoom, { width, height }) => ({ zoom, width, height })
   )
 
   const getPlaybackCamera = Reselect.createSelector(
     state => state.camera.playbackFollower,
-    this.getSimulatorTrack,
-    this.getPlayerIndex,
-    this.getPlaybackZoom,
-    this.getPlaybackCameraParams,
-    this.getPlaybackFixedPosition,
+    getSimulatorTrack,
+    getPlayerIndex,
+    getPlaybackZoom,
+    getPlaybackCameraParams,
+    getPlaybackFixedPosition,
     (playbackFollower, track, index, zoom, params, pan) => ({
       position: playbackFollower.isFixed() ? pan : playbackFollower.getCamera(track, params, index),
       zoom
@@ -572,7 +572,7 @@ const Selectors = (function() {
   )
   const getPlaybackCameraFocus = state => state.camera.playbackFollower.focus
 
-  const getCurrentCamera = state => this.getPlayerRunning(state) ? this.getPlaybackCamera(state) : this.getEditorCamera(state)
+  const getCurrentCamera = state => getPlayerRunning(state) ? getPlaybackCamera(state) : getEditorCamera(state)
 
   const getCommandsToHotkeys = Reselect.createSelector(
     state => state.command.hotkeys,
@@ -585,7 +585,7 @@ const Selectors = (function() {
 
   const getModifiersActive = state => !state.command.activeModifiers.isEmpty()
 
-  const getZoomSliderActive = state => this.getModifier(state, 'modifiers.zoom')
+  const getZoomSliderActive = state => getModifier(state, 'modifiers.zoom')
 
   const getNotification = Reselect.createSelector(
     state => state.notifications.message,
@@ -604,7 +604,7 @@ const Selectors = (function() {
 
   const getPlayerMaxIndex = state => Math.ceil(state.player.maxIndex)
   const getPlayerFlagIndex = state => state.player.flagIndex
-  const getPlayerFlagActive = state => this.getPlayerFlagIndex(state) !== 0
+  const getPlayerFlagActive = state => getPlayerFlagIndex(state) !== 0
 
   const getPlayerSlowMotion = state => state.player.slowMotion
   const getPlayerReversed = state => (state.player.reverse || state.player.rewind) && !state.player.fastForward
@@ -614,8 +614,8 @@ const Selectors = (function() {
   const getPlayerFps = state => state.player.settings.fps
 
   const getPlayerTime = Reselect.createSelector(
-    this.getPlayerIndex,
-    this.getPlayerFps,
+    getPlayerIndex,
+    getPlayerFps,
     (index, fps) => index / fps
   )
 
@@ -626,7 +626,7 @@ const Selectors = (function() {
     state => state.player.slowMotion,
     state => state.player.fastForward,
     state => state.player.rewind,
-    this.getPlayerRunning,
+    getPlayerRunning,
     (baseRate, slowMotionRate, fastForwardRate, slowMotion, fastForward, rewind, running) => {
       if (slowMotion) {
         baseRate *= slowMotionRate
@@ -663,7 +663,7 @@ const Selectors = (function() {
   const getMillionsEnabled = state => state.renderer.millionsEnabled
 
   const getSpriteSheet = Reselect.createSelector(
-    this.getNumRiders,
+    getNumRiders,
     state => state.renderer.spriteSheets,
     (numRiders, spriteSheets) => {
       if (!spriteSheets) {
@@ -690,8 +690,8 @@ const Selectors = (function() {
   const getColorPlayback = state => state.renderer.colorPlayback
 
   const getViewOptions = Reselect.createStructuredSelector({
-    color: state => this.getPlayerRunning(state) ? this.getColorPlayback(state) : !this.getPlaybackPreview(state),
-    flag: state => state.renderer.flag != null ? state.renderer.flag : !(this.getInViewer(state) && this.getPlayerRunning(state)),
+    color: state => getPlayerRunning(state) ? getColorPlayback(state) : !getPlaybackPreview(state),
+    flag: state => state.renderer.flag != null ? state.renderer.flag : !(getInViewer(state) && getPlayerRunning(state)),
     skeleton: state => state.renderer.skeleton
   })
 
@@ -707,10 +707,10 @@ const Selectors = (function() {
 
   const getSimulatorTrackTotalLineCount = state => state.simulator.engine.linesList.size()
 
-  const getTrackIsEmpty = state => this.getSimulatorTrackTotalLineCount(state) === 0
+  const getTrackIsEmpty = state => getSimulatorTrackTotalLineCount(state) === 0
   const getTrackIsDirty = state => state.simulator.committedEngine !== state.simulator.lastSavedEngine
 
-  const getSimulatorLineCount = this.Reselect.createSelector(
+  const getSimulatorLineCount = Reselect.createSelector(
     state => state.simulator.engine,
     (engine) => {
       let { total, ...lineCounts } = engine.getLineCounts()
@@ -718,13 +718,13 @@ const Selectors = (function() {
     }
   )
 
-  const getSimulatorTotalLineCount = state => this.getSimulatorLineCount(state).total
+  const getSimulatorTotalLineCount = state => getSimulatorLineCount(state).total
 
-  const getTrackLayers = state => this.getSimulatorTrack(state).engine.state.layers
-  const getTrackActiveLayerId = state => this.getSimulatorTrack(state).engine.state.activeLayerId
+  const getTrackLayers = state => getSimulatorTrack(state).engine.state.layers
+  const getTrackActiveLayerId = state => getSimulatorTrack(state).engine.state.activeLayerId
   const getActiveLayerEditable = state => {
-    const id = this.getTrackActiveLayerId(state)
-    const layers = this.getTrackLayers(state)
+    const id = getTrackActiveLayerId(state)
+    const layers = getTrackLayers(state)
 
     const index = layers.findIndex(layer => layer.id === id)
 
@@ -747,7 +747,7 @@ const Selectors = (function() {
 
   const getRiders = state => state.simulator.engine.engine.state.riders
   const getCommittedRiders = state => state.simulator.committedEngine.engine.state.riders
-  const getNumRiders = (state) => this.getRiders(state).length
+  const getNumRiders = (state) => getRiders(state).length
 
   const getSavedTracks = state => state.savedTracks
 
@@ -760,16 +760,16 @@ const Selectors = (function() {
   const getSelectedTool = state => state.selectedTool
 
   const colorPickerOpenSelector = Reselect.createSelector(
-    this.getSelectedTool,
+    getSelectedTool,
     (selectedTool) => window.Tools[selectedTool].usesSwatches
   )
 
-  const getLineTypePickerActive = this.colorPickerOpenSelector
+  const getLineTypePickerActive = colorPickerOpenSelector
 
   const getTrackLinesLocked = state => state.trackLinesLocked
 
   // Defaults to scenery if track lines locked
-  const getSelectedLineType = state => this.getTrackLinesLocked(state) ? 2 : state.selectedLineType
+  const getSelectedLineType = state => getTrackLinesLocked(state) ? 2 : state.selectedLineType
 
   const getCursor = state => window.Tools[state.selectedTool].getCursor(state)
 
@@ -779,11 +779,11 @@ const Selectors = (function() {
   const getTrackScript = state => state.trackData.script
 
   const getTrackProps = Reselect.createStructuredSelector({
-    riders: this.getCommittedRiders,
-    version: this.getSimulatorVersion,
-    audio: this.getLocalAudioProps,
-    layers: this.getTrackLayers,
-    script: this.getTrackScript
+    riders: getCommittedRiders,
+    version: getSimulatorVersion,
+    audio: getLocalAudioProps,
+    layers: getTrackLayers,
+    script: getTrackScript
   })
 
   const getTrackDetails = Reselect.createStructuredSelector({
@@ -811,34 +811,34 @@ const Selectors = (function() {
   )
 
   const getTrackDetailsWithCloudInfo = Reselect.createStructuredSelector({
-    details: this.getTrackDetails,
-    cloudInfo: this.getTrackCloudInfo
+    details: getTrackDetails,
+    cloudInfo: getTrackCloudInfo
   })
 
   const getTrackInfo = Reselect.createStructuredSelector({
-    duration: state => this.getPlayerMaxIndex(state)
+    duration: state => getPlayerMaxIndex(state)
   })
 
   const getTrackObjectForAutosave = Reselect.createStructuredSelector({
-    props: this.getTrackProps,
-    details: this.getTrackDetails,
-    info: this.getTrackInfo,
-    cloudInfo: this.getTrackCloudInfo,
-    localFile: this.getTrackIsLocalFile
+    props: getTrackProps,
+    details: getTrackDetails,
+    info: getTrackInfo,
+    cloudInfo: getTrackCloudInfo,
+    localFile: getTrackIsLocalFile
   })
 
   const getTrackObjectForSaving = (state, trackDetails) => ({
     label: trackDetails.title, 
     creator: trackDetails.creator,
     description: trackDetails.description,
-    duration: this.getPlayerMaxIndex(state),
-    version: this.getSimulatorVersion(state),
-    audio: this.getLocalAudioProps(state),
-    startPosition: this.getSimulatorStartPos(state),
-    riders: this.getCommittedRiders(state),
-    lines: this.getSimulatorLines(state).toJS(),
-    layers: this.getTrackLayers(state).toJS(),
-    script: this.getTrackScript(state)
+    duration: getPlayerMaxIndex(state),
+    version: getSimulatorVersion(state),
+    audio: getLocalAudioProps(state),
+    startPosition: getSimulatorStartPos(state),
+    riders: getCommittedRiders(state),
+    lines: getSimulatorLines(state).toJS(),
+    layers: getTrackLayers(state).toJS(),
+    script: getTrackScript(state)
   })
 
   const getControlsActive = state => state.ui.controlsActive
@@ -853,57 +853,57 @@ const Selectors = (function() {
   }
   
   const Pages = {
-    [this.Views.Main]: {
+    [Views.Main]: {
       Editor: 'editor',
       Viewer: 'viewer',
       EditableViewer: 'editable-viewer'
     },
-    [this.Views.Sidebar]: {
+    [Views.Sidebar]: {
       Share: 'share',
       Info: 'info',
       Settings: 'settings',
       Help: 'help'
     },
-    [this.Views.About]: {
+    [Views.About]: {
       Launch: 'launch',
       Loading: 'loading'
     },
-    [this.Views.TrackLoader]: {
+    [Views.TrackLoader]: {
       Load: 'load'
     },
-    [this.Views.TrackSaver]: {
+    [Views.TrackSaver]: {
       Save: 'save'
     },
-    [this.Views.VideoExporter]: {
+    [Views.VideoExporter]: {
       Export: 'export'
     },
-    [this.Views.ReleaseNotes]: {
+    [Views.ReleaseNotes]: {
       Notes: 'notes'
     }
   }
 
   const getViews = state => state.views
 
-  const getSidebarPage = state => this.getViews(state)[this.Views.Sidebar]
+  const getSidebarPage = state => getViews(state)[Views.Sidebar]
 
-  const getMainPage = state => this.getViews(state)[this.Views.Main]
+  const getMainPage = state => getViews(state)[Views.Main]
 
-  const getInEditor = state => state.views[this.Views.Main] === this.Views.Pages.Main.Editor
+  const getInEditor = state => state.views[Views.Main] === Views.Pages.Main.Editor
 
-  const getInViewer = state => state.views[this.Views.Main] === this.Views.Pages.Main.Viewer || state.views[this.Views.Main] === this.Views.Pages.Main.EditableViewer
+  const getInViewer = state => state.views[Views.Main] === Views.Pages.Main.Viewer || state.views[Views.Main] === Views.Pages.Main.EditableViewer
 
-  const getInTrackSaver = state => state.views[this.Views.TrackSaver] === this.Views.Pages.TrackSaver.Save
+  const getInTrackSaver = state => state.views[Views.TrackSaver] === Views.Pages.TrackSaver.Save
 
-  const getInTrackLoader = state => state.views[this.Views.TrackLoader] === this.Views.Pages.TrackLoader.Load
+  const getInTrackLoader = state => state.views[Views.TrackLoader] === Views.Pages.TrackLoader.Load
 
-  const getInVideoExporter = state => state.views[this.Views.VideoExporter] === this.Views.Pages.VideoExporter.Export
+  const getInVideoExporter = state => state.views[Views.VideoExporter] === Views.Pages.VideoExporter.Export
 
   const getHasOverlay = state => (
-    state.views[this.Views.About] ||
-    state.views[this.Views.TrackLoader] ||
-    state.views[this.Views.TrackSaver] ||
-    state.views[this.Views.VideoExporter] ||
-    state.views[this.Views.ReleaseNotes]
+    state.views[Views.About] ||
+    state.views[Views.TrackLoader] ||
+    state.views[Views.TrackSaver] ||
+    state.views[Views.VideoExporter] ||
+    state.views[Views.ReleaseNotes]
   )
 
   return {colorPickerOpenSelector, getActiveLayerEditable, getAudioEnabled, getAudioFileLoading, getAudioOffset, getAudioProps, getAutosaveEnabled, getAutosaveProgress, getColorPlayback, getCommandsToHotkeys, getCommittedRiders, getControlsActive, getCurrentCamera, getCurrentPlayerRate, getCursor, getEditorCamera, getEditorDimensions, getEditorFollowerFocus, getEditorFollowerFocus, getEditorPosition, getEditorZoom, getHasOverlay, getInEditor, getInTrackLoader, getInTrackSaver, getInVideoExporter, getInViewer, getLineTypePickerActive, getLocalAudioProps, getMainPage, getMillionsEnabled, getModifier, getModifiersActive, getNotification, getNotificationProgressId, getNotificationsCount, getNumRiders, getOnionBeginIndex, getOnionEndIndex, getOnionSkinActive, getPixelRatio, getPlaybackCamera, getPlaybackCameraFocus, getPlaybackCameraParams, getPlaybackDimensions, getPlaybackFixedPosition, getPlaybackIsFixedPosition, getPlaybackPreview, getPlaybackZoom, getPlayerFlagActive, getPlayerFlagIndex, getPlayerFps, getPlayerFrameRateSetting, getPlayerIndex, getPlayerMaxIndex, getPlayerReversed, getPlayerRunning, getPlayerSettings, getPlayerSlowMotion, getPlayerTime, getProgress, getRendererScenes, getRiders, getSavedTracks, getSavedTracksAvailable, getSelectedLineType, getSelectedLineType, getSelectedTool, getSidebarPage, getSimulatorCommittedLines, getSimulatorCommittedTrack, getSimulatorHasRedo, getSimulatorHasUndo, getSimulatorLineCount, getSimulatorLines, getSimulatorStartPos, getSimulatorTotalLineCount, getSimulatorTrack, getSimulatorTrackTotalLineCount, getSimulatorVersion, getSpriteSheet, getToolSceneLayer, getToolState, getTrackActiveLayerId, getTrackCloudInfo, getTrackDetails, getTrackDetailsWithCloudInfo, getTrackInfo, getTrackIsDirty, getTrackIsEmpty, getTrackIsLocalFile, getTrackLayers, getTrackLinesLocked, getTrackLoaderProgress, getTrackObjectForAutosave, getTrackObjectForSaving, getTrackProps, getTrackSaverInProgress, getTrackSaverProgress, getTrackScript, getTriggerCounts, getUseEditorFollower, getViewOptions, getViews, getZoomSliderActive, hasPlaybackDimensions, isAudioFileLoading}
