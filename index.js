@@ -815,7 +815,7 @@ const Selectors = (function() {
   })
 
   function getTrackObjectForSaving(state, trackDetails) {return ({
-    label: trackDetails.title, 
+    label: trackDetails.title,
     creator: trackDetails.creator,
     description: trackDetails.description,
     duration: getPlayerMaxIndex(state),
@@ -836,9 +836,10 @@ const Selectors = (function() {
     About: 'About',
     TrackLoader: 'TrackLoader',
     TrackSaver: 'TrackSaver',
+    VideoExporter: 'VideoExporter',
     ReleaseNotes: 'ReleaseNotes'
   }
-  
+
   const Pages = {
     [Views.Main]: {
       Editor: 'editor',
@@ -875,15 +876,15 @@ const Selectors = (function() {
 
   function getMainPage(state) {return getViews(state)[Views.Main]}
 
-  function getInEditor(state) {return state.views[Views.Main] === Views.Pages.Main.Editor}
+  function getInEditor(state) {return state.views[Views.Main] === Pages.Main.Editor}
 
-  function getInViewer(state) {return state.views[Views.Main] === Views.Pages.Main.Viewer || state.views[Views.Main] === Views.Pages.Main.EditableViewer}
+  function getInViewer(state) {return state.views[Views.Main] === Pages.Main.Viewer || state.views[Views.Main] === Pages.Main.EditableViewer}
 
-  function getInTrackSaver(state) {return state.views[Views.TrackSaver] === Views.Pages.TrackSaver.Save}
+  function getInTrackSaver(state) {return state.views[Views.TrackSaver] === Pages.TrackSaver.Save}
 
-  function getInTrackLoader(state) {return state.views[Views.TrackLoader] === Views.Pages.TrackLoader.Load}
+  function getInTrackLoader(state) {return state.views[Views.TrackLoader] === Pages.TrackLoader.Load}
 
-  function getInVideoExporter(state) {return state.views[Views.VideoExporter] === Views.Pages.VideoExporter.Export}
+  function getInVideoExporter(state) {return state.views[Views.VideoExporter] === Pages.VideoExporter.Export}
 
   function getHasOverlay(state) {return (
     state.views[Views.About] ||
