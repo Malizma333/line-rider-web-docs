@@ -752,15 +752,13 @@ class Selectors {
 
   static getAutosaveEnabled = state => state.autosaveEnabled
 
-  // import { Tools } from 'middleware/tools'
-
   static getToolState = (state, toolId) => state.toolState[toolId]
 
   static getSelectedTool = state => state.selectedTool
 
   static colorPickerOpenSelector = createSelector(
     this.getSelectedTool,
-    (selectedTool) => Tools[selectedTool].usesSwatches
+    (selectedTool) => window.Tools[selectedTool].usesSwatches
   )
 
   static getLineTypePickerActive = this.colorPickerOpenSelector
@@ -770,9 +768,9 @@ class Selectors {
   // Defaults to scenery if track lines locked
   static getSelectedLineType = state => this.getTrackLinesLocked(state) ? 2 : state.selectedLineType
 
-  static getCursor = state => Tools[state.selectedTool].getCursor(state)
+  static getCursor = state => window.Tools[state.selectedTool].getCursor(state)
 
-  static getToolSceneLayer = state => Tools[state.selectedTool].getSceneLayer(state)
+  static getToolSceneLayer = state => window.Tools[state.selectedTool].getSceneLayer(state)
 
   static getTrackIsLocalFile = state => state.trackData.localFile
   static getTrackScript = state => state.trackData.script
@@ -809,23 +807,6 @@ class Selectors {
     }
   )
 
-  static getTrackShareLinks = createSelector(
-    state => this.getTrackDetails(state).title,
-    this.getTrackCloudInfo,
-    (title, cloudInfo) => {
-      if (!cloudInfo) return {}
-
-      title = cloudInfo.versionTitle || title
-      title = title ? slugify(title) : ''
-
-      let origin = window.location.origin
-      return {
-        edit: `${origin}/edit/${cloudInfo.versionId}/${title}?k=${cloudInfo.derivativeKey}`,
-        view: `${origin}/view/${cloudInfo.versionId}/${title}`
-      }
-    }
-  )
-
   static getTrackDetailsWithCloudInfo = createStructuredSelector({
     details: this.getTrackDetails,
     cloudInfo: this.getTrackCloudInfo
@@ -859,31 +840,66 @@ class Selectors {
 
   static getControlsActive = state => state.ui.controlsActive
 
-  // import * as Views from 'utils/views'
+  static Views = {
+    Main: 'Main',
+    Sidebar: 'Sidebar',
+    About: 'About',
+    TrackLoader: 'TrackLoader',
+    TrackSaver: 'TrackSaver',
+    ReleaseNotes: 'ReleaseNotes'
+  }
+  
+  static Pages = {
+    [this.Views.Main]: {
+      Editor: 'editor',
+      Viewer: 'viewer',
+      EditableViewer: 'editable-viewer'
+    },
+    [this.Views.Sidebar]: {
+      Share: 'share',
+      Info: 'info',
+      Settings: 'settings',
+      Help: 'help'
+    },
+    [this.Views.About]: {
+      Launch: 'launch',
+      Loading: 'loading'
+    },
+    [this.Views.TrackLoader]: {
+      Load: 'load'
+    },
+    [this.Views.TrackSaver]: {
+      Save: 'save'
+    },
+    [this.Views.VideoExporter]: {
+      Export: 'export'
+    },
+    [this.Views.ReleaseNotes]: {
+      Notes: 'notes'
+    }
+  }
 
   static getViews = state => state.views
 
-  static getSidebarPage = state => this.getViews(state)[Views.Sidebar]
+  static getSidebarPage = state => this.getViews(state)[this.Views.Sidebar]
 
-  static getMainPage = state => this.getViews(state)[Views.Main]
+  static getMainPage = state => this.getViews(state)[this.Views.Main]
 
-  static getPageRoute = state => this.Views.viewsToPath(state.views)
+  static getInEditor = state => state.views[this.Views.Main] === this.Views.Pages.Main.Editor
 
-  static getInEditor = state => state.views[Views.Main] === Views.Pages.Main.Editor
+  static getInViewer = state => state.views[this.Views.Main] === this.Views.Pages.Main.Viewer || state.views[this.Views.Main] === this.Views.Pages.Main.EditableViewer
 
-  static getInViewer = state => state.views[Views.Main] === Views.Pages.Main.Viewer || state.views[Views.Main] === Views.Pages.Main.EditableViewer
+  static getInTrackSaver = state => state.views[this.Views.TrackSaver] === this.Views.Pages.TrackSaver.Save
 
-  static getInTrackSaver = state => state.views[Views.TrackSaver] === Views.Pages.TrackSaver.Save
+  static getInTrackLoader = state => state.views[this.Views.TrackLoader] === this.Views.Pages.TrackLoader.Load
 
-  static getInTrackLoader = state => state.views[Views.TrackLoader] === Views.Pages.TrackLoader.Load
-
-  static getInVideoExporter = state => state.views[Views.VideoExporter] === Views.Pages.VideoExporter.Export
+  static getInVideoExporter = state => state.views[this.Views.VideoExporter] === this.Views.Pages.VideoExporter.Export
 
   static getHasOverlay = state => (
-    state.views[Views.About] ||
-    state.views[Views.TrackLoader] ||
-    state.views[Views.TrackSaver] ||
-    state.views[Views.VideoExporter] ||
-    state.views[Views.ReleaseNotes]
+    state.views[this.Views.About] ||
+    state.views[this.Views.TrackLoader] ||
+    state.views[this.Views.TrackSaver] ||
+    state.views[this.Views.VideoExporter] ||
+    state.views[this.Views.ReleaseNotes]
   )
 }
