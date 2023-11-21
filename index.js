@@ -1,3 +1,5 @@
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={})}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0}}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t},put:function(e,t){o={key:e,value:t}},getEntries:function(){return o?[o]:[]},clear:function(){o=void 0}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key)}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value}return t}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop())},getEntries:function(){return r},clear:function(){r=[]}}}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n)}));u&&(n=u.value)}s.put(arguments,n)}return n}return v.clearCache=function(){return s.clear()},v}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e})).join(", ");throw Error("Reselect.createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]")}return t}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("Reselect.createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments)}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e)}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i},recomputations:function(){return c},resetRecomputations:function(){return c=0}}),h};return o}var i=o(r);e.Reselect.createSelector=i,e.Reselect.createSelectorCreator=o,e.Reselect.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("Reselect.createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t]})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e}),{})}));return r},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0})}));
+
 class Actions {
   static analyticsSaveTrack = () => ({ type: 'ANALYTICS_SAVE_TRACK' })
   static analyticsSaveTrackFile = () => ({ type: 'ANALYTICS_SAVE_TRACK_FILE' })
@@ -528,7 +530,7 @@ class Selectors {
   static getEditorZoom = state => state.camera.editorZoom
   static getEditorPosition = state => state.camera.editorPosition
 
-  static getEditorCamera = createSelector(
+  static getEditorCamera = Reselect.createSelector(
     state => state.camera.editorPosition,
     this.getEditorZoom,
     (position, zoom) => ({ position, zoom })
@@ -549,13 +551,13 @@ class Selectors {
   // TODO: handle custom camera dimensions with cropping like in thumbnail choosing mode
   static getPlaybackDimensions = state => state.camera.playbackDimensions || this.getEditorDimensions(state)
 
-  static getPlaybackCameraParams = createSelector(
+  static getPlaybackCameraParams = Reselect.createSelector(
     this.getPlaybackZoom,
     this.getPlaybackDimensions,
     (zoom, { width, height }) => ({ zoom, width, height })
   )
 
-  static getPlaybackCamera = createSelector(
+  static getPlaybackCamera = Reselect.createSelector(
     state => state.camera.playbackFollower,
     this.getSimulatorTrack,
     this.getPlayerIndex,
@@ -571,7 +573,7 @@ class Selectors {
 
   static getCurrentCamera = state => this.getPlayerRunning(state) ? this.getPlaybackCamera(state) : this.getEditorCamera(state)
 
-  static getCommandsToHotkeys = createSelector(
+  static getCommandsToHotkeys = Reselect.createSelector(
     state => state.command.hotkeys,
     (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
   )
@@ -584,7 +586,7 @@ class Selectors {
 
   static getZoomSliderActive = state => this.getModifier(state, 'modifiers.zoom')
 
-  static getNotification = createSelector(
+  static getNotification = Reselect.createSelector(
     state => state.notifications.message,
     state => state.notifications.autoHide,
     state => state.notifications.open,
@@ -610,13 +612,13 @@ class Selectors {
 
   static getPlayerFps = state => state.player.settings.fps
 
-  static getPlayerTime = createSelector(
+  static getPlayerTime = Reselect.createSelector(
     this.getPlayerIndex,
     this.getPlayerFps,
     (index, fps) => index / fps
   )
 
-  static getCurrentPlayerRate = createSelector(
+  static getCurrentPlayerRate = Reselect.createSelector(
     state => state.player.settings.baseRate,
     state => state.player.settings.slowMotionRate,
     state => state.player.settings.fastForwardRate,
@@ -652,14 +654,14 @@ class Selectors {
 
   static getPixelRatio = state => state.renderer.pixelRatio
 
-  static getRendererScenes = createStructuredSelector({
+  static getRendererScenes = Reselect.createStructuredSelector({
     customEditScene: state => state.renderer.edit,
     customPlaybackScene: state => state.renderer.playback
   })
 
   static getMillionsEnabled = state => state.renderer.millionsEnabled
 
-  static getSpriteSheet = createSelector(
+  static getSpriteSheet = Reselect.createSelector(
     this.getNumRiders,
     state => state.renderer.spriteSheets,
     (numRiders, spriteSheets) => {
@@ -686,7 +688,7 @@ class Selectors {
   static getPlaybackPreview = state => state.renderer.playbackPreview
   static getColorPlayback = state => state.renderer.colorPlayback
 
-  static getViewOptions = createStructuredSelector({
+  static getViewOptions = Reselect.createStructuredSelector({
     color: state => this.getPlayerRunning(state) ? this.getColorPlayback(state) : !this.getPlaybackPreview(state),
     flag: state => state.renderer.flag != null ? state.renderer.flag : !(this.getInViewer(state) && this.getPlayerRunning(state)),
     skeleton: state => state.renderer.skeleton
@@ -707,7 +709,7 @@ class Selectors {
   static getTrackIsEmpty = state => this.getSimulatorTrackTotalLineCount(state) === 0
   static getTrackIsDirty = state => state.simulator.committedEngine !== state.simulator.lastSavedEngine
 
-  static getSimulatorLineCount = this.createSelector(
+  static getSimulatorLineCount = this.Reselect.createSelector(
     state => state.simulator.engine,
     (engine) => {
       let { total, ...lineCounts } = engine.getLineCounts()
@@ -730,13 +732,13 @@ class Selectors {
       return layer.visible && layer.editable
     }
   }
-  static getSimulatorHasUndo = createSelector(
+  static getSimulatorHasUndo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
     (history, engine) => history.findIndex(e => e === engine) > 0
   )
 
-  static getSimulatorHasRedo = createSelector(
+  static getSimulatorHasRedo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
     (history, engine) => history.findIndex(e => e === engine) < history.length - 1
@@ -756,7 +758,7 @@ class Selectors {
 
   static getSelectedTool = state => state.selectedTool
 
-  static colorPickerOpenSelector = createSelector(
+  static colorPickerOpenSelector = Reselect.createSelector(
     this.getSelectedTool,
     (selectedTool) => window.Tools[selectedTool].usesSwatches
   )
@@ -775,7 +777,7 @@ class Selectors {
   static getTrackIsLocalFile = state => state.trackData.localFile
   static getTrackScript = state => state.trackData.script
 
-  static getTrackProps = createStructuredSelector({
+  static getTrackProps = Reselect.createStructuredSelector({
     riders: this.getCommittedRiders,
     version: this.getSimulatorVersion,
     audio: this.getLocalAudioProps,
@@ -783,13 +785,13 @@ class Selectors {
     script: this.getTrackScript
   })
 
-  static getTrackDetails = createStructuredSelector({
+  static getTrackDetails = Reselect.createStructuredSelector({
     title: state => state.trackData.label,
     creator: state => state.trackData.creator,
     description: state => state.trackData.description
   })
 
-  static getTrackCloudInfo = createSelector(
+  static getTrackCloudInfo = Reselect.createSelector(
     state => state.trackData.cloudInfo,
     state => state.trackData.derivedFrom,
     state => state.trackData.saveTime,
@@ -807,16 +809,16 @@ class Selectors {
     }
   )
 
-  static getTrackDetailsWithCloudInfo = createStructuredSelector({
+  static getTrackDetailsWithCloudInfo = Reselect.createStructuredSelector({
     details: this.getTrackDetails,
     cloudInfo: this.getTrackCloudInfo
   })
 
-  static getTrackInfo = createStructuredSelector({
+  static getTrackInfo = Reselect.createStructuredSelector({
     duration: state => this.getPlayerMaxIndex(state)
   })
 
-  static getTrackObjectForAutosave = createStructuredSelector({
+  static getTrackObjectForAutosave = Reselect.createStructuredSelector({
     props: this.getTrackProps,
     details: this.getTrackDetails,
     info: this.getTrackInfo,
