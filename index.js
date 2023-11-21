@@ -77,54 +77,42 @@ const Actions = (function() {
     payload: dimensions
   })
 
-  const triggerCommand = (command) => {
-    return {
-      type: 'TRIGGER_COMMAND',
-      payload: command,
-      meta: { ignorable: true }
-    }
-  }
+  const triggerCommand = (command) => ({
+    type: 'TRIGGER_COMMAND',
+    payload: command,
+    meta: { ignorable: true }
+  })
 
-  const beginModifierCommand = (command, e) => {
-    return {
-      type: 'BEGIN_MODIFIER_COMMAND',
-      payload: command,
-      meta: { ignorable: true, event: e }
-    }
-  }
+  const beginModifierCommand = (command, e) => ({
+    type: 'BEGIN_MODIFIER_COMMAND',
+    payload: command,
+    meta: { ignorable: true, event: e }
+  })
 
-  const endModifierCommand = (command) => {
-    return {
-      type: 'END_MODIFIER_COMMAND',
-      payload: command,
-      meta: { ignorable: true }
-    }
-  }
+  const endModifierCommand = (command) => ({
+    type: 'END_MODIFIER_COMMAND',
+    payload: command,
+    meta: { ignorable: true }
+  })
 
-  const toggleModifierCommand = (command) => {
-    return {
-      type: 'TOGGLE_MODIFIER_COMMAND',
-      payload: command,
-      meta: { ignorable: true }
-    }
-  }
+  const toggleModifierCommand = (command) => ({
+    type: 'TOGGLE_MODIFIER_COMMAND',
+    payload: command,
+    meta: { ignorable: true }
+  })
 
   // TODO: this is unused
   // object where the keys are commands and the values are hotkey bindings
-  const setCommandHotkeys = (commandHotkeys) => {
-    return {
-      type: 'SET_COMMAND_HOTKEYS',
-      payload: commandHotkeys
-    }
-  }
+  const setCommandHotkeys = (commandHotkeys) => ({
+    type: 'SET_COMMAND_HOTKEYS',
+    payload: commandHotkeys
+  })
 
   // fired at startup on Macs to replace 'ctrl' in hotkeys with 'cmd'
-  const replaceCtrlKey = (replacementKey) => {
-    return {
-      type: 'REPLACE_CTRL_KEY',
-      payload: replacementKey
-    }
-  }
+  const replaceCtrlKey = (replacementKey) => ({
+    type: 'REPLACE_CTRL_KEY',
+    payload: replacementKey
+  })
 
   const toggleTrackLinesLocked = () => ({ type: 'TOGGLE_TRACK_LINES_LOCKED' })
 
@@ -305,7 +293,7 @@ const Actions = (function() {
     payload: fps
   })
   const toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' })
-  const setInterpolate = payload => ({ type: 'SET_INTERPOLATE', payload })
+  const setInterpolate = (payload) => ({ type: 'SET_INTERPOLATE', payload })
   const toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' })
   const incPlayerIndex = () => ({ type: 'INC_PLAYER_INDEX' })
   const decPlayerIndex = () => ({ type: 'DEC_PLAYER_INDEX' })
@@ -512,15 +500,15 @@ const Actions = (function() {
 })()
 
 const Selectors = (function() {
-  const getAudioEnabled = state => state.audio.enabled
-  const getAudioOffset = state => state.audio.offset
+  function getAudioEnabled(state) {return state.audio.enabled}
+  function getAudioOffset(state) {return state.audio.offset}
 
-  const isAudioFileLoading = state => state.audioFileLoader.loadingFile
+  function isAudioFileLoading(state) {return state.audioFileLoader.loadingFile}
 
-  const getAudioProps = state => state.audio
-  const getAudioFileLoading = state => state.audioFileLoader
+  function getAudioProps(state) {return state.audio}
+  function getAudioFileLoading(state) {return state.audioFileLoader}
 
-  const getLocalAudioProps = state => {
+  function getLocalAudioProps (state) {
     const {name, path, offset} = state.audio
     if (path) {
       return {name, path, offset}
@@ -528,8 +516,8 @@ const Selectors = (function() {
     return null
   }
 
-  const getEditorZoom = state => state.camera.editorZoom
-  const getEditorPosition = state => state.camera.editorPosition
+  function getEditorZoom(state) {return state.camera.editorZoom}
+  function getEditorPosition(state) {return state.camera.editorPosition}
 
   const getEditorCamera = Reselect.createSelector(
     state => state.camera.editorPosition,
@@ -537,20 +525,19 @@ const Selectors = (function() {
     (position, zoom) => ({ position, zoom })
   )
 
-  const getUseEditorFollower = state => state.settings['cam.useEditorFollower']
+  function getUseEditorFollower(state) {return state.settings['cam.useEditorFollower']}
 
-  const getEditorDimensions = state => state.camera.editorDimensions
-  const getEditorFollowerFocus = state => Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus)
+  function getEditorDimensions(state) {return state.camera.editorDimensions}
+  function getEditorFollowerFocus(state) {return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus)}
 
-  const getPlaybackZoom = state =>
-    window.getAutoZoom ? window.getAutoZoom(getPlayerIndex(state)) : state.camera.playbackZoom
-  const getPlaybackFixedPosition = state => state.camera.playbackFixedPosition
-  const getPlaybackIsFixedPosition = state => state.camera.playbackFollower.isFixed()
+  function getPlaybackZoom(state) {return window.getAutoZoom ? window.getAutoZoom(getPlayerIndex(state)) : state.camera.playbackZoom}
+  function getPlaybackFixedPosition(state) {return state.camera.playbackFixedPosition}
+  function getPlaybackIsFixedPosition(state) {return state.camera.playbackFollower.isFixed()}
 
-  const hasPlaybackDimensions = state => state.camera.playbackDimensions != null
+  function hasPlaybackDimensions(state) {return state.camera.playbackDimensions != null}
 
   // TODO: handle custom camera dimensions with cropping like in thumbnail choosing mode
-  const getPlaybackDimensions = state => state.camera.playbackDimensions || getEditorDimensions(state)
+  function getPlaybackDimensions(state) {return state.camera.playbackDimensions || getEditorDimensions(state)}
 
   const getPlaybackCameraParams = Reselect.createSelector(
     getPlaybackZoom,
@@ -570,22 +557,22 @@ const Selectors = (function() {
       zoom
     })
   )
-  const getPlaybackCameraFocus = state => state.camera.playbackFollower.focus
+  function getPlaybackCameraFocus(state) {return state.camera.playbackFollower.focus}
 
-  const getCurrentCamera = state => getPlayerRunning(state) ? getPlaybackCamera(state) : getEditorCamera(state)
+  function getCurrentCamera(state) {return getPlayerRunning(state) ? getPlaybackCamera(state) : getEditorCamera(state)}
 
   const getCommandsToHotkeys = Reselect.createSelector(
     state => state.command.hotkeys,
     (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
   )
 
-  const getTriggerCounts = (state, trigger) => state.command.triggerCounts.get(trigger, 0)
+  function getTriggerCounts(state, trigger) {return state.command.triggerCounts.get(trigger, 0)}
 
-  const getModifier = (state, modifier) => state.command.activeModifiers.has(modifier)
+  function getModifier(state, modifier) {return state.command.activeModifiers.has(modifier)}
 
-  const getModifiersActive = state => !state.command.activeModifiers.isEmpty()
+  function getModifiersActive(state) {return !state.command.activeModifiers.isEmpty()}
 
-  const getZoomSliderActive = state => getModifier(state, 'modifiers.zoom')
+  function getZoomSliderActive(state) {return getModifier(state, 'modifiers.zoom')}
 
   const getNotification = Reselect.createSelector(
     state => state.notifications.message,
@@ -594,24 +581,24 @@ const Selectors = (function() {
     (message, autoHide, open) => ({ message, autoHide, open })
   )
 
-  const getNotificationProgressId = state => state.notifications.progressId
+  function getNotificationProgressId(state) {return state.notifications.progressId}
 
-  const getNotificationsCount = state => state.notifications.count
+  function getNotificationsCount(state) {return state.notifications.count}
 
-  const getPlayerRunning = state => state.player.running
+  function getPlayerRunning(state) {return state.player.running}
 
-  const getPlayerIndex = state => state.player.index
+  function getPlayerIndex(state) {return state.player.index}
 
-  const getPlayerMaxIndex = state => Math.ceil(state.player.maxIndex)
-  const getPlayerFlagIndex = state => state.player.flagIndex
-  const getPlayerFlagActive = state => getPlayerFlagIndex(state) !== 0
+  function getPlayerMaxIndex(state) {return Math.ceil(state.player.maxIndex)}
+  function getPlayerFlagIndex(state) {return state.player.flagIndex}
+  function getPlayerFlagActive(state) {return getPlayerFlagIndex(state) !== 0}
 
-  const getPlayerSlowMotion = state => state.player.slowMotion
-  const getPlayerReversed = state => (state.player.reverse || state.player.rewind) && !state.player.fastForward
-  const getPlayerFrameRateSetting = state => state.renderer.skeleton === 0 ? state.player.settings.interpolate : false
-  const getPlayerSettings = state => state.player.settings
+  function getPlayerSlowMotion(state) {return state.player.slowMotion}
+  function getPlayerReversed(state) {return (state.player.reverse || state.player.rewind) && !state.player.fastForward}
+  function getPlayerFrameRateSetting(state) {return state.renderer.skeleton === 0 ? state.player.settings.interpolate : false}
+  function getPlayerSettings(state) {return state.player.settings}
 
-  const getPlayerFps = state => state.player.settings.fps
+  function getPlayerFps(state) {return state.player.settings.fps}
 
   const getPlayerTime = Reselect.createSelector(
     getPlayerIndex,
@@ -638,14 +625,14 @@ const Selectors = (function() {
     }
   )
 
-  const getTrackSaverProgress = state => state.progress['SAVE_TRACK']
-  const getTrackSaverInProgress = state => state.progress['SAVE_TRACK'].percent != null
+  function getTrackSaverProgress(state) {return state.progress['SAVE_TRACK']}
+  function getTrackSaverInProgress(state) {return state.progress['SAVE_TRACK'].percent != null}
 
-  const getTrackLoaderProgress = state => state.progress['LOAD_TRACK']
+  function getTrackLoaderProgress(state) {return state.progress['LOAD_TRACK']}
 
-  const getAutosaveProgress = state => state.progress['AUTOSAVE']
+  function getAutosaveProgress(state) {return state.progress['AUTOSAVE']}
 
-  const getProgress = (state, progressId) => {
+  function getProgress(state, progressId) {
     let progress = state.progress[progressId]
 
     if (!progress) throw new Error('unknown progressId:', progressId)
@@ -653,14 +640,14 @@ const Selectors = (function() {
     return progress
   }
 
-  const getPixelRatio = state => state.renderer.pixelRatio
+  function getPixelRatio(state) {return state.renderer.pixelRatio}
 
   const getRendererScenes = Reselect.createStructuredSelector({
     customEditScene: state => state.renderer.edit,
     customPlaybackScene: state => state.renderer.playback
   })
 
-  const getMillionsEnabled = state => state.renderer.millionsEnabled
+  function getMillionsEnabled(state) {return state.renderer.millionsEnabled}
 
   const getSpriteSheet = Reselect.createSelector(
     getNumRiders,
@@ -682,12 +669,12 @@ const Selectors = (function() {
     }
   )
 
-  const getOnionBeginIndex = state => Math.max(0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore)
-  const getOnionEndIndex = state => Math.min(state.player.maxIndex, Math.max(0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter))
-  const getOnionSkinActive = state => state.renderer.onionSkin
+  function getOnionBeginIndex(state) {return Math.max(0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore)}
+  function getOnionEndIndex(state) {return Math.min(state.player.maxIndex, Math.max(0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter))}
+  function getOnionSkinActive(state) {return state.renderer.onionSkin}
 
-  const getPlaybackPreview = state => state.renderer.playbackPreview
-  const getColorPlayback = state => state.renderer.colorPlayback
+  function getPlaybackPreview(state) {return state.renderer.playbackPreview}
+  function getColorPlayback(state) {return state.renderer.colorPlayback}
 
   const getViewOptions = Reselect.createStructuredSelector({
     color: state => getPlayerRunning(state) ? getColorPlayback(state) : !getPlaybackPreview(state),
@@ -695,20 +682,20 @@ const Selectors = (function() {
     skeleton: state => state.renderer.skeleton
   })
 
-  const getSimulatorTrack = state => state.simulator.engine
-  const getSimulatorCommittedTrack = state => state.simulator.committedEngine
+  function getSimulatorTrack(state) {return state.simulator.engine}
+  function getSimulatorCommittedTrack(state) {return state.simulator.committedEngine}
 
-  const getSimulatorLines = state => state.simulator.engine.linesList
-  const getSimulatorCommittedLines = state => state.simulator.committedEngine.linesList
+  function getSimulatorLines(state) {return state.simulator.engine.linesList}
+  function getSimulatorCommittedLines(state) {return state.simulator.committedEngine.linesList}
 
   // for compatibility
-  const getSimulatorStartPos = state => state.simulator.engine.start.position
-  const getSimulatorVersion = state => state.simulator.engine.isLegacy() ? '6.1' : '6.2'
+  function getSimulatorStartPos(state) {return state.simulator.engine.start.position}
+  function getSimulatorVersion(state) {return state.simulator.engine.isLegacy() ? '6.1' : '6.2'}
 
-  const getSimulatorTrackTotalLineCount = state => state.simulator.engine.linesList.size()
+  function getSimulatorTrackTotalLineCount(state) {return state.simulator.engine.linesList.size()}
 
-  const getTrackIsEmpty = state => getSimulatorTrackTotalLineCount(state) === 0
-  const getTrackIsDirty = state => state.simulator.committedEngine !== state.simulator.lastSavedEngine
+  function getTrackIsEmpty(state) {return getSimulatorTrackTotalLineCount(state) === 0}
+  function getTrackIsDirty(state) {return state.simulator.committedEngine !== state.simulator.lastSavedEngine}
 
   const getSimulatorLineCount = Reselect.createSelector(
     state => state.simulator.engine,
@@ -718,11 +705,11 @@ const Selectors = (function() {
     }
   )
 
-  const getSimulatorTotalLineCount = state => getSimulatorLineCount(state).total
+  function getSimulatorTotalLineCount(state) {return getSimulatorLineCount(state).total}
 
-  const getTrackLayers = state => getSimulatorTrack(state).engine.state.layers
-  const getTrackActiveLayerId = state => getSimulatorTrack(state).engine.state.activeLayerId
-  const getActiveLayerEditable = state => {
+  function getTrackLayers(state) {return getSimulatorTrack(state).engine.state.layers}
+  function getTrackActiveLayerId(state) {return getSimulatorTrack(state).engine.state.activeLayerId}
+  function getActiveLayerEditable(state) {
     const id = getTrackActiveLayerId(state)
     const layers = getTrackLayers(state)
 
@@ -745,19 +732,19 @@ const Selectors = (function() {
     (history, engine) => history.findIndex(e => e === engine) < history.length - 1
   )
 
-  const getRiders = state => state.simulator.engine.engine.state.riders
-  const getCommittedRiders = state => state.simulator.committedEngine.engine.state.riders
-  const getNumRiders = (state) => getRiders(state).length
+  function getRiders(state) {return state.simulator.engine.engine.state.riders}
+  function getCommittedRiders(state) {return state.simulator.committedEngine.engine.state.riders}
+  function getNumRiders(state) {return getRiders(state).length}
 
-  const getSavedTracks = state => state.savedTracks
+  function getSavedTracks(state) {return state.savedTracks}
 
-  const getSavedTracksAvailable = state => !!state.savedTracks
+  function getSavedTracksAvailable(state) {return !!state.savedTracks}
 
-  const getAutosaveEnabled = state => state.autosaveEnabled
+  function getAutosaveEnabled(state) {return state.autosaveEnabled}
 
-  const getToolState = (state, toolId) => state.toolState[toolId]
+  function getToolState(state, toolId) {return state.toolState[toolId]}
 
-  const getSelectedTool = state => state.selectedTool
+  function getSelectedTool(state) {return state.selectedTool}
 
   const colorPickerOpenSelector = Reselect.createSelector(
     getSelectedTool,
@@ -766,17 +753,17 @@ const Selectors = (function() {
 
   const getLineTypePickerActive = colorPickerOpenSelector
 
-  const getTrackLinesLocked = state => state.trackLinesLocked
+  function getTrackLinesLocked(state) {return state.trackLinesLocked}
 
   // Defaults to scenery if track lines locked
-  const getSelectedLineType = state => getTrackLinesLocked(state) ? 2 : state.selectedLineType
+  function getSelectedLineType(state) {return getTrackLinesLocked(state) ? 2 : state.selectedLineType}
 
-  const getCursor = state => window.Tools[state.selectedTool].getCursor(state)
+  function getCursor(state) {return window.Tools[state.selectedTool].getCursor(state)}
 
-  const getToolSceneLayer = state => window.Tools[state.selectedTool].getSceneLayer(state)
+  function getToolSceneLayer(state) {return window.Tools[state.selectedTool].getSceneLayer(state)}
 
-  const getTrackIsLocalFile = state => state.trackData.localFile
-  const getTrackScript = state => state.trackData.script
+  function getTrackIsLocalFile(state) {return state.trackData.localFile}
+  function getTrackScript(state) {return state.trackData.script}
 
   const getTrackProps = Reselect.createStructuredSelector({
     riders: getCommittedRiders,
@@ -827,7 +814,7 @@ const Selectors = (function() {
     localFile: getTrackIsLocalFile
   })
 
-  const getTrackObjectForSaving = (state, trackDetails) => ({
+  function getTrackObjectForSaving(state, trackDetails) {return ({
     label: trackDetails.title, 
     creator: trackDetails.creator,
     description: trackDetails.description,
@@ -839,9 +826,9 @@ const Selectors = (function() {
     lines: getSimulatorLines(state).toJS(),
     layers: getTrackLayers(state).toJS(),
     script: getTrackScript(state)
-  })
+  })}
 
-  const getControlsActive = state => state.ui.controlsActive
+  function getControlsActive(state) {return state.ui.controlsActive}
 
   const Views = {
     Main: 'Main',
@@ -882,29 +869,29 @@ const Selectors = (function() {
     }
   }
 
-  const getViews = state => state.views
+  function getViews(state) {return state.views}
 
-  const getSidebarPage = state => getViews(state)[Views.Sidebar]
+  function getSidebarPage(state) {return getViews(state)[Views.Sidebar]}
 
-  const getMainPage = state => getViews(state)[Views.Main]
+  function getMainPage(state) {return getViews(state)[Views.Main]}
 
-  const getInEditor = state => state.views[Views.Main] === Views.Pages.Main.Editor
+  function getInEditor(state) {return state.views[Views.Main] === Views.Pages.Main.Editor}
 
-  const getInViewer = state => state.views[Views.Main] === Views.Pages.Main.Viewer || state.views[Views.Main] === Views.Pages.Main.EditableViewer
+  function getInViewer(state) {return state.views[Views.Main] === Views.Pages.Main.Viewer || state.views[Views.Main] === Views.Pages.Main.EditableViewer}
 
-  const getInTrackSaver = state => state.views[Views.TrackSaver] === Views.Pages.TrackSaver.Save
+  function getInTrackSaver(state) {return state.views[Views.TrackSaver] === Views.Pages.TrackSaver.Save}
 
-  const getInTrackLoader = state => state.views[Views.TrackLoader] === Views.Pages.TrackLoader.Load
+  function getInTrackLoader(state) {return state.views[Views.TrackLoader] === Views.Pages.TrackLoader.Load}
 
-  const getInVideoExporter = state => state.views[Views.VideoExporter] === Views.Pages.VideoExporter.Export
+  function getInVideoExporter(state) {return state.views[Views.VideoExporter] === Views.Pages.VideoExporter.Export}
 
-  const getHasOverlay = state => (
+  function getHasOverlay(state) {return (
     state.views[Views.About] ||
     state.views[Views.TrackLoader] ||
     state.views[Views.TrackSaver] ||
     state.views[Views.VideoExporter] ||
     state.views[Views.ReleaseNotes]
-  )
+  )}
 
   return {colorPickerOpenSelector, getActiveLayerEditable, getAudioEnabled, getAudioFileLoading, getAudioOffset, getAudioProps, getAutosaveEnabled, getAutosaveProgress, getColorPlayback, getCommandsToHotkeys, getCommittedRiders, getControlsActive, getCurrentCamera, getCurrentPlayerRate, getCursor, getEditorCamera, getEditorDimensions, getEditorFollowerFocus, getEditorFollowerFocus, getEditorPosition, getEditorZoom, getHasOverlay, getInEditor, getInTrackLoader, getInTrackSaver, getInVideoExporter, getInViewer, getLineTypePickerActive, getLocalAudioProps, getMainPage, getMillionsEnabled, getModifier, getModifiersActive, getNotification, getNotificationProgressId, getNotificationsCount, getNumRiders, getOnionBeginIndex, getOnionEndIndex, getOnionSkinActive, getPixelRatio, getPlaybackCamera, getPlaybackCameraFocus, getPlaybackCameraParams, getPlaybackDimensions, getPlaybackFixedPosition, getPlaybackIsFixedPosition, getPlaybackPreview, getPlaybackZoom, getPlayerFlagActive, getPlayerFlagIndex, getPlayerFps, getPlayerFrameRateSetting, getPlayerIndex, getPlayerMaxIndex, getPlayerReversed, getPlayerRunning, getPlayerSettings, getPlayerSlowMotion, getPlayerTime, getProgress, getRendererScenes, getRiders, getSavedTracks, getSavedTracksAvailable, getSelectedLineType, getSelectedLineType, getSelectedTool, getSidebarPage, getSimulatorCommittedLines, getSimulatorCommittedTrack, getSimulatorHasRedo, getSimulatorHasUndo, getSimulatorLineCount, getSimulatorLines, getSimulatorStartPos, getSimulatorTotalLineCount, getSimulatorTrack, getSimulatorTrackTotalLineCount, getSimulatorVersion, getSpriteSheet, getToolSceneLayer, getToolState, getTrackActiveLayerId, getTrackCloudInfo, getTrackDetails, getTrackDetailsWithCloudInfo, getTrackInfo, getTrackIsDirty, getTrackIsEmpty, getTrackIsLocalFile, getTrackLayers, getTrackLinesLocked, getTrackLoaderProgress, getTrackObjectForAutosave, getTrackObjectForSaving, getTrackProps, getTrackSaverInProgress, getTrackSaverProgress, getTrackScript, getTriggerCounts, getUseEditorFollower, getViewOptions, getViews, getZoomSliderActive, hasPlaybackDimensions, isAudioFileLoading}
 })()
