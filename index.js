@@ -5,12 +5,6 @@
 // TODO provide examples
 // TODO find way to integrate enums into parameter docs
 const Actions = (function() {
-  // TODO figure out how these help save/load tracks + create a saver/loader action
-  const analyticsSaveTrack = () => ({ type: 'ANALYTICS_SAVE_TRACK' })
-  const analyticsSaveTrackFile = () => ({ type: 'ANALYTICS_SAVE_TRACK_FILE' })
-  const analyticsLoadTrack = () => ({ type: 'ANALYTICS_LOAD_TRACK' })
-  const analyticsLoadTrackFile = () => ({ type: 'ANALYTICS_LOAD_TRACK_FILE' })
-
   /** Toggles audio volume */
   const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
   /** Removes the current audio file */
@@ -23,17 +17,6 @@ const Actions = (function() {
   const setAudioOffset = (offset) => ({
     type: 'SET_AUDIO_OFFSET',
     payload: offset
-  })
-
-  // TODO figure out how these load audio
-  const loadAudio = (name, arraybuffer) => ({
-    type: 'LOAD_AUDIO',
-    payload: { name, arraybuffer }
-  })
-
-  const loadLocalAudioAction = (path, name) => ({
-    type: 'LOAD_LOCAL_AUDIO',
-    payload: {path, name}
   })
 
   /**
@@ -408,77 +391,6 @@ const Actions = (function() {
     payload: riders
   })
 
-  // Mobile only hint system
-  const triggerHint = (hint, tooltip = null) => ({
-    type: 'TRIGGER_HINT',
-    payload: {hint, tooltip}
-  })
-  const showHint = () => ({ type: 'SHOW_HINT' })
-
-  // input actions aren't used by any reducers, but they're used by the tool middleware
-  // TODO document input later (possible along with custom tools templates?)
-  const pointerDown = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
-    type: 'POINTER_DOWN',
-    payload: {
-      pointerType,
-      isPrimary,
-      button,
-      id: pointerId,
-      pos: { x, y }
-    }
-  })
-
-  const pointerUp = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
-    type: 'POINTER_UP',
-    payload: {
-      pointerType,
-      isPrimary,
-      button,
-      id: pointerId,
-      pos: { x, y }
-    }
-  })
-
-  const makePointerArg = ({ pointerType, pointerId, x, y, buttons }) =>
-    ({ pointerType, pointerId, x, y, buttons })
-
-  const pointerHover = ({ x, y }) => ({
-    type: 'POINTER_HOVER',
-    payload: {
-      pos: { x, y }
-    }
-  })
-
-  const pointerDrag = ({ pointerType, pointerId, x, y, buttons }, isPrimary) => ({
-    type: 'POINTER_DRAG',
-    payload: {
-      pointerType,
-      isPrimary,
-      buttons,
-      id: pointerId,
-      pos: { x, y }
-    }
-  })
-
-  const makeWheelArg = ({ clientX, clientY, deltaX, deltaY, deltaMode, ctrlKey }) =>
-    ({ clientX, clientY, deltaX, deltaY, deltaMode, ctrlKey })
-
-  const wheel = (e, trackpad) => ({
-    type: 'WHEEL',
-    payload: {
-      pos: {
-        x: e.clientX,
-        y: e.clientY
-      },
-      delta: {
-        x: e.deltaX,
-        // normalize conventional scroll wheels
-        y: e.deltaY * (trackpad ? 1 : e.deltaMode === 0 ? 0.25 : e.deltaMode === 1 ? 20 : 1)
-      },
-      pinch: e.ctrlKey // chrome pinch-to-zoom sets ctrlKey
-    }
-  })
-
   const keyDown = (key) => ({
     type: 'KEY_DOWN',
     payload: key,
@@ -636,12 +548,6 @@ const Actions = (function() {
   /** Toggles whether visible areas are shown */
   const toggleVisibleAreas = () => setViewOption('showVisibleAreas', null)
 
-  // TODO figure out sprite sheets
-  const setSpriteSheets = (spriteSheets) => ({
-    type: 'SET_SPRITE_SHEETS',
-    payload: spriteSheets
-  })
-
   /**
   * Toggles onion skinning
   * @param {boolean} onionSkin Onion Skinning
@@ -742,9 +648,6 @@ const Actions = (function() {
     }
   })
 
-  /** Sets the last saved engine to the current engine */
-  const saveTrackAction = () => ({ type: 'SAVE_TRACK' })
-
   /**
   * Sets details of the currently loaded track
   * @param {string} title Title
@@ -812,7 +715,7 @@ const Actions = (function() {
   * @param {Setting} key Target Setting
   */
   const toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
-  return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, duplicateLines, endModifierCommand, hideNotification, incPlayerIndex, keyDown, keyUp, loadAutosave, loadLines, loadTrackAction, makePointerArg, makeWheelArg, moveLayer, newTrack, pointerDown, pointerDrag, pointerHover, pointerUp, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setSpriteSheets, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, undoAction, wheel}
+  return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, duplicateLines, endModifierCommand, hideNotification, incPlayerIndex, keyDown, keyUp, loadAutosave, loadLines, loadTrackAction, moveLayer, newTrack, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, undoAction}
 })()
 
 const Selectors = (function() {
@@ -852,7 +755,6 @@ const Selectors = (function() {
 
   function hasPlaybackDimensions(state) {return state.camera.playbackDimensions != null}
 
-  // TODO: handle custom camera dimensions with cropping like in thumbnail choosing mode
   function getPlaybackDimensions(state) {return state.camera.playbackDimensions || getEditorDimensions(state)}
 
   const getPlaybackCameraParams = Reselect.createSelector(
