@@ -430,11 +430,19 @@ const Actions = (function() {
     type: 'SET_PLAYER_FPS',
     payload: fps
   })
+  
   /** Toggles smooth playback */
   const toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' })
+
+  const PlaybackModes = {
+    forty: false,
+    sixty: 60,
+    smooth: true
+  }
+  
   /** 
   * Toggles different smooth playback modes
-  * @param {true | false | 60} payload Playback Mode
+  * @param {PlaybackMode} payload Playback Mode
   */
   const setInterpolate = (payload) => ({ type: 'SET_INTERPOLATE', payload })
   /** Toggles slow motion playback */
