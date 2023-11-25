@@ -5,8 +5,10 @@
 // TODO provide examples
 // TODO find way to integrate enums into parameter docs
 const Actions = (function() {
+
   /** Toggles audio volume */
   const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
+
   /** Removes the current audio file */
   const removeAudio = () => ({ type: 'REMOVE_AUDIO' })
 
@@ -42,6 +44,7 @@ const Actions = (function() {
     type: 'SET_EDITOR_CAMERA',
     payload: { position, zoom }
   })
+
   /**
   * Sets which rider to focus on in the editor
   * @param {Number} focusIndex Rider Index (Starts at 0)
@@ -50,6 +53,7 @@ const Actions = (function() {
     type: 'SET_EDITOR_FOLLOWER_FOCUS',
     payload: focusIndex
   })
+
   /**
   * Sets zoom of playback camera
   * @param {Number} zoom Playback Zoom
@@ -58,6 +62,7 @@ const Actions = (function() {
     type: 'SET_PLAYBACK_ZOOM',
     payload: zoom
   })
+
   /**
   * Sets the weight each rider has on where the camera focuses
   * @param {Array.<Number>} focusList Relative Weights
@@ -66,6 +71,7 @@ const Actions = (function() {
     type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
     payload: focusList
   })
+
   /** Toggles whether the editor camera should keep the target rider in view */
   const toggleEditorFollower = () => ({ type: 'TOGGLE_EDITOR_FOLLOWER' })
 
@@ -137,7 +143,7 @@ const Actions = (function() {
     "FastForward": "modifiers.fastForward",
     "Rewind": "modifiers.rewind",
   }
-  
+
   /**
   * Triggers the result of a triggerable hotkey being pressed
   * @param {string} command Trigger Command
@@ -175,12 +181,6 @@ const Actions = (function() {
   const setCommandHotkeys = (commandHotkeys) => ({
     type: 'SET_COMMAND_HOTKEYS',
     payload: commandHotkeys
-  })
-
-  // fired at startup on Macs to replace 'ctrl' in hotkeys with 'cmd'
-  const replaceCtrlKey = (replacementKey) => ({
-    type: 'REPLACE_CTRL_KEY',
-    payload: replacementKey
   })
 
   /** Toggles locked track lines */
@@ -251,7 +251,7 @@ const Actions = (function() {
   * @prop {Number} [multiplier]
   * @prop {Number} [layer]
   */
-  
+
   /**
   * Adds a single line to the currently active layer
   * @param {Line} line Line Object
@@ -265,9 +265,9 @@ const Actions = (function() {
   const addLines = (lines) => updateLines('ADD_LINES', null, lines)
 
   /**
-   * Preloads a list of lines incrementally
-   * @param {Array.<Line>} lines Line Array
-   */
+  * Preloads a list of lines incrementally
+  * @param {Array.<Line>} lines Line Array
+  */
   const loadLines = (lines) => updateLines('LOAD_LINES', null, lines, true)  
 
   /**
@@ -363,7 +363,7 @@ const Actions = (function() {
     type: 'SET_LAYER_VISIBLE',
     payload: {id, visible}
   })
-  
+
   /**
   * Toggles target layer editability
   * @param {Number} id Target Layer Id
@@ -389,18 +389,6 @@ const Actions = (function() {
   const setRiders = (riders) => ({
     type: 'SET_RIDERS',
     payload: riders
-  })
-
-  const keyDown = (key) => ({
-    type: 'KEY_DOWN',
-    payload: key,
-    meta: { ignorable: true }
-  })
-
-  const keyUp = (key) => ({
-    type: 'KEY_UP',
-    payload: key,
-    meta: { ignorable: true }
   })
 
   /**
@@ -430,7 +418,7 @@ const Actions = (function() {
     type: 'SET_PLAYER_FPS',
     payload: fps
   })
-  
+
   /** Toggles smooth playback */
   const toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' })
 
@@ -445,16 +433,22 @@ const Actions = (function() {
   * @param {PlaybackMode} payload Playback Mode
   */
   const setInterpolate = (payload) => ({ type: 'SET_INTERPOLATE', payload })
+
   /** Toggles slow motion playback */
   const toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' })
+
   /** Increments player timeline index if possible */
   const incPlayerIndex = () => ({ type: 'INC_PLAYER_INDEX' })
+
   /** Decrements player timeline index if possible */
   const decPlayerIndex = () => ({ type: 'DEC_PLAYER_INDEX' })
+
   /** Starts playback */
   const startPlayer = () => ({ type: 'START_PLAYER' })
+
   /** Stops playback */
   const stopPlayer = () => ({ type: 'STOP_PLAYER' })
+
   /** Sets the flag at the current timeline position */
   const setFlag = () => ({ type: 'SET_FLAG' })
 
@@ -547,12 +541,16 @@ const Actions = (function() {
 
   /** Toggles whether flags render */
   const toggleFlag = () => setViewOption('flag', null)
+
   /** Toggles color playback */
   const toggleColorPlayback = () => setViewOption('colorPlayback', null)
+
   /** Toggles playback preview */
   const togglePlaybackPreview = () => setViewOption('playbackPreview', null)
+
   /** Toggles whether viewport dimensions are shown */
   const toggleViewport = () => setViewOption('showViewport', null)
+
   /** Toggles whether visible areas are shown */
   const toggleVisibleAreas = () => setViewOption('showVisibleAreas', null)
 
@@ -591,7 +589,7 @@ const Actions = (function() {
 
   /**
   * Sets the skeleton mode
-  * @param {Number} skeleton Mode
+  * @param {SkeletonMode} skeleton Mode
   */
   const setSkeleton = (skeleton) => ({
     type: 'SET_SKELETON',
@@ -708,6 +706,7 @@ const Actions = (function() {
     'ui.twoFingerPan': true,
     'ui.pinchToZoom': true
   }
+
   /**
   * Sets a setting given a specific setting key
   * @param {Setting} key Target Setting
@@ -723,6 +722,7 @@ const Actions = (function() {
   * @param {Setting} key Target Setting
   */
   const toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
+
   return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, duplicateLines, endModifierCommand, hideNotification, incPlayerIndex, keyDown, keyUp, loadAutosave, loadLines, loadTrackAction, moveLayer, newTrack, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, undoAction}
 })()
 
