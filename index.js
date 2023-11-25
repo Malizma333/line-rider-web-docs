@@ -5,32 +5,11 @@
 // TODO provide examples
 // TODO find way to integrate enums into parameter docs
 const Actions = (function() {
-  // TODO figure out how these help save/load tracks
+  // TODO figure out how these help save/load tracks + create a saver/loader action
   const analyticsSaveTrack = () => ({ type: 'ANALYTICS_SAVE_TRACK' })
   const analyticsSaveTrackFile = () => ({ type: 'ANALYTICS_SAVE_TRACK_FILE' })
   const analyticsLoadTrack = () => ({ type: 'ANALYTICS_LOAD_TRACK' })
   const analyticsLoadTrackFile = () => ({ type: 'ANALYTICS_LOAD_TRACK_FILE' })
-  /**
-  * (INCOMPLETE) Creates a shareable link for the current track
-  * @param {'view'|'edit'} linkType Type of Link
-  */
-  const analyticsCopyLink = (linkType) => ({
-    type: 'ANALYTICS_COPY_LINK',
-    payload: linkType
-  })
-
-  /**
-  * Displays an error message for audio
-  * @param {Error} e Error Object
-  */
-  const audioLoadFail = (e) => ({
-    type: 'LOAD_AUDIO_FAIL',
-    payload: e,
-    error: true
-  })
-
-  /** Displays a loading message for audio */
-  const loadAudioPending = () => ({ type: 'LOAD_AUDIO_PENDING' })
 
   /** Toggles audio volume */
   const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
@@ -66,12 +45,6 @@ const Actions = (function() {
     payload: volume
   })
 
-  // TODO: this doesn't actually clear autosave, rename to "disable" maybe
-  // TODO figure out what this does
-  const clearAutosave = () => ({
-    type: 'CLEAR_AUTOSAVE'
-  })
-
   /** Loads the last cached autosave */
   const loadAutosave = () => ({
     type: 'LOAD_AUTOSAVE'
@@ -101,15 +74,6 @@ const Actions = (function() {
   const setPlaybackZoom = (zoom) => ({
     type: 'SET_PLAYBACK_ZOOM',
     payload: zoom
-  })
-  /**
-  * Sets offset of playback camera
-  * @param {{x: Number, y: Number}} pan Pan Location
-  */
-  // TODO figure out what this actually does
-  const setPlaybackPan = (pan) => ({
-    type: 'SET_PLAYBACK_PAN',
-    payload: pan
   })
   /**
   * Sets the weight each rider has on where the camera focuses
@@ -204,13 +168,11 @@ const Actions = (function() {
   /**
   * Triggers the beginning of a modifier hotkey being pressed
   * @param {string} command Modifier Command 
-  * @param {'modifiers.zoom' | 'modifiers.undo' | 'modifiers.redo'} [e] Secondary Modifier
   */
-  // TODO figure out what e does
-  const beginModifierCommand = (command, e) => ({
+  const beginModifierCommand = (command) => ({
     type: 'BEGIN_MODIFIER_COMMAND',
     payload: command,
-    meta: { ignorable: true, event: e }
+    meta: { ignorable: true }
   })
 
   /**
@@ -219,16 +181,6 @@ const Actions = (function() {
   */
   const endModifierCommand = (command) => ({
     type: 'END_MODIFIER_COMMAND',
-    payload: command,
-    meta: { ignorable: true }
-  })
-
-  /**
-  * (INCOMPLETE) Toggles a modifer hotkey action
-  * @param {string} command Modifier Command
-  */ 
-  const toggleModifierCommand = (command) => ({
-    type: 'TOGGLE_MODIFIER_COMMAND',
     payload: command,
     meta: { ignorable: true }
   })
@@ -464,7 +416,7 @@ const Actions = (function() {
   const showHint = () => ({ type: 'SHOW_HINT' })
 
   // input actions aren't used by any reducers, but they're used by the tool middleware
-  // TODO document input later
+  // TODO document input later (possible along with custom tools templates?)
   const pointerDown = ({ pointerType, pointerId, x, y }, isPrimary, button) => ({
     type: 'POINTER_DOWN',
     payload: {
@@ -543,12 +495,10 @@ const Actions = (function() {
   * Show notification in top-right corner
   * @param {string} message Notification Message
   * @param {boolean} [autoHide] Hide Message After Timer
-  * @param {'AUTOSAVE' | 'LOAD_TRACK' | 'SAVE_TRACK'} [progressId] Trackloader Progress Id
   */
-  // TODO decide whether to remove progressId
-  const showNotification = (message, autoHide = true, progressId) => ({
+  const showNotification = (message, autoHide = true) => ({
     type: 'notifications/SHOW_NOTIFICATION',
-    payload: { message, autoHide, progressId }
+    payload: { message, autoHide }
   })
 
   /**
@@ -624,12 +574,6 @@ const Actions = (function() {
     payload: running
   })
 
-  // TODO figure out what this does
-  const setPlayerScrubbing = (scrubbing) => ({
-    type: 'SET_PLAYER_SCRUBBING',
-    payload: scrubbing
-  })
-
   /**
   * Toggles timeline fast forward
   * @param {boolean} fastForward Fast Forward
@@ -691,17 +635,6 @@ const Actions = (function() {
   const toggleViewport = () => setViewOption('showViewport', null)
   /** Toggles whether visible areas are shown */
   const toggleVisibleAreas = () => setViewOption('showVisibleAreas', null)
-
-  // TODO figure out what millions does
-  const enableMillions = () => ({
-    type: 'SET_MILLIONS',
-    payload: true
-  })
-
-  const disableMillions = () => ({
-    type: 'SET_MILLIONS',
-    payload: false
-  })
 
   // TODO figure out sprite sheets
   const setSpriteSheets = (spriteSheets) => ({
@@ -879,7 +812,7 @@ const Actions = (function() {
   * @param {Setting} key Target Setting
   */
   const toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
-  return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, disableMillions, duplicateLines, enableMillions, endModifierCommand, hideNotification, incPlayerIndex, keyDown, keyUp, loadAutosave, loadLines, loadTrackAction, makePointerArg, makeWheelArg, moveLayer, newTrack, pointerDown, pointerDrag, pointerHover, pointerUp, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setSpriteSheets, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, undoAction, wheel}
+  return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, duplicateLines, endModifierCommand, hideNotification, incPlayerIndex, keyDown, keyUp, loadAutosave, loadLines, loadTrackAction, makePointerArg, makeWheelArg, moveLayer, newTrack, pointerDown, pointerDrag, pointerHover, pointerUp, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setSpriteSheets, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, undoAction, wheel}
 })()
 
 const Selectors = (function() {
