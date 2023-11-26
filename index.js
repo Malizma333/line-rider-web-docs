@@ -5,33 +5,33 @@
 * @typedef {{
 *   startPosition: V2
 *   startVelocity: V2
-*   startAngle: Number
+*   startAngle: number
 *   remountable: boolean
 * }} Rider
 * 
 * @typedef {{
-*   id?: Number
+*   id?: number
 *   type: 0 | 1 | 2
-*   x1: Number
-*   y1: Number
-*   x2: Number
-*   y2: Number
+*   x1: number
+*   y1: number
+*   x2: number
+*   y2: number
 *   flipped?: boolean
 *   leftExtended?: boolean
 *   rightExtended?: boolean
-*   multiplier?: Number
-*   layer?: Number
+*   multiplier?: number
+*   layer?: number
 * }} Line
 * 
 * @typedef {{
-*   id: Number
+*   id: number
 *   name: string
 *   visible: boolean
 *   editable: boolean
 * }} Layer
 * 
 * @typedef {{
-*   startPosition?: {x: Number, y: Number}
+*   startPosition?: {x: number, y: number}
 *   version: '6.1' | '6.2'
 *   label?: string
 *   creator?: string
@@ -49,12 +49,12 @@
 * }} TrackDetails
 * 
 * @typedef {{
-*   interpolate?: boolean | Number
-*   fps?: Number
-*   baseRate?: Number
-*   slowMotion?: Number
-*   fastForward?: Number
-*   maxDuration?: Number
+*   interpolate?: boolean | number
+*   fps?: number
+*   baseRate?: number
+*   slowMotion?: number
+*   fastForward?: number
+*   maxDuration?: number
 * }} PlayerSettings
 * 
 * @typedef {{
@@ -64,6 +64,14 @@
 *   'ui.twoFingerPan': boolean
 *   'ui.pinchToZoom': boolean
 * }} OtherSettings
+* 
+* @typedef {{
+*   enabled: boolean
+*   name: string | null
+*   offset: number
+*   path: string | null
+*   volume: number
+* }} AudioObject
 */
 
 const Enums = (function() {
@@ -231,7 +239,7 @@ const Actions = (function() {
 
   /**
   * Sets the offset of the audio file
-  * @param {Number} offset Seconds After Start
+  * @param {number} offset Seconds After Start
   */
   const setAudioOffset = (offset) => ({
     type: 'SET_AUDIO_OFFSET',
@@ -240,7 +248,7 @@ const Actions = (function() {
 
   /**
   * Sets the audio volume
-  * @param {Number} volume Percent Volume (0 - 1)
+  * @param {number} volume Percent Volume (0 - 1)
   */
   const setAudioVolume = (volume) => ({
     type: 'SET_AUDIO_VOLUME',
@@ -252,8 +260,8 @@ const Actions = (function() {
 
   /**
   * Sets the properties of the editor camera
-  * @param {{x: Number, y: Number}} position Camera Position
-  * @param {Number} zoom Camera Zoom
+  * @param {{x: number, y: number}} position Camera Position
+  * @param {number} zoom Camera Zoom
   */
   const setEditorCamera = (position, zoom) => ({
     type: 'SET_EDITOR_CAMERA',
@@ -262,7 +270,7 @@ const Actions = (function() {
 
   /**
   * Sets which rider to focus on in the editor
-  * @param {Number} focusIndex Rider Index (Starts at 0)
+  * @param {number} focusIndex Rider Index (Starts at 0)
   */
   const setEditorFollowerFocus = (focusIndex) => ({
     type: 'SET_EDITOR_FOLLOWER_FOCUS',
@@ -271,7 +279,7 @@ const Actions = (function() {
 
   /**
   * Sets zoom of playback camera
-  * @param {Number} zoom Playback Zoom
+  * @param {number} zoom Playback Zoom
   */
   const setPlaybackZoom = (zoom) => ({
     type: 'SET_PLAYBACK_ZOOM',
@@ -280,7 +288,7 @@ const Actions = (function() {
 
   /**
   * Sets the weight each rider has on where the camera focuses
-  * @param {Array.<Number>} focusList Relative Weights
+  * @param {Array.<number>} focusList Relative Weights
   */
   const setPlaybackFollowerFocus = (focusList) => ({
     type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
@@ -292,7 +300,7 @@ const Actions = (function() {
 
   /**
   * Sets viewport dimensions of the playback camera
-  * @param {{width: Number, height: Number}} dimensions Camera Dimensions
+  * @param {{width: number, height: number}} dimensions Camera Dimensions
   */
   const setPlaybackDimensions = (dimensions) => ({
     type: 'SET_PLAYBACK_DIMENSIONS',
@@ -343,7 +351,7 @@ const Actions = (function() {
 
   /**
   * Changes the color swatch of the current tool (if available)
-  * @param {Number} lineType Color Swatch
+  * @param {number} lineType Color Swatch
   */
   const selectLineType = (lineType) => ({
     type: 'SELECT_LINE_TYPE',
@@ -373,7 +381,7 @@ const Actions = (function() {
   /**
   * Update lines given a subaction and a list of lines to add/remove
   * @param {string} name Subaction Name
-  * @param {Array.<Number>} linesToRemove Remove Lines by Id
+  * @param {Array.<number>} linesToRemove Remove Lines by Id
   * @param {Array.<Line>} linesToAdd Add Lines by Props
   */
   const updateLines = (name, linesToRemove, linesToAdd) => ({
@@ -408,13 +416,13 @@ const Actions = (function() {
 
   /**
   * Removes a single line given an id
-  * @param {Number} lineId Line Id
+  * @param {number} lineId Line Id
   */
   const removeLine = (lineId) => updateLines('REMOVE_LINE', [lineId], null);
 
   /**
   * Removes a list of lines given their ids
-  * @param {Array.<Number>} lineIds Line Id Array
+  * @param {Array.<number>} lineIds Line Id Array
   */
   const removeLines = (lineIds) => updateLines('REMOVE_LINES', lineIds, null);
 
@@ -426,7 +434,7 @@ const Actions = (function() {
 
   /**
   * Replaces a line given the line id to replace and the new props
-  * @param {Number} prevLineId Line Id to Replace
+  * @param {number} prevLineId Line Id to Replace
   * @param {Line} line New Line Properties
   */
   const replaceLine = (prevLineId, line) => updateLines('REPLACE_LINE', [prevLineId], [line]);
@@ -448,7 +456,7 @@ const Actions = (function() {
 
   /**
   * Removes layer given a layer id
-  * @param {Number} id Target Layer Id
+  * @param {number} id Target Layer Id
   */
   const removeLayer = (id) => ({
     type: 'REMOVE_LAYER',
@@ -457,8 +465,8 @@ const Actions = (function() {
 
   /**
   * Changes index of a layer in the layer list
-  * @param {Number} id Target Layer Id
-  * @param {Number} index New Index
+  * @param {number} id Target Layer Id
+  * @param {number} index New Index
   */
   const moveLayer = (id, index) => ({
     type: 'MOVE_LAYER',
@@ -467,7 +475,7 @@ const Actions = (function() {
 
   /**
   * Renames target layer
-  * @param {Number} id Target Layer Id
+  * @param {number} id Target Layer Id
   * @param {string} name New Name
   */
   const renameLayer = (id, name) => ({
@@ -477,7 +485,7 @@ const Actions = (function() {
 
   /**
   * Sets the active layer to target layer
-  * @param {Number} id Target Layer Id
+  * @param {number} id Target Layer Id
   */
   const setLayerActive = (id) => ({
     type: 'SET_LAYER_ACTIVE',
@@ -486,7 +494,7 @@ const Actions = (function() {
 
   /**
   * Toggles target layer visiblity
-  * @param {Number} id Target Layer Id
+  * @param {number} id Target Layer Id
   * @param {boolean} visible Layer Visible 
   */
   const setLayerVisible = (id, visible) => ({
@@ -496,7 +504,7 @@ const Actions = (function() {
 
   /**
   * Toggles target layer editability
-  * @param {Number} id Target Layer Id
+  * @param {number} id Target Layer Id
   * @param {boolean} editable Layer Editable 
   */
   const setLayerEditable = (id, editable) => ({
@@ -534,7 +542,7 @@ const Actions = (function() {
 
   /**
   * Sets the fps of the playback renderer
-  * @param {Number} fps Target Fps
+  * @param {number} fps Target Fps
   */
   const setPlayerFps = (fps) => ({
     type: 'SET_PLAYER_FPS',
@@ -546,7 +554,7 @@ const Actions = (function() {
   
   /** 
   * Toggles different smooth playback modes
-  * @param {boolean|Number} playbackMode Playback Mode
+  * @param {boolean|number} playbackMode Playback Mode
   */
   const setInterpolate = (playbackMode) => ({
     type: 'SET_INTERPOLATE',
@@ -573,7 +581,7 @@ const Actions = (function() {
 
   /**
   * Sets the timeline index
-  * @param {Number} index Index
+  * @param {number} index Index
   */
   const setFrameIndex = (index) => ({
     type: 'SET_PLAYER_INDEX',
@@ -582,7 +590,7 @@ const Actions = (function() {
 
   /**
   * Sets the max index of the timeline
-  * @param {Number} maxIndex Max Index
+  * @param {number} maxIndex Max Index
   */
   const setPlayerMaxIndex = (maxIndex) => ({
     type: 'SET_PLAYER_MAX_INDEX',
@@ -591,7 +599,7 @@ const Actions = (function() {
 
   /**
   * Sets the flag index to a specific index
-  * @param {Number} flagIndex Target Index
+  * @param {number} flagIndex Target Index
   */
   const setFlagIndex = (flagIndex) => ({
     type: 'SET_FLAG_INDEX',
@@ -682,7 +690,7 @@ const Actions = (function() {
 
   /**
   * Sets number of onion skin frames to render before current
-  * @param {Number} framesBefore Frames Before
+  * @param {number} framesBefore Frames Before
   */
   const setOnionSkinFramesBefore = (framesBefore) => ({
     type: 'SET_ONION_SKIN_FRAMES_BEFORE',
@@ -691,7 +699,7 @@ const Actions = (function() {
 
   /**
   * Sets number of onion skin frames to render after current
-  * @param {Number} framesAfter Frames After
+  * @param {number} framesAfter Frames After
   */
   const setOnionSkinFramesAfter = (framesAfter) => ({
     type: 'SET_ONION_SKIN_FRAMES_AFTER',
@@ -700,7 +708,7 @@ const Actions = (function() {
 
   /**
   * Sets the skeleton mode
-  * @param {Number} skeletonMode Skeleton Mode
+  * @param {number} skeletonMode Skeleton Mode
   */
   const setSkeleton = (skeletonMode) => ({
     type: 'SET_SKELETON',
