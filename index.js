@@ -204,7 +204,15 @@ const Enums = (function() {
     }
   };
 
-  return {COMMANDS, LINE_TYPES, PLAYBACK_MODES, TOOLS, SKELETON_MODES, VIEWS, PAGES};
+  return {
+    COMMANDS,
+    LINE_TYPES,
+    PLAYBACK_MODES,
+    TOOLS,
+    SKELETON_MODES,
+    VIEWS,
+    PAGES
+  };
 })();
 
 // TODO provide examples
@@ -899,19 +907,29 @@ const Actions = (function() {
 
 const Selectors = (function() {
   /** Audio file enabled */
-  function getAudioEnabled(state) {return state.audio.enabled;}
+  function getAudioEnabled(state) {
+    return state.audio.enabled;
+  }
 
   /** Audio file offset */
-  function getAudioOffset(state) {return state.audio.offset;}
+  function getAudioOffset(state) {
+    return state.audio.offset;
+  }
 
   /** Audio file is loading */
-  function isAudioFileLoading(state) {return state.audioFileLoader.loadingFile;}
+  function getAudioFileLoading(state) {
+    return state.audioFileLoader.loadingFile;
+  }
 
   /** Audio file properties */
-  function getAudioProps(state) {return state.audio;}
+  function getAudioProps(state) {
+    return state.audio;
+  }
 
   /** Audio file loading properties */
-  function getAudioFileLoading(state) {return state.audioFileLoader;}
+  function getAudioFileLoader(state) {
+    return state.audioFileLoader;
+  }
 
   /** Local audio file properties */
   function getLocalAudioProps (state) {
@@ -923,10 +941,14 @@ const Selectors = (function() {
   }
 
   /** Editor zoom */
-  function getEditorZoom(state) {return state.camera.editorZoom;}
+  function getEditorZoom(state) {
+    return state.camera.editorZoom;
+  }
 
   /** Position in editor */
-  function getEditorPosition(state) {return state.camera.editorPosition;}
+  function getEditorPosition(state) {
+    return state.camera.editorPosition;
+  }
 
   /** Editor camera properties */
   const getEditorCamera = Reselect.createSelector(
@@ -936,22 +958,36 @@ const Selectors = (function() {
   );
 
   /** Keep rider in view while scrubbing timeline */
-  function getUseEditorFollower(state) {return state.settings['cam.useEditorFollower'];}
+  function getUseEditorFollower(state) {
+    return state.settings['cam.useEditorFollower'];
+  }
 
   /** Editor canvas dimensions */
-  function getEditorDimensions(state) {return state.camera.editorDimensions;}
+  function getEditorDimensions(state) {
+    return state.camera.editorDimensions;
+  }
 
   /** Rider being follow by editor camera */
-  function getEditorFollowerFocus(state) {return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus);}
+  function getEditorFollowerFocus(state) {
+    return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus);
+  }
 
   /** Playback zoom */
-  function getPlaybackZoom(state) {return window.getAutoZoom ? window.getAutoZoom(getPlayerIndex(state)) : state.camera.playbackZoom;}
+  function getPlaybackZoom(state) {
+    return window.getAutoZoom ?
+      window.getAutoZoom(getPlayerIndex(state)) :
+      state.camera.playbackZoom ;
+  }
 
   /** Playback dimensions not null */
-  function hasPlaybackDimensions(state) {return state.camera.playbackDimensions != null;}
+  function getPlaybackDimensionsDefined(state) {
+    return state.camera.playbackDimensions != null;
+  }
 
   /** Playback dimensions */
-  function getPlaybackDimensions(state) {return state.camera.playbackDimensions || getEditorDimensions(state);}
+  function getPlaybackDimensions(state) {
+    return state.camera.playbackDimensions || getEditorDimensions(state);
+  }
 
   /** Playback camera viewbox */
   const getPlaybackCameraParams = Reselect.createSelector(
@@ -967,7 +1003,7 @@ const Selectors = (function() {
     getPlayerIndex,
     getPlaybackZoom,
     getPlaybackCameraParams,
-    getPlaybackFixedPosition,
+    state => state.camera.playbackFixedPosition,
     (playbackFollower, track, index, zoom, params, pan) => ({
       position: playbackFollower.isFixed() ? pan : playbackFollower.getCamera(track, params, index),
       zoom
@@ -975,10 +1011,16 @@ const Selectors = (function() {
   );
 
   /** Playback camera focus array */
-  function getPlaybackCameraFocus(state) {return state.camera.playbackFollower.focus;}
+  function getPlaybackCameraFocus(state) {
+    return state.camera.playbackFollower.focus;
+  }
 
   /** Current camera being used */
-  function getCurrentCamera(state) {return getPlayerRunning(state) ? getPlaybackCamera(state) : getEditorCamera(state);}
+  function getCurrentCamera(state) {
+    return getPlayerRunning(state) ?
+      getPlaybackCamera(state) :
+      getEditorCamera(state) ;
+  }
 
   /** Command hotkeys object */
   const getCommandsToHotkeys = Reselect.createSelector(
@@ -986,17 +1028,31 @@ const Selectors = (function() {
     (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
   );
 
-  /** Trigger activation count @param {string} trigger Target Trigger */
-  function getTriggerCounts(state, trigger) {return state.command.triggerCounts.get(trigger, 0);}
+  /**
+  * Trigger activation count
+  * @param {string} trigger Target Trigger
+  */
+  function getTriggerCounts(state, trigger) {
+    return state.command.triggerCounts.get(trigger, 0);
+  }
 
-  /** Target modifier is active @param {string} modifier Target Modifier */
-  function getModifier(state, modifier) {return state.command.activeModifiers.has(modifier);}
+  /**
+  * Target modifier is active
+  * @param {string} modifier Target Modifier
+  */
+  function getModifier(state, modifier) {
+    return state.command.activeModifiers.has(modifier);
+  }
 
   /** Modifiers active */
-  function getModifiersActive(state) {return !state.command.activeModifiers.isEmpty();}
+  function getModifiersActive(state) {
+    return !state.command.activeModifiers.isEmpty();
+  }
 
   /** Zoom slider active */
-  function getZoomSliderActive(state) {return getModifier(state, 'modifiers.zoom');}
+  function getZoomSliderActive(state) {
+    return getModifier(state, 'modifiers.zoom');
+  }
 
   /** Current active notification */
   const getNotification = Reselect.createSelector(
@@ -1007,40 +1063,66 @@ const Selectors = (function() {
   );
 
   /** Active notification progress id */
-  function getNotificationProgressId(state) {return state.notifications.progressId;}
+  function getNotificationProgressId(state) {
+    return state.notifications.progressId;
+  }
 
   /** Count of notifications */
-  function getNotificationsCount(state) {return state.notifications.count;}
+  function getNotificationsCount(state) {
+    return state.notifications.count;
+  }
 
   /** Player running */
-  function getPlayerRunning(state) {return state.player.running;}
+  function getPlayerRunning(state) {
+    return state.player.running;
+  }
 
   /** Current player index */
-  function getPlayerIndex(state) {return state.player.index;}
+  function getPlayerIndex(state) {
+    return state.player.index;
+  }
 
   /** Max player index */
-  function getPlayerMaxIndex(state) {return Math.ceil(state.player.maxIndex);}
+  function getPlayerMaxIndex(state) {
+    return Math.ceil(state.player.maxIndex);
+  }
 
   /** Flag index */
-  function getPlayerFlagIndex(state) {return state.player.flagIndex;}
+  function getPlayerFlagIndex(state) {
+    return state.player.flagIndex;
+  }
 
   /** Flag active */
-  function getPlayerFlagActive(state) {return getPlayerFlagIndex(state) !== 0;}
+  function getPlayerFlagActive(state) {
+    return getPlayerFlagIndex(state) !== 0;
+  }
 
   /** Slow motion active */
-  function getPlayerSlowMotion(state) {return state.player.slowMotion;}
+  function getPlayerSlowMotion(state) {
+    return state.player.slowMotion;
+  }
 
   /** Playing in reverse */
-  function getPlayerReversed(state) {return (state.player.reverse || state.player.rewind) && !state.player.fastForward;}
+  function getPlayerReversed(state) {
+    return (state.player.reverse || state.player.rewind) && !state.player.fastForward;
+  }
 
   /** Smooth playback */
-  function getPlayerFrameRateSetting(state) {return state.renderer.skeleton === 0 ? state.player.settings.interpolate : false;}
+  function getPlayerFrameRateSetting(state) {
+    return state.renderer.skeleton === 0 ?
+      state.player.settings.interpolate :
+      false ;
+  }
 
   /** Player settings */
-  function getPlayerSettings(state) {return state.player.settings;}
+  function getPlayerSettings(state) {
+    return state.player.settings;
+  }
 
   /** Playback framerate */
-  function getPlayerFps(state) {return state.player.settings.fps;}
+  function getPlayerFps(state) {
+    return state.player.settings.fps;
+  }
 
   /** Current player time in seconds */
   const getPlayerTime = Reselect.createSelector(
@@ -1070,60 +1152,94 @@ const Selectors = (function() {
   );
 
   /** Current track saving progress */
-  function getTrackSaverProgress(state) {return state.progress['SAVE_TRACK'];}
-
-  /** Track saving in progress */
-  function getTrackSaverInProgress(state) {return state.progress['SAVE_TRACK'].percent != null;}
-
-  /** Current track loading progress */
-  function getTrackLoaderProgress(state) {return state.progress['LOAD_TRACK'];}
-
-  /** Current track autosaving progress */
-  function getAutosaveProgress(state) {return state.progress['AUTOSAVE'];}
-
-  /** Current progress of track save/load @param {'SAVE_TRACK' | 'LOAD_TRACK' | 'AUTOSAVE'} progressId Target Progress */
-  function getProgress(state, progressId) {
-    let progress = state.progress[progressId];
-
-    if (!progress) throw new Error('unknown progressId:', progressId);
-
-    return progress;
+  function getTrackSaverProgress(state) {
+    return state.progress['SAVE_TRACK'];
   }
 
-  function getOnionBeginIndex(state) {return Math.max(0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore);}
+  /** Track saving in progress */
+  function getTrackSaverInProgress(state) {
+    return state.progress['SAVE_TRACK'].percent != null;
+  }
 
-  function getOnionEndIndex(state) {return Math.min(state.player.maxIndex, Math.max(0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter));}
+  /** Current track loading progress */
+  function getTrackLoaderProgress(state) {
+    return state.progress['LOAD_TRACK'];
+  }
 
-  function getOnionSkinActive(state) {return state.renderer.onionSkin;}
+  /** Current track autosaving progress */
+  function getAutosaveProgress(state) {
+    return state.progress['AUTOSAVE'];
+  }
 
-  function getPlaybackPreview(state) {return state.renderer.playbackPreview;}
+  function getOnionBeginIndex(state) {
+    return Math.max(
+      0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore
+    );
+  }
 
-  function getColorPlayback(state) {return state.renderer.colorPlayback;}
+  function getOnionEndIndex(state) {
+    return Math.min(
+      state.player.maxIndex, Math.max(
+        0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter
+      )
+    );
+  }
+
+  function getOnionSkinActive(state) {
+    return state.renderer.onionSkin;
+  }
+
+  function getPlaybackPreview(state) {
+    return state.renderer.playbackPreview;
+  }
+
+  function getColorPlayback(state) {
+    return state.renderer.colorPlayback;
+  }
 
   const getViewOptions = Reselect.createStructuredSelector({
     color: state => getPlayerRunning(state) ? getColorPlayback(state) : !getPlaybackPreview(state),
-    flag: state => state.renderer.flag != null ? state.renderer.flag : !(getInViewer(state) && getPlayerRunning(state)),
+    flag: state => state.renderer.flag != null ? 
+      state.renderer.flag : !(getInViewer(state) && getPlayerRunning(state)),
     skeleton: state => state.renderer.skeleton
   });
 
-  function getSimulatorTrack(state) {return state.simulator.engine;}
+  function getSimulatorTrack(state) {
+    return state.simulator.engine;
+  }
 
-  function getSimulatorCommittedTrack(state) {return state.simulator.committedEngine;}
+  function getSimulatorCommittedTrack(state) {
+    return state.simulator.committedEngine;
+  }
 
-  function getSimulatorLines(state) {return state.simulator.engine.linesList;}
+  function getSimulatorLines(state) {
+    return state.simulator.engine.linesList;
+  }
 
-  function getSimulatorCommittedLines(state) {return state.simulator.committedEngine.linesList;}
+  function getSimulatorCommittedLines(state) {
+    return state.simulator.committedEngine.linesList;
+  }
 
   // for compatibility
-  function getSimulatorStartPos(state) {return state.simulator.engine.start.position;}
+  function getSimulatorStartPos(state) {
+    return state.simulator.engine.start.position;
+  }
 
-  function getSimulatorVersion(state) {return state.simulator.engine.isLegacy() ? '6.1' : '6.2';}
+  function getSimulatorVersion(state) {
+    return state.simulator.engine.isLegacy() ? '6.1' : '6.2';
+  }
 
-  function getSimulatorTrackTotalLineCount(state) {return state.simulator.engine.linesList.size();}
+  function getSimulatorTrackTotalLineCount(state) {
+    return state.simulator.engine.linesList.size();
+  }
 
-  function getTrackIsEmpty(state) {return getSimulatorTrackTotalLineCount(state) === 0;}
+  function getTrackIsEmpty(state) {
+    return getSimulatorTrackTotalLineCount(state) === 0;
+  }
 
-  function getTrackIsDirty(state) {return state.simulator.committedEngine !== state.simulator.lastSavedEngine;}
+  function getTrackIsDirty(state) {
+    return state.simulator.committedEngine !== state.simulator.lastSavedEngine;
+  }
 
   const getSimulatorLineCount = Reselect.createSelector(
     state => state.simulator.engine,
@@ -1133,11 +1249,17 @@ const Selectors = (function() {
     }
   );
 
-  function getSimulatorTotalLineCount(state) {return getSimulatorLineCount(state).total;}
+  function getSimulatorTotalLineCount(state) {
+    return getSimulatorLineCount(state).total;
+  }
 
-  function getTrackLayers(state) {return getSimulatorTrack(state).engine.state.layers;}
+  function getTrackLayers(state) {
+    return getSimulatorTrack(state).engine.state.layers;
+  }
 
-  function getTrackActiveLayerId(state) {return getSimulatorTrack(state).engine.state.activeLayerId;}
+  function getTrackActiveLayerId(state) {
+    return getSimulatorTrack(state).engine.state.activeLayerId;
+  }
 
   function getActiveLayerEditable(state) {
     const id = getTrackActiveLayerId(state);
@@ -1163,40 +1285,68 @@ const Selectors = (function() {
     (history, engine) => history.findIndex(e => e === engine) < history.length - 1
   );
 
-  function getRiders(state) {return state.simulator.engine.engine.state.riders;}
+  function getRiders(state) {
+    return state.simulator.engine.engine.state.riders;
+  }
 
-  function getCommittedRiders(state) {return state.simulator.committedEngine.engine.state.riders;}
+  function getCommittedRiders(state) {
+    return state.simulator.committedEngine.engine.state.riders;
+  }
 
-  function getNumRiders(state) {return getRiders(state).length;}
+  function getNumRiders(state) {
+    return getRiders(state).length;
+  }
 
-  function getSavedTracks(state) {return state.savedTracks;}
+  function getSavedTracks(state) {
+    return state.savedTracks;
+  }
 
-  function getSavedTracksAvailable(state) {return !!state.savedTracks;}
+  function getSavedTracksAvailable(state) {
+    return !!state.savedTracks;
+  }
 
-  function getAutosaveEnabled(state) {return state.autosaveEnabled;}
+  function getAutosaveEnabled(state) {
+    return state.autosaveEnabled;
+  }
 
-  function getToolState(state, toolId) {return state.toolState[toolId];}
+  function getToolState(state, toolId) {
+    return state.toolState[toolId];
+  }
 
-  function getSelectedTool(state) {return state.selectedTool;}
+  function getSelectedTool(state) {
+    return state.selectedTool;
+  }
 
-  const colorPickerOpenSelector = Reselect.createSelector(
+  const getLineTypePickerActive = Reselect.createSelector(
     getSelectedTool,
     (selectedTool) => window.Tools[selectedTool].usesSwatches
   );
 
-  const getLineTypePickerActive = colorPickerOpenSelector;
+  function getTrackLinesLocked(state) {
+    return state.trackLinesLocked;
+  }
 
-  function getTrackLinesLocked(state) {return state.trackLinesLocked;}
+  function getSelectedLineType(state) {
+    return getTrackLinesLocked(state) ?
+      Enums.LINE_TYPES.SCENERY :
+      state.selectedLineType ;
+  }
 
-  function getSelectedLineType(state) {return getTrackLinesLocked(state) ? Enums.LINE_TYPES.SCENERY : state.selectedLineType;}
+  function getCursor(state) {
+    return window.Tools[state.selectedTool].getCursor(state);
+  }
 
-  function getCursor(state) {return window.Tools[state.selectedTool].getCursor(state);}
+  function getToolSceneLayer(state) {
+    return window.Tools[state.selectedTool].getSceneLayer(state);
+  }
 
-  function getToolSceneLayer(state) {return window.Tools[state.selectedTool].getSceneLayer(state);}
+  function getTrackIsLocalFile(state) {
+    return state.trackData.localFile;
+  }
 
-  function getTrackIsLocalFile(state) {return state.trackData.localFile;}
-
-  function getTrackScript(state) {return state.trackData.script;}
+  function getTrackScript(state) {
+    return state.trackData.script;
+  }
 
   const getTrackProps = Reselect.createStructuredSelector({
     riders: getCommittedRiders,
@@ -1261,23 +1411,42 @@ const Selectors = (function() {
     script: getTrackScript(state)
   });}
 
-  function getControlsActive(state) {return state.ui.controlsActive;}
+  function getControlsActive(state) {
+    return state.ui.controlsActive;
+  }
 
-  function getViews(state) {return state.views;}
+  function getViews(state) {
+    return state.views;
+  }
 
-  function getSidebarPage(state) {return getViews(state)[Enums.VIEWS.SIDEBAR];}
+  function getSidebarPage(state) {
+    return getViews(state)[Enums.VIEWS.SIDEBAR];
+  }
 
-  function getMainPage(state) {return getViews(state)[Enums.VIEWS.MAIN];}
+  function getMainPage(state) {
+    return getViews(state)[Enums.VIEWS.MAIN];
+  }
 
-  function getInEditor(state) {return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITOR;}
+  function getInEditor(state) {
+    return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITOR;
+  }
 
-  function getInViewer(state) {return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.VIEWER || state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITABLE_VIEWER;}
+  function getInViewer(state) {
+    return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.VIEWER || 
+           state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITABLE_VIEWER;
+  }
 
-  function getInTrackSaver(state) {return state.views[Enums.VIEWS.TRACK_SAVER] === Enums.PAGES.TRACK_SAVER.SAVE;}
+  function getInTrackSaver(state) {
+    return state.views[Enums.VIEWS.TRACK_SAVER] === Enums.PAGES.TRACK_SAVER.SAVE;
+  }
 
-  function getInTrackLoader(state) {return state.views[Enums.VIEWS.TRACK_LOADER] === Enums.PAGES.TRACK_LOADER.LOAD;}
+  function getInTrackLoader(state) {
+    return state.views[Enums.VIEWS.TRACK_LOADER] === Enums.PAGES.TRACK_LOADER.LOAD;
+  }
 
-  function getInVideoExporter(state) {return state.views[Enums.VIEWS.VIDEO_EXPORTER] === Enums.PAGES.VIDEO_EXPORTER.EXPORT;}
+  function getInVideoExporter(state) {
+    return state.views[Enums.VIEWS.VIDEO_EXPORTER] === Enums.PAGES.VIDEO_EXPORTER.EXPORT;
+  }
 
   function getHasOverlay(state) {return (
     state.views[Enums.VIEWS.ABOUT] ||
@@ -1287,5 +1456,105 @@ const Selectors = (function() {
     state.views[Enums.VIEWS.RELEASE_NOTES]
   );}
 
-  return {colorPickerOpenSelector, getActiveLayerEditable, getAudioEnabled, getAudioFileLoading, getAudioOffset, getAudioProps, getAutosaveEnabled, getAutosaveProgress, getColorPlayback, getCommandsToHotkeys, getCommittedRiders, getControlsActive, getCurrentCamera, getCurrentPlayerRate, getCursor, getEditorCamera, getEditorDimensions, getEditorFollowerFocus, getEditorFollowerFocus, getEditorPosition, getEditorZoom, getHasOverlay, getInEditor, getInTrackLoader, getInTrackSaver, getInVideoExporter, getInViewer, getLineTypePickerActive, getLocalAudioProps, getMainPage, getMillionsEnabled, getModifier, getModifiersActive, getNotification, getNotificationProgressId, getNotificationsCount, getNumRiders, getOnionBeginIndex, getOnionEndIndex, getOnionSkinActive, getPixelRatio, getPlaybackCamera, getPlaybackCameraFocus, getPlaybackCameraParams, getPlaybackDimensions, getPlaybackFixedPosition, getPlaybackIsFixedPosition, getPlaybackPreview, getPlaybackZoom, getPlayerFlagActive, getPlayerFlagIndex, getPlayerFps, getPlayerFrameRateSetting, getPlayerIndex, getPlayerMaxIndex, getPlayerReversed, getPlayerRunning, getPlayerSettings, getPlayerSlowMotion, getPlayerTime, getProgress, getRendererScenes, getRiders, getSavedTracks, getSavedTracksAvailable, getSelectedLineType, getSelectedLineType, getSelectedTool, getSidebarPage, getSimulatorCommittedLines, getSimulatorCommittedTrack, getSimulatorHasRedo, getSimulatorHasUndo, getSimulatorLineCount, getSimulatorLines, getSimulatorStartPos, getSimulatorTotalLineCount, getSimulatorTrack, getSimulatorTrackTotalLineCount, getSimulatorVersion, getSpriteSheet, getToolSceneLayer, getToolState, getTrackActiveLayerId, getTrackCloudInfo, getTrackDetails, getTrackDetailsWithCloudInfo, getTrackInfo, getTrackIsDirty, getTrackIsEmpty, getTrackIsLocalFile, getTrackLayers, getTrackLinesLocked, getTrackLoaderProgress, getTrackObjectForAutosave, getTrackObjectForSaving, getTrackProps, getTrackSaverInProgress, getTrackSaverProgress, getTrackScript, getTriggerCounts, getUseEditorFollower, getViewOptions, getViews, getZoomSliderActive, hasPlaybackDimensions, isAudioFileLoading};
+  return {
+    getActiveLayerEditable,
+    getAudioEnabled,
+    getAudioFileLoader,
+    getAudioFileLoading,
+    getAudioOffset,
+    getAudioProps,
+    getAutosaveEnabled,
+    getAutosaveProgress,
+    getColorPlayback,
+    getCommandsToHotkeys,
+    getCommittedRiders,
+    getControlsActive,
+    getCurrentCamera,
+    getCurrentPlayerRate,
+    getCursor,
+    getEditorCamera,
+    getEditorDimensions,
+    getEditorFollowerFocus,
+    getEditorFollowerFocus,
+    getEditorPosition,
+    getEditorZoom,
+    getHasOverlay,
+    getInEditor,
+    getInTrackLoader,
+    getInTrackSaver,
+    getInVideoExporter,
+    getInViewer,
+    getLineTypePickerActive,
+    getLocalAudioProps,
+    getMainPage,
+    getModifier,
+    getModifiersActive,
+    getNotification,
+    getNotificationProgressId,
+    getNotificationsCount,
+    getNumRiders,
+    getOnionBeginIndex,
+    getOnionEndIndex,
+    getOnionSkinActive,
+    getPlaybackCamera,
+    getPlaybackCameraFocus,
+    getPlaybackCameraParams,
+    getPlaybackDimensions,
+    getPlaybackDimensionsDefined,
+    getPlaybackPreview,
+    getPlaybackZoom,
+    getPlayerFlagActive,
+    getPlayerFlagIndex,
+    getPlayerFps,
+    getPlayerFrameRateSetting,
+    getPlayerIndex,
+    getPlayerMaxIndex,
+    getPlayerReversed,
+    getPlayerRunning,
+    getPlayerSettings,
+    getPlayerSlowMotion,
+    getPlayerTime,
+    getRiders,
+    getSavedTracks,
+    getSavedTracksAvailable,
+    getSelectedLineType,
+    getSelectedLineType,
+    getSelectedTool,
+    getSidebarPage,
+    getSimulatorCommittedLines,
+    getSimulatorCommittedTrack,
+    getSimulatorHasRedo,
+    getSimulatorHasUndo,
+    getSimulatorLineCount,
+    getSimulatorLines,
+    getSimulatorStartPos,
+    getSimulatorTotalLineCount, 
+    getSimulatorTrack,
+    getSimulatorTrackTotalLineCount,
+    getSimulatorVersion,
+    getToolSceneLayer,
+    getToolState,
+    getTrackActiveLayerId,
+    getTrackCloudInfo,
+    getTrackDetails,
+    getTrackDetailsWithCloudInfo,
+    getTrackInfo,
+    getTrackIsDirty,
+    getTrackIsEmpty,
+    getTrackIsLocalFile,
+    getTrackLayers,
+    getTrackLinesLocked,
+    getTrackLoaderProgress,
+    getTrackObjectForAutosave,
+    getTrackObjectForSaving,
+    getTrackProps,
+    getTrackSaverInProgress,
+    getTrackSaverProgress,
+    getTrackScript,
+    getTriggerCounts,
+    getUseEditorFollower,
+    getViewOptions,
+    getViews,
+    getZoomSliderActive
+  };
 })();
