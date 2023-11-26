@@ -43,6 +43,12 @@
 * }} Track
 * 
 * @typedef {{
+*   title: string
+*   creator: string
+*   description: string
+* }} TrackDetails
+* 
+* @typedef {{
 *   interpolate?: boolean | Number
 *   fps?: Number
 *   baseRate?: Number
@@ -905,6 +911,7 @@ const Actions = (function() {
   };
 })();
 
+// TODO put return types
 const Selectors = (function() {
   /** Audio file enabled */
   function getAudioEnabled(state) {
@@ -1171,12 +1178,14 @@ const Selectors = (function() {
     return state.progress['AUTOSAVE'];
   }
 
+  /** Onion skinning start index */
   function getOnionBeginIndex(state) {
     return Math.max(
       0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore
     );
   }
 
+  /** Onion skinning end index */
   function getOnionEndIndex(state) {
     return Math.min(
       state.player.maxIndex, Math.max(
@@ -1185,18 +1194,22 @@ const Selectors = (function() {
     );
   }
 
+  /** Onion skinning enabled */
   function getOnionSkinActive(state) {
     return state.renderer.onionSkin;
   }
 
+  /** Playback preview enabled */
   function getPlaybackPreview(state) {
     return state.renderer.playbackPreview;
   }
 
+  /** Color playback enabled */
   function getColorPlayback(state) {
     return state.renderer.colorPlayback;
   }
 
+  /** Renderer view settings */
   const getViewOptions = Reselect.createStructuredSelector({
     color: state => getPlayerRunning(state) ? getColorPlayback(state) : !getPlaybackPreview(state),
     flag: state => state.renderer.flag != null ? 
@@ -1204,63 +1217,57 @@ const Selectors = (function() {
     skeleton: state => state.renderer.skeleton
   });
 
+  /** Track engine (uncommitted) */
   function getSimulatorTrack(state) {
     return state.simulator.engine;
   }
 
+  /** Track engine (committed) */
   function getSimulatorCommittedTrack(state) {
     return state.simulator.committedEngine;
   }
 
+  /** Track lines (uncommitted) */
   function getSimulatorLines(state) {
     return state.simulator.engine.linesList;
   }
 
+  /** Track lines (committed) */
   function getSimulatorCommittedLines(state) {
     return state.simulator.committedEngine.linesList;
   }
 
-  // for compatibility
-  function getSimulatorStartPos(state) {
-    return state.simulator.engine.start.position;
-  }
-
+  /** Track version */
   function getSimulatorVersion(state) {
     return state.simulator.engine.isLegacy() ? '6.1' : '6.2';
   }
 
+  /** Track total line count */
   function getSimulatorTrackTotalLineCount(state) {
     return state.simulator.engine.linesList.size();
   }
 
+  /** Whether track is empty */
   function getTrackIsEmpty(state) {
     return getSimulatorTrackTotalLineCount(state) === 0;
   }
 
+  /** Whether track has uncommitted changes */
   function getTrackIsDirty(state) {
     return state.simulator.committedEngine !== state.simulator.lastSavedEngine;
   }
 
-  const getSimulatorLineCount = Reselect.createSelector(
-    state => state.simulator.engine,
-    (engine) => {
-      let { total, ...lineCounts } = engine.getLineCounts();
-      return { total, lineCounts };
-    }
-  );
-
-  function getSimulatorTotalLineCount(state) {
-    return getSimulatorLineCount(state).total;
-  }
-
+  /** Track layers buffer */
   function getTrackLayers(state) {
     return getSimulatorTrack(state).engine.state.layers;
   }
 
+  /** Currently active layer */
   function getTrackActiveLayerId(state) {
     return getSimulatorTrack(state).engine.state.activeLayerId;
   }
 
+  /** Whether the active layer is editable */
   function getActiveLayerEditable(state) {
     const id = getTrackActiveLayerId(state);
     const layers = getTrackLayers(state);
@@ -1273,81 +1280,92 @@ const Selectors = (function() {
     }
   }
 
+  /** Whether there are changes available to undo */
   const getSimulatorHasUndo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
     (history, engine) => history.findIndex(e => e === engine) > 0
   );
 
+  /** Whether there are undone changes available to redo */
   const getSimulatorHasRedo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
     (history, engine) => history.findIndex(e => e === engine) < history.length - 1
   );
 
+  /** Track rider buffer */
   function getRiders(state) {
     return state.simulator.engine.engine.state.riders;
   }
 
+  /** Buffer of committed track riders */
   function getCommittedRiders(state) {
     return state.simulator.committedEngine.engine.state.riders;
   }
 
+  /** Number of riders */
   function getNumRiders(state) {
     return getRiders(state).length;
   }
 
+  /** Cloud saved track data */
   function getSavedTracks(state) {
     return state.savedTracks;
   }
 
+  /** Whether cloud saved tracks are available */
   function getSavedTracksAvailable(state) {
     return !!state.savedTracks;
   }
 
+  /** Whether autosave is enabled */
   function getAutosaveEnabled(state) {
     return state.autosaveEnabled;
   }
 
+  /**
+  * Tool state of target tool
+  * @param {string} toolId Target Tool
+  */
   function getToolState(state, toolId) {
     return state.toolState[toolId];
   }
 
+  /** Currently selected tool */
   function getSelectedTool(state) {
     return state.selectedTool;
   }
 
+  /** Whether line color swatch is active */
   const getLineTypePickerActive = Reselect.createSelector(
     getSelectedTool,
     (selectedTool) => window.Tools[selectedTool].usesSwatches
   );
 
+  /** Whether track lines are locked */
   function getTrackLinesLocked(state) {
     return state.trackLinesLocked;
   }
 
+  /** Currently selected line type in color swatch */
   function getSelectedLineType(state) {
     return getTrackLinesLocked(state) ?
       Enums.LINE_TYPES.SCENERY :
       state.selectedLineType ;
   }
 
-  function getCursor(state) {
-    return window.Tools[state.selectedTool].getCursor(state);
-  }
-
-  function getToolSceneLayer(state) {
-    return window.Tools[state.selectedTool].getSceneLayer(state);
-  }
-
+  /** Whether track is a local file */
   function getTrackIsLocalFile(state) {
     return state.trackData.localFile;
   }
 
+  /** Track script property */
   function getTrackScript(state) {
     return state.trackData.script;
   }
 
+  /** Notable track properties (riders, version, audio, layers, script) */
   const getTrackProps = Reselect.createStructuredSelector({
     riders: getCommittedRiders,
     version: getSimulatorVersion,
@@ -1356,12 +1374,14 @@ const Selectors = (function() {
     script: getTrackScript
   });
 
+  /** Track details (title, creator, description) */
   const getTrackDetails = Reselect.createStructuredSelector({
     title: state => state.trackData.label,
     creator: state => state.trackData.creator,
     description: state => state.trackData.description
   });
 
+  /** Track cloud data */
   const getTrackCloudInfo = Reselect.createSelector(
     state => state.trackData.cloudInfo,
     state => state.trackData.derivedFrom,
@@ -1380,74 +1400,93 @@ const Selectors = (function() {
     }
   );
 
+  /** Track cloud data with track details */
   const getTrackDetailsWithCloudInfo = Reselect.createStructuredSelector({
     details: getTrackDetails,
     cloudInfo: getTrackCloudInfo
   });
 
-  const getTrackInfo = Reselect.createStructuredSelector({
+  /** Track duration */
+  const getTrackDuration = Reselect.createStructuredSelector({
     duration: state => getPlayerMaxIndex(state)
   });
 
+  /** Track data important for autosaving */
   const getTrackObjectForAutosave = Reselect.createStructuredSelector({
     props: getTrackProps,
     details: getTrackDetails,
-    info: getTrackInfo,
+    info: getTrackDuration,
     cloudInfo: getTrackCloudInfo,
     localFile: getTrackIsLocalFile
   });
 
-  function getTrackObjectForSaving(state, trackDetails) {return ({
-    label: trackDetails.title,
-    creator: trackDetails.creator,
-    description: trackDetails.description,
-    duration: getPlayerMaxIndex(state),
-    version: getSimulatorVersion(state),
-    audio: getLocalAudioProps(state),
-    startPosition: getSimulatorStartPos(state),
-    riders: getCommittedRiders(state),
-    lines: getSimulatorLines(state).toJS(),
-    layers: getTrackLayers(state).toJS(),
-    script: getTrackScript(state)
-  });}
+  /**
+  * Track data important for saving
+  * @param {TrackDetails} trackDetails
+  */
+  function getTrackObjectForSaving(state, trackDetails) {
+    return ({
+      label: trackDetails.title,
+      creator: trackDetails.creator,
+      description: trackDetails.description,
+      duration: getPlayerMaxIndex(state),
+      version: getSimulatorVersion(state),
+      audio: getLocalAudioProps(state),
+      startPosition: state => state.simulator.engine.start.position,
+      riders: getCommittedRiders(state),
+      lines: getSimulatorLines(state).toJS(),
+      layers: getTrackLayers(state).toJS(),
+      script: getTrackScript(state)
+    });
+  }
 
+  /** Whether timeline is currently active */
   function getControlsActive(state) {
     return state.ui.controlsActive;
   }
 
+  /** Information about currently active ui components */
   function getViews(state) {
     return state.views;
   }
 
+  /** Sidebar page information */
   function getSidebarPage(state) {
     return getViews(state)[Enums.VIEWS.SIDEBAR];
   }
 
+  /** Main page information */
   function getMainPage(state) {
     return getViews(state)[Enums.VIEWS.MAIN];
   }
 
+  /** Whether currently in track editor */
   function getInEditor(state) {
     return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITOR;
   }
 
+  /** Whether currently in track viewer */
   function getInViewer(state) {
     return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.VIEWER || 
            state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITABLE_VIEWER;
   }
 
+  /** Whether currently in save window */
   function getInTrackSaver(state) {
     return state.views[Enums.VIEWS.TRACK_SAVER] === Enums.PAGES.TRACK_SAVER.SAVE;
   }
 
+  /** Whether currently in load window */
   function getInTrackLoader(state) {
     return state.views[Enums.VIEWS.TRACK_LOADER] === Enums.PAGES.TRACK_LOADER.LOAD;
   }
 
+  /** Whether currently in video export window */
   function getInVideoExporter(state) {
     return state.views[Enums.VIEWS.VIDEO_EXPORTER] === Enums.PAGES.VIDEO_EXPORTER.EXPORT;
   }
 
+  /** Whether there is an overlay over the main page */
   function getHasOverlay(state) {return (
     state.views[Enums.VIEWS.ABOUT] ||
     state.views[Enums.VIEWS.TRACK_LOADER] ||
@@ -1471,7 +1510,6 @@ const Selectors = (function() {
     getControlsActive,
     getCurrentCamera,
     getCurrentPlayerRate,
-    getCursor,
     getEditorCamera,
     getEditorDimensions,
     getEditorFollowerFocus,
@@ -1525,20 +1563,16 @@ const Selectors = (function() {
     getSimulatorCommittedTrack,
     getSimulatorHasRedo,
     getSimulatorHasUndo,
-    getSimulatorLineCount,
     getSimulatorLines,
-    getSimulatorStartPos,
-    getSimulatorTotalLineCount, 
     getSimulatorTrack,
     getSimulatorTrackTotalLineCount,
     getSimulatorVersion,
-    getToolSceneLayer,
     getToolState,
     getTrackActiveLayerId,
     getTrackCloudInfo,
     getTrackDetails,
     getTrackDetailsWithCloudInfo,
-    getTrackInfo,
+    getTrackDuration,
     getTrackIsDirty,
     getTrackIsEmpty,
     getTrackIsLocalFile,
