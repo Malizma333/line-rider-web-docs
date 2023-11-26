@@ -1,8 +1,3 @@
-# Node project config
+# Project config
 node_modules
-package.json
-package-lock.json
-
-# Linting
-jsconfig.json
-.eslintrc.json
+.vscode
