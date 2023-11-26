@@ -816,16 +816,22 @@ const Actions = (function() {
 })()
 
 const Selectors = (function() {
+  /** Audio file enabled */
   function getAudioEnabled(state) {return state.audio.enabled}
 
+  /** Audio file offset */
   function getAudioOffset(state) {return state.audio.offset}
 
+  /** Audio file is loading */
   function isAudioFileLoading(state) {return state.audioFileLoader.loadingFile}
 
+  /** Audio file properties */
   function getAudioProps(state) {return state.audio}
 
+  /** Audio file loading properties */
   function getAudioFileLoading(state) {return state.audioFileLoader}
 
+  /** Local audio file properties */
   function getLocalAudioProps (state) {
     const {name, path, offset} = state.audio
     if (path) {
@@ -834,38 +840,45 @@ const Selectors = (function() {
     return null
   }
 
+  /** Editor zoom */
   function getEditorZoom(state) {return state.camera.editorZoom}
 
+  /** Position in editor */
   function getEditorPosition(state) {return state.camera.editorPosition}
 
+  /** Editor camera properties */
   const getEditorCamera = Reselect.createSelector(
     state => state.camera.editorPosition,
     getEditorZoom,
     (position, zoom) => ({ position, zoom })
   )
 
+  /** Keep rider in view while scrubbing timeline */
   function getUseEditorFollower(state) {return state.settings['cam.useEditorFollower']}
 
+  /** Editor canvas dimensions */
   function getEditorDimensions(state) {return state.camera.editorDimensions}
 
+  /** Rider being follow by editor camera */
   function getEditorFollowerFocus(state) {return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus)}
 
+  /** Playback zoom */
   function getPlaybackZoom(state) {return window.getAutoZoom ? window.getAutoZoom(getPlayerIndex(state)) : state.camera.playbackZoom}
 
-  function getPlaybackFixedPosition(state) {return state.camera.playbackFixedPosition}
-
-  function getPlaybackIsFixedPosition(state) {return state.camera.playbackFollower.isFixed()}
-
+  /** Playback dimensions not null */
   function hasPlaybackDimensions(state) {return state.camera.playbackDimensions != null}
 
+  /** Playback dimensions */
   function getPlaybackDimensions(state) {return state.camera.playbackDimensions || getEditorDimensions(state)}
 
+  /** Playback camera viewbox */
   const getPlaybackCameraParams = Reselect.createSelector(
     getPlaybackZoom,
     getPlaybackDimensions,
     (zoom, { width, height }) => ({ zoom, width, height })
   )
 
+  /** Playback camera properties */
   const getPlaybackCamera = Reselect.createSelector(
     state => state.camera.playbackFollower,
     getSimulatorTrack,
@@ -879,23 +892,31 @@ const Selectors = (function() {
     })
   )
 
+  /** Playback camera focus array */
   function getPlaybackCameraFocus(state) {return state.camera.playbackFollower.focus}
 
+  /** Current camera being used */
   function getCurrentCamera(state) {return getPlayerRunning(state) ? getPlaybackCamera(state) : getEditorCamera(state)}
 
+  /** Command hotkeys object */
   const getCommandsToHotkeys = Reselect.createSelector(
     state => state.command.hotkeys,
     (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
   )
 
+  /** Trigger activation count @param {string} trigger Target Trigger */
   function getTriggerCounts(state, trigger) {return state.command.triggerCounts.get(trigger, 0)}
 
+  /** Target modifier is active @param {string} modifier Target Modifier */
   function getModifier(state, modifier) {return state.command.activeModifiers.has(modifier)}
 
+  /** Modifiers active */
   function getModifiersActive(state) {return !state.command.activeModifiers.isEmpty()}
 
+  /** Zoom slider active */
   function getZoomSliderActive(state) {return getModifier(state, 'modifiers.zoom')}
 
+  /** Current active notification */
   const getNotification = Reselect.createSelector(
     state => state.notifications.message,
     state => state.notifications.autoHide,
@@ -903,36 +924,50 @@ const Selectors = (function() {
     (message, autoHide, open) => ({ message, autoHide, open })
   )
 
+  /** Active notification progress id */
   function getNotificationProgressId(state) {return state.notifications.progressId}
 
+  /** Count of notifications */
   function getNotificationsCount(state) {return state.notifications.count}
 
+  /** Player running */
   function getPlayerRunning(state) {return state.player.running}
 
+  /** Current player index */
   function getPlayerIndex(state) {return state.player.index}
 
+  /** Max player index */
   function getPlayerMaxIndex(state) {return Math.ceil(state.player.maxIndex)}
 
+  /** Flag index */
   function getPlayerFlagIndex(state) {return state.player.flagIndex}
 
+  /** Flag active */
   function getPlayerFlagActive(state) {return getPlayerFlagIndex(state) !== 0}
 
+  /** Slow motion active */
   function getPlayerSlowMotion(state) {return state.player.slowMotion}
 
+  /** Playing in reverse */
   function getPlayerReversed(state) {return (state.player.reverse || state.player.rewind) && !state.player.fastForward}
 
+  /** Smooth playback */
   function getPlayerFrameRateSetting(state) {return state.renderer.skeleton === 0 ? state.player.settings.interpolate : false}
 
+  /** Player settings */
   function getPlayerSettings(state) {return state.player.settings}
 
+  /** Playback framerate */
   function getPlayerFps(state) {return state.player.settings.fps}
 
+  /** Current player time in seconds */
   const getPlayerTime = Reselect.createSelector(
     getPlayerIndex,
     getPlayerFps,
     (index, fps) => index / fps
   )
 
+  /** Current playback rate */
   const getCurrentPlayerRate = Reselect.createSelector(
     state => state.player.settings.baseRate,
     state => state.player.settings.slowMotionRate,
@@ -952,14 +987,19 @@ const Selectors = (function() {
     }
   )
 
+  /** Current track saving progress */
   function getTrackSaverProgress(state) {return state.progress['SAVE_TRACK']}
 
+  /** Track saving in progress */
   function getTrackSaverInProgress(state) {return state.progress['SAVE_TRACK'].percent != null}
 
+  /** Current track loading progress */
   function getTrackLoaderProgress(state) {return state.progress['LOAD_TRACK']}
 
+  /** Current track autosaving progress */
   function getAutosaveProgress(state) {return state.progress['AUTOSAVE']}
 
+  /** Current progress of track save/load @param {'SAVE_TRACK' | 'LOAD_TRACK' | 'AUTOSAVE'} progressId Target Progress */
   function getProgress(state, progressId) {
     let progress = state.progress[progressId]
 
@@ -967,35 +1007,6 @@ const Selectors = (function() {
 
     return progress
   }
-
-  function getPixelRatio(state) {return state.renderer.pixelRatio}
-
-  const getRendererScenes = Reselect.createStructuredSelector({
-    customEditScene: state => state.renderer.edit,
-    customPlaybackScene: state => state.renderer.playback
-  })
-
-  function getMillionsEnabled(state) {return state.renderer.millionsEnabled}
-
-  const getSpriteSheet = Reselect.createSelector(
-    getNumRiders,
-    state => state.renderer.spriteSheets,
-    (numRiders, spriteSheets) => {
-      if (!spriteSheets) {
-        return null
-      }
-      if (numRiders === 1) {
-        return [spriteSheets[0]]
-      } else {
-        let out = []
-        for (let i = 0; i < numRiders; i++) {
-          let index = (i + 1) % (spriteSheets.length)
-          out.push(spriteSheets[index])
-        }
-        return out
-      }
-    }
-  )
 
   function getOnionBeginIndex(state) {return Math.max(0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore)}
 
