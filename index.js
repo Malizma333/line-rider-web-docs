@@ -60,100 +60,112 @@
 * }} OtherSettings
 */
 
-// TODO transition JSDoc comments to linerider.com guide document (or remove guide docs entirely)
-// TODO provide examples
 const Enumerators = (function() {
-  const Commands = {
-    "PencilTool": "triggers.pencilTool",
-    "LineTool": "triggers.lineTool",
-    "EraserTool": "triggers.eraserTool",
-    "SelectTool": "triggers.selectTool",
-    "PanTool": "triggers.panTool",
-    "ZoomTool": "triggers.zoomTool",
-    "Play": "triggers.play",
-    "PlayWithEditorZoom": "triggers.playWithEditorZoom",
-    "Stop": "triggers.stop",
-    "Flag": "triggers.flag",
-    "PlayPause": "triggers.playPause",
-    "PlayWithEditorZoomPause": "triggers.playWithEditorZoomPause",
-    "ToggleSlowMotion": "triggers.toggleSlowMotion",
-    "RemoveLastLine": "triggers.removeLastLine",
-    "Undo": "triggers.undo",
-    "Redo": "triggers.redo",
-    "NormalSwatch": "triggers.normalSwatch",
-    "AccelSwatch": "triggers.accelSwatch",
-    "ScenerySwatch": "triggers.scenerySwatch",
-    "NextFrame": "triggers.nextFrame",
-    "PrevFrame": "triggers.prevFrame",
-    "Save": "triggers.save",
-    "Open": "triggers.open",
-    "GoToStart": "triggers.goToStart",
-    "ToggleOnionSkin": "triggers.toggleOnionSkin",
-    "ToggleSkeleton": "triggers.toggleSkeleton",
-    "ShowPlaybackCamera": "triggers.showPlaybackCamera",
-    "TogglePlaybackPreview": "triggers.togglePlaybackPreview",
-    "SelectCopy": "triggers.select.copy",
-    "SelectPaste": "triggers.select.paste",
-    "SelectDuplicate": "triggers.select.duplicate",
-    "SelectDeselect": "triggers.select.deselect",
-    "SelectClipboardCopy": "triggers.select.clipboard.copy",
-    "SelectClipboardPaste": "triggers.select.clipboard.paste",
-    "AngleSnap": "modifiers.angleSnap",
-    "DisablePointSnap": "modifiers.disablePointSnap",
-    "FlipLine": "modifiers.flipLine",
-    "ForceZoom": "modifiers.forceZoom",
-    "ShowPlaybackCameraMod": "modifiers.showPlaybackCamera",
-    "LockEditorCamera": "modifiers.lockEditorCamera",
-    "AngleLock": "modifiers.angleLock",
-    "SelectAdd": "modifiers.select.add",
-    "SelectSubtract": "modifiers.select.subtract",
-    "SelectSinglePoint": "modifiers.select.singlePoint",
-    "SelectDuplicateMod": "modifiers.select.duplicate",
-    "SelectFineNudge": "modifiers.select.fineNudge",
-    "SelectTransformState": "modifiers.select.transformState",
-    "ConvertToNormal": "triggers.select.convertToNormal",
-    "ConvertToAccel": "triggers.select.convertToAccel",
-    "ConvertToScenery": "triggers.select.convertToScenery",
-    "ReverseLine": "triggers.select.reverseLine",
-    "MoveUp": "triggers.select.moveUp",
-    "MoveLeft": "triggers.select.moveLeft",
-    "MoveDown": "triggers.select.moveDown",
-    "MoveRight": "triggers.select.moveRight",
-    "FastForward": "modifiers.fastForward",
-    "Rewind": "modifiers.rewind",
+  /** Hotkey ids for various commands */
+  const COMMANDS = {
+    TRIGGERS: {
+      PENCIL_TOOL: "triggers.pencilTool",
+      LINE_TOOL: "triggers.lineTool",
+      ERASER_TOOL: "triggers.eraserTool",
+      SELECT_TOOL: "triggers.selectTool",
+      PAN_TOOL: "triggers.panTool",
+      ZOOM_TOOL: "triggers.zoomTool",
+      PLAY: "triggers.play",
+      PLAY_EDITOR_ZOOM: "triggers.playWithEditorZoom",
+      STOP: "triggers.stop",
+      FLAG: "triggers.flag",
+      PLAY_PAUSE: "triggers.playPause",
+      PLAY_PAUSE_EDITOR_ZOOM: "triggers.playWithEditorZoomPause",
+      TOGGLE_SLOW: "triggers.toggleSlowMotion",
+      REMOVE_LAST_LINE: "triggers.removeLastLine",
+      UNDO: "triggers.undo",
+      REDO: "triggers.redo",
+      NORMAL_SWATCH: "triggers.normalSwatch",
+      ACCEL_SWATCH: "triggers.accelSwatch",
+      SCENERY_SWATCH: "triggers.scenerySwatch",
+      NEXT_FRAME: "triggers.nextFrame",
+      PREV_FRAME: "triggers.prevFrame",
+      SAVE: "triggers.save",
+      OPEN: "triggers.open",
+      GO_TO_START: "triggers.goToStart",
+      ONION_SKINNING: "triggers.toggleOnionSkin",
+      SKELETON_VIEW: "triggers.toggleSkeleton",
+      PLAYBACK_CAMERA: "triggers.showPlaybackCamera",
+      PLAYBACK_PREVIEW: "triggers.togglePlaybackPreview",
+      Select: {
+        COPY: "triggers.select.copy",
+        PASTE: "triggers.select.paste",
+        DUPLICATE: "triggers.select.duplicate",
+        DESELECT: "triggers.select.deselect",
+        COPY_CLIPBOARD: "triggers.select.clipboard.copy",
+        PASTE_CLIPBOARD: "triggers.select.clipboard.paste",
+        CONVERT_NORMAL: "triggers.select.convertToNormal",
+        CONVERT_ACCEL: "triggers.select.convertToAccel",
+        CONVERT_SCENERY: "triggers.select.convertToScenery",
+        REVERSE_LINE: "triggers.select.reverseLine",
+        MOVE_UP: "triggers.select.moveUp",
+        MOVE_LEFT: "triggers.select.moveLeft",
+        MOVE_DOWN: "triggers.select.moveDown",
+        MOVE_RIGHT: "triggers.select.moveRight"
+      }
+    },
+    MODIFIERS: {
+      ANGLE_SNAP: "modifiers.angleSnap",
+      NO_POINT_SNAP: "modifiers.disablePointSnap",
+      FLIP_LINE: "modifiers.flipLine",
+      FORCE_ZOOM: "modifiers.forceZoom",
+      PLAYBACK_CAM_MDF: "modifiers.showPlaybackCamera",
+      LOCK_EDITOR_CAM: "modifiers.lockEditorCamera",
+      ANGLE_LOCK: "modifiers.angleLock",
+      FAST_FORWARD: "modifiers.fastForward",
+      REWIND: "modifiers.rewind",
+      SELECT: {
+        ADD: "modifiers.select.add",
+        SUBTRACT: "modifiers.select.subtract",
+        POINT: "modifiers.select.singlePoint",
+        DUPLICATE: "modifiers.select.duplicate",
+        FINE_NUDGE: "modifiers.select.fineNudge",
+        TRANSFORM_STATE: "modifiers.select.transformState",
+      }
+    }
   }
 
-  const LineTypes = {
+  /** Numerical representation of line types */
+  const LINE_TYPES = {
     REGULAR: 0,
     ACCEL: 1,
     SCENERY: 2
   }
 
-  const Tools = {
+  /** Available editor tools */
+  const TOOLS = {
     ZOOM: 'ZOOM_TOOL',
     SELECT: 'SELECT_TOOL',
     PENCIL: 'PENCIL_TOOL',
     PAN: 'PAN_TOOL',
     LINE: 'LINE_TOOL',
     ERASER: 'ERASER_TOOL',
-    ADJUSTSTART: 'ADJUST_START_TOOL'
+    ADJUST_START: 'ADJUST_START_TOOL'
   }
 
-  const PlaybackModes = {
+  /** Modes of playback refresh rates */
+  const PLAYBACK_MODES = {
     FORTY: false,
     SIXTY: 60,
     SMOOTH: true
   }
 
-  const SkeletonModes = {
+  /** Advanced skelton views */
+  const SKELETON_MODES = {
     NORMAL: 0,
-    NORMALSKELETON: 1,
+    NORMAL_SKELETON: 1,
     SKELETON: 2
   }
 
-  return {Commands, LineTypes, PlaybackModes, Tools, SkeletonModes}
+  return {COMMANDS, LINE_TYPES, PLAYBACK_MODES, TOOLS, SKELETON_MODES}
 })()
 
+// TODO provide examples
 const Actions = (function() {
   /** Toggles audio volume */
   const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
