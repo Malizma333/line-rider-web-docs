@@ -1,89 +1,68 @@
 // Reselect Library
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={})}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0}}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t},put:function(e,t){o={key:e,value:t}},getEntries:function(){return o?[o]:[]},clear:function(){o=void 0}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key)}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value}return t}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop())},getEntries:function(){return r},clear:function(){r=[]}}}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n)}));u&&(n=u.value)}s.put(arguments,n)}return n}return v.clearCache=function(){return s.clear()},v}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]")}return t}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments)}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e)}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i},recomputations:function(){return c},resetRecomputations:function(){return c=0}}),h};return o}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t]})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e}),{})}));return r},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0})}));
 
+/**
+* @typedef {{
+*   startPosition: V2
+*   startVelocity: V2
+*   startAngle: Number
+*   remountable: boolean
+* }} Rider
+* 
+* @typedef {{
+*   id?: Number
+*   type: 0 | 1 | 2
+*   x1: Number
+*   y1: Number
+*   x2: Number
+*   y2: Number
+*   flipped?: boolean
+*   leftExtended?: boolean
+*   rightExtended?: boolean
+*   multiplier?: Number
+*   layer?: Number
+* }} Line
+* 
+* @typedef {{
+*   id: Number
+*   name: string
+*   visible: boolean
+*   editable: boolean
+* }} Layer
+* 
+* @typedef {{
+*   startPosition?: {x: Number, y: Number}
+*   version: '6.1' | '6.2'
+*   label?: string
+*   creator?: string
+*   description?: string
+*   viewOnly?: boolean
+*   riders?: Array.<Rider>
+*   lines?: Array.<Line>
+*   layers?: Array.<Layer>
+* }} Track
+* 
+* @typedef {{
+*   interpolate?: boolean | Number
+*   fps?: Number
+*   baseRate?: Number
+*   slowMotion?: Number
+*   fastForward?: Number
+*   maxDuration?: Number
+* }} PlayerSettings
+* 
+* @typedef {{
+*   'audio.slowMotion': boolean
+*   'cam.useEditorFollower': boolean
+*   'ui.undoRedoGestures': boolean
+*   'ui.twoFingerPan': boolean
+*   'ui.pinchToZoom': boolean
+* }} OtherSettings
+*/
+
 // TODO transition JSDoc comments to linerider.com guide document (or remove guide docs entirely)
 // TODO provide examples
-// TODO find way to integrate enums into parameter docs
-const Actions = (function() {
-
-  /** Toggles audio volume */
-  const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
-
-  /** Removes the current audio file */
-  const removeAudio = () => ({ type: 'REMOVE_AUDIO' })
-
-  /**
-  * Sets the offset of the audio file
-  * @param {Number} offset Seconds After Start
-  */
-  const setAudioOffset = (offset) => ({
-    type: 'SET_AUDIO_OFFSET',
-    payload: offset
-  })
-
-  /**
-  * Sets the audio volume
-  * @param {Number} volume Percent Volume (0 - 1)
-  */
-  const setAudioVolume = (volume) => ({
-    type: 'SET_AUDIO_VOLUME',
-    payload: volume
-  })
-
-  /** Loads the last cached autosave */
-  const loadAutosave = () => ({
-    type: 'LOAD_AUTOSAVE'
-  })
-
-  /**
-  * Sets the properties of the editor camera
-  * @param {{x: Number, y: Number}} position Camera Position
-  * @param {Number} zoom Camera Zoom
-  */
-  const setEditorCamera = (position, zoom) => ({
-    type: 'SET_EDITOR_CAMERA',
-    payload: { position, zoom }
-  })
-
-  /**
-  * Sets which rider to focus on in the editor
-  * @param {Number} focusIndex Rider Index (Starts at 0)
-  */
-  const setEditorFollowerFocus = (focusIndex) => ({
-    type: 'SET_EDITOR_FOLLOWER_FOCUS',
-    payload: focusIndex
-  })
-
-  /**
-  * Sets zoom of playback camera
-  * @param {Number} zoom Playback Zoom
-  */
-  const setPlaybackZoom = (zoom) => ({
-    type: 'SET_PLAYBACK_ZOOM',
-    payload: zoom
-  })
-
-  /**
-  * Sets the weight each rider has on where the camera focuses
-  * @param {Array.<Number>} focusList Relative Weights
-  */
-  const setPlaybackFollowerFocus = (focusList) => ({
-    type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
-    payload: focusList
-  })
-
-  /** Toggles whether the editor camera should keep the target rider in view */
-  const toggleEditorFollower = () => ({ type: 'TOGGLE_EDITOR_FOLLOWER' })
-
-  /**
-  * Sets viewport dimensions of the playback camera
-  * @param {{width: Number, height: Number}} dimensions Camera Dimensions
-  */
-  const setPlaybackDimensions = (dimensions) => ({
-    type: 'SET_PLAYBACK_DIMENSIONS',
-    payload: dimensions
-  })
-
+const Enumerators = (function() {
   const Commands = {
     "PencilTool": "triggers.pencilTool",
     "LineTool": "triggers.lineTool",
@@ -144,6 +123,114 @@ const Actions = (function() {
     "Rewind": "modifiers.rewind",
   }
 
+  const LineTypes = {
+    REGULAR: 0,
+    ACCEL: 1,
+    SCENERY: 2
+  }
+
+  const Tools = {
+    ZOOM: 'ZOOM_TOOL',
+    SELECT: 'SELECT_TOOL',
+    PENCIL: 'PENCIL_TOOL',
+    PAN: 'PAN_TOOL',
+    LINE: 'LINE_TOOL',
+    ERASER: 'ERASER_TOOL',
+    ADJUSTSTART: 'ADJUST_START_TOOL'
+  }
+
+  const PlaybackModes = {
+    FORTY: false,
+    SIXTY: 60,
+    SMOOTH: true
+  }
+
+  const SkeletonModes = {
+    NORMAL: 0,
+    NORMALSKELETON: 1,
+    SKELETON: 2
+  }
+
+  return {Commands, LineTypes, PlaybackModes, Tools, SkeletonModes}
+})()
+
+const Actions = (function() {
+  /** Toggles audio volume */
+  const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' })
+
+  /** Removes the current audio file */
+  const removeAudio = () => ({ type: 'REMOVE_AUDIO' })
+
+  /**
+  * Sets the offset of the audio file
+  * @param {Number} offset Seconds After Start
+  */
+  const setAudioOffset = (offset) => ({
+    type: 'SET_AUDIO_OFFSET',
+    payload: offset
+  })
+
+  /**
+  * Sets the audio volume
+  * @param {Number} volume Percent Volume (0 - 1)
+  */
+  const setAudioVolume = (volume) => ({
+    type: 'SET_AUDIO_VOLUME',
+    payload: volume
+  })
+
+  /** Loads the last cached autosave */
+  const loadAutosave = () => ({ type: 'LOAD_AUTOSAVE' })
+
+  /**
+  * Sets the properties of the editor camera
+  * @param {{x: Number, y: Number}} position Camera Position
+  * @param {Number} zoom Camera Zoom
+  */
+  const setEditorCamera = (position, zoom) => ({
+    type: 'SET_EDITOR_CAMERA',
+    payload: { position, zoom }
+  })
+
+  /**
+  * Sets which rider to focus on in the editor
+  * @param {Number} focusIndex Rider Index (Starts at 0)
+  */
+  const setEditorFollowerFocus = (focusIndex) => ({
+    type: 'SET_EDITOR_FOLLOWER_FOCUS',
+    payload: focusIndex
+  })
+
+  /**
+  * Sets zoom of playback camera
+  * @param {Number} zoom Playback Zoom
+  */
+  const setPlaybackZoom = (zoom) => ({
+    type: 'SET_PLAYBACK_ZOOM',
+    payload: zoom
+  })
+
+  /**
+  * Sets the weight each rider has on where the camera focuses
+  * @param {Array.<Number>} focusList Relative Weights
+  */
+  const setPlaybackFollowerFocus = (focusList) => ({
+    type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
+    payload: focusList
+  })
+
+  /** Toggles whether the editor camera should keep the target rider in view */
+  const toggleEditorFollower = () => ({ type: 'TOGGLE_EDITOR_FOLLOWER' })
+
+  /**
+  * Sets viewport dimensions of the playback camera
+  * @param {{width: Number, height: Number}} dimensions Camera Dimensions
+  */
+  const setPlaybackDimensions = (dimensions) => ({
+    type: 'SET_PLAYBACK_DIMENSIONS',
+    payload: dimensions
+  })
+
   /**
   * Triggers the result of a triggerable hotkey being pressed
   * @param {string} command Trigger Command
@@ -186,12 +273,6 @@ const Actions = (function() {
   /** Toggles locked track lines */
   const toggleTrackLinesLocked = () => ({ type: 'TOGGLE_TRACK_LINES_LOCKED' })
 
-  const LineTypes = {
-    Blue: 0,
-    Red: 1,
-    Green: 2
-  }
-
   /**
   * Changes the color swatch of the current tool (if available)
   * @param {Number} lineType Color Swatch
@@ -200,16 +281,6 @@ const Actions = (function() {
     type: 'SELECT_LINE_TYPE',
     payload: lineType
   })
-
-  const Tools = {
-    Zoom: 'ZOOM_TOOL',
-    Select: 'SELECT_TOOL',
-    Pencil: 'PENCIL_TOOL',
-    Pan: 'PAN_TOOL',
-    Line: 'LINE_TOOL',
-    Eraser: 'ERASER_TOOL',
-    AdjustStart: 'ADJUST_START_TOOL'
-  }
 
   /**
   * Changes current tool to target tool
@@ -231,26 +302,17 @@ const Actions = (function() {
     meta: { id: toolId }
   })
 
-  const updateLines = (name, linesToRemove, linesToAdd, initialLoad = false) => ({
+  /**
+  * Update lines given a subaction and a list of lines to add/remove
+  * @param {string} name Subaction Name
+  * @param {Array.<Number>} linesToRemove Remove Lines by Id
+  * @param {Array.<Line>} linesToAdd Add Lines by Props
+  */
+  const updateLines = (name, linesToRemove, linesToAdd) => ({
     type: 'UPDATE_LINES',
-    payload: { linesToRemove, linesToAdd, initialLoad },
+    payload: { linesToRemove, linesToAdd, initialLoad: false },
     meta: { name }
   })
-
-  /**
-  * @typedef {Object} Line
-  * @prop {Number} [id]
-  * @prop {Number} type
-  * @prop {Number} x1
-  * @prop {Number} y1
-  * @prop {Number} x2
-  * @prop {Number} y2
-  * @prop {boolean} [flipped]
-  * @prop {boolean} [leftExtended]
-  * @prop {boolean} [rightExtended]
-  * @prop {Number} [multiplier]
-  * @prop {Number} [layer]
-  */
 
   /**
   * Adds a single line to the currently active layer
@@ -375,14 +437,6 @@ const Actions = (function() {
   })
 
   /**
-  * @typedef {Object} Rider
-  * @prop {V2} startPosition
-  * @prop {V2} startVelocity
-  * @prop {Number} startAngle
-  * @prop {boolean} remountable
-  */
-
-  /**
   * Sets the list of riders
   * @param {Array.<Rider>} riders Rider Array
   */
@@ -421,18 +475,15 @@ const Actions = (function() {
 
   /** Toggles smooth playback */
   const toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' })
-
-  const PlaybackModes = {
-    forty: false,
-    sixty: 60,
-    smooth: true
-  }
   
   /** 
   * Toggles different smooth playback modes
-  * @param {PlaybackMode} payload Playback Mode
+  * @param {boolean|Number} playbackMode Playback Mode
   */
-  const setInterpolate = (payload) => ({ type: 'SET_INTERPOLATE', payload })
+  const setInterpolate = (playbackMode) => ({
+    type: 'SET_INTERPOLATE',
+    payload: playbackMode
+  })
 
   /** Toggles slow motion playback */
   const toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' })
@@ -517,13 +568,6 @@ const Actions = (function() {
 
   /**
   * Sets configuration settings for the timeline player
-  * @typedef {Object} PlayerSettings
-  * @prop {boolean|Number} [interpolate]
-  * @prop {Number} [fps]
-  * @prop {Number} [baseRate]
-  * @prop {Number} [slowMotionRate]
-  * @prop {Number} [fastForwardRate]
-  * @prop {Number} [maxDuration]
   * @param {PlayerSettings} [settings] Player Settings 
   */
   const setPlayerSettings = (settings) => ({
@@ -531,6 +575,11 @@ const Actions = (function() {
     payload: settings
   })
 
+  /**
+  * Toggles a view option given a key and the new value
+  * @param {string} viewOption Target View Option
+  * @param {boolean | null} value New Value
+  */
   const setViewOption = (viewOption, value) => ({
     type: 'SET_VIEW_OPTION',
     payload: {
@@ -581,19 +630,13 @@ const Actions = (function() {
     payload: framesAfter
   })
 
-  const SkeletonModes = {
-    Normal: 0,
-    NormalSkeleton: 1,
-    Skeleton: 2
-  }
-
   /**
   * Sets the skeleton mode
-  * @param {SkeletonMode} skeleton Mode
+  * @param {Number} skeletonMode Skeleton Mode
   */
-  const setSkeleton = (skeleton) => ({
+  const setSkeleton = (skeletonMode) => ({
     type: 'SET_SKELETON',
-    payload: skeleton
+    payload: skeletonMode
   })
 
   /**
@@ -607,7 +650,7 @@ const Actions = (function() {
 
   /**
   * Adds a new track object to local database storage
-  * @param {Object} trackData New Track
+  * @param {Track} trackData New Track
   */
   const putSavedTrack = (trackData) => ({
     type: 'PUT_SAVED_TRACK',
@@ -616,7 +659,7 @@ const Actions = (function() {
 
   /**
   * Removes track object from local storage if it exists
-  * @param {Object} trackData Track to Remove
+  * @param {Track} trackData Track to Remove
   */
   const removeSavedTrack = (trackData) => ({
     type: 'REMOVE_SAVED_TRACK',
@@ -644,7 +687,7 @@ const Actions = (function() {
 
   /**
   * Loads a track into the current editor
-  * @param {*} trackData Track Object
+  * @param {Track} trackData Track Object
   */
   const loadTrackAction = (trackData) => ({
     type: 'LOAD_TRACK',
@@ -699,17 +742,9 @@ const Actions = (function() {
   /** Toggles whether the timeline is active */
   const toggleControlsActive = () => ({ type: 'TOGGLE_CONTROLS_ACTIVE' })
 
-  const DefaultSettings = {
-    'audio.slowMotion': false,
-    'cam.useEditorFollower': true,
-    'ui.undoRedoGestures': false,
-    'ui.twoFingerPan': true,
-    'ui.pinchToZoom': true
-  }
-
   /**
   * Sets a setting given a specific setting key
-  * @param {Setting} key Target Setting
+  * @param {OtherSettings} key Target Setting
   * @param {boolean} value New Value
   */
   const setSetting = (key, value) => ({
@@ -719,11 +754,11 @@ const Actions = (function() {
 
   /**
   * Toggles a specific setting
-  * @param {Setting} key Target Setting
+  * @param {OtherSettings} key Target Setting
   */
   const toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} })
 
-  return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, duplicateLines, endModifierCommand, hideNotification, incPlayerIndex, keyDown, keyUp, loadAutosave, loadLines, loadTrackAction, moveLayer, newTrack, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, undoAction}
+  return {addLayer, addLine, addLines, beginModifierCommand, commitTrackChanges, decPlayerIndex, duplicateLines, endModifierCommand, hideNotification, incPlayerIndex, loadAutosave, loadLines, loadTrackAction, moveLayer, newTrack, putSavedTrack, redoAction, removeAudio, removeLayer, removeLine, removeLines, removeSavedTrack, renameLayer, replaceLine, revertTrackChanges, selectLineType, setAudioOffset, setAudioVolume, setAutosaveEnabled, setCommandHotkeys, setControlsActive, setEditorCamera, setEditorFollowerFocus, setFlag, setFlagIndex, setFrameIndex, setInterpolate, setLayerActive, setLayerEditable, setLayerVisible, setLines, setLocalFile, setOnionSkin, setOnionSkinFramesAfter, setOnionSkinFramesBefore, setPlaybackDimensions, setPlaybackFollowerFocus, setPlaybackZoom, setPlayerFastForward, setPlayerFps, setPlayerMaxIndex, setPlayerRewind, setPlayerRunning, setPlayerRunning, setPlayerSettings, setPlayerStopAtEnd, setRiders, setSetting, setSkeleton, setTool, setToolState, setTrackDetails, setTrackScript, showNotification, startPlayer, stopPlayer, toggleAudio, toggleColorPlayback, toggleControlsActive, toggleEditorFollower, toggleFlag, toggleInterpolate, togglePlaybackPreview, toggleSetting, toggleSlowMotion, toggleTrackLinesLocked, toggleViewport, toggleVisibleAreas, triggerCommand, updateLines, undoAction}
 })()
 
 const Selectors = (function() {
