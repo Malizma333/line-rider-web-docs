@@ -60,7 +60,7 @@
 * }} OtherSettings
 */
 
-const Enumerators = (function() {
+const Enums = (function() {
   /** Hotkey ids for various commands */
   const COMMANDS = {
     TRIGGERS: {
@@ -162,7 +162,49 @@ const Enumerators = (function() {
     SKELETON: 2
   }
 
-  return {COMMANDS, LINE_TYPES, PLAYBACK_MODES, TOOLS, SKELETON_MODES}
+  /** Separate viewable pages */
+  const VIEWS = {
+    MAIN: 'MAIN',
+    SIDEBAR: 'SIDEBAR',
+    ABOUT: 'ABOUT',
+    TRACK_LOADER: 'TRACK_LOADER',
+    TRACK_SAVER: 'TRACK_SAVER',
+    VIDEO_EXPORTER: 'VIDEO_EXPORTER',
+    RELEASE_NOTES: 'RELEASE_NOTES'
+  }
+
+  /** Subpages within each of the viewable pages */
+  const PAGES = {
+    [VIEWS.MAIN]: {
+      EDITOR: 'editor',
+      VIEWER: 'viewer',
+      EDITABLE_VIEWER: 'editable-viewer'
+    },
+    [VIEWS.SIDEBAR]: {
+      SHARE: 'share',
+      INFO: 'info',
+      SETTINGS: 'settings',
+      HELP: 'help'
+    },
+    [VIEWS.ABOUT]: {
+      LAUNCH: 'launch',
+      LOADING: 'loading'
+    },
+    [VIEWS.TRACK_LOADER]: {
+      LOAD: 'load'
+    },
+    [VIEWS.TRACK_SAVER]: {
+      SAVE: 'save'
+    },
+    [VIEWS.VIDEO_EXPORTER]: {
+      EXPORT: 'export'
+    },
+    [VIEWS.RELEASE_NOTES]: {
+      NOTES: 'notes'
+    }
+  }
+
+  return {COMMANDS, LINE_TYPES, PLAYBACK_MODES, TOOLS, SKELETON_MODES, VIEWS, PAGES}
 })()
 
 // TODO provide examples
@@ -775,11 +817,13 @@ const Actions = (function() {
 
 const Selectors = (function() {
   function getAudioEnabled(state) {return state.audio.enabled}
+
   function getAudioOffset(state) {return state.audio.offset}
 
   function isAudioFileLoading(state) {return state.audioFileLoader.loadingFile}
 
   function getAudioProps(state) {return state.audio}
+
   function getAudioFileLoading(state) {return state.audioFileLoader}
 
   function getLocalAudioProps (state) {
@@ -791,6 +835,7 @@ const Selectors = (function() {
   }
 
   function getEditorZoom(state) {return state.camera.editorZoom}
+
   function getEditorPosition(state) {return state.camera.editorPosition}
 
   const getEditorCamera = Reselect.createSelector(
@@ -802,10 +847,13 @@ const Selectors = (function() {
   function getUseEditorFollower(state) {return state.settings['cam.useEditorFollower']}
 
   function getEditorDimensions(state) {return state.camera.editorDimensions}
+
   function getEditorFollowerFocus(state) {return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus)}
 
   function getPlaybackZoom(state) {return window.getAutoZoom ? window.getAutoZoom(getPlayerIndex(state)) : state.camera.playbackZoom}
+
   function getPlaybackFixedPosition(state) {return state.camera.playbackFixedPosition}
+
   function getPlaybackIsFixedPosition(state) {return state.camera.playbackFollower.isFixed()}
 
   function hasPlaybackDimensions(state) {return state.camera.playbackDimensions != null}
@@ -830,6 +878,7 @@ const Selectors = (function() {
       zoom
     })
   )
+
   function getPlaybackCameraFocus(state) {return state.camera.playbackFollower.focus}
 
   function getCurrentCamera(state) {return getPlayerRunning(state) ? getPlaybackCamera(state) : getEditorCamera(state)}
@@ -863,12 +912,17 @@ const Selectors = (function() {
   function getPlayerIndex(state) {return state.player.index}
 
   function getPlayerMaxIndex(state) {return Math.ceil(state.player.maxIndex)}
+
   function getPlayerFlagIndex(state) {return state.player.flagIndex}
+
   function getPlayerFlagActive(state) {return getPlayerFlagIndex(state) !== 0}
 
   function getPlayerSlowMotion(state) {return state.player.slowMotion}
+
   function getPlayerReversed(state) {return (state.player.reverse || state.player.rewind) && !state.player.fastForward}
+
   function getPlayerFrameRateSetting(state) {return state.renderer.skeleton === 0 ? state.player.settings.interpolate : false}
+
   function getPlayerSettings(state) {return state.player.settings}
 
   function getPlayerFps(state) {return state.player.settings.fps}
@@ -899,6 +953,7 @@ const Selectors = (function() {
   )
 
   function getTrackSaverProgress(state) {return state.progress['SAVE_TRACK']}
+
   function getTrackSaverInProgress(state) {return state.progress['SAVE_TRACK'].percent != null}
 
   function getTrackLoaderProgress(state) {return state.progress['LOAD_TRACK']}
@@ -943,10 +998,13 @@ const Selectors = (function() {
   )
 
   function getOnionBeginIndex(state) {return Math.max(0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore)}
+
   function getOnionEndIndex(state) {return Math.min(state.player.maxIndex, Math.max(0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter))}
+
   function getOnionSkinActive(state) {return state.renderer.onionSkin}
 
   function getPlaybackPreview(state) {return state.renderer.playbackPreview}
+
   function getColorPlayback(state) {return state.renderer.colorPlayback}
 
   const getViewOptions = Reselect.createStructuredSelector({
@@ -956,18 +1014,22 @@ const Selectors = (function() {
   })
 
   function getSimulatorTrack(state) {return state.simulator.engine}
+
   function getSimulatorCommittedTrack(state) {return state.simulator.committedEngine}
 
   function getSimulatorLines(state) {return state.simulator.engine.linesList}
+
   function getSimulatorCommittedLines(state) {return state.simulator.committedEngine.linesList}
 
   // for compatibility
   function getSimulatorStartPos(state) {return state.simulator.engine.start.position}
+
   function getSimulatorVersion(state) {return state.simulator.engine.isLegacy() ? '6.1' : '6.2'}
 
   function getSimulatorTrackTotalLineCount(state) {return state.simulator.engine.linesList.size()}
 
   function getTrackIsEmpty(state) {return getSimulatorTrackTotalLineCount(state) === 0}
+
   function getTrackIsDirty(state) {return state.simulator.committedEngine !== state.simulator.lastSavedEngine}
 
   const getSimulatorLineCount = Reselect.createSelector(
@@ -981,7 +1043,9 @@ const Selectors = (function() {
   function getSimulatorTotalLineCount(state) {return getSimulatorLineCount(state).total}
 
   function getTrackLayers(state) {return getSimulatorTrack(state).engine.state.layers}
+
   function getTrackActiveLayerId(state) {return getSimulatorTrack(state).engine.state.activeLayerId}
+
   function getActiveLayerEditable(state) {
     const id = getTrackActiveLayerId(state)
     const layers = getTrackLayers(state)
@@ -993,6 +1057,7 @@ const Selectors = (function() {
       return layer.visible && layer.editable
     }
   }
+
   const getSimulatorHasUndo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
@@ -1006,7 +1071,9 @@ const Selectors = (function() {
   )
 
   function getRiders(state) {return state.simulator.engine.engine.state.riders}
+
   function getCommittedRiders(state) {return state.simulator.committedEngine.engine.state.riders}
+
   function getNumRiders(state) {return getRiders(state).length}
 
   function getSavedTracks(state) {return state.savedTracks}
@@ -1028,14 +1095,14 @@ const Selectors = (function() {
 
   function getTrackLinesLocked(state) {return state.trackLinesLocked}
 
-  // Defaults to scenery if track lines locked
-  function getSelectedLineType(state) {return getTrackLinesLocked(state) ? 2 : state.selectedLineType}
+  function getSelectedLineType(state) {return getTrackLinesLocked(state) ? Enums.LINE_TYPES.SCENERY : state.selectedLineType}
 
   function getCursor(state) {return window.Tools[state.selectedTool].getCursor(state)}
 
   function getToolSceneLayer(state) {return window.Tools[state.selectedTool].getSceneLayer(state)}
 
   function getTrackIsLocalFile(state) {return state.trackData.localFile}
+
   function getTrackScript(state) {return state.trackData.script}
 
   const getTrackProps = Reselect.createStructuredSelector({
@@ -1103,68 +1170,28 @@ const Selectors = (function() {
 
   function getControlsActive(state) {return state.ui.controlsActive}
 
-  const Views = {
-    Main: 'Main',
-    Sidebar: 'Sidebar',
-    About: 'About',
-    TrackLoader: 'TrackLoader',
-    TrackSaver: 'TrackSaver',
-    VideoExporter: 'VideoExporter',
-    ReleaseNotes: 'ReleaseNotes'
-  }
-
-  const Pages = {
-    [Views.Main]: {
-      Editor: 'editor',
-      Viewer: 'viewer',
-      EditableViewer: 'editable-viewer'
-    },
-    [Views.Sidebar]: {
-      Share: 'share',
-      Info: 'info',
-      Settings: 'settings',
-      Help: 'help'
-    },
-    [Views.About]: {
-      Launch: 'launch',
-      Loading: 'loading'
-    },
-    [Views.TrackLoader]: {
-      Load: 'load'
-    },
-    [Views.TrackSaver]: {
-      Save: 'save'
-    },
-    [Views.VideoExporter]: {
-      Export: 'export'
-    },
-    [Views.ReleaseNotes]: {
-      Notes: 'notes'
-    }
-  }
-
   function getViews(state) {return state.views}
 
-  function getSidebarPage(state) {return getViews(state)[Views.Sidebar]}
+  function getSidebarPage(state) {return getViews(state)[Enums.VIEWS.SIDEBAR]}
 
-  function getMainPage(state) {return getViews(state)[Views.Main]}
+  function getMainPage(state) {return getViews(state)[Enums.VIEWS.MAIN]}
 
-  function getInEditor(state) {return state.views[Views.Main] === Pages.Main.Editor}
+  function getInEditor(state) {return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITOR}
 
-  function getInViewer(state) {return state.views[Views.Main] === Pages.Main.Viewer || state.views[Views.Main] === Pages.Main.EditableViewer}
+  function getInViewer(state) {return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.VIEWER || state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITABLE_VIEWER}
 
-  function getInTrackSaver(state) {return state.views[Views.TrackSaver] === Pages.TrackSaver.Save}
+  function getInTrackSaver(state) {return state.views[Enums.VIEWS.TRACK_SAVER] === Enums.PAGES.TRACK_SAVER.SAVE}
 
-  function getInTrackLoader(state) {return state.views[Views.TrackLoader] === Pages.TrackLoader.Load}
+  function getInTrackLoader(state) {return state.views[Enums.VIEWS.TRACK_LOADER] === Enums.PAGES.TRACK_LOADER.LOAD}
 
-  function getInVideoExporter(state) {return state.views[Views.VideoExporter] === Pages.VideoExporter.Export}
+  function getInVideoExporter(state) {return state.views[Enums.VIEWS.VIDEO_EXPORTER] === Enums.PAGES.VIDEO_EXPORTER.EXPORT}
 
   function getHasOverlay(state) {return (
-    state.views[Views.About] ||
-    state.views[Views.TrackLoader] ||
-    state.views[Views.TrackSaver] ||
-    state.views[Views.VideoExporter] ||
-    state.views[Views.ReleaseNotes]
+    state.views[Enums.VIEWS.ABOUT] ||
+    state.views[Enums.VIEWS.TRACK_LOADER] ||
+    state.views[Enums.VIEWS.TRACK_SAVER] ||
+    state.views[Enums.VIEWS.VIDEO_EXPORTER] ||
+    state.views[Enums.VIEWS.RELEASE_NOTES]
   )}
 
   return {colorPickerOpenSelector, getActiveLayerEditable, getAudioEnabled, getAudioFileLoading, getAudioOffset, getAudioProps, getAutosaveEnabled, getAutosaveProgress, getColorPlayback, getCommandsToHotkeys, getCommittedRiders, getControlsActive, getCurrentCamera, getCurrentPlayerRate, getCursor, getEditorCamera, getEditorDimensions, getEditorFollowerFocus, getEditorFollowerFocus, getEditorPosition, getEditorZoom, getHasOverlay, getInEditor, getInTrackLoader, getInTrackSaver, getInVideoExporter, getInViewer, getLineTypePickerActive, getLocalAudioProps, getMainPage, getMillionsEnabled, getModifier, getModifiersActive, getNotification, getNotificationProgressId, getNotificationsCount, getNumRiders, getOnionBeginIndex, getOnionEndIndex, getOnionSkinActive, getPixelRatio, getPlaybackCamera, getPlaybackCameraFocus, getPlaybackCameraParams, getPlaybackDimensions, getPlaybackFixedPosition, getPlaybackIsFixedPosition, getPlaybackPreview, getPlaybackZoom, getPlayerFlagActive, getPlayerFlagIndex, getPlayerFps, getPlayerFrameRateSetting, getPlayerIndex, getPlayerMaxIndex, getPlayerReversed, getPlayerRunning, getPlayerSettings, getPlayerSlowMotion, getPlayerTime, getProgress, getRendererScenes, getRiders, getSavedTracks, getSavedTracksAvailable, getSelectedLineType, getSelectedLineType, getSelectedTool, getSidebarPage, getSimulatorCommittedLines, getSimulatorCommittedTrack, getSimulatorHasRedo, getSimulatorHasUndo, getSimulatorLineCount, getSimulatorLines, getSimulatorStartPos, getSimulatorTotalLineCount, getSimulatorTrack, getSimulatorTrackTotalLineCount, getSimulatorVersion, getSpriteSheet, getToolSceneLayer, getToolState, getTrackActiveLayerId, getTrackCloudInfo, getTrackDetails, getTrackDetailsWithCloudInfo, getTrackInfo, getTrackIsDirty, getTrackIsEmpty, getTrackIsLocalFile, getTrackLayers, getTrackLinesLocked, getTrackLoaderProgress, getTrackObjectForAutosave, getTrackObjectForSaving, getTrackProps, getTrackSaverInProgress, getTrackSaverProgress, getTrackScript, getTriggerCounts, getUseEditorFollower, getViewOptions, getViews, getZoomSliderActive, hasPlaybackDimensions, isAudioFileLoading}
