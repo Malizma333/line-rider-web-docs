@@ -1,6 +1,14 @@
 // Reselect Library
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
+// TODO research Reselect Library crediting
+// TODO default parameters for actions
+// TODO replace enum instances and use cases with purely jsdoc comments
+// TODO possibly split up everything into multiple files?
+// TODO create testing for actions and selectors
+// TODO convert jsdoc comments into multiple markdown files
+// TODO minify everything into one file
+
 /**
 * @typedef {{
 *   enabled: boolean
@@ -132,14 +140,6 @@
 *   rightExtended?: boolean
 *   vec: V2
 * }} LineBase
-* 
-* @typedef {{
-*   'audio.slowMotion': boolean
-*   'cam.useEditorFollower': boolean
-*   'ui.pinchToZoom': boolean
-*   'ui.twoFingerPan': boolean
-*   'ui.undoRedoGestures': boolean
-* }} OtherSettings
 * 
 * @typedef {{
 *   baseRate?: number
@@ -377,17 +377,33 @@ const Enums = (function() {
   };
 })();
 
-// TODO provide examples
+/**
+* @summary Namespace of callable actions
+* @description
+* This object hosts actions that can be used to affect the redux state tree.
+* 
+* These actions don't do anything on their own. To affect anything, they
+* must be used with the store.dispatch() redux function.
+* @example
+* // This returns the appropriate object for toggling audio
+* const toggleAudioAction = Actions.toggleAudio();
+* 
+* // This dispatches the action to the redux store
+* store.dispatch(toggleAudioAction);
+*/
 const Actions = (function() {
-  /** Toggles audio volume */
+  /** Toggle audio volume */
   const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' });
 
-  /** Removes the current audio file */
+  /** Remove the current audio file */
   const removeAudio = () => ({ type: 'REMOVE_AUDIO' });
 
   /**
-  * Sets the offset of the audio file
+  * Set the offset of the audio file
   * @param {number} offset Seconds After Start
+  * @example
+  * // Set audio to start playing 2 seconds in
+  * Actions.setAudioOffset(2)
   */
   const setAudioOffset = (offset) => ({
     type: 'SET_AUDIO_OFFSET',
@@ -395,21 +411,27 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the audio volume
+  * Set the audio volume
   * @param {number} volume Percent Volume (0 - 1)
+  * @example
+  * // Set audio volume to 50%
+  * Actions.setAudioVolume(0.5)
   */
   const setAudioVolume = (volume) => ({
     type: 'SET_AUDIO_VOLUME',
     payload: volume
   });
 
-  /** Loads the last cached autosave */
+  /** Load the last cached autosave */
   const loadAutosave = () => ({ type: 'LOAD_AUTOSAVE' });
 
   /**
-  * Sets the properties of the editor camera
+  * Set the properties of the editor camera
   * @param {{x: number, y: number}} position Camera Position
   * @param {number} zoom Camera Zoom
+  * @example
+  * // Move editor camera to (0,-20) and apply a zoom of 5
+  * Actions.setEditorCamera({x: 0, y: -20}, 5)
   */
   const setEditorCamera = (position, zoom) => ({
     type: 'SET_EDITOR_CAMERA',
@@ -417,8 +439,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets which rider to focus on in the editor
+  * Set which rider to focus on in the editor
   * @param {number} focusIndex Rider Index (Starts at 0)
+  * @example
+  * // Set the editor camera to focus on the second rider
+  * Actions.setEditorFollowerFocus(1)
   */
   const setEditorFollowerFocus = (focusIndex) => ({
     type: 'SET_EDITOR_FOLLOWER_FOCUS',
@@ -426,8 +451,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets zoom of playback camera
+  * Set zoom of playback camera
   * @param {number} zoom Playback Zoom
+  * @example
+  * // Set the playback zoom to 4
+  * Actions.setPlaybackZoom(4)
   */
   const setPlaybackZoom = (zoom) => ({
     type: 'SET_PLAYBACK_ZOOM',
@@ -435,20 +463,26 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the weight each rider has on where the camera focuses
+  * Set the weight each rider has on where the camera focuses
   * @param {number[]} focusList Relative Weights
+  * @example
+  * // Set the playback focus between riders 1 and 3
+  * Actions.setPlaybackFollowerFocus([1, 0, 1])
   */
   const setPlaybackFollowerFocus = (focusList) => ({
     type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
     payload: focusList
   });
 
-  /** Toggles whether the editor camera should keep the target rider in view */
-  const toggleEditorFollower = () => ({ type: 'TOGGLE_EDITOR_FOLLOWER' });
+  /** Toggle whether the editor camera should keep the target rider in view */
+  const toggleEditorFollower = () => ({ type: 'TOGGLE_SETTING', payload: {key: 'cam.useEditorFollower'} });
 
   /**
-  * Sets viewport dimensions of the playback camera
+  * Set viewport dimensions of the playback camera
   * @param {{width: number, height: number}} dimensions Camera Dimensions
+  * @example
+  * // Set the viewport to be 1920 x 1080
+  * Actions.setPlaybackDimensions({ width: 1920, height: 1080 })
   */
   const setPlaybackDimensions = (dimensions) => ({
     type: 'SET_PLAYBACK_DIMENSIONS',
@@ -456,8 +490,11 @@ const Actions = (function() {
   });
 
   /**
-  * Triggers the result of a triggerable hotkey being pressed
+  * Trigger the result of a triggerable hotkey being pressed
   * @param {string} command Trigger Command
+  * @example
+  * // Toggle skeleton view
+  * Actions.triggerCommand(Enums.COMMANDS.TRIGGERS.SKELETON_VIEW)
   */
   const triggerCommand = (command) => ({
     type: 'TRIGGER_COMMAND',
@@ -466,8 +503,11 @@ const Actions = (function() {
   });
 
   /**
-  * Triggers the beginning of a modifier hotkey being pressed
-  * @param {string} command Modifier Command 
+  * Trigger the beginning of a modifier hotkey being pressed
+  * @param {string} command Modifier Command
+  * @example
+  * // Start fast-forwarding playback
+  * Actions.beginModifierCommand(Enums.COMMANDS.MODIFIERS.FAST_FORWARD)
   */
   const beginModifierCommand = (command) => ({
     type: 'BEGIN_MODIFIER_COMMAND',
@@ -476,8 +516,11 @@ const Actions = (function() {
   });
 
   /**
-  * Triggers the end of a modifier hotkey being pressed
+  * Trigger the end of a modifier hotkey being pressed
   * @param {string} command Modifier Command
+  * @example
+  * // Stop fast-forwarding playback
+  * Actions.endModifierCommand(Enums.COMMANDS.MODIFIERS.FAST_FORWARD)
   */
   const endModifierCommand = (command) => ({
     type: 'END_MODIFIER_COMMAND',
@@ -486,20 +529,26 @@ const Actions = (function() {
   });
 
   /**
-  * Changes hotkeys given a series of commands and the new key value
+  * Change hotkeys given a series of commands and the new key value
   * @param {{string: string}} commandHotkeys Hotkey Dictionary
+  * @example
+  * // Set the flag hotkey to "f"
+  * Actions.setCommandHotkeys({Enums.COMMANDS.TRIGGERS.FLAG: 'f'})
   */
   const setCommandHotkeys = (commandHotkeys) => ({
     type: 'SET_COMMAND_HOTKEYS',
     payload: commandHotkeys
   });
 
-  /** Toggles locked track lines */
+  /** Toggle locked track lines */
   const toggleTrackLinesLocked = () => ({ type: 'TOGGLE_TRACK_LINES_LOCKED' });
 
   /**
-  * Changes the color swatch of the current tool (if available)
+  * Change the color swatch of the current tool (if available)
   * @param {number} lineType Color Swatch
+  * @example
+  * // Set color swatch to blue
+  * Actions.selectLineType(Enums.LINE_TYPES.REGULAR)
   */
   const selectLineType = (lineType) => ({
     type: 'SELECT_LINE_TYPE',
@@ -507,8 +556,11 @@ const Actions = (function() {
   });
 
   /**
-  * Changes current tool to target tool
+  * Change current tool to target tool
   * @param {string} tool Target Tool
+  * @example
+  * // Set tool to eraser
+  * Actions.setTool(Enums.TOOLS.ERASER)
   */
   const setTool = (tool) => ({
     type: 'SET_TOOL',
@@ -516,21 +568,19 @@ const Actions = (function() {
   });
 
   /**
-  * Changes the tool state of a tool
-  * @param {string} toolId Target Tool
-  * @param {{status: boolean, props}} state Tool State (Tool Dependant)
-  */
-  const setToolState = (toolId, state) => ({
-    type: 'SET_TOOL_STATE',
-    payload: state,
-    meta: { id: toolId }
-  });
-
-  /**
   * Update lines given a subaction and a list of lines to add/remove
   * @param {string} name Subaction Name
   * @param {number[]} linesToRemove Remove Lines by Id
   * @param {Line[]} linesToAdd Add Lines by Props
+  * @example
+  * // Add a horizontal green line
+  * Action.updateLines(
+  *   'ADD_LINE',
+  *   null,
+  *   [{x1:0, y1:0, x2:0, y2:5, type:Enums.LINE_TYPES.SCENERY}]
+  * )
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges()
   */
   const updateLines = (name, linesToRemove, linesToAdd) => ({
     type: 'UPDATE_LINES',
@@ -539,72 +589,54 @@ const Actions = (function() {
   });
 
   /**
-  * Adds a single line to the currently active layer
-  * @param {Line} line Line Object
-  */
-  const addLine = (line) => updateLines('ADD_LINE', null, [line]);
-
-  /**
-  * Adds a list of lines to the currently active layer
+  * Add a list of lines to the currently active layer
   * @param {Line[]} lines Line Array
+  * @example
+  * // Add a triangle
+  * Action.addLines([
+  *   {x1:0, y1:0, x2:5, y2:0, type:Enums.LINE_TYPES.SCENERY},
+  *   {x1:5, y1:0, x2:5, y2:5, type:Enums.LINE_TYPES.SCENERY},
+  *   {x1:5, y1:5, x2:0, y2:0, type:Enums.LINE_TYPES.SCENERY}
+  * ])
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges()
   */
   const addLines = (lines) => updateLines('ADD_LINES', null, lines);
 
   /**
-  * Preloads a list of lines incrementally
-  * @param {Line[]} lines Line Array
-  */
-  const loadLines = (lines) => updateLines('LOAD_LINES', null, lines, true);  
-
-  /**
-  * Duplicates a list of lines by removing id prop
-  * @param {Line[]} lines Line Array
-  */
-  const duplicateLines = (lines) => updateLines('DUPLICATE_LINES', null, lines);
-
-  /**
-  * Removes a single line given an id
-  * @param {number} lineId Line Id
-  */
-  const removeLine = (lineId) => updateLines('REMOVE_LINE', [lineId], null);
-
-  /**
-  * Removes a list of lines given their ids
+  * Remove a list of lines given their ids
   * @param {number[]} lineIds Line Id Array
+  * @example
+  * // Remove the first 3 lines
+  * Action.removeLines([1,2,3])
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
   const removeLines = (lineIds) => updateLines('REMOVE_LINES', lineIds, null);
 
-  /**
-  * Changes a list of lines given a list of altered lines with known ids
-  * @param {Line[]} lines Line Array
-  */
-  const setLines = (lines) => updateLines('SET_LINES', null, lines);
-
-  /**
-  * Replaces a line given the line id to replace and the new props
-  * @param {number} prevLineId Line Id to Replace
-  * @param {Line} line New Line Properties
-  */
-  const replaceLine = (prevLineId, line) => updateLines('REPLACE_LINE', [prevLineId], [line]);
-
-  /** Decrements engine state to previous point in history if available */
+  /** Decrement engine state to previous point in history if available */
   const undoAction = () => ({ type: 'UNDO' });
 
-  /** Increments engine state to next point in history if available */
+  /** Increment engine state to next point in history if available */
   const redoAction = () => ({ type: 'REDO' });
 
-  /** Commits track changes to committed engine state */
+  /** Commit track changes to committed engine state */
   const commitTrackChanges = () => ({ type: 'COMMIT_TRACK_CHANGES' });
 
-  /** Clears track changes from uncommitted engine state */
+  /** Clear track changes from uncommitted engine state */
   const revertTrackChanges = () => ({ type: 'REVERT_TRACK_CHANGES', meta: { ignorable: true } });
 
-  /** Adds a new layer */
+  /** Add a new layer */
   const addLayer = () => ({ type: 'ADD_LAYER' });
 
   /**
-  * Removes layer given a layer id
+  * Remove layer given a layer id
   * @param {number} id Target Layer Id
+  * @example
+  * // Remove layer 1
+  * Actions.removeLayer(1)
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
   const removeLayer = (id) => ({
     type: 'REMOVE_LAYER',
@@ -612,9 +644,14 @@ const Actions = (function() {
   });
 
   /**
-  * Changes index of a layer in the layer list
+  * Change index of a layer in the layer buffer
   * @param {number} id Target Layer Id
   * @param {number} index New Index
+  * @example
+  * // Move layer 1 to the second position above the base layer
+  * Actions.moveLayer(1, 2)
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
   const moveLayer = (id, index) => ({
     type: 'MOVE_LAYER',
@@ -622,9 +659,14 @@ const Actions = (function() {
   });
 
   /**
-  * Renames target layer
+  * Rename target layer
   * @param {number} id Target Layer Id
   * @param {string} name New Name
+  * @example
+  * // Rename layer 1 to "Background Layer"
+  * Actions.renameLayer(1, "Background Layer")
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
   const renameLayer = (id, name) => ({
     type: 'RENAME_LAYER',
@@ -632,8 +674,13 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the active layer to target layer
+  * Set the active layer to target layer
   * @param {number} id Target Layer Id
+  * @example
+  * // Set the base layer to be the active layer
+  * Actions.setLayerActive(0)
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
   const setLayerActive = (id) => ({
     type: 'SET_LAYER_ACTIVE',
@@ -641,11 +688,16 @@ const Actions = (function() {
   });
 
   /**
-  * Toggles target layer visiblity
+  * Toggle target layer visiblity
   * @param {number} id Target Layer Id
-  * @param {boolean} visible Layer Visible 
+  * @param {boolean} visible Layer Visible
+  * @example
+  * // Set Layer 1 to be invisible
+  * Actions.setLayerVisible(1, false)
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
-  const setLayerVisible = (id, visible) => ({
+  const setLayerVisible = (id, visible = true) => ({
     type: 'SET_LAYER_VISIBLE',
     payload: {id, visible}
   });
@@ -654,15 +706,25 @@ const Actions = (function() {
   * Toggles target layer editability
   * @param {number} id Target Layer Id
   * @param {boolean} editable Layer Editable 
+  * @example
+  * // Set Layer 2 to be editable
+  * Actions.setLayerEditable(2, true)
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges() 
   */
-  const setLayerEditable = (id, editable) => ({
+  const setLayerEditable = (id, editable = true) => ({
     type: 'SET_LAYER_EDITABLE',
     payload: {id, editable}
   });
 
   /**
-  * Sets the list of riders
+  * Set the list of riders
   * @param {Rider[]} riders Rider Array
+  * @example
+  * // Remove all riders
+  * Actions.setRiders([])
+  * Action.commitTrackChanges()
+  * Action.revertTrackChanges()
   */
   const setRiders = (riders) => ({
     type: 'SET_RIDERS',
@@ -673,6 +735,9 @@ const Actions = (function() {
   * Show notification in top-right corner
   * @param {string} message Notification Message
   * @param {boolean} [autoHide] Hide Message After Timer
+  * @example
+  * // Show a "Hello, world!" notification
+  * Actions.showNotification("Hello, world!")
   */
   const showNotification = (message, autoHide = true) => ({
     type: 'notifications/SHOW_NOTIFICATION',
@@ -680,8 +745,11 @@ const Actions = (function() {
   });
 
   /**
-  * Hides notification based on message as id
+  * Hide notification based on message as id
   * @param {string} message Message / Id
+  * @example
+  * // Hide a notification with the message "Hello, world!"
+  * Actions.hideNotification("Hello, world!")
   */
   const hideNotification = (message) => ({
     type: 'notifications/HIDE_NOTIFICATION',
@@ -689,47 +757,56 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the fps of the playback renderer
+  * Set the fps of the playback renderer
   * @param {number} fps Target Fps
+  * @example
+  * // Set the playback to 24 fps
+  * Actions.setPlayerFps(24)
   */
   const setPlayerFps = (fps) => ({
     type: 'SET_PLAYER_FPS',
     payload: fps
   });
 
-  /** Toggles smooth playback */
+  /** Toggle smooth playback */
   const toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' });
   
   /** 
-  * Toggles different smooth playback modes
+  * Toggle different smooth playback modes
   * @param {boolean|number} playbackMode Playback Mode
+  * @example
+  * // Set playback mode to 60 fps
+  * Actions.setInterpolate(60)
   */
   const setInterpolate = (playbackMode) => ({
     type: 'SET_INTERPOLATE',
     payload: playbackMode
   });
 
-  /** Toggles slow motion playback */
+  /** Toggle slow motion playback */
   const toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' });
 
-  /** Increments player timeline index if possible */
+  /** Increment player timeline index if possible */
   const incPlayerIndex = () => ({ type: 'INC_PLAYER_INDEX' });
 
-  /** Decrements player timeline index if possible */
+  /** Decrement player timeline index if possible */
   const decPlayerIndex = () => ({ type: 'DEC_PLAYER_INDEX' });
 
-  /** Starts playback */
+  /** Start playback */
   const startPlayer = () => ({ type: 'START_PLAYER' });
 
-  /** Stops playback */
+  /** Stop playback */
   const stopPlayer = () => ({ type: 'STOP_PLAYER' });
 
-  /** Sets the flag at the current timeline position */
+  /** Set the flag at the current timeline position */
   const setFlag = () => ({ type: 'SET_FLAG' });
 
   /**
-  * Sets the timeline index
+  * Set the timeline index
   * @param {number} index Index
+  * @example
+  * // Set the frame index to the beginning
+  * Actions.setFrameIndex(0)
   */
   const setFrameIndex = (index) => ({
     type: 'SET_PLAYER_INDEX',
@@ -737,8 +814,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the max index of the timeline
+  * Set the max index of the timeline
   * @param {number} maxIndex Max Index
+  * @example
+  * // Set the max index to 80 frames
+  * Actions.setPlayerMaxIndex(80)
   */
   const setPlayerMaxIndex = (maxIndex) => ({
     type: 'SET_PLAYER_MAX_INDEX',
@@ -746,8 +826,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the flag index to a specific index
+  * Set the flag index to a specific index
   * @param {number} flagIndex Target Index
+  * @example
+  * // Set the flag index to frame 40
+  * Actions.setFlagIndex(40)
   */
   const setFlagIndex = (flagIndex) => ({
     type: 'SET_FLAG_INDEX',
@@ -755,8 +838,11 @@ const Actions = (function() {
   });
 
   /**
-  * Toggles whether the track is playing
+  * Toggle whether the track is playing
   * @param {boolean} running Playback Running
+  * @example
+  * // Play the track
+  * Actions.setPlayerRunning(true)
   */
   const setPlayerRunning = (running) => ({
     type: 'SET_PLAYER_RUNNING',
@@ -764,8 +850,11 @@ const Actions = (function() {
   });
 
   /**
-  * Toggles timeline fast forward
+  * Toggle timeline fast forward
   * @param {boolean} fastForward Fast Forward
+  * @example
+  * // Fast forward track
+  * Actions.setPlayerFastForward(true)
   */
   const setPlayerFastForward = (fastForward) => ({
     type: 'SET_PLAYER_FAST_FORWARD',
@@ -773,8 +862,11 @@ const Actions = (function() {
   });
 
   /**
-  * Toggles timeline rewind
+  * Toggle timeline rewind
   * @param {boolean} rewind Rewind
+  * @example
+  * // Rewind track
+  * Actions.setPlayerRewind(true)
   */
   const setPlayerRewind = (rewind) => ({
     type: 'SET_PLAYER_REWIND',
@@ -782,8 +874,10 @@ const Actions = (function() {
   });
 
   /**
-  * Toggles whether the timeline should stop at the max
+  * Toggle whether the timeline should stop at the max
   * @param {boolean} stopAtEnd
+  * // Set track to not stop at the max index
+  * Actions.setPlayerStopAtEnd(false)
   */
   const setPlayerStopAtEnd = (stopAtEnd) => ({
     type: 'SET_PLAYER_STOP_AT_END',
@@ -791,8 +885,13 @@ const Actions = (function() {
   });
 
   /**
-  * Sets configuration settings for the timeline player
+  * Set configuration settings for the timeline player
   * @param {PlayerSettings} [settings] Player Settings 
+  * @example
+  * // Set base playback rate to be 2x speed
+  * Actions.setPlayerSettings({
+  *   baseRate: 2
+  * })
   */
   const setPlayerSettings = (settings) => ({
     type: 'SET_PLAYER_SETTINGS',
@@ -800,9 +899,12 @@ const Actions = (function() {
   });
 
   /**
-  * Toggles a view option given a key and the new value
+  * Toggle a view option given a key and the new value
   * @param {string} viewOption Target View Option
   * @param {?boolean} value New Value
+  * @example
+  * // Turn off playback preview
+  * Actions.setViewOption('playbackPreview', false)
   */
   const setViewOption = (viewOption, value) => ({
     type: 'SET_VIEW_OPTION',
@@ -812,24 +914,27 @@ const Actions = (function() {
     }
   });
 
-  /** Toggles whether flags render */
+  /** Toggle whether flags render */
   const toggleFlag = () => setViewOption('flag', null);
 
-  /** Toggles color playback */
+  /** Toggle color playback */
   const toggleColorPlayback = () => setViewOption('colorPlayback', null);
 
-  /** Toggles playback preview */
+  /** Toggle playback preview */
   const togglePlaybackPreview = () => setViewOption('playbackPreview', null);
 
-  /** Toggles whether viewport dimensions are shown */
+  /** Toggle whether viewport dimensions are shown */
   const toggleViewport = () => setViewOption('showViewport', null);
 
-  /** Toggles whether visible areas are shown */
+  /** Toggle whether visible areas are shown */
   const toggleVisibleAreas = () => setViewOption('showVisibleAreas', null);
 
   /**
-  * Toggles onion skinning
+  * Toggle onion skinning
   * @param {boolean} onionSkin Onion Skinning
+  * @example
+  * // Turn on onion skinning
+  * Actions.setOnionSkin(true)
   */
   const setOnionSkin = (onionSkin) => ({
     type: 'SET_ONION_SKIN',
@@ -837,8 +942,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets number of onion skin frames to render before current
+  * Set number of onion skin frames to render before current
   * @param {number} framesBefore Frames Before
+  * @example
+  * // Set onion skinning frames before to 5
+  * Actions.setOnionSkinFramesBefore(5)
   */
   const setOnionSkinFramesBefore = (framesBefore) => ({
     type: 'SET_ONION_SKIN_FRAMES_BEFORE',
@@ -846,8 +954,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets number of onion skin frames to render after current
+  * Set number of onion skin frames to render after current
   * @param {number} framesAfter Frames After
+  * @example
+  * // Set onion skinning frames after to 10
+  * Actions.setOnionSkinFramesAfter(10)
   */
   const setOnionSkinFramesAfter = (framesAfter) => ({
     type: 'SET_ONION_SKIN_FRAMES_AFTER',
@@ -855,8 +966,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the skeleton mode
+  * Set the skeleton mode
   * @param {number} skeletonMode Skeleton Mode
+  * @example
+  * // Turn on both skeleton view and normal view
+  * Actions.setSkeleton(Enums.SKELETON_MODES.NORMAL_SKELETON)
   */
   const setSkeleton = (skeletonMode) => ({
     type: 'SET_SKELETON',
@@ -864,8 +978,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets whether autosave is enabled
+  * Set whether autosave is enabled
   * @param {boolean} enabled Enabled
+  * @example
+  * // Turn off autosave
+  * Actions.setAutosaveEnabled(false)
   */
   const setAutosaveEnabled = (enabled) => ({
     type: 'SET_AUTOSAVE_ENABLED',
@@ -873,26 +990,11 @@ const Actions = (function() {
   });
 
   /**
-  * Adds a new track object to local database storage
-  * @param {TrackData} trackData New Track
-  */
-  const putSavedTrack = (trackData) => ({
-    type: 'PUT_SAVED_TRACK',
-    payload: trackData
-  });
-
-  /**
-  * Removes track object from local storage if it exists
-  * @param {TrackData} trackData Track to Remove
-  */
-  const removeSavedTrack = (trackData) => ({
-    type: 'REMOVE_SAVED_TRACK',
-    payload: trackData
-  });
-
-  /**
-  * Creates a new track 
+  * Create a new track 
   * @param {boolean} isV61 Version 6.1
+  * @example
+  * // Create a new legacy track
+  * Actions.newTrack(true)
   */
   const newTrack = (isV61 = false) => ({
     type: 'NEW_TRACK',
@@ -910,8 +1012,18 @@ const Actions = (function() {
   });
 
   /**
-  * Loads a track into the current editor
+  * Load a track into the current editor
   * @param {Track} trackData Track Object
+  * @example
+  * // Load a blank track with 2 riders
+  * Actions.loadTrackAction({
+  *   startPosition: { x: 0, y: 0 },
+  *   version: '6.2',
+  *   riders: [
+  *     {startPosition: {x: 0, y: 0}, startVelocity: {x: 0.4, y: 0}},
+  *     {startPosition: {x: 0, y: 30}, startVelocity: {x: 0.4, y: 0}}
+  *   ]
+  * })
   */
   const loadTrackAction = (trackData) => ({
     type: 'LOAD_TRACK',
@@ -922,10 +1034,13 @@ const Actions = (function() {
   });
 
   /**
-  * Sets details of the currently loaded track
+  * Set details of the currently loaded track
   * @param {string} title Title
   * @param {string} creator Creator
   * @param {string} description Description
+  * @example
+  * // Set title to be "Test Track" and creator to be "Me" with empty description
+  * Actions.setTrackDetails("Test Track", "Me", "")
   */
   const setTrackDetails = (title, creator, description) => ({
     type: 'trackData/SET_TRACK_DETAILS',
@@ -939,6 +1054,9 @@ const Actions = (function() {
   /**
   * Set whether track saves to local file
   * @param {boolean} saveToFile Save Locally
+  * @example
+  * // Make track save locally
+  * Actions.setLocalFile(true)
   */
   const setLocalFile = (saveToFile) => ({
     type: 'trackData/SET_LOCAL_FILE',
@@ -946,8 +1064,11 @@ const Actions = (function() {
   });
 
   /**
-  * Sets the track script
+  * Set the track script
   * @param {string} script Script
+  * @example
+  * // Clear the script
+  * Actions.setTrackScript('')
   */
   const setTrackScript = (script) => ({
     type: 'trackData/SET_TRACK_SCRIPT',
@@ -955,58 +1076,38 @@ const Actions = (function() {
   });
 
   /**
-  * Sets whether the timeline is visible or not
-  * @param {boolean} active Timeline Active 
+  * Set whether the timeline is visible or not
+  * @param {boolean} active Timeline Active
+  * @example
+  * // Hide the timeline
+  * Actions.setControlsActive(false)
   */
   const setControlsActive = (active) => ({
     type: 'SET_CONTROLS_ACTIVE',
     payload: active
   });
 
-  /** Toggles whether the timeline is active */
+  /** Toggle whether the timeline is active */
   const toggleControlsActive = () => ({ type: 'TOGGLE_CONTROLS_ACTIVE' });
-
-  /**
-  * Sets a setting given a specific setting key
-  * @param {OtherSettings} key Target Setting
-  * @param {boolean} value New Value
-  */
-  const setSetting = (key, value) => ({
-    type: 'SET_SETTING',
-    payload: {key, value}
-  });
-
-  /**
-  * Toggles a specific setting
-  * @param {OtherSettings} key Target Setting
-  */
-  const toggleSetting = (key) => ({ type: 'TOGGLE_SETTING', payload: {key} });
 
   return {
     addLayer,
-    addLine,
     addLines,
     beginModifierCommand,
     commitTrackChanges,
     decPlayerIndex,
-    duplicateLines,
     endModifierCommand,
     hideNotification,
     incPlayerIndex,
     loadAutosave,
-    loadLines,
     loadTrackAction,
     moveLayer,
     newTrack,
-    putSavedTrack,
     redoAction,
     removeAudio,
     removeLayer,
-    removeLine,
     removeLines,
-    removeSavedTrack,
     renameLayer,
-    replaceLine,
     revertTrackChanges,
     selectLineType,
     setAudioOffset,
@@ -1023,7 +1124,6 @@ const Actions = (function() {
     setLayerActive,
     setLayerEditable,
     setLayerVisible,
-    setLines,
     setLocalFile,
     setOnionSkin,
     setOnionSkinFramesAfter,
@@ -1040,10 +1140,8 @@ const Actions = (function() {
     setPlayerSettings,
     setPlayerStopAtEnd,
     setRiders,
-    setSetting,
     setSkeleton,
     setTool,
-    setToolState,
     setTrackDetails,
     setTrackScript,
     showNotification,
@@ -1056,7 +1154,6 @@ const Actions = (function() {
     toggleFlag,
     toggleInterpolate,
     togglePlaybackPreview,
-    toggleSetting,
     toggleSlowMotion,
     toggleTrackLinesLocked,
     toggleViewport,
