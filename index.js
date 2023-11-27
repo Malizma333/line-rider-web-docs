@@ -22,7 +22,7 @@
 * }} AudioLoader
 * 
 * @typedef {{
-*   cloudInfo: CloudData
+*   cloudInfo: CloudInfo
 *   details: TrackDetails
 *   info: {duration: number}
 *   localFile: boolean
@@ -35,16 +35,17 @@
 * }} Camera
 * 
 * @typedef {{
-*   derivedFrom?: number | TrackDetails
-*   saveTime?: number
-*   trackId?: number
-* }} CloudData
+*   derivativeKey: string
+*   derivedFrom: DerivedFrom
+*   masterKey: string
+*   saveTime: number
+*   trackId: number
+*   versionTitle: string
+*   versionId: string
+* }} CloudInfo
 * 
 * @typedef {{
-*   cloudInfo: {
-*     saveTime: Number
-*     trackId: Number
-*   }
+*   cloudInfo: CloudInfo
 *   details: TrackDetails
 * }} CloudSave
 * 
@@ -57,6 +58,12 @@
 *   "tutorial"?: string
 *   "undefined": ?
 * }} CurrentViews
+* 
+* @typedef {{
+*   creator: string
+*   title: string
+*   version: '6.1' | '6.2'
+* }} DerivedFrom
 * 
 * @typedef {{
 *   height: number
@@ -170,6 +177,12 @@
 *   version: '6.1' | '6.2'
 *   viewOnly?: boolean
 * }} Track
+* 
+* @typedef {{
+*   cloudInfo: TrackDetails
+*   details: CloudInfo
+*   removed?: boolean
+* }} TrackData
 * 
 * @typedef {{
 *   creator: string
@@ -861,7 +874,7 @@ const Actions = (function() {
 
   /**
   * Adds a new track object to local database storage
-  * @param {Track} trackData New Track
+  * @param {TrackData} trackData New Track
   */
   const putSavedTrack = (trackData) => ({
     type: 'PUT_SAVED_TRACK',
@@ -870,7 +883,7 @@ const Actions = (function() {
 
   /**
   * Removes track object from local storage if it exists
-  * @param {Track} trackData Track to Remove
+  * @param {TrackData} trackData Track to Remove
   */
   const removeSavedTrack = (trackData) => ({
     type: 'REMOVE_SAVED_TRACK',
@@ -1526,7 +1539,7 @@ const Selectors = (function() {
     description: state => state.trackData.description
   });
 
-  /** Track cloud data @type {CloudData} */
+  /** Track cloud data @type {CloudInfo} */
   const getTrackCloudInfo = Reselect.createSelector(
     state => state.trackData.cloudInfo,
     state => state.trackData.derivedFrom,
@@ -1545,7 +1558,7 @@ const Selectors = (function() {
     }
   );
 
-  /** Track cloud data with track details @type {{details: TrackDetails, cloudInfo: CloudData}} */
+  /** Track cloud data with track details @type {{details: TrackDetails, cloudInfo: CloudInfo}} */
   const getTrackDetailsWithCloudInfo = Reselect.createStructuredSelector({
     details: getTrackDetails,
     cloudInfo: getTrackCloudInfo
