@@ -1,10 +1,14 @@
 // Reselect Library
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
+// TODO replace "null" defs with ? notation
+// TODO replace Array.<> with [] notation
+// TODO sort props alphabetically
+
 /**
 * @typedef {{
-*   startPosition: V2
-*   startVelocity: V2
+*   startPosition: {x: number, y: number}
+*   startVelocity: {x: number, y: number}
 *   startAngle: number
 *   remountable: boolean
 * }} Rider
@@ -36,10 +40,13 @@
 *   label?: string
 *   creator?: string
 *   description?: string
+*   duration?: number
 *   viewOnly?: boolean
 *   riders?: Array.<Rider>
 *   lines?: Array.<Line>
 *   layers?: Array.<Layer>
+*   script?: string
+*   audio?: AudioDataFragment
 * }} Track
 * 
 * @typedef {{
@@ -71,7 +78,139 @@
 *   offset: number
 *   path: string | null
 *   volume: number
-* }} AudioObject
+* }} AudioData
+* 
+* @typedef {{
+*   name: string | null
+*   offset: number
+*   path: string | null
+* }} AudioDataFragment
+* 
+* @typedef {{
+*   error: string | null
+*   loadingFile: boolean
+* }} AudioLoader
+* 
+* @typedef {{
+*   x: number
+*   y: number
+* }} V2
+* 
+* @typedef {{
+*   position: V2
+*   zoom: number
+* }} Camera
+* 
+* @typedef {{
+*   width: number
+*   height: number
+* }} Dimensions
+* 
+* @typedef {{
+*   zoom: number
+*   width: number
+*   height: number
+* }} Viewbox
+* 
+* @typedef {{
+*   autoHide: boolean
+*   message: string
+*   open: boolean
+* }} EditorNotification
+* 
+* @typedef {{
+*   status: boolean | null
+*   percent: null | true | number
+*   error: string | null
+* }} Progress
+* 
+* @typedef {{
+*   color: boolean
+*   flag: null | boolean
+*   skeleton: number
+* }} ViewSettings
+* 
+* @typedef {{
+*   id: number
+*   p1: V2
+*   p2: V2
+*   layer?: number
+*   vec: V2
+*   length: number
+*   norm: V2
+*   flipped?: boolean
+*   leftExtended?: boolean
+*   rightExtended?: boolean
+*   invLengthSq?: number
+*   extension?: number
+*   leftBound?: number
+*   rightBound?: number
+* }} LineBase
+* 
+* @typedef {{
+*   props: Object
+*   state: {
+*     activeLayerId: number
+*     layers: {buffer: Array.<Layer>}
+*     lines: {buffer: Array.<Line>}
+*     riders: {buffer: Array.<Rider>}
+*   }
+*   _changeCount: number
+*   _computed?: Object
+*   _locked: boolean
+*   _target?: Object
+*   linesList: {buffer: Array.<LineBase>}
+*   start: {
+*     position: {x: number, y: number}
+*     velocity: {x: number, y: number}
+*   }
+* }} Engine
+* 
+* @typedef {{
+*   cloudInfo: {
+*     saveTime: Number
+*     trackId: Number
+*   }
+*   details: TrackDetails
+* }} CloudSave
+* 
+* @typedef {{
+*   status: {
+*     inactive: boolean
+*   }
+* }} ToolState
+* 
+* @typedef {{
+*   riders: {buffer: Array.<Rider>}
+*   version: '6.1' | '6.2'
+*   audio: AudioDataFragment
+*   layers: {buffer: Array.<Layer>}
+*   script: string
+* }} TrackFragment
+* 
+* @typedef {{
+*   saveTime?: number
+*   derivedFrom?: number | TrackDetails
+*   trackId?: number
+* }} CloudData
+* 
+* @typedef {{
+*   props: TrackFragment
+*   details: TrackDetails
+*   info: {duration: number}
+*   cloudInfo: CloudData
+*   localFile: boolean
+* }} AutosaveObject
+* 
+* @typedef {{
+*   "tutorial"?: string
+*   "Main"?: string
+*   "Sidebar"?: string
+*   "About"?: string
+*   "TrackLoader"?: string
+*   "TrackSaver"?: string
+*   "undefined": null
+* }} ViewInfo
 */
 
 const Enums = (function() {
@@ -919,34 +1058,33 @@ const Actions = (function() {
   };
 })();
 
-// TODO put return types
 const Selectors = (function() {
-  /** Audio file enabled */
+  /** Audio file enabled @returns {boolean} */
   function getAudioEnabled(state) {
     return state.audio.enabled;
   }
 
-  /** Audio file offset */
+  /** Audio file offset @returns {number} */
   function getAudioOffset(state) {
     return state.audio.offset;
   }
 
-  /** Audio file is loading */
+  /** Audio file is loading @returns {boolean} */
   function getAudioFileLoading(state) {
     return state.audioFileLoader.loadingFile;
   }
 
-  /** Audio file properties */
+  /** Audio file properties @returns {AudioData} */
   function getAudioProps(state) {
     return state.audio;
   }
 
-  /** Audio file loading properties */
+  /** Audio file loading properties @returns {AudioLoader} */
   function getAudioFileLoader(state) {
     return state.audioFileLoader;
   }
 
-  /** Local audio file properties */
+  /** Local audio file properties @returns {AudioDataFragment} */
   function getLocalAudioProps (state) {
     const {name, path, offset} = state.audio;
     if (path) {
@@ -955,63 +1093,63 @@ const Selectors = (function() {
     return null;
   }
 
-  /** Editor zoom */
+  /** Editor zoom @returns {number} */
   function getEditorZoom(state) {
     return state.camera.editorZoom;
   }
 
-  /** Position in editor */
+  /** Position in editor @returns {V2} */
   function getEditorPosition(state) {
     return state.camera.editorPosition;
   }
 
-  /** Editor camera properties */
+  /** Editor camera properties @type {Camera} */
   const getEditorCamera = Reselect.createSelector(
     state => state.camera.editorPosition,
     getEditorZoom,
     (position, zoom) => ({ position, zoom })
   );
 
-  /** Keep rider in view while scrubbing timeline */
+  /** Keep rider in view while scrubbing timeline @returns {boolean} */
   function getUseEditorFollower(state) {
     return state.settings['cam.useEditorFollower'];
   }
 
-  /** Editor canvas dimensions */
+  /** Editor canvas dimensions @returns {Dimensions} */
   function getEditorDimensions(state) {
     return state.camera.editorDimensions;
   }
 
-  /** Rider being follow by editor camera */
+  /** Rider being follow by editor camera @returns {number} */
   function getEditorFollowerFocus(state) {
     return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus);
   }
 
-  /** Playback zoom */
+  /** Playback zoom @returns {number} */
   function getPlaybackZoom(state) {
     return window.getAutoZoom ?
       window.getAutoZoom(getPlayerIndex(state)) :
       state.camera.playbackZoom ;
   }
 
-  /** Playback dimensions not null */
+  /** Playback dimensions not null @returns {boolean} */
   function getPlaybackDimensionsDefined(state) {
     return state.camera.playbackDimensions != null;
   }
 
-  /** Playback dimensions */
+  /** Playback dimensions @returns {Dimensions} */
   function getPlaybackDimensions(state) {
     return state.camera.playbackDimensions || getEditorDimensions(state);
   }
 
-  /** Playback camera viewbox */
+  /** Playback camera viewbox @type {Viewbox} */
   const getPlaybackCameraParams = Reselect.createSelector(
     getPlaybackZoom,
     getPlaybackDimensions,
     (zoom, { width, height }) => ({ zoom, width, height })
   );
 
-  /** Playback camera properties */
+  /** Playback camera properties @type {Camera} */
   const getPlaybackCamera = Reselect.createSelector(
     state => state.camera.playbackFollower,
     getSimulatorTrack,
@@ -1025,19 +1163,19 @@ const Selectors = (function() {
     })
   );
 
-  /** Playback camera focus array */
+  /** Playback camera focus array @returns {Array.<boolean|number>} */
   function getPlaybackCameraFocus(state) {
     return state.camera.playbackFollower.focus;
   }
 
-  /** Current camera being used */
+  /** Current camera being used @returns {Camera} */
   function getCurrentCamera(state) {
     return getPlayerRunning(state) ?
       getPlaybackCamera(state) :
       getEditorCamera(state) ;
   }
 
-  /** Command hotkeys object */
+  /** Command hotkeys array @type {Array.<[string, string]>*/
   const getCommandsToHotkeys = Reselect.createSelector(
     state => state.command.hotkeys,
     (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
@@ -1046,6 +1184,7 @@ const Selectors = (function() {
   /**
   * Trigger activation count
   * @param {string} trigger Target Trigger
+  * @return {number}
   */
   function getTriggerCounts(state, trigger) {
     return state.command.triggerCounts.get(trigger, 0);
@@ -1054,22 +1193,23 @@ const Selectors = (function() {
   /**
   * Target modifier is active
   * @param {string} modifier Target Modifier
+  * @return {boolean}
   */
   function getModifier(state, modifier) {
     return state.command.activeModifiers.has(modifier);
   }
 
-  /** Modifiers active */
+  /** Modifiers active @return {boolean} */
   function getModifiersActive(state) {
     return !state.command.activeModifiers.isEmpty();
   }
 
-  /** Zoom slider active */
+  /** Zoom slider active @return {boolean} */
   function getZoomSliderActive(state) {
     return getModifier(state, 'modifiers.zoom');
   }
 
-  /** Current active notification */
+  /** Current active notification @type {EditorNotification} */
   const getNotification = Reselect.createSelector(
     state => state.notifications.message,
     state => state.notifications.autoHide,
@@ -1077,76 +1217,76 @@ const Selectors = (function() {
     (message, autoHide, open) => ({ message, autoHide, open })
   );
 
-  /** Active notification progress id */
+  /** Active notification progress id @returns {string | null} */
   function getNotificationProgressId(state) {
     return state.notifications.progressId;
   }
 
-  /** Count of notifications */
+  /** Count of notifications @returns {number} */
   function getNotificationsCount(state) {
     return state.notifications.count;
   }
 
-  /** Player running */
+  /** Player running @returns {boolean} */
   function getPlayerRunning(state) {
     return state.player.running;
   }
 
-  /** Current player index */
+  /** Current player index @returns {number} */
   function getPlayerIndex(state) {
     return state.player.index;
   }
 
-  /** Max player index */
+  /** Max player index @returns {number} */
   function getPlayerMaxIndex(state) {
     return Math.ceil(state.player.maxIndex);
   }
 
-  /** Flag index */
+  /** Flag index @returns {number} */
   function getPlayerFlagIndex(state) {
     return state.player.flagIndex;
   }
 
-  /** Flag active */
+  /** Flag active @returns {boolean} */
   function getPlayerFlagActive(state) {
     return getPlayerFlagIndex(state) !== 0;
   }
 
-  /** Slow motion active */
+  /** Slow motion active @returns {boolean} */
   function getPlayerSlowMotion(state) {
     return state.player.slowMotion;
   }
 
-  /** Playing in reverse */
+  /** Playing in reverse @returns {boolean} */
   function getPlayerReversed(state) {
     return (state.player.reverse || state.player.rewind) && !state.player.fastForward;
   }
 
-  /** Smooth playback */
+  /** Smooth playback @returns {boolean} */
   function getPlayerFrameRateSetting(state) {
     return state.renderer.skeleton === 0 ?
       state.player.settings.interpolate :
       false ;
   }
 
-  /** Player settings */
+  /** Player settings @returns {PlayerSettings} */
   function getPlayerSettings(state) {
     return state.player.settings;
   }
 
-  /** Playback framerate */
+  /** Playback framerate @returns {number} */
   function getPlayerFps(state) {
     return state.player.settings.fps;
   }
 
-  /** Current player time in seconds */
+  /** Current player time in seconds @type {number} */
   const getPlayerTime = Reselect.createSelector(
     getPlayerIndex,
     getPlayerFps,
     (index, fps) => index / fps
   );
 
-  /** Current playback rate */
+  /** Current playback rate @type {number} */
   const getCurrentPlayerRate = Reselect.createSelector(
     state => state.player.settings.baseRate,
     state => state.player.settings.slowMotionRate,
@@ -1166,34 +1306,34 @@ const Selectors = (function() {
     }
   );
 
-  /** Current track saving progress */
+  /** Current track saving progress @returns {Progress} */
   function getTrackSaverProgress(state) {
     return state.progress['SAVE_TRACK'];
   }
 
-  /** Track saving in progress */
+  /** Track saving in progress @returns {boolean} */
   function getTrackSaverInProgress(state) {
     return state.progress['SAVE_TRACK'].percent != null;
   }
 
-  /** Current track loading progress */
+  /** Current track loading progress @returns {Progress} */
   function getTrackLoaderProgress(state) {
     return state.progress['LOAD_TRACK'];
   }
 
-  /** Current track autosaving progress */
+  /** Current track autosaving progress @returns {Progress} */
   function getAutosaveProgress(state) {
     return state.progress['AUTOSAVE'];
   }
 
-  /** Onion skinning start index */
+  /** Onion skinning start index @returns {number} */
   function getOnionBeginIndex(state) {
     return Math.max(
       0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore
     );
   }
 
-  /** Onion skinning end index */
+  /** Onion skinning end index @returns {number} */
   function getOnionEndIndex(state) {
     return Math.min(
       state.player.maxIndex, Math.max(
@@ -1202,22 +1342,22 @@ const Selectors = (function() {
     );
   }
 
-  /** Onion skinning enabled */
+  /** Onion skinning enabled @returns {boolean} */
   function getOnionSkinActive(state) {
     return state.renderer.onionSkin;
   }
 
-  /** Playback preview enabled */
+  /** Playback preview enabled @returns {boolean} */
   function getPlaybackPreview(state) {
     return state.renderer.playbackPreview;
   }
 
-  /** Color playback enabled */
+  /** Color playback enabled @returns {boolean} */
   function getColorPlayback(state) {
     return state.renderer.colorPlayback;
   }
 
-  /** Renderer view settings */
+  /** Renderer view settings @type {ViewSettings} */
   const getViewOptions = Reselect.createStructuredSelector({
     color: state => getPlayerRunning(state) ? getColorPlayback(state) : !getPlaybackPreview(state),
     flag: state => state.renderer.flag != null ? 
@@ -1225,57 +1365,57 @@ const Selectors = (function() {
     skeleton: state => state.renderer.skeleton
   });
 
-  /** Track engine (uncommitted) */
+  /** Track engine (uncommitted) @returns {{engine: Engine}} */
   function getSimulatorTrack(state) {
     return state.simulator.engine;
   }
 
-  /** Track engine (committed) */
+  /** Track engine (committed) @returns {{engine: Engine}} */
   function getSimulatorCommittedTrack(state) {
     return state.simulator.committedEngine;
   }
 
-  /** Track lines (uncommitted) */
+  /** Track lines (uncommitted) @returns {{buffer: Array.<LineBase>}} */
   function getSimulatorLines(state) {
     return state.simulator.engine.linesList;
   }
 
-  /** Track lines (committed) */
+  /** Track lines (committed) @returns {{buffer: Array.<LineBase>}} */
   function getSimulatorCommittedLines(state) {
     return state.simulator.committedEngine.linesList;
   }
 
-  /** Track version */
+  /** Track version @returns {'6.1' | '6.2'} */
   function getSimulatorVersion(state) {
     return state.simulator.engine.isLegacy() ? '6.1' : '6.2';
   }
 
-  /** Track total line count */
+  /** Track total line count @returns {number} */
   function getSimulatorTrackTotalLineCount(state) {
     return state.simulator.engine.linesList.size();
   }
 
-  /** Whether track is empty */
+  /** Whether track is empty @returns {boolean} */
   function getTrackIsEmpty(state) {
     return getSimulatorTrackTotalLineCount(state) === 0;
   }
 
-  /** Whether track has uncommitted changes */
+  /** Whether track has uncommitted changes @returns {boolean} */
   function getTrackIsDirty(state) {
     return state.simulator.committedEngine !== state.simulator.lastSavedEngine;
   }
 
-  /** Track layers buffer */
+  /** Track layers buffer @returns {{buffer: Array.<Layer>}} */
   function getTrackLayers(state) {
     return getSimulatorTrack(state).engine.state.layers;
   }
 
-  /** Currently active layer */
+  /** Currently active layer @returns {number} */
   function getTrackActiveLayerId(state) {
     return getSimulatorTrack(state).engine.state.activeLayerId;
   }
 
-  /** Whether the active layer is editable */
+  /** Whether the active layer is editable @returns {boolean} */
   function getActiveLayerEditable(state) {
     const id = getTrackActiveLayerId(state);
     const layers = getTrackLayers(state);
@@ -1288,46 +1428,46 @@ const Selectors = (function() {
     }
   }
 
-  /** Whether there are changes available to undo */
+  /** Whether there are changes available to undo @type {boolean} */
   const getSimulatorHasUndo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
     (history, engine) => history.findIndex(e => e === engine) > 0
   );
 
-  /** Whether there are undone changes available to redo */
+  /** Whether there are undone changes available to redo @type {boolean} */
   const getSimulatorHasRedo = Reselect.createSelector(
     state => state.simulator.history,
     state => state.simulator.committedEngine,
     (history, engine) => history.findIndex(e => e === engine) < history.length - 1
   );
 
-  /** Track rider buffer */
+  /** Track rider buffer @returns {{buffer: Array.<Rider>}} */
   function getRiders(state) {
     return state.simulator.engine.engine.state.riders;
   }
 
-  /** Buffer of committed track riders */
+  /** Buffer of committed track riders @returns {{buffer: Array.<Rider>}} */
   function getCommittedRiders(state) {
     return state.simulator.committedEngine.engine.state.riders;
   }
 
-  /** Number of riders */
+  /** Number of riders @returns {number} */
   function getNumRiders(state) {
     return getRiders(state).length;
   }
 
-  /** Cloud saved track data */
+  /** Cloud saved track data @returns {Array.<CloudSave>} */
   function getSavedTracks(state) {
     return state.savedTracks;
   }
 
-  /** Whether cloud saved tracks are available */
+  /** Whether cloud saved tracks are available @returns {boolean} */
   function getSavedTracksAvailable(state) {
     return !!state.savedTracks;
   }
 
-  /** Whether autosave is enabled */
+  /** Whether autosave is enabled @returns {boolean} */
   function getAutosaveEnabled(state) {
     return state.autosaveEnabled;
   }
@@ -1335,45 +1475,46 @@ const Selectors = (function() {
   /**
   * Tool state of target tool
   * @param {string} toolId Target Tool
+  * @returns {ToolState}
   */
   function getToolState(state, toolId) {
     return state.toolState[toolId];
   }
 
-  /** Currently selected tool */
+  /** Currently selected tool @returns {string} */
   function getSelectedTool(state) {
     return state.selectedTool;
   }
 
-  /** Whether line color swatch is active */
+  /** Whether line color swatch is active @type {boolean} */
   const getLineTypePickerActive = Reselect.createSelector(
     getSelectedTool,
     (selectedTool) => window.Tools[selectedTool].usesSwatches
   );
 
-  /** Whether track lines are locked */
+  /** Whether track lines are locked @returns {boolean} */
   function getTrackLinesLocked(state) {
     return state.trackLinesLocked;
   }
 
-  /** Currently selected line type in color swatch */
+  /** Currently selected line type in color swatch @returns {number} */
   function getSelectedLineType(state) {
     return getTrackLinesLocked(state) ?
       Enums.LINE_TYPES.SCENERY :
       state.selectedLineType ;
   }
 
-  /** Whether track is a local file */
+  /** Whether track is a local file @returns {boolean} */
   function getTrackIsLocalFile(state) {
     return state.trackData.localFile;
   }
 
-  /** Track script property */
+  /** Track script property @returns {string} */
   function getTrackScript(state) {
     return state.trackData.script;
   }
 
-  /** Notable track properties (riders, version, audio, layers, script) */
+  /** Notable track properties @type {TrackFragment}*/
   const getTrackProps = Reselect.createStructuredSelector({
     riders: getCommittedRiders,
     version: getSimulatorVersion,
@@ -1382,14 +1523,14 @@ const Selectors = (function() {
     script: getTrackScript
   });
 
-  /** Track details (title, creator, description) */
+  /** Track details @type {TrackDetails} */
   const getTrackDetails = Reselect.createStructuredSelector({
     title: state => state.trackData.label,
     creator: state => state.trackData.creator,
     description: state => state.trackData.description
   });
 
-  /** Track cloud data */
+  /** Track cloud data @type {CloudData} */
   const getTrackCloudInfo = Reselect.createSelector(
     state => state.trackData.cloudInfo,
     state => state.trackData.derivedFrom,
@@ -1408,18 +1549,18 @@ const Selectors = (function() {
     }
   );
 
-  /** Track cloud data with track details */
+  /** Track cloud data with track details @type {{details: TrackDetails, cloudInfo: CloudData}} */
   const getTrackDetailsWithCloudInfo = Reselect.createStructuredSelector({
     details: getTrackDetails,
     cloudInfo: getTrackCloudInfo
   });
 
-  /** Track duration */
+  /** Track duration @type {{duration: number}} */
   const getTrackDuration = Reselect.createStructuredSelector({
     duration: state => getPlayerMaxIndex(state)
   });
 
-  /** Track data important for autosaving */
+  /** Track data important for autosaving @type {AutosaveObject} */
   const getTrackObjectForAutosave = Reselect.createStructuredSelector({
     props: getTrackProps,
     details: getTrackDetails,
@@ -1431,6 +1572,7 @@ const Selectors = (function() {
   /**
   * Track data important for saving
   * @param {TrackDetails} trackDetails
+  * @returns {Track}
   */
   function getTrackObjectForSaving(state, trackDetails) {
     return ({
@@ -1448,53 +1590,53 @@ const Selectors = (function() {
     });
   }
 
-  /** Whether timeline is currently active */
+  /** Whether timeline is currently active @returns {boolean} */
   function getControlsActive(state) {
     return state.ui.controlsActive;
   }
 
-  /** Information about currently active ui components */
+  /** Information about currently active ui components @returns {ViewInfo} */
   function getViews(state) {
     return state.views;
   }
 
-  /** Sidebar page information */
+  /** Sidebar page information @returns {string?} */
   function getSidebarPage(state) {
     return getViews(state)[Enums.VIEWS.SIDEBAR];
   }
 
-  /** Main page information */
+  /** Main page information @returns {string?} */
   function getMainPage(state) {
     return getViews(state)[Enums.VIEWS.MAIN];
   }
 
-  /** Whether currently in track editor */
+  /** Whether currently in track editor @returns {boolean} */
   function getInEditor(state) {
     return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITOR;
   }
 
-  /** Whether currently in track viewer */
+  /** Whether currently in track viewer @returns {boolean} */
   function getInViewer(state) {
     return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.VIEWER || 
            state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITABLE_VIEWER;
   }
 
-  /** Whether currently in save window */
+  /** Whether currently in save window @returns {boolean} */
   function getInTrackSaver(state) {
     return state.views[Enums.VIEWS.TRACK_SAVER] === Enums.PAGES.TRACK_SAVER.SAVE;
   }
 
-  /** Whether currently in load window */
+  /** Whether currently in load window @returns {boolean} */
   function getInTrackLoader(state) {
     return state.views[Enums.VIEWS.TRACK_LOADER] === Enums.PAGES.TRACK_LOADER.LOAD;
   }
 
-  /** Whether currently in video export window */
+  /** Whether currently in video export window @returns {boolean} */
   function getInVideoExporter(state) {
     return state.views[Enums.VIEWS.VIDEO_EXPORTER] === Enums.PAGES.VIDEO_EXPORTER.EXPORT;
   }
 
-  /** Whether there is an overlay over the main page */
+  /** Whether there is an overlay over the main page @returns {string?} */
   function getHasOverlay(state) {return (
     state.views[Enums.VIEWS.ABOUT] ||
     state.views[Enums.VIEWS.TRACK_LOADER] ||
