@@ -1,75 +1,7 @@
 // Reselect Library
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
-// TODO sort props alphabetically
-
 /**
-* @typedef {{
-*   startPosition: {x: number, y: number}
-*   startVelocity: {x: number, y: number}
-*   startAngle: number
-*   remountable: boolean
-* }} Rider
-* 
-* @typedef {{
-*   id?: number
-*   type: 0 | 1 | 2
-*   x1: number
-*   y1: number
-*   x2: number
-*   y2: number
-*   flipped?: boolean
-*   leftExtended?: boolean
-*   rightExtended?: boolean
-*   multiplier?: number
-*   layer?: number
-* }} Line
-* 
-* @typedef {{
-*   id: number
-*   name: string
-*   visible: boolean
-*   editable: boolean
-* }} Layer
-* 
-* @typedef {{
-*   startPosition?: {x: number, y: number}
-*   version: '6.1' | '6.2'
-*   label?: string
-*   creator?: string
-*   description?: string
-*   duration?: number
-*   viewOnly?: boolean
-*   riders?: Rider[]
-*   lines?: Line[]
-*   layers?: Layer[]
-*   script?: string
-*   audio?: AudioDataFragment
-* }} Track
-* 
-* @typedef {{
-*   title: string
-*   creator: string
-*   description: string
-* }} TrackDetails
-* 
-* @typedef {{
-*   interpolate?: boolean | number
-*   fps?: number
-*   baseRate?: number
-*   slowMotion?: number
-*   fastForward?: number
-*   maxDuration?: number
-* }} PlayerSettings
-* 
-* @typedef {{
-*   'audio.slowMotion': boolean
-*   'cam.useEditorFollower': boolean
-*   'ui.undoRedoGestures': boolean
-*   'ui.twoFingerPan': boolean
-*   'ui.pinchToZoom': boolean
-* }} OtherSettings
-* 
 * @typedef {{
 *   enabled: boolean
 *   name: ?string
@@ -90,9 +22,12 @@
 * }} AudioLoader
 * 
 * @typedef {{
-*   x: number
-*   y: number
-* }} V2
+*   cloudInfo: CloudData
+*   details: TrackDetails
+*   info: {duration: number}
+*   localFile: boolean
+*   props: TrackFragment
+* }} AutosaveData
 * 
 * @typedef {{
 *   position: V2
@@ -100,69 +35,10 @@
 * }} Camera
 * 
 * @typedef {{
-*   width: number
-*   height: number
-* }} Dimensions
-* 
-* @typedef {{
-*   zoom: number
-*   width: number
-*   height: number
-* }} Viewbox
-* 
-* @typedef {{
-*   autoHide: boolean
-*   message: string
-*   open: boolean
-* }} EditorNotification
-* 
-* @typedef {{
-*   status: ?boolean
-*   percent: ?(true | number)
-*   error: ?string
-* }} Progress
-* 
-* @typedef {{
-*   color: boolean
-*   flag: ?boolean
-*   skeleton: number
-* }} ViewSettings
-* 
-* @typedef {{
-*   id: number
-*   p1: V2
-*   p2: V2
-*   layer?: number
-*   vec: V2
-*   length: number
-*   norm: V2
-*   flipped?: boolean
-*   leftExtended?: boolean
-*   rightExtended?: boolean
-*   invLengthSq?: number
-*   extension?: number
-*   leftBound?: number
-*   rightBound?: number
-* }} LineBase
-* 
-* @typedef {{
-*   props: Object
-*   state: {
-*     activeLayerId: number
-*     layers: {buffer: Layer[]}
-*     lines: {buffer: Line[]}
-*     riders: {buffer: Rider[]}
-*   }
-*   _changeCount: number
-*   _computed?: Object
-*   _locked: boolean
-*   _target?: Object
-*   linesList: {buffer: LineBase[]}
-*   start: {
-*     position: {x: number, y: number}
-*     velocity: {x: number, y: number}
-*   }
-* }} Engine
+*   derivedFrom?: number | TrackDetails
+*   saveTime?: number
+*   trackId?: number
+* }} CloudData
 * 
 * @typedef {{
 *   cloudInfo: {
@@ -173,110 +49,232 @@
 * }} CloudSave
 * 
 * @typedef {{
+*   "About"?: string
+*   "Main"?: string
+*   "Sidebar"?: string
+*   "TrackLoader"?: string
+*   "TrackSaver"?: string
+*   "tutorial"?: string
+*   "undefined": ?
+* }} CurrentViews
+* 
+* @typedef {{
+*   height: number
+*   width: number
+* }} Dimensions
+* 
+* @typedef {{
+*   autoHide: boolean
+*   message: string
+*   open: boolean
+* }} EditorNotification
+* 
+* @typedef {{
+*   _changeCount: number
+*   _computed?: Object
+*   _locked: boolean
+*   _target?: Object
+*   linesList: {buffer: LineBase[]}
+*   props: Object
+*   start: {
+*     position: {x: number, y: number}
+*     velocity: {x: number, y: number}
+*   }
+*   state: {
+*     activeLayerId: number
+*     layers: {buffer: Layer[]}
+*     lines: {buffer: Line[]}
+*     riders: {buffer: Rider[]}
+*   }
+* }} Engine
+* 
+* @typedef {{
+*   editable: boolean
+*   id: number
+*   name: string
+*   visible: boolean
+* }} Layer
+* 
+* @typedef {{
+*   id?: number
+*   type: 0 | 1 | 2
+*   x1: number
+*   y1: number
+*   x2: number
+*   y2: number
+*   flipped?: boolean
+*   leftExtended?: boolean
+*   rightExtended?: boolean
+*   multiplier?: number
+*   layer?: number
+* }} Line
+* 
+* @typedef {{
+*   extension?: number
+*   flipped?: boolean
+*   id: number
+*   invLengthSq?: number
+*   layer?: number
+*   leftBound?: number
+*   leftExtended?: boolean
+*   length: number
+*   norm: V2
+*   p1: V2
+*   p2: V2
+*   rightBound?: number
+*   rightExtended?: boolean
+*   vec: V2
+* }} LineBase
+* 
+* @typedef {{
+*   'audio.slowMotion': boolean
+*   'cam.useEditorFollower': boolean
+*   'ui.pinchToZoom': boolean
+*   'ui.twoFingerPan': boolean
+*   'ui.undoRedoGestures': boolean
+* }} OtherSettings
+* 
+* @typedef {{
+*   baseRate?: number
+*   fastForward?: number
+*   fps?: number
+*   interpolate?: boolean | number
+*   maxDuration?: number
+*   slowMotion?: number
+* }} PlayerSettings
+* 
+* @typedef {{
+*   error: ?string
+*   percent: ?(true | number)
+*   status: ?boolean
+* }} Progress
+* 
+* @typedef {{
+*   remountable: boolean
+*   startAngle: number
+*   startPosition: {x: number, y: number}
+*   startVelocity: {x: number, y: number}
+* }} Rider
+* 
+* @typedef {{
+*   audio?: AudioDataFragment
+*   creator?: string
+*   description?: string
+*   duration?: number
+*   label?: string
+*   layers?: Layer[]
+*   lines?: Line[]
+*   riders?: Rider[]
+*   script?: string
+*   startPosition?: {x: number, y: number}
+*   version: '6.1' | '6.2'
+*   viewOnly?: boolean
+* }} Track
+* 
+* @typedef {{
+*   creator: string
+*   description: string
+*   title: string
+* }} TrackDetails
+* 
+* @typedef {{
+*   audio: AudioDataFragment
+*   layers: {buffer: Layer[]}
+*   riders: {buffer: Rider[]}
+*   script: string
+*   version: '6.1' | '6.2'
+* }} TrackFragment
+* 
+* @typedef {{
 *   status: {
 *     inactive: boolean
 *   }
 * }} ToolState
 * 
 * @typedef {{
-*   riders: {buffer: Rider[]}
-*   version: '6.1' | '6.2'
-*   audio: AudioDataFragment
-*   layers: {buffer: Layer[]}
-*   script: string
-* }} TrackFragment
+*   x: number
+*   y: number
+* }} V2
 * 
 * @typedef {{
-*   saveTime?: number
-*   derivedFrom?: number | TrackDetails
-*   trackId?: number
-* }} CloudData
+*   height: number
+*   width: number
+*   zoom: number
+* }} Viewbox
 * 
 * @typedef {{
-*   props: TrackFragment
-*   details: TrackDetails
-*   info: {duration: number}
-*   cloudInfo: CloudData
-*   localFile: boolean
-* }} AutosaveObject
-* 
-* @typedef {{
-*   "tutorial"?: string
-*   "Main"?: string
-*   "Sidebar"?: string
-*   "About"?: string
-*   "TrackLoader"?: string
-*   "TrackSaver"?: string
-*   "undefined": ?
-* }} ViewInfo
+*   color: boolean
+*   flag: ?boolean
+*   skeleton: number
+* }} ViewSettings
 */
 
 const Enums = (function() {
   /** Hotkey ids for various commands */
   const COMMANDS = {
     TRIGGERS: {
-      PENCIL_TOOL: "triggers.pencilTool",
-      LINE_TOOL: "triggers.lineTool",
+      ACCEL_SWATCH: "triggers.accelSwatch",
       ERASER_TOOL: "triggers.eraserTool",
-      SELECT_TOOL: "triggers.selectTool",
+      FLAG: "triggers.flag",
+      GO_TO_START: "triggers.goToStart",
+      LINE_TOOL: "triggers.lineTool",
+      NEXT_FRAME: "triggers.nextFrame",
+      NORMAL_SWATCH: "triggers.normalSwatch",
+      ONION_SKINNING: "triggers.toggleOnionSkin",
+      OPEN: "triggers.open",
       PAN_TOOL: "triggers.panTool",
-      ZOOM_TOOL: "triggers.zoomTool",
+      PENCIL_TOOL: "triggers.pencilTool",
       PLAY: "triggers.play",
       PLAY_EDITOR_ZOOM: "triggers.playWithEditorZoom",
-      STOP: "triggers.stop",
-      FLAG: "triggers.flag",
       PLAY_PAUSE: "triggers.playPause",
       PLAY_PAUSE_EDITOR_ZOOM: "triggers.playWithEditorZoomPause",
-      TOGGLE_SLOW: "triggers.toggleSlowMotion",
-      REMOVE_LAST_LINE: "triggers.removeLastLine",
-      UNDO: "triggers.undo",
-      REDO: "triggers.redo",
-      NORMAL_SWATCH: "triggers.normalSwatch",
-      ACCEL_SWATCH: "triggers.accelSwatch",
-      SCENERY_SWATCH: "triggers.scenerySwatch",
-      NEXT_FRAME: "triggers.nextFrame",
-      PREV_FRAME: "triggers.prevFrame",
-      SAVE: "triggers.save",
-      OPEN: "triggers.open",
-      GO_TO_START: "triggers.goToStart",
-      ONION_SKINNING: "triggers.toggleOnionSkin",
-      SKELETON_VIEW: "triggers.toggleSkeleton",
       PLAYBACK_CAMERA: "triggers.showPlaybackCamera",
       PLAYBACK_PREVIEW: "triggers.togglePlaybackPreview",
+      PREV_FRAME: "triggers.prevFrame",
+      REDO: "triggers.redo",
+      REMOVE_LAST_LINE: "triggers.removeLastLine",
+      SAVE: "triggers.save",
+      SCENERY_SWATCH: "triggers.scenerySwatch",
       Select: {
-        COPY: "triggers.select.copy",
-        PASTE: "triggers.select.paste",
-        DUPLICATE: "triggers.select.duplicate",
-        DESELECT: "triggers.select.deselect",
-        COPY_CLIPBOARD: "triggers.select.clipboard.copy",
-        PASTE_CLIPBOARD: "triggers.select.clipboard.paste",
-        CONVERT_NORMAL: "triggers.select.convertToNormal",
         CONVERT_ACCEL: "triggers.select.convertToAccel",
+        CONVERT_NORMAL: "triggers.select.convertToNormal",
         CONVERT_SCENERY: "triggers.select.convertToScenery",
-        REVERSE_LINE: "triggers.select.reverseLine",
-        MOVE_UP: "triggers.select.moveUp",
-        MOVE_LEFT: "triggers.select.moveLeft",
+        COPY: "triggers.select.copy",
+        COPY_CLIPBOARD: "triggers.select.clipboard.copy",
+        DESELECT: "triggers.select.deselect",
+        DUPLICATE: "triggers.select.duplicate",
         MOVE_DOWN: "triggers.select.moveDown",
-        MOVE_RIGHT: "triggers.select.moveRight"
-      }
+        MOVE_LEFT: "triggers.select.moveLeft",
+        MOVE_RIGHT: "triggers.select.moveRight",
+        MOVE_UP: "triggers.select.moveUp",
+        PASTE: "triggers.select.paste",
+        PASTE_CLIPBOARD: "triggers.select.clipboard.paste",
+        REVERSE_LINE: "triggers.select.reverseLine"
+      },
+      SELECT_TOOL: "triggers.selectTool",
+      SKELETON_VIEW: "triggers.toggleSkeleton",
+      STOP: "triggers.stop",
+      TOGGLE_SLOW: "triggers.toggleSlowMotion",
+      UNDO: "triggers.undo",
+      ZOOM_TOOL: "triggers.zoomTool"
     },
     MODIFIERS: {
+      ANGLE_LOCK: "modifiers.angleLock",
       ANGLE_SNAP: "modifiers.angleSnap",
-      NO_POINT_SNAP: "modifiers.disablePointSnap",
+      FAST_FORWARD: "modifiers.fastForward",
       FLIP_LINE: "modifiers.flipLine",
       FORCE_ZOOM: "modifiers.forceZoom",
-      PLAYBACK_CAM_MDF: "modifiers.showPlaybackCamera",
       LOCK_EDITOR_CAM: "modifiers.lockEditorCamera",
-      ANGLE_LOCK: "modifiers.angleLock",
-      FAST_FORWARD: "modifiers.fastForward",
+      NO_POINT_SNAP: "modifiers.disablePointSnap",
+      PLAYBACK_CAM_MDF: "modifiers.showPlaybackCamera",
       REWIND: "modifiers.rewind",
       SELECT: {
         ADD: "modifiers.select.add",
-        SUBTRACT: "modifiers.select.subtract",
-        POINT: "modifiers.select.singlePoint",
         DUPLICATE: "modifiers.select.duplicate",
         FINE_NUDGE: "modifiers.select.fineNudge",
-        TRANSFORM_STATE: "modifiers.select.transformState",
+        POINT: "modifiers.select.singlePoint",
+        SUBTRACT: "modifiers.select.subtract",
+        TRANSFORM_STATE: "modifiers.select.transformState"
       }
     }
   };
@@ -290,13 +288,13 @@ const Enums = (function() {
 
   /** Available editor tools */
   const TOOLS = {
-    ZOOM: 'ZOOM_TOOL',
-    SELECT: 'SELECT_TOOL',
-    PENCIL: 'PENCIL_TOOL',
-    PAN: 'PAN_TOOL',
-    LINE: 'LINE_TOOL',
-    ERASER: 'ERASER_TOOL',
-    ADJUST_START: 'ADJUST_START_TOOL'
+    ADJUST_START: "ADJUST_START_TOOL",
+    ERASER: "ERASER_TOOL",
+    LINE: "LINE_TOOL",
+    PAN: "PAN_TOOL",
+    PENCIL: "PENCIL_TOOL",
+    SELECT: "SELECT_TOOL",
+    ZOOM: "ZOOM_TOOL"
   };
 
   /** Modes of playback refresh rates */
@@ -315,31 +313,31 @@ const Enums = (function() {
 
   /** Separate viewable pages */
   const VIEWS = {
-    MAIN: 'MAIN',
-    SIDEBAR: 'SIDEBAR',
-    ABOUT: 'ABOUT',
-    TRACK_LOADER: 'TRACK_LOADER',
-    TRACK_SAVER: 'TRACK_SAVER',
-    VIDEO_EXPORTER: 'VIDEO_EXPORTER',
-    RELEASE_NOTES: 'RELEASE_NOTES'
+    ABOUT: "ABOUT",
+    MAIN: "MAIN",
+    RELEASE_NOTES: "RELEASE_NOTES",
+    SIDEBAR: "SIDEBAR",
+    TRACK_LOADER: "TRACK_LOADER",
+    TRACK_SAVER: "TRACK_SAVER",
+    VIDEO_EXPORTER: "VIDEO_EXPORTER"
   };
 
   /** Subpages within each of the viewable pages */
   const PAGES = {
     [VIEWS.MAIN]: {
-      EDITOR: 'editor',
-      VIEWER: 'viewer',
-      EDITABLE_VIEWER: 'editable-viewer'
+      EDITABLE_VIEWER: "editable-viewer",
+      EDITOR: "editor",
+      VIEWER: "viewer"
     },
     [VIEWS.SIDEBAR]: {
-      SHARE: 'share',
-      INFO: 'info',
-      SETTINGS: 'settings',
-      HELP: 'help'
+      HELP: "help",
+      INFO: "info",
+      SETTINGS: "settings",
+      SHARE: "share"
     },
     [VIEWS.ABOUT]: {
-      LAUNCH: 'launch',
-      LOADING: 'loading'
+      LAUNCH: "launch",
+      LOADING: "loading"
     },
     [VIEWS.TRACK_LOADER]: {
       LOAD: 'load'
@@ -1558,7 +1556,7 @@ const Selectors = (function() {
     duration: state => getPlayerMaxIndex(state)
   });
 
-  /** Track data important for autosaving @type {AutosaveObject} */
+  /** Track data important for autosaving @type {AutosaveData} */
   const getTrackObjectForAutosave = Reselect.createStructuredSelector({
     props: getTrackProps,
     details: getTrackDetails,
@@ -1593,7 +1591,7 @@ const Selectors = (function() {
     return state.ui.controlsActive;
   }
 
-  /** Information about currently active ui components @returns {ViewInfo} */
+  /** Information about currently active ui components @returns {CurrentViews} */
   function getViews(state) {
     return state.views;
   }
