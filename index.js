@@ -17,7 +17,6 @@ copies or substantial portions of the Software.
 */
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
-// TODO enforce single quotes linting
 // TODO replace enum instances and use cases with purely jsdoc comments
 // TODO possibly split up everything into multiple files?
 // TODO create testing for actions and selectors
@@ -368,16 +367,16 @@ const Enums = (function() {
       LOADING: "loading"
     },
     [VIEWS.TRACK_LOADER]: {
-      LOAD: 'load'
+      LOAD: "load"
     },
     [VIEWS.TRACK_SAVER]: {
-      SAVE: 'save'
+      SAVE: "save"
     },
     [VIEWS.VIDEO_EXPORTER]: {
-      EXPORT: 'export'
+      EXPORT: "export"
     },
     [VIEWS.RELEASE_NOTES]: {
-      NOTES: 'notes'
+      NOTES: "notes"
     }
   };
 
@@ -408,10 +407,10 @@ const Enums = (function() {
 */
 const Actions = (function() {
   /** Toggle audio volume */
-  const toggleAudio = () => ({ type: 'TOGGLE_AUDIO' });
+  const toggleAudio = () => ({ type: "TOGGLE_AUDIO" });
 
   /** Remove the current audio file */
-  const removeAudio = () => ({ type: 'REMOVE_AUDIO' });
+  const removeAudio = () => ({ type: "REMOVE_AUDIO" });
 
   /**
   * Set the offset of the audio file
@@ -421,7 +420,7 @@ const Actions = (function() {
   * Actions.setAudioOffset(2)
   */
   const setAudioOffset = (offset = 0) => ({
-    type: 'SET_AUDIO_OFFSET',
+    type: "SET_AUDIO_OFFSET",
     payload: offset
   });
 
@@ -433,12 +432,12 @@ const Actions = (function() {
   * Actions.setAudioVolume(0.5)
   */
   const setAudioVolume = (volume = 1) => ({
-    type: 'SET_AUDIO_VOLUME',
+    type: "SET_AUDIO_VOLUME",
     payload: volume
   });
 
   /** Load the last cached autosave */
-  const loadAutosave = () => ({ type: 'LOAD_AUTOSAVE' });
+  const loadAutosave = () => ({ type: "LOAD_AUTOSAVE" });
 
   /**
   * Set the properties of the editor camera
@@ -449,7 +448,7 @@ const Actions = (function() {
   * Actions.setEditorCamera({x: 0, y: -20}, 5)
   */
   const setEditorCamera = (position, zoom) => ({
-    type: 'SET_EDITOR_CAMERA',
+    type: "SET_EDITOR_CAMERA",
     payload: { position, zoom }
   });
 
@@ -461,7 +460,7 @@ const Actions = (function() {
   * Actions.setEditorFollowerFocus(1)
   */
   const setEditorFollowerFocus = (focusIndex = 0) => ({
-    type: 'SET_EDITOR_FOLLOWER_FOCUS',
+    type: "SET_EDITOR_FOLLOWER_FOCUS",
     payload: focusIndex
   });
 
@@ -473,7 +472,7 @@ const Actions = (function() {
   * Actions.setPlaybackZoom(4)
   */
   const setPlaybackZoom = (zoom = 2) => ({
-    type: 'SET_PLAYBACK_ZOOM',
+    type: "SET_PLAYBACK_ZOOM",
     payload: zoom
   });
 
@@ -485,12 +484,12 @@ const Actions = (function() {
   * Actions.setPlaybackFollowerFocus([1, 0, 1])
   */
   const setPlaybackFollowerFocus = (focusList) => ({
-    type: 'SET_PLAYBACK_FOLLOWER_FOCUS',
+    type: "SET_PLAYBACK_FOLLOWER_FOCUS",
     payload: focusList
   });
 
   /** Toggle whether the editor camera should keep the target rider in view */
-  const toggleEditorFollower = () => ({ type: 'TOGGLE_SETTING', payload: {key: 'cam.useEditorFollower'} });
+  const toggleEditorFollower = () => ({ type: "TOGGLE_SETTING", payload: {key: "cam.useEditorFollower"} });
 
   /**
   * Set viewport dimensions of the playback camera
@@ -500,7 +499,7 @@ const Actions = (function() {
   * Actions.setPlaybackDimensions({ width: 1920, height: 1080 })
   */
   const setPlaybackDimensions = (dimensions) => ({
-    type: 'SET_PLAYBACK_DIMENSIONS',
+    type: "SET_PLAYBACK_DIMENSIONS",
     payload: dimensions
   });
 
@@ -512,7 +511,7 @@ const Actions = (function() {
   * Actions.triggerCommand(Enums.COMMANDS.TRIGGERS.SKELETON_VIEW)
   */
   const triggerCommand = (command) => ({
-    type: 'TRIGGER_COMMAND',
+    type: "TRIGGER_COMMAND",
     payload: command,
     meta: { ignorable: true }
   });
@@ -525,7 +524,7 @@ const Actions = (function() {
   * Actions.beginModifierCommand(Enums.COMMANDS.MODIFIERS.FAST_FORWARD)
   */
   const beginModifierCommand = (command) => ({
-    type: 'BEGIN_MODIFIER_COMMAND',
+    type: "BEGIN_MODIFIER_COMMAND",
     payload: command,
     meta: { ignorable: true }
   });
@@ -538,7 +537,7 @@ const Actions = (function() {
   * Actions.endModifierCommand(Enums.COMMANDS.MODIFIERS.FAST_FORWARD)
   */
   const endModifierCommand = (command) => ({
-    type: 'END_MODIFIER_COMMAND',
+    type: "END_MODIFIER_COMMAND",
     payload: command,
     meta: { ignorable: true }
   });
@@ -551,12 +550,12 @@ const Actions = (function() {
   * Actions.setCommandHotkeys({Enums.COMMANDS.TRIGGERS.FLAG: 'f'})
   */
   const setCommandHotkeys = (commandHotkeys) => ({
-    type: 'SET_COMMAND_HOTKEYS',
+    type: "SET_COMMAND_HOTKEYS",
     payload: commandHotkeys
   });
 
   /** Toggle locked track lines */
-  const toggleTrackLinesLocked = () => ({ type: 'TOGGLE_TRACK_LINES_LOCKED' });
+  const toggleTrackLinesLocked = () => ({ type: "TOGGLE_TRACK_LINES_LOCKED" });
 
   /**
   * Change the color swatch of the current tool (if available)
@@ -566,7 +565,7 @@ const Actions = (function() {
   * Actions.selectLineType(Enums.LINE_TYPES.REGULAR)
   */
   const selectLineType = (lineType = 0) => ({
-    type: 'SELECT_LINE_TYPE',
+    type: "SELECT_LINE_TYPE",
     payload: lineType
   });
 
@@ -578,7 +577,7 @@ const Actions = (function() {
   * Actions.setTool(Enums.TOOLS.ERASER)
   */
   const setTool = (tool = "PENCIL_TOOL") => ({
-    type: 'SET_TOOL',
+    type: "SET_TOOL",
     payload: tool
   });
 
@@ -598,7 +597,7 @@ const Actions = (function() {
   * Action.revertTrackChanges()
   */
   const updateLines = (name, linesToRemove, linesToAdd) => ({
-    type: 'UPDATE_LINES',
+    type: "UPDATE_LINES",
     payload: { linesToRemove, linesToAdd, initialLoad: false },
     meta: { name }
   });
@@ -616,7 +615,7 @@ const Actions = (function() {
   * Action.commitTrackChanges()
   * Action.revertTrackChanges()
   */
-  const addLines = (lines) => updateLines('ADD_LINES', null, lines);
+  const addLines = (lines) => updateLines("ADD_LINES", null, lines);
 
   /**
   * Remove a list of lines given their ids
@@ -627,22 +626,22 @@ const Actions = (function() {
   * Action.commitTrackChanges()
   * Action.revertTrackChanges() 
   */
-  const removeLines = (lineIds) => updateLines('REMOVE_LINES', lineIds, null);
+  const removeLines = (lineIds) => updateLines("REMOVE_LINES", lineIds, null);
 
   /** Decrement engine state to previous point in history if available */
-  const undoAction = () => ({ type: 'UNDO' });
+  const undoAction = () => ({ type: "UNDO" });
 
   /** Increment engine state to next point in history if available */
-  const redoAction = () => ({ type: 'REDO' });
+  const redoAction = () => ({ type: "REDO" });
 
   /** Commit track changes to committed engine state */
-  const commitTrackChanges = () => ({ type: 'COMMIT_TRACK_CHANGES' });
+  const commitTrackChanges = () => ({ type: "COMMIT_TRACK_CHANGES" });
 
   /** Clear track changes from uncommitted engine state */
-  const revertTrackChanges = () => ({ type: 'REVERT_TRACK_CHANGES', meta: { ignorable: true } });
+  const revertTrackChanges = () => ({ type: "REVERT_TRACK_CHANGES", meta: { ignorable: true } });
 
   /** Add a new layer */
-  const addLayer = () => ({ type: 'ADD_LAYER' });
+  const addLayer = () => ({ type: "ADD_LAYER" });
 
   /**
   * Remove layer given a layer id
@@ -654,7 +653,7 @@ const Actions = (function() {
   * Action.revertTrackChanges() 
   */
   const removeLayer = (id) => ({
-    type: 'REMOVE_LAYER',
+    type: "REMOVE_LAYER",
     payload: {id}
   });
 
@@ -669,7 +668,7 @@ const Actions = (function() {
   * Action.revertTrackChanges() 
   */
   const moveLayer = (id, index) => ({
-    type: 'MOVE_LAYER',
+    type: "MOVE_LAYER",
     payload: {id, index}
   });
 
@@ -684,7 +683,7 @@ const Actions = (function() {
   * Action.revertTrackChanges() 
   */
   const renameLayer = (id, name) => ({
-    type: 'RENAME_LAYER',
+    type: "RENAME_LAYER",
     payload: {id, name}
   });
 
@@ -698,7 +697,7 @@ const Actions = (function() {
   * Action.revertTrackChanges() 
   */
   const setLayerActive = (id) => ({
-    type: 'SET_LAYER_ACTIVE',
+    type: "SET_LAYER_ACTIVE",
     payload: {id}
   });
 
@@ -713,7 +712,7 @@ const Actions = (function() {
   * Action.revertTrackChanges() 
   */
   const setLayerVisible = (id, visible = true) => ({
-    type: 'SET_LAYER_VISIBLE',
+    type: "SET_LAYER_VISIBLE",
     payload: {id, visible}
   });
 
@@ -728,7 +727,7 @@ const Actions = (function() {
   * Action.revertTrackChanges() 
   */
   const setLayerEditable = (id, editable = true) => ({
-    type: 'SET_LAYER_EDITABLE',
+    type: "SET_LAYER_EDITABLE",
     payload: {id, editable}
   });
 
@@ -742,7 +741,7 @@ const Actions = (function() {
   * Action.revertTrackChanges()
   */
   const setRiders = (riders) => ({
-    type: 'SET_RIDERS',
+    type: "SET_RIDERS",
     payload: riders
   });
 
@@ -755,7 +754,7 @@ const Actions = (function() {
   * Actions.showNotification("Hello, world!")
   */
   const showNotification = (message, autoHide = true) => ({
-    type: 'notifications/SHOW_NOTIFICATION',
+    type: "notifications/SHOW_NOTIFICATION",
     payload: { message, autoHide }
   });
 
@@ -767,7 +766,7 @@ const Actions = (function() {
   * Actions.hideNotification("Hello, world!")
   */
   const hideNotification = (message) => ({
-    type: 'notifications/HIDE_NOTIFICATION',
+    type: "notifications/HIDE_NOTIFICATION",
     payload: message
   });
 
@@ -779,12 +778,12 @@ const Actions = (function() {
   * Actions.setPlayerFps(24)
   */
   const setPlayerFps = (fps = 40) => ({
-    type: 'SET_PLAYER_FPS',
+    type: "SET_PLAYER_FPS",
     payload: fps
   });
 
   /** Toggle smooth playback */
-  const toggleInterpolate = () => ({ type: 'TOGGLE_INTERPOLATE' });
+  const toggleInterpolate = () => ({ type: "TOGGLE_INTERPOLATE" });
   
   /** 
   * Toggle different smooth playback modes
@@ -794,27 +793,27 @@ const Actions = (function() {
   * Actions.setInterpolate(60)
   */
   const setInterpolate = (playbackMode = true) => ({
-    type: 'SET_INTERPOLATE',
+    type: "SET_INTERPOLATE",
     payload: playbackMode
   });
 
   /** Toggle slow motion playback */
-  const toggleSlowMotion = () => ({ type: 'TOGGLE_SLOW_MOTION' });
+  const toggleSlowMotion = () => ({ type: "TOGGLE_SLOW_MOTION" });
 
   /** Increment player timeline index if possible */
-  const incPlayerIndex = () => ({ type: 'INC_PLAYER_INDEX' });
+  const incPlayerIndex = () => ({ type: "INC_PLAYER_INDEX" });
 
   /** Decrement player timeline index if possible */
-  const decPlayerIndex = () => ({ type: 'DEC_PLAYER_INDEX' });
+  const decPlayerIndex = () => ({ type: "DEC_PLAYER_INDEX" });
 
   /** Start playback */
-  const startPlayer = () => ({ type: 'START_PLAYER' });
+  const startPlayer = () => ({ type: "START_PLAYER" });
 
   /** Stop playback */
-  const stopPlayer = () => ({ type: 'STOP_PLAYER' });
+  const stopPlayer = () => ({ type: "STOP_PLAYER" });
 
   /** Set the flag at the current timeline position */
-  const setFlag = () => ({ type: 'SET_FLAG' });
+  const setFlag = () => ({ type: "SET_FLAG" });
 
   /**
   * Set the timeline index
@@ -824,7 +823,7 @@ const Actions = (function() {
   * Actions.setFrameIndex(0)
   */
   const setFrameIndex = (index) => ({
-    type: 'SET_PLAYER_INDEX',
+    type: "SET_PLAYER_INDEX",
     payload: index
   });
 
@@ -836,7 +835,7 @@ const Actions = (function() {
   * Actions.setPlayerMaxIndex(80)
   */
   const setPlayerMaxIndex = (maxIndex = 1200) => ({
-    type: 'SET_PLAYER_MAX_INDEX',
+    type: "SET_PLAYER_MAX_INDEX",
     payload: maxIndex
   });
 
@@ -848,7 +847,7 @@ const Actions = (function() {
   * Actions.setFlagIndex(40)
   */
   const setFlagIndex = (flagIndex) => ({
-    type: 'SET_FLAG_INDEX',
+    type: "SET_FLAG_INDEX",
     payload: flagIndex
   });
 
@@ -860,7 +859,7 @@ const Actions = (function() {
   * Actions.setPlayerRunning(true)
   */
   const setPlayerRunning = (running) => ({
-    type: 'SET_PLAYER_RUNNING',
+    type: "SET_PLAYER_RUNNING",
     payload: running
   });
 
@@ -872,7 +871,7 @@ const Actions = (function() {
   * Actions.setPlayerFastForward(true)
   */
   const setPlayerFastForward = (fastForward) => ({
-    type: 'SET_PLAYER_FAST_FORWARD',
+    type: "SET_PLAYER_FAST_FORWARD",
     payload: fastForward
   });
 
@@ -884,7 +883,7 @@ const Actions = (function() {
   * Actions.setPlayerRewind(true)
   */
   const setPlayerRewind = (rewind) => ({
-    type: 'SET_PLAYER_REWIND',
+    type: "SET_PLAYER_REWIND",
     payload: rewind
   });
 
@@ -895,7 +894,7 @@ const Actions = (function() {
   * Actions.setPlayerStopAtEnd(false)
   */
   const setPlayerStopAtEnd = (stopAtEnd = false) => ({
-    type: 'SET_PLAYER_STOP_AT_END',
+    type: "SET_PLAYER_STOP_AT_END",
     payload: stopAtEnd
   });
 
@@ -909,7 +908,7 @@ const Actions = (function() {
   * })
   */
   const setPlayerSettings = (settings) => ({
-    type: 'SET_PLAYER_SETTINGS',
+    type: "SET_PLAYER_SETTINGS",
     payload: settings
   });
 
@@ -922,7 +921,7 @@ const Actions = (function() {
   * Actions.setViewOption('playbackPreview', false)
   */
   const setViewOption = (viewOption, value) => ({
-    type: 'SET_VIEW_OPTION',
+    type: "SET_VIEW_OPTION",
     payload: {
       key: viewOption,
       value
@@ -930,19 +929,19 @@ const Actions = (function() {
   });
 
   /** Toggle whether flags render */
-  const toggleFlag = () => setViewOption('flag', null);
+  const toggleFlag = () => setViewOption("flag", null);
 
   /** Toggle color playback */
-  const toggleColorPlayback = () => setViewOption('colorPlayback', null);
+  const toggleColorPlayback = () => setViewOption("colorPlayback", null);
 
   /** Toggle playback preview */
-  const togglePlaybackPreview = () => setViewOption('playbackPreview', null);
+  const togglePlaybackPreview = () => setViewOption("playbackPreview", null);
 
   /** Toggle whether viewport dimensions are shown */
-  const toggleViewport = () => setViewOption('showViewport', null);
+  const toggleViewport = () => setViewOption("showViewport", null);
 
   /** Toggle whether visible areas are shown */
-  const toggleVisibleAreas = () => setViewOption('showVisibleAreas', null);
+  const toggleVisibleAreas = () => setViewOption("showVisibleAreas", null);
 
   /**
   * Toggle onion skinning
@@ -952,7 +951,7 @@ const Actions = (function() {
   * Actions.setOnionSkin(true)
   */
   const setOnionSkin = (onionSkin) => ({
-    type: 'SET_ONION_SKIN',
+    type: "SET_ONION_SKIN",
     payload: onionSkin
   });
 
@@ -964,7 +963,7 @@ const Actions = (function() {
   * Actions.setOnionSkinFramesBefore(5)
   */
   const setOnionSkinFramesBefore = (framesBefore = 20) => ({
-    type: 'SET_ONION_SKIN_FRAMES_BEFORE',
+    type: "SET_ONION_SKIN_FRAMES_BEFORE",
     payload: framesBefore
   });
 
@@ -976,7 +975,7 @@ const Actions = (function() {
   * Actions.setOnionSkinFramesAfter(10)
   */
   const setOnionSkinFramesAfter = (framesAfter = 20) => ({
-    type: 'SET_ONION_SKIN_FRAMES_AFTER',
+    type: "SET_ONION_SKIN_FRAMES_AFTER",
     payload: framesAfter
   });
 
@@ -988,7 +987,7 @@ const Actions = (function() {
   * Actions.setSkeleton(Enums.SKELETON_MODES.NORMAL_SKELETON)
   */
   const setSkeleton = (skeletonMode = 0) => ({
-    type: 'SET_SKELETON',
+    type: "SET_SKELETON",
     payload: skeletonMode
   });
 
@@ -1000,7 +999,7 @@ const Actions = (function() {
   * Actions.setAutosaveEnabled(false)
   */
   const setAutosaveEnabled = (enabled = true) => ({
-    type: 'SET_AUTOSAVE_ENABLED',
+    type: "SET_AUTOSAVE_ENABLED",
     payload: enabled
   });
 
@@ -1012,13 +1011,13 @@ const Actions = (function() {
   * Actions.newTrack(true)
   */
   const newTrack = (isV61 = false) => ({
-    type: 'NEW_TRACK',
+    type: "NEW_TRACK",
     payload: {
       startPosition: { x: 0, y: 0 },
-      version: isV61 ? '6.1' : '6.2',
-      label: '',
-      creator: '',
-      description: '',
+      version: isV61 ? "6.1" : "6.2",
+      label: "",
+      creator: "",
+      description: "",
       dirty: false,
       saveTime: null,
       viewOnly: false,
@@ -1041,7 +1040,7 @@ const Actions = (function() {
   * })
   */
   const loadTrackAction = (trackData) => ({
-    type: 'LOAD_TRACK',
+    type: "LOAD_TRACK",
     payload: {
       viewOnly: trackData["for viewing only, please don't steal tracks"] === true,
       ...trackData
@@ -1058,7 +1057,7 @@ const Actions = (function() {
   * Actions.setTrackDetails("Test Track", "Me", "")
   */
   const setTrackDetails = (title, creator, description) => ({
-    type: 'trackData/SET_TRACK_DETAILS',
+    type: "trackData/SET_TRACK_DETAILS",
     payload: {
       title,
       creator,
@@ -1074,7 +1073,7 @@ const Actions = (function() {
   * Actions.setLocalFile(true)
   */
   const setLocalFile = (saveToFile = false) => ({
-    type: 'trackData/SET_LOCAL_FILE',
+    type: "trackData/SET_LOCAL_FILE",
     payload: saveToFile
   });
 
@@ -1085,8 +1084,8 @@ const Actions = (function() {
   * // Clear the script
   * Actions.setTrackScript('')
   */
-  const setTrackScript = (script = '') => ({
-    type: 'trackData/SET_TRACK_SCRIPT',
+  const setTrackScript = (script = "") => ({
+    type: "trackData/SET_TRACK_SCRIPT",
     payload: script
   });
 
@@ -1098,12 +1097,12 @@ const Actions = (function() {
   * Actions.setControlsActive(false)
   */
   const setControlsActive = (active) => ({
-    type: 'SET_CONTROLS_ACTIVE',
+    type: "SET_CONTROLS_ACTIVE",
     payload: active
   });
 
   /** Toggle whether the timeline is active */
-  const toggleControlsActive = () => ({ type: 'TOGGLE_CONTROLS_ACTIVE' });
+  const toggleControlsActive = () => ({ type: "TOGGLE_CONTROLS_ACTIVE" });
 
   return {
     addLayer,
@@ -1233,7 +1232,7 @@ const Selectors = (function() {
 
   /** Keep rider in view while scrubbing timeline @returns {boolean} */
   function getUseEditorFollower(state) {
-    return state.settings['cam.useEditorFollower'];
+    return state.settings["cam.useEditorFollower"];
   }
 
   /** Editor canvas dimensions @returns {Dimensions} */
@@ -1327,7 +1326,7 @@ const Selectors = (function() {
 
   /** Zoom slider active @return {boolean} */
   function getZoomSliderActive(state) {
-    return getModifier(state, 'modifiers.zoom');
+    return getModifier(state, "modifiers.zoom");
   }
 
   /** Current active notification @type {EditorNotification} */
@@ -1429,22 +1428,22 @@ const Selectors = (function() {
 
   /** Current track saving progress @returns {Progress} */
   function getTrackSaverProgress(state) {
-    return state.progress['SAVE_TRACK'];
+    return state.progress["SAVE_TRACK"];
   }
 
   /** Track saving in progress @returns {boolean} */
   function getTrackSaverInProgress(state) {
-    return state.progress['SAVE_TRACK'].percent != null;
+    return state.progress["SAVE_TRACK"].percent != null;
   }
 
   /** Current track loading progress @returns {Progress} */
   function getTrackLoaderProgress(state) {
-    return state.progress['LOAD_TRACK'];
+    return state.progress["LOAD_TRACK"];
   }
 
   /** Current track autosaving progress @returns {Progress} */
   function getAutosaveProgress(state) {
-    return state.progress['AUTOSAVE'];
+    return state.progress["AUTOSAVE"];
   }
 
   /** Onion skinning start index @returns {number} */
@@ -1508,7 +1507,7 @@ const Selectors = (function() {
 
   /** Track version @returns {'6.1' | '6.2'} */
   function getSimulatorVersion(state) {
-    return state.simulator.engine.isLegacy() ? '6.1' : '6.2';
+    return state.simulator.engine.isLegacy() ? "6.1" : "6.2";
   }
 
   /** Track total line count @returns {number} */
