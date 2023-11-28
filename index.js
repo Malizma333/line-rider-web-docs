@@ -17,13 +17,14 @@ copies or substantial portions of the Software.
 */
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
-// TODO Put enums into jsdoc comments
+// TODO add selector namespace documentation
+// TODO make action enums?
 // TODO possibly split up everything into multiple files?
 // TODO create testing for actions and selectors
 // TODO convert jsdoc comments into multiple markdown files
 // TODO minify everything into one file
 
-/**
+/** Full audio data
 * @typedef {{
 *   enabled: boolean
 *   name: ?string
@@ -31,18 +32,24 @@ copies or substantial portions of the Software.
 *   path: ?string
 *   volume: number
 * }} AudioData
-* 
+*/
+
+/** Partial audio data used in saves
 * @typedef {{
 *   name: ?string
 *   offset: number
 *   path: ?string
 * }} AudioDataFragment
-* 
+*/
+
+/** Audio file loader properties
 * @typedef {{
 *   error: ?string
 *   loadingFile: boolean
 * }} AudioLoader
-* 
+*/
+
+/** Data important to autosaving
 * @typedef {{
 *   cloudInfo: CloudInfo
 *   details: TrackDetails
@@ -50,12 +57,16 @@ copies or substantial portions of the Software.
 *   localFile: boolean
 *   props: TrackFragment
 * }} AutosaveData
-* 
+*/
+
+/** Camera position and zoom properties
 * @typedef {{
 *   position: V2
 *   zoom: number
 * }} Camera
-* 
+*/
+
+/** Cloud base properties
 * @typedef {{
 *   derivativeKey: string
 *   derivedFrom: DerivedFrom
@@ -65,39 +76,111 @@ copies or substantial portions of the Software.
 *   versionTitle: string
 *   versionId: string
 * }} CloudInfo
-* 
+*/
+
+/** Cloud save peroperties
 * @typedef {{
 *   cloudInfo: CloudInfo
 *   details: TrackDetails
 * }} CloudSave
-* 
+*/
+
+/** Available hotkey triggers and modifiers 
+* @typedef {...
+*   "triggers.accelSwatch" |
+*   "triggers.eraserTool" |
+*   "triggers.flag" |
+*   "triggers.goToStart" |
+*   "triggers.lineTool" |
+*   "triggers.nextFrame" |
+*   "triggers.normalSwatch" |
+*   "triggers.toggleOnionSkin" |
+*   "triggers.open" |
+*   "triggers.panTool" |
+*   "triggers.pencilTool" |
+*   "triggers.play" |
+*   "triggers.playWithEditorZoom" |
+*   "triggers.playPause" |
+*   "triggers.playWithEditorZoomPause" |
+*   "triggers.showPlaybackCamera" |
+*   "triggers.togglePlaybackPreview" |
+*   "triggers.prevFrame" |
+*   "triggers.redo" |
+*   "triggers.removeLastLine" |
+*   "triggers.save" |
+*   "triggers.scenerySwatch" |
+*   "triggers.select.convertToAccel" |
+*   "triggers.select.convertToNormal" |
+*   "triggers.select.convertToScenery" |
+*   "triggers.select.copy" |
+*   "triggers.select.clipboard.copy" |
+*   "triggers.select.deselect" |
+*   "triggers.select.duplicate" |
+*   "triggers.select.moveDown" |
+*   "triggers.select.moveLeft" |
+*   "triggers.select.moveRight" |
+*   "triggers.select.moveUp" |
+*   "triggers.select.paste" |
+*   "triggers.select.clipboard.paste" |
+*   "triggers.select.reverseLine" |
+*   "triggers.selectTool" |
+*   "triggers.toggleSkeleton" |
+*   "triggers.stop" |
+*   "triggers.toggleSlowMotion" |
+*   "triggers.undo" |
+*   "triggers.zoomTool" |
+*   "modifiers.angleLock" |
+*   "modifiers.angleSnap" |
+*   "modifiers.fastForward" |
+*   "modifiers.flipLine" |
+*   "modifiers.forceZoom" |
+*   "modifiers.lockEditorCamera" |
+*   "modifiers.disablePointSnap" |
+*   "modifiers.showPlaybackCamera" |
+*   "modifiers.rewind" |
+*   "modifiers.select.add" |
+*   "modifiers.select.duplicate" |
+*   "modifiers.select.fineNudge" |
+*   "modifiers.select.singlePoint" |
+*   "modifiers.select.subtract" |
+*   "modifiers.select.transformState"
+* } Command
+*/
+
+/** Current ui view state
 * @typedef {{
 *   "About"?: string
 *   "Main"?: string
 *   "Sidebar"?: string
 *   "TrackLoader"?: string
 *   "TrackSaver"?: string
-*   "tutorial"?: string
-*   "undefined": ?
 * }} CurrentViews
-* 
+*/
+
+/** Cloud derived properties
 * @typedef {{
 *   creator: string
 *   title: string
 *   version: "6.1" | "6.2"
 * }} DerivedFrom
-* 
+*/
+
+/** Camera dimensions
 * @typedef {{
 *   height: number
 *   width: number
 * }} Dimensions
-* 
+*/
+
+/** Editor notification properties
 * @typedef {{
 *   autoHide: boolean
 *   message: string
 *   open: boolean
 * }} EditorNotification
-* 
+*/
+
+/** Engine state properties
 * @typedef {{
 *   _changeCount: number
 *   _computed?: Object
@@ -116,17 +199,21 @@ copies or substantial portions of the Software.
 *     riders: {buffer: Rider[]}
 *   }
 * }} Engine
-* 
+*/
+
+/** Layer properties
 * @typedef {{
 *   editable: boolean
 *   id: number
 *   name: string
 *   visible: boolean
 * }} Layer
-* 
+*/
+
+/** Main line properties
 * @typedef {{
 *   id?: number
-*   type: 0 | 1 | 2
+*   type: LineType
 *   x1: number
 *   y1: number
 *   x2: number
@@ -137,7 +224,18 @@ copies or substantial portions of the Software.
 *   multiplier?: number
 *   layer?: number
 * }} Line
-* 
+*/
+
+/** Available engine line types
+* (Blue - 0, Red - 1, Green - 2)
+* @typedef {...
+*  0 |
+*  1 |
+*  2
+* } LineType
+*/
+
+/** Extended line properties
 * @typedef {{
 *   extension?: number
 *   flipped?: boolean
@@ -154,7 +252,43 @@ copies or substantial portions of the Software.
 *   rightExtended?: boolean
 *   vec: V2
 * }} LineBase
-* 
+*/
+
+/** Pages within views
+* | Main: editor, viewer, editable-viewer
+* | Sidebar: share, info, settings, help
+* | About: loading, launch
+* | Load: load
+* | Save: save
+* | Video Export: export
+* | Release Notes: notes
+* @typedef {...
+*  "editor" |
+*  "viewer" |
+*  "editable-viewer" |
+*  "share" |
+*  "info" |
+*  "settings" |
+*  "help" |
+*  "launch" |
+*  "loading" |
+*  "load" |
+*  "save" |
+*  "export" |
+*  "notes"
+* } Page
+*/
+
+/** Playback interpolation modes
+* (Smooth - true, Physics - false, Video - 60)
+* @typedef {...
+*  true |
+*  false |
+*  60
+* } PlaybackMode
+*/
+
+/** Settings for the timeline
 * @typedef {{
 *   baseRate?: number
 *   fastForward?: number
@@ -163,20 +297,47 @@ copies or substantial portions of the Software.
 *   maxDuration?: number
 *   slowMotion?: number
 * }} PlayerSettings
-* 
+*/
+
+/** Progress data for saves/loads 
 * @typedef {{
 *   error: ?string
 *   percent: ?(true | number)
 *   status: ?boolean
 * }} Progress
-* 
+*/
+
+/** Advanced view options for the renderer
+* @typedef {...
+*   "showViewport" |
+*   "showVisibleAreas" |
+*    "playbackPreview" |
+*    "colorPlayback" |
+*    "flag" |
+*    "millionsEnabled" |
+*    "onionSkin"
+* } RendererViewOption
+*/
+
+/** Rider properties
 * @typedef {{
 *   remountable: boolean
 *   startAngle: number
 *   startPosition: {x: number, y: number}
 *   startVelocity: {x: number, y: number}
 * }} Rider
-* 
+*/
+
+/** Skeleton viewing modes
+* (Normal - 0, Normal + Skeleton - 1, Skeleton - 2)
+* @typedef {...
+*  0 |
+*  1 |
+*  2
+* } SkeletonMode
+*/
+
+/** Full track properties
 * @typedef {{
 *   audio?: AudioDataFragment
 *   creator?: string
@@ -191,19 +352,17 @@ copies or substantial portions of the Software.
 *   version: "6.1" | "6.2"
 *   viewOnly?: boolean
 * }} Track
-* 
-* @typedef {{
-*   cloudInfo: TrackDetails
-*   details: CloudInfo
-*   removed?: boolean
-* }} TrackData
-* 
+*/
+
+/** Track details
 * @typedef {{
 *   creator: string
 *   description: string
 *   title: string
 * }} TrackDetails
-* 
+*/
+
+/** Fragment of a track used in save data
 * @typedef {{
 *   audio: AudioDataFragment
 *   layers: {buffer: Layer[]}
@@ -211,162 +370,62 @@ copies or substantial portions of the Software.
 *   script: string
 *   version: "6.1" | "6.2"
 * }} TrackFragment
-* 
+*/
+
+/** Available editor tools
+* @typedef {...
+*   "ADJUST_START_TOOL" |
+*   "ERASER_TOOL" |
+*   "LINE_TOOL" |
+*   "PAN_TOOL" |
+*   "PENCIL_TOOL" |
+*   "SELECT_TOOL" |
+*   "ZOOM_TOOL"
+* } Tool
+*/
+
+/** Tool state
 * @typedef {{
 *   status: {
 *     inactive: boolean
 *   }
 * }} ToolState
-* 
+*/
+
+/** Two-dimensional vector
 * @typedef {{
 *   x: number
 *   y: number
 * }} V2
-* 
+*/
+
+/** Views containing subpages
+* @typedef {...
+* "About" |
+* "Main" |
+* "ReleaseNotes" |
+* "Sidebar" |
+* "TrackLoader" |
+* "TrackSaver" |
+* "VideoExporter"
+* } View
+*/
+
+/** Camera dimensions and zoom properties
 * @typedef {{
 *   height: number
 *   width: number
 *   zoom: number
 * }} Viewbox
-* 
+*/
+
+/** Renderer view settings
 * @typedef {{
 *   color: boolean
 *   flag: ?boolean
-*   skeleton: number
+*   skeleton: SkeletonMode
 * }} ViewSettings
 */
-
-const Enums = (function() {
-  /** Hotkey ids for various commands */
-  const COMMANDS = [
-    "triggers.accelSwatch",
-    "triggers.eraserTool",
-    "triggers.flag",
-    "triggers.goToStart",
-    "triggers.lineTool",
-    "triggers.nextFrame",
-    "triggers.normalSwatch",
-    "triggers.toggleOnionSkin",
-    "triggers.open",
-    "triggers.panTool",
-    "triggers.pencilTool",
-    "triggers.play",
-    "triggers.playWithEditorZoom",
-    "triggers.playPause",
-    "triggers.playWithEditorZoomPause",
-    "triggers.showPlaybackCamera",
-    "triggers.togglePlaybackPreview",
-    "triggers.prevFrame",
-    "triggers.redo",
-    "triggers.removeLastLine",
-    "triggers.save",
-    "triggers.scenerySwatch",
-    "triggers.select.convertToAccel",
-    "triggers.select.convertToNormal",
-    "triggers.select.convertToScenery",
-    "triggers.select.copy",
-    "triggers.select.clipboard.copy",
-    "triggers.select.deselect",
-    "triggers.select.duplicate",
-    "triggers.select.moveDown",
-    "triggers.select.moveLeft",
-    "triggers.select.moveRight",
-    "triggers.select.moveUp",
-    "triggers.select.paste",
-    "triggers.select.clipboard.paste",
-    "triggers.select.reverseLine",
-    "triggers.selectTool",
-    "triggers.toggleSkeleton",
-    "triggers.stop",
-    "triggers.toggleSlowMotion",
-    "triggers.undo",
-    "triggers.zoomTool",
-    "modifiers.angleLock",
-    "modifiers.angleSnap",
-    "modifiers.fastForward",
-    "modifiers.flipLine",
-    "modifiers.forceZoom",
-    "modifiers.lockEditorCamera",
-    "modifiers.disablePointSnap",
-    "modifiers.showPlaybackCamera",
-    "modifiers.rewind",
-    "modifiers.select.add",
-    "modifiers.select.duplicate",
-    "modifiers.select.fineNudge",
-    "modifiers.select.singlePoint",
-    "modifiers.select.subtract",
-    "modifiers.select.transformState"
-  ];
-
-  /** Numerical representation of line types */
-  const LINE_TYPES = {
-    REGULAR: 0,
-    ACCEL: 1,
-    SCENERY: 2
-  };
-
-  /** Available editor tools */
-  const TOOLS = [
-    "ADJUST_START_TOOL",
-    "ERASER_TOOL",
-    "LINE_TOOL",
-    "PAN_TOOL",
-    "PENCIL_TOOL",
-    "SELECT_TOOL",
-    "ZOOM_TOOL"
-  ];
-
-  /** Modes of playback refresh rates */
-  const PLAYBACK_MODES = {
-    FORTY: false,
-    SIXTY: 60,
-    SMOOTH: true
-  };
-
-  /** Advanced skelton views */
-  const SKELETON_MODES = {
-    NORMAL: 0,
-    NORMAL_SKELETON: 1,
-    SKELETON: 2
-  };
-
-  /** Separate viewable pages */
-  const VIEWS = [
-    "ABOUT",
-    "MAIN",
-    "RELEASE_NOTES",
-    "SIDEBAR",
-    "TRACK_LOADER",
-    "TRACK_SAVER",
-    "VIDEO_EXPORTER"
-  ];
-
-  /** Subpages within each of the viewable pages */
-  const PAGES = {
-    EDITOR: "editor",
-    VIEWER: "viewer",
-    HELPER: "help",
-    INFO: "info",
-    SETTINGS: "settings",
-    SHARE: "share",
-    LAUNCH: "launch",
-    LOADING: "loading",
-    TRACK_LOADER: "load",
-    TRACK_SAVER: "save",
-    VIDEO_EXPORTER: "export",
-    RELEASE_NOTES: "notes"
-  };
-
-  return {
-    COMMANDS,
-    LINE_TYPES,
-    PLAYBACK_MODES,
-    TOOLS,
-    SKELETON_MODES,
-    VIEWS,
-    PAGES
-  };
-})();
 
 /**
 * @summary Namespace of callable actions
@@ -482,7 +541,7 @@ const Actions = (function() {
 
   /**
   * Trigger the result of a triggerable hotkey being pressed
-  * @param {string} command Trigger Command
+  * @param {Command} command Trigger Command
   * @example
   * // Toggle skeleton view
   * Actions.triggerCommand("triggers.toggleSkeleton")
@@ -495,7 +554,7 @@ const Actions = (function() {
 
   /**
   * Trigger the beginning of a modifier hotkey being pressed
-  * @param {string} command Modifier Command
+  * @param {Command} command Modifier Command
   * @example
   * // Start fast-forwarding playback
   * Actions.beginModifierCommand("modifiers.fastForward")
@@ -508,7 +567,7 @@ const Actions = (function() {
 
   /**
   * Trigger the end of a modifier hotkey being pressed
-  * @param {string} command Modifier Command
+  * @param {Command} command Modifier Command
   * @example
   * // Stop fast-forwarding playback
   * Actions.endModifierCommand("modifiers.fastForward")
@@ -520,8 +579,8 @@ const Actions = (function() {
   });
 
   /**
-  * Change hotkeys given a series of commands and the new key value
-  * @param {{string: string}} commandHotkeys Hotkey Dictionary
+  * Change hotkeys given a map of commands to their new hotkey value
+  * @param {Object.<Command, string>} commandHotkeys Hotkey Dictionary
   * @example
   * // Set the flag hotkey to "f"
   * Actions.setCommandHotkeys({"triggers.flag": "f"})
@@ -536,7 +595,7 @@ const Actions = (function() {
 
   /**
   * Change the color swatch of the current tool (if available)
-  * @param {number} lineType Color Swatch
+  * @param {LineType} lineType Color Swatch
   * @example
   * // Set color swatch to blue
   * Actions.selectLineType(0)
@@ -548,7 +607,7 @@ const Actions = (function() {
 
   /**
   * Change current tool to target tool
-  * @param {string} tool Target Tool
+  * @param {Tool} tool Target Tool
   * @example
   * // Set tool to eraser
   * Actions.setTool("ERASER_TOOL")
@@ -764,7 +823,7 @@ const Actions = (function() {
   
   /** 
   * Toggle different smooth playback modes
-  * @param {boolean|number} playbackMode Playback Mode
+  * @param {PlaybackMode} playbackMode Playback Mode
   * @example
   * // Set playback mode to 60 fps
   * Actions.setInterpolate(60)
@@ -890,8 +949,8 @@ const Actions = (function() {
   });
 
   /**
-  * Toggle a view option given a key and the new value
-  * @param {string} viewOption Target View Option
+  * Toggle a renderer view option given a key and the new value
+  * @param {RendererViewOption} viewOption Target View Option
   * @param {?boolean} value New Value
   * @example
   * // Turn off playback preview
@@ -958,7 +1017,7 @@ const Actions = (function() {
 
   /**
   * Set the skeleton mode
-  * @param {number} skeletonMode Skeleton Mode
+  * @param {SkeletonMode} skeletonMode Skeleton Mode
   * @example
   * // Turn on both skeleton view and normal view
   * Actions.setSkeleton(1)
@@ -1084,7 +1143,7 @@ const Actions = (function() {
   /**
   * Toggle a specific view
   * @param {string} name View Key
-  * @param {Object.<string, string>} views View to Open
+  * @param {Object.<View, Page>} views View to Open
   * @example
   * // Close the sidebar
   * Actions.setViews("CLOSE_SIDEBAR", { "Sidebar": null })
@@ -1370,7 +1429,7 @@ const Selectors = (function() {
       getEditorCamera(state) ;
   }
 
-  /** Command hotkeys array @type {[string, string][]*/
+  /** Command hotkeys array @type {[Command, string][]*/
   const getCommandsToHotkeys = Reselect.createSelector(
     state => state.command.hotkeys,
     (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
@@ -1669,14 +1728,14 @@ const Selectors = (function() {
 
   /**
   * Tool state of target tool
-  * @param {string} toolId Target Tool
+  * @param {Tool} toolId Target Tool
   * @returns {ToolState}
   */
   function getToolState(state, toolId) {
     return state.toolState[toolId];
   }
 
-  /** Currently selected tool @returns {string} */
+  /** Currently selected tool @returns {Tool} */
   function getSelectedTool(state) {
     return state.selectedTool;
   }
@@ -1692,7 +1751,7 @@ const Selectors = (function() {
     return state.trackLinesLocked;
   }
 
-  /** Currently selected line type in color swatch @returns {number} */
+  /** Currently selected line type in color swatch @returns {LineType} */
   function getSelectedLineType(state) {
     return getTrackLinesLocked(state) ? 2 : state.selectedLineType ;
   }
