@@ -1,3 +1,19 @@
 # LR Userscript Utilities
 
-The purpose of this library is to streamline the linerider.com modmaking process by abstracting the more common functions needed in designing a working mod. The library's source code holds commonly needed state tree selectors and actions, functions for manipulating selector values, and templates for basic UI components. All of these methods are exposed and ready to be used anywhere in your userscript mod. To include this library, add `// @require https://raw.githubusercontent.com/Malizma333/lr-userscript-library/main/index.js` within your userscript's metadata.
+### About
+The purpose of this library is to streamline the linerider.com modmaking process by abstracting the more common functions needed in creating a working mod. The library files have been reduced to only including api functions with known functionalities that have been properly documented. There are plans to add more available functions soon once more research is done.
+
+### Current Features
+- Redux Actions
+- Redux Selectors
+- JSDoc Type Annotations
+- Minified Source File
+
+### Planned Features
+- Markdown Documentation
+- Automated Testing
+- Common UI Component Templates
+- Common Utility Algorithms
+
+### Usage
+To include this library, add `// @require https://raw.githubusercontent.com/Malizma333/lr-userscript-library/main/index.min.js` within the userscript's metadata.
