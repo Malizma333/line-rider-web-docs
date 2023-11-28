@@ -17,7 +17,8 @@ copies or substantial portions of the Software.
 */
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
-// TODO replace enum instances and use cases with purely jsdoc comments
+// TODO add view actions
+// TODO Put enums into jsdoc comments
 // TODO possibly split up everything into multiple files?
 // TODO create testing for actions and selectors
 // TODO convert jsdoc comments into multiple markdown files
@@ -238,73 +239,65 @@ copies or substantial portions of the Software.
 
 const Enums = (function() {
   /** Hotkey ids for various commands */
-  const COMMANDS = {
-    TRIGGERS: {
-      ACCEL_SWATCH: "triggers.accelSwatch",
-      ERASER_TOOL: "triggers.eraserTool",
-      FLAG: "triggers.flag",
-      GO_TO_START: "triggers.goToStart",
-      LINE_TOOL: "triggers.lineTool",
-      NEXT_FRAME: "triggers.nextFrame",
-      NORMAL_SWATCH: "triggers.normalSwatch",
-      ONION_SKINNING: "triggers.toggleOnionSkin",
-      OPEN: "triggers.open",
-      PAN_TOOL: "triggers.panTool",
-      PENCIL_TOOL: "triggers.pencilTool",
-      PLAY: "triggers.play",
-      PLAY_EDITOR_ZOOM: "triggers.playWithEditorZoom",
-      PLAY_PAUSE: "triggers.playPause",
-      PLAY_PAUSE_EDITOR_ZOOM: "triggers.playWithEditorZoomPause",
-      PLAYBACK_CAMERA: "triggers.showPlaybackCamera",
-      PLAYBACK_PREVIEW: "triggers.togglePlaybackPreview",
-      PREV_FRAME: "triggers.prevFrame",
-      REDO: "triggers.redo",
-      REMOVE_LAST_LINE: "triggers.removeLastLine",
-      SAVE: "triggers.save",
-      SCENERY_SWATCH: "triggers.scenerySwatch",
-      Select: {
-        CONVERT_ACCEL: "triggers.select.convertToAccel",
-        CONVERT_NORMAL: "triggers.select.convertToNormal",
-        CONVERT_SCENERY: "triggers.select.convertToScenery",
-        COPY: "triggers.select.copy",
-        COPY_CLIPBOARD: "triggers.select.clipboard.copy",
-        DESELECT: "triggers.select.deselect",
-        DUPLICATE: "triggers.select.duplicate",
-        MOVE_DOWN: "triggers.select.moveDown",
-        MOVE_LEFT: "triggers.select.moveLeft",
-        MOVE_RIGHT: "triggers.select.moveRight",
-        MOVE_UP: "triggers.select.moveUp",
-        PASTE: "triggers.select.paste",
-        PASTE_CLIPBOARD: "triggers.select.clipboard.paste",
-        REVERSE_LINE: "triggers.select.reverseLine"
-      },
-      SELECT_TOOL: "triggers.selectTool",
-      SKELETON_VIEW: "triggers.toggleSkeleton",
-      STOP: "triggers.stop",
-      TOGGLE_SLOW: "triggers.toggleSlowMotion",
-      UNDO: "triggers.undo",
-      ZOOM_TOOL: "triggers.zoomTool"
-    },
-    MODIFIERS: {
-      ANGLE_LOCK: "modifiers.angleLock",
-      ANGLE_SNAP: "modifiers.angleSnap",
-      FAST_FORWARD: "modifiers.fastForward",
-      FLIP_LINE: "modifiers.flipLine",
-      FORCE_ZOOM: "modifiers.forceZoom",
-      LOCK_EDITOR_CAM: "modifiers.lockEditorCamera",
-      NO_POINT_SNAP: "modifiers.disablePointSnap",
-      PLAYBACK_CAM_MDF: "modifiers.showPlaybackCamera",
-      REWIND: "modifiers.rewind",
-      SELECT: {
-        ADD: "modifiers.select.add",
-        DUPLICATE: "modifiers.select.duplicate",
-        FINE_NUDGE: "modifiers.select.fineNudge",
-        POINT: "modifiers.select.singlePoint",
-        SUBTRACT: "modifiers.select.subtract",
-        TRANSFORM_STATE: "modifiers.select.transformState"
-      }
-    }
-  };
+  const COMMANDS = [
+    "triggers.accelSwatch",
+    "triggers.eraserTool",
+    "triggers.flag",
+    "triggers.goToStart",
+    "triggers.lineTool",
+    "triggers.nextFrame",
+    "triggers.normalSwatch",
+    "triggers.toggleOnionSkin",
+    "triggers.open",
+    "triggers.panTool",
+    "triggers.pencilTool",
+    "triggers.play",
+    "triggers.playWithEditorZoom",
+    "triggers.playPause",
+    "triggers.playWithEditorZoomPause",
+    "triggers.showPlaybackCamera",
+    "triggers.togglePlaybackPreview",
+    "triggers.prevFrame",
+    "triggers.redo",
+    "triggers.removeLastLine",
+    "triggers.save",
+    "triggers.scenerySwatch",
+    "triggers.select.convertToAccel",
+    "triggers.select.convertToNormal",
+    "triggers.select.convertToScenery",
+    "triggers.select.copy",
+    "triggers.select.clipboard.copy",
+    "triggers.select.deselect",
+    "triggers.select.duplicate",
+    "triggers.select.moveDown",
+    "triggers.select.moveLeft",
+    "triggers.select.moveRight",
+    "triggers.select.moveUp",
+    "triggers.select.paste",
+    "triggers.select.clipboard.paste",
+    "triggers.select.reverseLine",
+    "triggers.selectTool",
+    "triggers.toggleSkeleton",
+    "triggers.stop",
+    "triggers.toggleSlowMotion",
+    "triggers.undo",
+    "triggers.zoomTool",
+    "modifiers.angleLock",
+    "modifiers.angleSnap",
+    "modifiers.fastForward",
+    "modifiers.flipLine",
+    "modifiers.forceZoom",
+    "modifiers.lockEditorCamera",
+    "modifiers.disablePointSnap",
+    "modifiers.showPlaybackCamera",
+    "modifiers.rewind",
+    "modifiers.select.add",
+    "modifiers.select.duplicate",
+    "modifiers.select.fineNudge",
+    "modifiers.select.singlePoint",
+    "modifiers.select.subtract",
+    "modifiers.select.transformState"
+  ];
 
   /** Numerical representation of line types */
   const LINE_TYPES = {
@@ -314,15 +307,15 @@ const Enums = (function() {
   };
 
   /** Available editor tools */
-  const TOOLS = {
-    ADJUST_START: "ADJUST_START_TOOL",
-    ERASER: "ERASER_TOOL",
-    LINE: "LINE_TOOL",
-    PAN: "PAN_TOOL",
-    PENCIL: "PENCIL_TOOL",
-    SELECT: "SELECT_TOOL",
-    ZOOM: "ZOOM_TOOL"
-  };
+  const TOOLS = [
+    "ADJUST_START_TOOL",
+    "ERASER_TOOL",
+    "LINE_TOOL",
+    "PAN_TOOL",
+    "PENCIL_TOOL",
+    "SELECT_TOOL",
+    "ZOOM_TOOL"
+  ];
 
   /** Modes of playback refresh rates */
   const PLAYBACK_MODES = {
@@ -339,45 +332,30 @@ const Enums = (function() {
   };
 
   /** Separate viewable pages */
-  const VIEWS = {
-    ABOUT: "ABOUT",
-    MAIN: "MAIN",
-    RELEASE_NOTES: "RELEASE_NOTES",
-    SIDEBAR: "SIDEBAR",
-    TRACK_LOADER: "TRACK_LOADER",
-    TRACK_SAVER: "TRACK_SAVER",
-    VIDEO_EXPORTER: "VIDEO_EXPORTER"
-  };
+  const VIEWS = [
+    "ABOUT",
+    "MAIN",
+    "RELEASE_NOTES",
+    "SIDEBAR",
+    "TRACK_LOADER",
+    "TRACK_SAVER",
+    "VIDEO_EXPORTER"
+  ];
 
   /** Subpages within each of the viewable pages */
   const PAGES = {
-    [VIEWS.MAIN]: {
-      EDITABLE_VIEWER: "editable-viewer",
-      EDITOR: "editor",
-      VIEWER: "viewer"
-    },
-    [VIEWS.SIDEBAR]: {
-      HELP: "help",
-      INFO: "info",
-      SETTINGS: "settings",
-      SHARE: "share"
-    },
-    [VIEWS.ABOUT]: {
-      LAUNCH: "launch",
-      LOADING: "loading"
-    },
-    [VIEWS.TRACK_LOADER]: {
-      LOAD: "load"
-    },
-    [VIEWS.TRACK_SAVER]: {
-      SAVE: "save"
-    },
-    [VIEWS.VIDEO_EXPORTER]: {
-      EXPORT: "export"
-    },
-    [VIEWS.RELEASE_NOTES]: {
-      NOTES: "notes"
-    }
+    EDITOR: "editor",
+    VIEWER: "viewer",
+    HELPER: "help",
+    INFO: "info",
+    SETTINGS: "settings",
+    SHARE: "share",
+    LAUNCH: "launch",
+    LOADING: "loading",
+    TRACK_LOADER: "load",
+    TRACK_SAVER: "save",
+    VIDEO_EXPORTER: "export",
+    RELEASE_NOTES: "notes"
   };
 
   return {
@@ -508,7 +486,7 @@ const Actions = (function() {
   * @param {string} command Trigger Command
   * @example
   * // Toggle skeleton view
-  * Actions.triggerCommand(Enums.COMMANDS.TRIGGERS.SKELETON_VIEW)
+  * Actions.triggerCommand("triggers.toggleSkeleton")
   */
   const triggerCommand = (command) => ({
     type: "TRIGGER_COMMAND",
@@ -521,7 +499,7 @@ const Actions = (function() {
   * @param {string} command Modifier Command
   * @example
   * // Start fast-forwarding playback
-  * Actions.beginModifierCommand(Enums.COMMANDS.MODIFIERS.FAST_FORWARD)
+  * Actions.beginModifierCommand("modifiers.fastForward")
   */
   const beginModifierCommand = (command) => ({
     type: "BEGIN_MODIFIER_COMMAND",
@@ -534,7 +512,7 @@ const Actions = (function() {
   * @param {string} command Modifier Command
   * @example
   * // Stop fast-forwarding playback
-  * Actions.endModifierCommand(Enums.COMMANDS.MODIFIERS.FAST_FORWARD)
+  * Actions.endModifierCommand("modifiers.fastForward")
   */
   const endModifierCommand = (command) => ({
     type: "END_MODIFIER_COMMAND",
@@ -547,7 +525,7 @@ const Actions = (function() {
   * @param {{string: string}} commandHotkeys Hotkey Dictionary
   * @example
   * // Set the flag hotkey to "f"
-  * Actions.setCommandHotkeys({Enums.COMMANDS.TRIGGERS.FLAG: 'f'})
+  * Actions.setCommandHotkeys({"triggers.flag": 'f'})
   */
   const setCommandHotkeys = (commandHotkeys) => ({
     type: "SET_COMMAND_HOTKEYS",
@@ -562,7 +540,7 @@ const Actions = (function() {
   * @param {number} lineType Color Swatch
   * @example
   * // Set color swatch to blue
-  * Actions.selectLineType(Enums.LINE_TYPES.REGULAR)
+  * Actions.selectLineType(0)
   */
   const selectLineType = (lineType = 0) => ({
     type: "SELECT_LINE_TYPE",
@@ -574,7 +552,7 @@ const Actions = (function() {
   * @param {string} tool Target Tool
   * @example
   * // Set tool to eraser
-  * Actions.setTool(Enums.TOOLS.ERASER)
+  * Actions.setTool("ERASER_TOOL")
   */
   const setTool = (tool = "PENCIL_TOOL") => ({
     type: "SET_TOOL",
@@ -591,7 +569,7 @@ const Actions = (function() {
   * Action.updateLines(
   *   'ADD_LINE',
   *   null,
-  *   [{x1:0, y1:0, x2:0, y2:5, type:Enums.LINE_TYPES.SCENERY}]
+  *   [{x1: 0, y1: 0, x2: 0, y2: 5, type: 2}]
   * )
   * Action.commitTrackChanges()
   * Action.revertTrackChanges()
@@ -608,9 +586,9 @@ const Actions = (function() {
   * @example
   * // Add a triangle
   * Action.addLines([
-  *   {x1:0, y1:0, x2:5, y2:0, type:Enums.LINE_TYPES.SCENERY},
-  *   {x1:5, y1:0, x2:5, y2:5, type:Enums.LINE_TYPES.SCENERY},
-  *   {x1:5, y1:5, x2:0, y2:0, type:Enums.LINE_TYPES.SCENERY}
+  *   {x1: 0, y1: 0, x2: 5, y2: 0, type: 2},
+  *   {x1: 5, y1: 0, x2: 5, y2: 5, type: 2},
+  *   {x1: 5, y1: 5, x2: 0, y2: 0, type: 2}
   * ])
   * Action.commitTrackChanges()
   * Action.revertTrackChanges()
@@ -622,7 +600,7 @@ const Actions = (function() {
   * @param {number[]} lineIds Line Id Array
   * @example
   * // Remove the first 3 lines
-  * Action.removeLines([1,2,3])
+  * Action.removeLines([1, 2, 3])
   * Action.commitTrackChanges()
   * Action.revertTrackChanges() 
   */
@@ -984,7 +962,7 @@ const Actions = (function() {
   * @param {number} skeletonMode Skeleton Mode
   * @example
   * // Turn on both skeleton view and normal view
-  * Actions.setSkeleton(Enums.SKELETON_MODES.NORMAL_SKELETON)
+  * Actions.setSkeleton(1)
   */
   const setSkeleton = (skeletonMode = 0) => ({
     type: "SET_SKELETON",
@@ -1619,9 +1597,7 @@ const Selectors = (function() {
 
   /** Currently selected line type in color swatch @returns {number} */
   function getSelectedLineType(state) {
-    return getTrackLinesLocked(state) ?
-      Enums.LINE_TYPES.SCENERY :
-      state.selectedLineType ;
+    return getTrackLinesLocked(state) ? 2 : state.selectedLineType ;
   }
 
   /** Whether track is a local file @returns {boolean} */
@@ -1722,47 +1698,47 @@ const Selectors = (function() {
 
   /** Sidebar page information @returns {string?} */
   function getSidebarPage(state) {
-    return getViews(state)[Enums.VIEWS.SIDEBAR];
+    return getViews(state)["SIDEBAR"];
   }
 
   /** Main page information @returns {string?} */
   function getMainPage(state) {
-    return getViews(state)[Enums.VIEWS.MAIN];
+    return getViews(state)["MAIN"];
   }
 
   /** Whether currently in track editor @returns {boolean} */
   function getInEditor(state) {
-    return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITOR;
+    return state.views["MAIN"] === "editor";
   }
 
   /** Whether currently in track viewer @returns {boolean} */
   function getInViewer(state) {
-    return state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.VIEWER || 
-           state.views[Enums.VIEWS.MAIN] === Enums.PAGES.MAIN.EDITABLE_VIEWER;
+    return state.views["MAIN"] === "viewer" || 
+           state.views["MAIN"] === "editable-viewer";
   }
 
   /** Whether currently in save window @returns {boolean} */
   function getInTrackSaver(state) {
-    return state.views[Enums.VIEWS.TRACK_SAVER] === Enums.PAGES.TRACK_SAVER.SAVE;
+    return state.views["TRACK_SAVER"] === "save";
   }
 
   /** Whether currently in load window @returns {boolean} */
   function getInTrackLoader(state) {
-    return state.views[Enums.VIEWS.TRACK_LOADER] === Enums.PAGES.TRACK_LOADER.LOAD;
+    return state.views["TRACK_LOADER"] === "load";
   }
 
   /** Whether currently in video export window @returns {boolean} */
   function getInVideoExporter(state) {
-    return state.views[Enums.VIEWS.VIDEO_EXPORTER] === Enums.PAGES.VIDEO_EXPORTER.EXPORT;
+    return state.views["VIDEO_EXPORTER"] === "export";
   }
 
   /** Whether there is an overlay over the main page @returns {string?} */
   function getHasOverlay(state) {return (
-    state.views[Enums.VIEWS.ABOUT] ||
-    state.views[Enums.VIEWS.TRACK_LOADER] ||
-    state.views[Enums.VIEWS.TRACK_SAVER] ||
-    state.views[Enums.VIEWS.VIDEO_EXPORTER] ||
-    state.views[Enums.VIEWS.RELEASE_NOTES]
+    state.views["ABOUT"] ||
+    state.views["TRACK_LOADER"] ||
+    state.views["TRACK_SAVER"] ||
+    state.views["VIDEO_EXPORTER"] ||
+    state.views["RELEASE_NOTES"]
   );}
 
   return {
