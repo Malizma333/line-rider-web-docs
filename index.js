@@ -17,7 +17,6 @@ copies or substantial portions of the Software.
 */
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
 
-// TODO add view actions
 // TODO Put enums into jsdoc comments
 // TODO possibly split up everything into multiple files?
 // TODO create testing for actions and selectors
@@ -85,7 +84,7 @@ copies or substantial portions of the Software.
 * @typedef {{
 *   creator: string
 *   title: string
-*   version: '6.1' | '6.2'
+*   version: "6.1" | "6.2"
 * }} DerivedFrom
 * 
 * @typedef {{
@@ -189,7 +188,7 @@ copies or substantial portions of the Software.
 *   riders?: Rider[]
 *   script?: string
 *   startPosition?: {x: number, y: number}
-*   version: '6.1' | '6.2'
+*   version: "6.1" | "6.2"
 *   viewOnly?: boolean
 * }} Track
 * 
@@ -210,7 +209,7 @@ copies or substantial portions of the Software.
 *   layers: {buffer: Layer[]}
 *   riders: {buffer: Rider[]}
 *   script: string
-*   version: '6.1' | '6.2'
+*   version: "6.1" | "6.2"
 * }} TrackFragment
 * 
 * @typedef {{
@@ -525,7 +524,7 @@ const Actions = (function() {
   * @param {{string: string}} commandHotkeys Hotkey Dictionary
   * @example
   * // Set the flag hotkey to "f"
-  * Actions.setCommandHotkeys({"triggers.flag": 'f'})
+  * Actions.setCommandHotkeys({"triggers.flag": "f"})
   */
   const setCommandHotkeys = (commandHotkeys) => ({
     type: "SET_COMMAND_HOTKEYS",
@@ -567,7 +566,7 @@ const Actions = (function() {
   * @example
   * // Add a horizontal green line
   * Action.updateLines(
-  *   'ADD_LINE',
+  *   "ADD_LINE",
   *   null,
   *   [{x1: 0, y1: 0, x2: 0, y2: 5, type: 2}]
   * )
@@ -896,7 +895,7 @@ const Actions = (function() {
   * @param {?boolean} value New Value
   * @example
   * // Turn off playback preview
-  * Actions.setViewOption('playbackPreview', false)
+  * Actions.setViewOption("playbackPreview", false)
   */
   const setViewOption = (viewOption, value) => ({
     type: "SET_VIEW_OPTION",
@@ -1010,7 +1009,7 @@ const Actions = (function() {
   * // Load a blank track with 2 riders
   * Actions.loadTrackAction({
   *   startPosition: { x: 0, y: 0 },
-  *   version: '6.2',
+  *   version: "6.2",
   *   riders: [
   *     {startPosition: {x: 0, y: 0}, startVelocity: {x: 0.4, y: 0}},
   *     {startPosition: {x: 0, y: 30}, startVelocity: {x: 0.4, y: 0}}
@@ -1060,7 +1059,7 @@ const Actions = (function() {
   * @param {string} script Script
   * @example
   * // Clear the script
-  * Actions.setTrackScript('')
+  * Actions.setTrackScript("")
   */
   const setTrackScript = (script = "") => ({
     type: "trackData/SET_TRACK_SCRIPT",
@@ -1082,19 +1081,116 @@ const Actions = (function() {
   /** Toggle whether the timeline is active */
   const toggleControlsActive = () => ({ type: "TOGGLE_CONTROLS_ACTIVE" });
 
+  /**
+  * Toggle a specific view
+  * @param {string} name View Key
+  * @param {Object.<string, string>} views View to Open
+  * @example
+  * // Close the sidebar
+  * Actions.setViews("CLOSE_SIDEBAR", { "Sidebar": null })
+  */
+  const setViews = (name, views) => ({
+    type: "SET_VIEWS",
+    payload: views,
+    meta: { name, auto: false }
+  });
+
+  /** Open the editor view */
+  const enterEditor = () => setViews("ENTER_EDITOR", {
+    "Main": "editor",
+    "About": null,
+    "TrackLoader": null
+  });
+
+  /** Toggle the sidebar settings page */
+  const openSettingsSidebar = () => setViews("SET_SIDEBAR_PAGE", {
+    "Sidebar": "settings"
+  });
+
+  /** Toggle the sidebar help page */
+  const openHelpSidebar = () => setViews("SET_SIDEBAR_PAGE", {
+    "Sidebar": "help"
+  });
+
+  /** Toggle the sidebar info page */
+  const openInfoSidebar = () => setViews("SET_SIDEBAR_PAGE", {
+    "Sidebar": "info"
+  });
+
+  /** Close the sidebar */
+  const closeSidebar = () => setViews("SET_SIDEBAR_PAGE", {
+    "Sidebar": null
+  });
+
+  /** Open the track loader */
+  const openTrackLoader = () => setViews("OPEN_TRACK_LOADER", {
+    "Sidebar": null,
+    "TrackLoader": "load"
+  });
+
+  /** Close the track loader */
+  const closeTrackLoader = () => setViews("CLOSE_TRACK_LOADER", {
+    "TrackLoader": null
+  });
+
+  /** Open the track saver */
+  const openTrackSaver = () => setViews("OPEN_TRACK_SAVER", {
+    "Sidebar": null,
+    "TrackSaver": "save"
+  });
+
+  /** Close the track saver */
+  const closeTrackSaver = () => setViews("CLOSE_TRACK_SAVER", {
+    "TrackSaver": null
+  });
+
+  /** Open the video exporter */
+  const openVideoExporter = () => setViews("OPEN_VIDEO_EXPORTER", {
+    "Sidebar": null,
+    "VideoExporter": "export"
+  });
+
+  /** Close the video exporter */
+  const closeVideoExporter = () => setViews("CLOSE_VIDEO_EXPORTER", {
+    "VideoExporter": null
+  });
+
+  /** Open the release notes */
+  const openReleaseNotes = () => setViews("OPEN_RELEASE_NOTES", {
+    "ReleaseNotes": "notes"
+  });
+
+  /** Close the release notes */
+  const closeReleaseNotes = () => setViews("CLOSE_RELEASE_NOTES", {
+    "ReleaseNotes": null
+  });
+
   return {
     addLayer,
     addLines,
     beginModifierCommand,
+    closeReleaseNotes,
+    closeSidebar,
+    closeTrackLoader,
+    closeTrackSaver,
+    closeVideoExporter,
     commitTrackChanges,
     decPlayerIndex,
     endModifierCommand,
+    enterEditor,
     hideNotification,
     incPlayerIndex,
     loadAutosave,
     loadTrackAction,
     moveLayer,
     newTrack,
+    openHelpSidebar,
+    openInfoSidebar,
+    openReleaseNotes,
+    openSettingsSidebar,
+    openTrackLoader,
+    openTrackSaver,
+    openVideoExporter,
     redoAction,
     removeAudio,
     removeLayer,
@@ -1136,6 +1232,7 @@ const Actions = (function() {
     setTool,
     setTrackDetails,
     setTrackScript,
+    setViews,
     showNotification,
     startPlayer,
     stopPlayer,
@@ -1483,7 +1580,7 @@ const Selectors = (function() {
     return state.simulator.committedEngine.linesList;
   }
 
-  /** Track version @returns {'6.1' | '6.2'} */
+  /** Track version @returns {"6.1" | "6.2"} */
   function getSimulatorVersion(state) {
     return state.simulator.engine.isLegacy() ? "6.1" : "6.2";
   }
