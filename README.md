@@ -16,4 +16,4 @@ The purpose of this library is to streamline the linerider.com modmaking process
 - Common Utility Algorithms
 
 ### Usage
-To include this library, add `// @require https://raw.githubusercontent.com/Malizma333/lr-userscript-library/main/index.min.js` within the userscript's metadata.
+To include this library, add `// @require https://raw.githubusercontent.com/Malizma333/lr-userscript-library/main/index.js` within the userscript's metadata.
