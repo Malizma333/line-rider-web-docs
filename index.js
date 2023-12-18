@@ -1774,6 +1774,11 @@ const Selectors = (function() {
     return state.autosaveEnabled;
   }
 
+  /** Currently active tool @returns {Tool} */
+  function getActiveTool(state) {
+    return state.selectedTool;
+  }
+
   /**
   * Tool state of target tool
   * @param {Tool} toolId Target Tool
@@ -1947,6 +1952,7 @@ const Selectors = (function() {
 
   return {
     getActiveLayerEditable,
+    getActiveTool,
     getAudioEnabled,
     getAudioFileLoader,
     getAudioFileLoading,
