@@ -654,13 +654,13 @@ const Actions = (function() {
   * @param {Line[]} linesToAdd Add Lines by Props
   * @example
   * // Add a horizontal green line
-  * Action.updateLines(
+  * Actions.updateLines(
   *   "ADD_LINE",
   *   null,
   *   [{x1: 0, y1: 0, x2: 0, y2: 5, type: 2}]
   * )
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges()
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges()
   */
   const updateLines = (name, linesToRemove, linesToAdd) => ({
     type: "UPDATE_LINES",
@@ -673,13 +673,13 @@ const Actions = (function() {
   * @param {Line[]} lines Line Array
   * @example
   * // Add a triangle
-  * Action.addLines([
+  * Actions.addLines([
   *   {x1: 0, y1: 0, x2: 5, y2: 0, type: 2},
   *   {x1: 5, y1: 0, x2: 5, y2: 5, type: 2},
   *   {x1: 5, y1: 5, x2: 0, y2: 0, type: 2}
   * ])
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges()
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges()
   */
   const addLines = (lines) => updateLines("ADD_LINES", null, lines);
 
@@ -688,9 +688,9 @@ const Actions = (function() {
   * @param {number[]} lineIds Line Id Array
   * @example
   * // Remove the first 3 lines
-  * Action.removeLines([1, 2, 3])
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.removeLines([1, 2, 3])
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const removeLines = (lineIds) => updateLines("REMOVE_LINES", lineIds, null);
 
@@ -715,8 +715,8 @@ const Actions = (function() {
   * @example
   * // Remove layer 1
   * Actions.removeLayer(1)
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const removeLayer = (id) => ({
     type: "REMOVE_LAYER",
@@ -730,8 +730,8 @@ const Actions = (function() {
   * @example
   * // Move layer 1 to the second position above the base layer
   * Actions.moveLayer(1, 2)
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const moveLayer = (id, index) => ({
     type: "MOVE_LAYER",
@@ -745,8 +745,8 @@ const Actions = (function() {
   * @example
   * // Rename layer 1 to "Background Layer"
   * Actions.renameLayer(1, "Background Layer")
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const renameLayer = (id, name) => ({
     type: "RENAME_LAYER",
@@ -759,8 +759,8 @@ const Actions = (function() {
   * @example
   * // Set the base layer to be the active layer
   * Actions.setLayerActive(0)
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const setLayerActive = (id) => ({
     type: "SET_LAYER_ACTIVE",
@@ -774,8 +774,8 @@ const Actions = (function() {
   * @example
   * // Set Layer 1 to be invisible
   * Actions.setLayerVisible(1, false)
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const setLayerVisible = (id, visible = true) => ({
     type: "SET_LAYER_VISIBLE",
@@ -789,8 +789,8 @@ const Actions = (function() {
   * @example
   * // Set Layer 2 to be editable
   * Actions.setLayerEditable(2, true)
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges() 
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges() 
   */
   const setLayerEditable = (id, editable = true) => ({
     type: "SET_LAYER_EDITABLE",
@@ -803,8 +803,8 @@ const Actions = (function() {
   * @example
   * // Remove all riders
   * Actions.setRiders([])
-  * Action.commitTrackChanges()
-  * Action.revertTrackChanges()
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges()
   */
   const setRiders = (riders) => ({
     type: "SET_RIDERS",
