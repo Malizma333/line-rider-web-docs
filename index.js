@@ -1707,6 +1707,11 @@ const Selectors = (function() {
     return getSimulatorTrack(state).engine.state.layers;
   }
 
+  /** Committed track layers buffer @returns {{buffer: Layer[]}} */
+  function getCommittedTrackLayers(state) {
+    return getSimulatorCommittedTrack(state).engine.state.layers;
+  }
+
   /** Currently active layer @returns {number} */
   function getTrackActiveLayerId(state) {
     return getSimulatorTrack(state).engine.state.activeLayerId;
@@ -1952,6 +1957,7 @@ const Selectors = (function() {
     getColorPlayback,
     getCommandsToHotkeys,
     getCommittedRiders,
+    getCommittedTrackLayers,
     getControlsActive,
     getCurrentCamera,
     getCurrentPlayerRate,
