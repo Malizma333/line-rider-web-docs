@@ -1,19 +1,20 @@
 # LR Userscript Utilities
 
 ### About
-The purpose of this library is to streamline the linerider.com modmaking process by abstracting the more common functions needed in creating a working mod. The library files have been reduced to only including api functions with known functionalities that have been properly documented. There are plans to add more available functions soon once more research is done.
+The purpose of this library is to streamline the linerider.com mod-making process by abstracting the more common functions needed in creating a working mod. Some capabilities are still missing, as their functionality was either unknown or unsafe in a userscript environment. There are plans to add more functions soon once more research is done.
 
 ### Current Features
 - Redux Actions
 - Redux Selectors
 - JSDoc Type Annotations
-- Minified Source File
 
 ### Planned Features
+- Library-based Template Userscript
+- Library Functionality Testing
+- Minified Source File
 - Markdown Documentation
-- Automated Testing
 - Common UI Component Templates
 - Common Utility Algorithms
 
 ### Usage
-To include this library, add `// @require https://raw.githubusercontent.com/Malizma333/lr-userscript-library/main/index.min.js` within the userscript's metadata.
+Add `// @require https://raw.githubusercontent.com/Malizma333/lr-userscript-library/main/index.js` to the userscript's metadata.
