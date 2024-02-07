@@ -472,69 +472,8 @@ copies or substantial portions of the Software.
 * store.dispatch(toggleAudioAction);
 */
 const Actions = (function() {
-  /**
-  * Set the properties of the editor camera
-  * @param {{x: number, y: number}} position Camera Position
-  * @param {number} zoom Camera Zoom
-  * @example
-  * // Move editor camera to (0,-20) and apply a zoom of 5
-  * Actions.setEditorCamera({x: 0, y: -20}, 5)
-  */
-  const setEditorCamera = (position, zoom) => ({
-    type: "SET_EDITOR_CAMERA",
-    payload: { position, zoom }
-  });
-
-  /**
-  * Set which rider to focus on in the editor
-  * @param {number} focusIndex Rider Index (Starts at 0)
-  * @example
-  * // Set the editor camera to focus on the second rider
-  * Actions.setEditorFollowerFocus(1)
-  */
-  const setEditorFollowerFocus = (focusIndex = 0) => ({
-    type: "SET_EDITOR_FOLLOWER_FOCUS",
-    payload: focusIndex
-  });
-
-  /**
-  * Set zoom of playback camera
-  * @param {number} zoom Playback Zoom
-  * @example
-  * // Set the playback zoom to 4
-  * Actions.setPlaybackZoom(4)
-  */
-  const setPlaybackZoom = (zoom = 2) => ({
-    type: "SET_PLAYBACK_ZOOM",
-    payload: zoom
-  });
-
-  /**
-  * Set the weight each rider has on where the camera focuses
-  * @param {number[]} focusList Relative Weights
-  * @example
-  * // Set the playback focus between riders 1 and 3
-  * Actions.setPlaybackFollowerFocus([1, 0, 1])
-  */
-  const setPlaybackFollowerFocus = (focusList) => ({
-    type: "SET_PLAYBACK_FOLLOWER_FOCUS",
-    payload: focusList
-  });
-
   /** Toggle whether the editor camera should keep the target rider in view */
   const toggleEditorFollower = () => ({ type: "TOGGLE_SETTING", payload: {key: "cam.useEditorFollower"} });
-
-  /**
-  * Set viewport dimensions of the playback camera
-  * @param {{width: number, height: number}} dimensions Camera Dimensions
-  * @example
-  * // Set the viewport to be 1920 x 1080
-  * Actions.setPlaybackDimensions({ width: 1920, height: 1080 })
-  */
-  const setPlaybackDimensions = (dimensions) => ({
-    type: "SET_PLAYBACK_DIMENSIONS",
-    payload: dimensions
-  });
 
   /**
   * Trigger the result of a triggerable hotkey being pressed
