@@ -472,9 +472,6 @@ copies or substantial portions of the Software.
 * store.dispatch(toggleAudioAction);
 */
 const Actions = (function() {
-  /** Load the last cached autosave */
-  const loadAutosave = () => ({ type: "LOAD_AUTOSAVE" });
-
   /**
   * Set the properties of the editor camera
   * @param {{x: number, y: number}} position Camera Position
@@ -1025,18 +1022,6 @@ const Actions = (function() {
   const setSkeleton = (skeletonMode = 0) => ({
     type: "SET_SKELETON",
     payload: skeletonMode
-  });
-
-  /**
-  * Set whether autosave is enabled
-  * @param {boolean} enabled Enabled
-  * @example
-  * // Turn off autosave
-  * Actions.setAutosaveEnabled(false)
-  */
-  const setAutosaveEnabled = (enabled = true) => ({
-    type: "SET_AUTOSAVE_ENABLED",
-    payload: enabled
   });
 
   /**
