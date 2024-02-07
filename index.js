@@ -472,36 +472,6 @@ copies or substantial portions of the Software.
 * store.dispatch(toggleAudioAction);
 */
 const Actions = (function() {
-  /** Toggle audio volume */
-  const toggleAudio = () => ({ type: "TOGGLE_AUDIO" });
-
-  /** Remove the current audio file */
-  const removeAudio = () => ({ type: "REMOVE_AUDIO" });
-
-  /**
-  * Set the offset of the audio file
-  * @param {number} offset Seconds After Start
-  * @example
-  * // Set audio to start playing 2 seconds in
-  * Actions.setAudioOffset(2)
-  */
-  const setAudioOffset = (offset = 0) => ({
-    type: "SET_AUDIO_OFFSET",
-    payload: offset
-  });
-
-  /**
-  * Set the audio volume
-  * @param {number} volume Percent Volume (0 - 1)
-  * @example
-  * // Set audio volume to 50%
-  * Actions.setAudioVolume(0.5)
-  */
-  const setAudioVolume = (volume = 1) => ({
-    type: "SET_AUDIO_VOLUME",
-    payload: volume
-  });
-
   /** Load the last cached autosave */
   const loadAutosave = () => ({ type: "LOAD_AUTOSAVE" });
 
