@@ -25,7 +25,10 @@ None
 Set the audio offset to play the song file 2 seconds in.
 
 ```javascript
-store.dispatch({ type: "SET_AUDIO_OFFSET", payload: 2 });
+store.dispatch({
+  type: "SET_AUDIO_OFFSET",
+  payload: 2
+});
 ```
 
 ## Related

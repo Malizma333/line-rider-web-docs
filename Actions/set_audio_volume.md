@@ -25,7 +25,10 @@ None
 Set the audio volume to half volume.
 
 ```javascript
-store.dispatch({ type: "SET_AUDIO_VOLUME", payload: 0.5 });
+store.dispatch({
+  type: "SET_AUDIO_VOLUME",
+  payload: 0.5
+});
 ```
 
 ## Related
