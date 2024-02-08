@@ -499,53 +499,6 @@ const Actions = (function() {
     payload: tool
   });
 
-  /**
-  * Update lines given a subaction and a list of lines to add/remove
-  * @param {UpdateLineSubaction} name Subaction Name
-  * @param {number[]} linesToRemove Remove Lines by Id
-  * @param {Line[]} linesToAdd Add Lines by Props
-  * @example
-  * // Add a horizontal green line
-  * Actions.updateLines(
-  *   "ADD_LINE",
-  *   null,
-  *   [{x1: 0, y1: 0, x2: 0, y2: 5, type: 2}]
-  * )
-  * Actions.commitTrackChanges()
-  * Actions.revertTrackChanges()
-  */
-  const updateLines = (name, linesToRemove, linesToAdd) => ({
-    type: "UPDATE_LINES",
-    payload: { linesToRemove, linesToAdd, initialLoad: false },
-    meta: { name }
-  });
-
-  /**
-  * Add a list of lines to the currently active layer
-  * @param {Line[]} lines Line Array
-  * @example
-  * // Add a triangle
-  * Actions.addLines([
-  *   {x1: 0, y1: 0, x2: 5, y2: 0, type: 2},
-  *   {x1: 5, y1: 0, x2: 5, y2: 5, type: 2},
-  *   {x1: 5, y1: 5, x2: 0, y2: 0, type: 2}
-  * ])
-  * Actions.commitTrackChanges()
-  * Actions.revertTrackChanges()
-  */
-  const addLines = (lines) => updateLines("ADD_LINES", null, lines);
-
-  /**
-  * Remove a list of lines given their ids
-  * @param {number[]} lineIds Line Id Array
-  * @example
-  * // Remove the first 3 lines
-  * Actions.removeLines([1, 2, 3])
-  * Actions.commitTrackChanges()
-  * Actions.revertTrackChanges() 
-  */
-  const removeLines = (lineIds) => updateLines("REMOVE_LINES", lineIds, null);
-
   /** Decrement engine state to previous point in history if available */
   const undoAction = () => ({ type: "UNDO" });
 
