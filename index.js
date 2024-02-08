@@ -472,57 +472,6 @@ copies or substantial portions of the Software.
 * store.dispatch(toggleAudioAction);
 */
 const Actions = (function() {
-  /**
-  * Trigger the result of a triggerable hotkey being pressed
-  * @param {Command} command Trigger Command
-  * @example
-  * // Toggle skeleton view
-  * Actions.triggerCommand("triggers.toggleSkeleton")
-  */
-  const triggerCommand = (command) => ({
-    type: "TRIGGER_COMMAND",
-    payload: command,
-    meta: { ignorable: true }
-  });
-
-  /**
-  * Trigger the beginning of a modifier hotkey being pressed
-  * @param {Command} command Modifier Command
-  * @example
-  * // Start fast-forwarding playback
-  * Actions.beginModifierCommand("modifiers.fastForward")
-  */
-  const beginModifierCommand = (command) => ({
-    type: "BEGIN_MODIFIER_COMMAND",
-    payload: command,
-    meta: { ignorable: true }
-  });
-
-  /**
-  * Trigger the end of a modifier hotkey being pressed
-  * @param {Command} command Modifier Command
-  * @example
-  * // Stop fast-forwarding playback
-  * Actions.endModifierCommand("modifiers.fastForward")
-  */
-  const endModifierCommand = (command) => ({
-    type: "END_MODIFIER_COMMAND",
-    payload: command,
-    meta: { ignorable: true }
-  });
-
-  /**
-  * Change hotkeys given a map of commands to their new hotkey value
-  * @param {Object.<Command, string>} commandHotkeys Hotkey Dictionary
-  * @example
-  * // Set the flag hotkey to "f"
-  * Actions.setCommandHotkeys({"triggers.flag": "f"})
-  */
-  const setCommandHotkeys = (commandHotkeys) => ({
-    type: "SET_COMMAND_HOTKEYS",
-    payload: commandHotkeys
-  });
-
   /** Toggle locked track lines */
   const toggleTrackLinesLocked = () => ({ type: "TOGGLE_TRACK_LINES_LOCKED" });
 
