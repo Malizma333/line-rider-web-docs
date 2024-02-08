@@ -472,9 +472,6 @@ copies or substantial portions of the Software.
 * store.dispatch(toggleAudioAction);
 */
 const Actions = (function() {
-  /** Toggle whether the editor camera should keep the target rider in view */
-  const toggleEditorFollower = () => ({ type: "TOGGLE_SETTING", payload: {key: "cam.useEditorFollower"} });
-
   /**
   * Trigger the result of a triggerable hotkey being pressed
   * @param {Command} command Trigger Command
