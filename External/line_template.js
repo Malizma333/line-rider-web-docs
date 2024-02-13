@@ -17,3 +17,22 @@
 /** Blue - 0 | Red - 1 | Green - 2
 * @typedef { 0 | 1 | 2 } LineType
 */
+
+/** Extended line properties
+* @typedef {{
+*   extension?: number
+*   flipped?: boolean
+*   id: number
+*   invLengthSq?: number
+*   layer?: number
+*   leftBound?: number
+*   leftExtended?: boolean
+*   length: number
+*   norm: V2
+*   p1: V2
+*   p2: V2
+*   rightBound?: number
+*   rightExtended?: boolean
+*   vec: V2
+* }} LineBase
+*/

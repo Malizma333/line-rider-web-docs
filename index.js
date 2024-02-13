@@ -78,68 +78,6 @@ copies or substantial portions of the Software.
 * }} CloudSave
 */
 
-/** Available hotkey triggers and modifiers 
-* @typedef {...
-*   "triggers.accelSwatch" |
-*   "triggers.eraserTool" |
-*   "triggers.flag" |
-*   "triggers.goToStart" |
-*   "triggers.lineTool" |
-*   "triggers.nextFrame" |
-*   "triggers.normalSwatch" |
-*   "triggers.toggleOnionSkin" |
-*   "triggers.open" |
-*   "triggers.panTool" |
-*   "triggers.pencilTool" |
-*   "triggers.play" |
-*   "triggers.playWithEditorZoom" |
-*   "triggers.playPause" |
-*   "triggers.playWithEditorZoomPause" |
-*   "triggers.showPlaybackCamera" |
-*   "triggers.togglePlaybackPreview" |
-*   "triggers.prevFrame" |
-*   "triggers.redo" |
-*   "triggers.removeLastLine" |
-*   "triggers.save" |
-*   "triggers.scenerySwatch" |
-*   "triggers.select.convertToAccel" |
-*   "triggers.select.convertToNormal" |
-*   "triggers.select.convertToScenery" |
-*   "triggers.select.copy" |
-*   "triggers.select.clipboard.copy" |
-*   "triggers.select.deselect" |
-*   "triggers.select.duplicate" |
-*   "triggers.select.moveDown" |
-*   "triggers.select.moveLeft" |
-*   "triggers.select.moveRight" |
-*   "triggers.select.moveUp" |
-*   "triggers.select.paste" |
-*   "triggers.select.clipboard.paste" |
-*   "triggers.select.reverseLine" |
-*   "triggers.selectTool" |
-*   "triggers.toggleSkeleton" |
-*   "triggers.stop" |
-*   "triggers.toggleSlowMotion" |
-*   "triggers.undo" |
-*   "triggers.zoomTool" |
-*   "modifiers.angleLock" |
-*   "modifiers.angleSnap" |
-*   "modifiers.fastForward" |
-*   "modifiers.flipLine" |
-*   "modifiers.forceZoom" |
-*   "modifiers.lockEditorCamera" |
-*   "modifiers.disablePointSnap" |
-*   "modifiers.showPlaybackCamera" |
-*   "modifiers.rewind" |
-*   "modifiers.select.add" |
-*   "modifiers.select.duplicate" |
-*   "modifiers.select.fineNudge" |
-*   "modifiers.select.singlePoint" |
-*   "modifiers.select.subtract" |
-*   "modifiers.select.transformState"
-* } Command
-*/
-
 /** Current ui view state
 * @typedef {{
 *   "About"?: string
@@ -201,50 +139,6 @@ copies or substantial portions of the Software.
 *   name: string
 *   visible: boolean
 * }} Layer
-*/
-
-/** Main line properties
-* @typedef {{
-*   id?: number
-*   type: LineType
-*   x1: number
-*   y1: number
-*   x2: number
-*   y2: number
-*   flipped?: boolean
-*   leftExtended?: boolean
-*   rightExtended?: boolean
-*   multiplier?: number
-*   layer?: number
-* }} Line
-*/
-
-/** Available engine line types
-* (Blue - 0, Red - 1, Green - 2)
-* @typedef {...
-*  0 |
-*  1 |
-*  2
-* } LineType
-*/
-
-/** Extended line properties
-* @typedef {{
-*   extension?: number
-*   flipped?: boolean
-*   id: number
-*   invLengthSq?: number
-*   layer?: number
-*   leftBound?: number
-*   leftExtended?: boolean
-*   length: number
-*   norm: V2
-*   p1: V2
-*   p2: V2
-*   rightBound?: number
-*   rightExtended?: boolean
-*   vec: V2
-* }} LineBase
 */
 
 /** Playback interpolation modes
