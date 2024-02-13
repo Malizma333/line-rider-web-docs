@@ -359,31 +359,6 @@ const Actions = (function() {
   });
 
   /**
-  * Show notification in top-right corner
-  * @param {string} message Notification Message
-  * @param {boolean} [autoHide] Hide Message After Timer
-  * @example
-  * // Show a "Hello, world!" notification
-  * Actions.showNotification("Hello, world!")
-  */
-  const showNotification = (message, autoHide = true) => ({
-    type: "notifications/SHOW_NOTIFICATION",
-    payload: { message, autoHide }
-  });
-
-  /**
-  * Hide notification based on message as id
-  * @param {string} message Message / Id
-  * @example
-  * // Hide a notification with the message "Hello, world!"
-  * Actions.hideNotification("Hello, world!")
-  */
-  const hideNotification = (message) => ({
-    type: "notifications/HIDE_NOTIFICATION",
-    payload: message
-  });
-
-  /**
   * Set the fps of the playback renderer
   * @param {number} fps Target Fps
   * @example
