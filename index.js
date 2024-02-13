@@ -296,18 +296,6 @@ const Actions = (function() {
   /** Toggle locked track lines */
   const toggleTrackLinesLocked = () => ({ type: "TOGGLE_TRACK_LINES_LOCKED" });
 
-  /** Decrement engine state to previous point in history if available */
-  const undoAction = () => ({ type: "UNDO" });
-
-  /** Increment engine state to next point in history if available */
-  const redoAction = () => ({ type: "REDO" });
-
-  /** Commit track changes to committed engine state */
-  const commitTrackChanges = () => ({ type: "COMMIT_TRACK_CHANGES" });
-
-  /** Clear track changes from uncommitted engine state */
-  const revertTrackChanges = () => ({ type: "REVERT_TRACK_CHANGES", meta: { ignorable: true } });
-
   /**
   * Set the list of riders
   * @param {Rider[]} riders Rider Array
