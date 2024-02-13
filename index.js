@@ -234,18 +234,6 @@ copies or substantial portions of the Software.
 * }} TrackFragment
 */
 
-/** Available editor tools
-* @typedef {...
-*   "ADJUST_START_TOOL" |
-*   "ERASER_TOOL" |
-*   "LINE_TOOL" |
-*   "PAN_TOOL" |
-*   "PENCIL_TOOL" |
-*   "SELECT_TOOL" |
-*   "ZOOM_TOOL"
-* } Tool
-*/
-
 /** Tool state
 * @typedef {{
 *   status: {
@@ -307,30 +295,6 @@ copies or substantial portions of the Software.
 const Actions = (function() {
   /** Toggle locked track lines */
   const toggleTrackLinesLocked = () => ({ type: "TOGGLE_TRACK_LINES_LOCKED" });
-
-  /**
-  * Change the color swatch of the current tool (if available)
-  * @param {LineType} lineType Color Swatch
-  * @example
-  * // Set color swatch to blue
-  * Actions.selectLineType(0)
-  */
-  const selectLineType = (lineType = 0) => ({
-    type: "SELECT_LINE_TYPE",
-    payload: lineType
-  });
-
-  /**
-  * Change current tool to target tool
-  * @param {Tool} tool Target Tool
-  * @example
-  * // Set tool to eraser
-  * Actions.setTool("ERASER_TOOL")
-  */
-  const setTool = (tool = "PENCIL_TOOL") => ({
-    type: "SET_TOOL",
-    payload: tool
-  });
 
   /** Decrement engine state to previous point in history if available */
   const undoAction = () => ({ type: "UNDO" });
