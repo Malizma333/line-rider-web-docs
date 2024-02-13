@@ -10,7 +10,7 @@ store.dispatch({ type: "SET_COMMAND_HOTKEYS", payload: commandHotkeys });
 
 `commandHotkeys`
 
-Object mapping command ids to their associated hotkey. A full list of available command ids and their default hotkeys can be found [here](./commands.json).
+Object mapping command ids to their associated hotkey. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
 ### Effects
 

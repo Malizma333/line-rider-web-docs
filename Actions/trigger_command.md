@@ -10,7 +10,7 @@ store.dispatch({ type: "TRIGGER_COMMAND", payload: command, meta: { ignorable: t
 
 `command`
 
-Trigger command to execute. A full list of available command ids and their default hotkeys can be found [here](./commands.json).
+Trigger command to execute. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
 ### Effects
 
