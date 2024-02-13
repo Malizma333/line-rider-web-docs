@@ -15,9 +15,5 @@
 */
 
 /** Blue - 0 | Red - 1 | Green - 2
-* @typedef {...
-*  0 |
-*  1 |
-*  2
-* } LineType
+* @typedef { 0 | 1 | 2 } LineType
 */
