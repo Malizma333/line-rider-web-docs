@@ -247,31 +247,6 @@ copies or substantial portions of the Software.
 * }} LineBase
 */
 
-/** Pages within views
-* | Main: editor, viewer, editable-viewer
-* | Sidebar: share, info, settings, help
-* | About: loading, launch
-* | Load: load
-* | Save: save
-* | Video Export: export
-* | Release Notes: notes
-* @typedef {...
-*  "editor" |
-*  "viewer" |
-*  "editable-viewer" |
-*  "share" |
-*  "info" |
-*  "settings" |
-*  "help" |
-*  "launch" |
-*  "loading" |
-*  "load" |
-*  "save" |
-*  "export" |
-*  "notes"
-* } Page
-*/
-
 /** Playback interpolation modes
 * (Smooth - true, Physics - false, Video - 60)
 * @typedef {...
@@ -405,18 +380,6 @@ copies or substantial portions of the Software.
 * }} V2
 */
 
-/** Views containing subpages
-* @typedef {...
-* "About" |
-* "Main" |
-* "ReleaseNotes" |
-* "Sidebar" |
-* "TrackLoader" |
-* "TrackSaver" |
-* "VideoExporter"
-* } View
-*/
-
 /** Camera dimensions and zoom properties
 * @typedef {{
 *   height: number
@@ -431,30 +394,6 @@ copies or substantial portions of the Software.
 *   flag: ?boolean
 *   skeleton: SkeletonMode
 * }} ViewSettings
-*/
-
-/** Available subactions for setting view state
-* @typedef {...
-*   "SET_SIDEBAR_PAGE" |
-*   "CLOSE_SIDEBAR" |
-*   "ENTER_VIEWER" |
-*   "ENTER_EDITABLE_VIEWER" |
-*   "CLOSE_LOAD_SCREEN" |
-*   "ENTER_EDITOR" |
-*   "OPEN_SETTING_SIDEBAR" |
-*   "OPEN_HELP_SIDEBAR" |
-*   "OPEN_INFO_SIDEBAR" |
-*   "OPEN_TRACK_LOADER" |
-*   "CLOSE_TRACK_LOADER" |
-*   "SWITCH_FROM_TRACK_LOADER_TO_EDITOR" |
-*   "OPEN_TRACK_SAVER" |
-*   "CLOSE_TRACK_SAVER" |
-*   "OPEN_SIDEBAR_SHARE_PAGE" |
-*   "OPEN_VIDEO_EXPORTER" |
-*   "CLOSE_VIDEO_EXPORTER" |
-*   "OPEN_RELEASE_NOTES" |
-*   "CLOSE_RELEASE_NOTES"
-* } ViewSubaction
 */
 
 /**
@@ -871,90 +810,6 @@ const Actions = (function() {
 
   /** Toggle whether the timeline is active */
   const toggleControlsActive = () => ({ type: "TOGGLE_CONTROLS_ACTIVE" });
-
-  /**
-  * Toggle a specific view
-  * @param {ViewSubaction} name View Key
-  * @param {Object.<View, Page>} views View to Open
-  * @example
-  * // Close the sidebar
-  * Actions.setViews("CLOSE_SIDEBAR", { "Sidebar": null })
-  */
-  const setViews = (name, views) => ({
-    type: "SET_VIEWS",
-    payload: views,
-    meta: { name, auto: false }
-  });
-
-  /** Open the editor view */
-  const enterEditor = () => setViews("ENTER_EDITOR", {
-    "Main": "editor",
-    "About": null,
-    "TrackLoader": null
-  });
-
-  /** Toggle the sidebar settings page */
-  const openSettingsSidebar = () => setViews("SET_SIDEBAR_PAGE", {
-    "Sidebar": "settings"
-  });
-
-  /** Toggle the sidebar help page */
-  const openHelpSidebar = () => setViews("SET_SIDEBAR_PAGE", {
-    "Sidebar": "help"
-  });
-
-  /** Toggle the sidebar info page */
-  const openInfoSidebar = () => setViews("SET_SIDEBAR_PAGE", {
-    "Sidebar": "info"
-  });
-
-  /** Close the sidebar */
-  const closeSidebar = () => setViews("SET_SIDEBAR_PAGE", {
-    "Sidebar": null
-  });
-
-  /** Open the track loader */
-  const openTrackLoader = () => setViews("OPEN_TRACK_LOADER", {
-    "Sidebar": null,
-    "TrackLoader": "load"
-  });
-
-  /** Close the track loader */
-  const closeTrackLoader = () => setViews("CLOSE_TRACK_LOADER", {
-    "TrackLoader": null
-  });
-
-  /** Open the track saver */
-  const openTrackSaver = () => setViews("OPEN_TRACK_SAVER", {
-    "Sidebar": null,
-    "TrackSaver": "save"
-  });
-
-  /** Close the track saver */
-  const closeTrackSaver = () => setViews("CLOSE_TRACK_SAVER", {
-    "TrackSaver": null
-  });
-
-  /** Open the video exporter */
-  const openVideoExporter = () => setViews("OPEN_VIDEO_EXPORTER", {
-    "Sidebar": null,
-    "VideoExporter": "export"
-  });
-
-  /** Close the video exporter */
-  const closeVideoExporter = () => setViews("CLOSE_VIDEO_EXPORTER", {
-    "VideoExporter": null
-  });
-
-  /** Open the release notes */
-  const openReleaseNotes = () => setViews("OPEN_RELEASE_NOTES", {
-    "ReleaseNotes": "notes"
-  });
-
-  /** Close the release notes */
-  const closeReleaseNotes = () => setViews("CLOSE_RELEASE_NOTES", {
-    "ReleaseNotes": null
-  });
 
   return {
     addLayer,
