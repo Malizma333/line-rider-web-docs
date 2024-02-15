@@ -1,22 +1,3 @@
-/*
-reselect.min.js
-
-The MIT License (MIT)
-
-Copyright (c) 2015-2018 Reselect Contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-*/
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports):"function"==typeof define&&define.amd?define(["exports"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).Reselect={});}(this,(function(e){"use strict";var t="NOT_FOUND";var n=function(e,t){return e===t;};function r(e,r){var u,o,i="object"==typeof r?r:{equalityCheck:r},c=i.equalityCheck,f=i.maxSize,a=void 0===f?1:f,l=i.resultEqualityCheck,p=function(e){return function(t,n){if(null===t||null===n||t.length!==n.length)return!1;for(var r=t.length,u=0;r>u;u++)if(!e(t[u],n[u]))return!1;return!0;};}(void 0===c?n:c),s=1===a?(u=p,{get:function(e){return o&&u(o.key,e)?o.value:t;},put:function(e,t){o={key:e,value:t};},getEntries:function(){return o?[o]:[];},clear:function(){o=void 0;}}):function(e,n){var r=[];function u(e){var u=r.findIndex((function(t){return n(e,t.key);}));if(u>-1){var o=r[u];return u>0&&(r.splice(u,1),r.unshift(o)),o.value;}return t;}return{get:u,put:function(n,o){u(n)===t&&(r.unshift({key:n,value:o}),r.length>e&&r.pop());},getEntries:function(){return r;},clear:function(){r=[];}};}(a,p);function v(){var n=s.get(arguments);if(n===t){if(n=e.apply(null,arguments),l){var r=s.getEntries(),u=r.find((function(e){return l(e.value,n);}));u&&(n=u.value);}s.put(arguments,n);}return n;}return v.clearCache=function(){return s.clear();},v;}function u(e){var t=Array.isArray(e[0])?e[0]:e;if(!t.every((function(e){return"function"==typeof e;}))){var n=t.map((function(e){return"function"==typeof e?"function "+(e.name||"unnamed")+"()":typeof e;})).join(", ");throw Error("createSelector expects all input-selectors to be functions, but received the following types: ["+n+"]");}return t;}function o(e){for(var t=arguments.length,n=Array(t>1?t-1:0),r=1;t>r;r++)n[r-1]=arguments[r];var o=function(){for(var t=arguments.length,r=Array(t),o=0;t>o;o++)r[o]=arguments[o];var i,c=0,f={memoizeOptions:void 0},a=r.pop();if("object"==typeof a&&(f=a,a=r.pop()),"function"!=typeof a)throw Error("createSelector expects an output function after the inputs, but received: ["+typeof a+"]");var l=f,p=l.memoizeOptions,s=void 0===p?n:p,v=Array.isArray(s)?s:[s],y=u(r),d=e.apply(void 0,[function(){return c++,a.apply(null,arguments);}].concat(v)),h=e((function(){for(var e=[],t=y.length,n=0;t>n;n++)e.push(y[n].apply(null,arguments));return i=d.apply(null,e);}));return Object.assign(h,{resultFunc:a,memoizedResultFunc:d,dependencies:y,lastResult:function(){return i;},recomputations:function(){return c;},resetRecomputations:function(){return c=0;}}),h;};return o;}var i=o(r);e.createSelector=i,e.createSelectorCreator=o,e.createStructuredSelector=function(e,t){if(void 0===t&&(t=i),"object"!=typeof e)throw Error("createStructuredSelector expects first argument to be an object where each property is a selector, instead received a "+typeof e);var n=Object.keys(e),r=t(n.map((function(t){return e[t];})),(function(){for(var e=arguments.length,t=Array(e),r=0;e>r;r++)t[r]=arguments[r];return t.reduce((function(e,t,r){return e[n[r]]=t,e;}),{});}));return r;},e.defaultEqualityCheck=n,e.defaultMemoize=r,Object.defineProperty(e,"__esModule",{value:!0});}));
-
 /** Full audio data
 * @typedef {{
 *   enabled: boolean
@@ -141,26 +122,6 @@ copies or substantial portions of the Software.
 * }} Layer
 */
 
-/** Playback interpolation modes
-* (Smooth - true, Physics - false, Video - 60)
-* @typedef {...
-*  true |
-*  false |
-*  60
-* } PlaybackMode
-*/
-
-/** Settings for the timeline
-* @typedef {{
-*   baseRate?: number
-*   fastForward?: number
-*   fps?: number
-*   interpolate?: boolean | number
-*   maxDuration?: number
-*   slowMotion?: number
-* }} PlayerSettings
-*/
-
 /** Progress data for saves/loads 
 * @typedef {{
 *   error: ?string
@@ -278,180 +239,19 @@ copies or substantial portions of the Software.
 * }} ViewSettings
 */
 
-/**
-* @summary Namespace of callable actions
-* @description
-* This object hosts actions that can be used to affect the redux state tree.
-* 
-* These actions don't do anything on their own. To affect anything, they
-* must be used with the store.dispatch() redux function.
-* @example
-* // This returns the appropriate object for toggling audio
-* const toggleAudioAction = Actions.toggleAudio();
-* 
-* // This dispatches the action to the redux store
-* store.dispatch(toggleAudioAction);
-*/
 const Actions = (function() {
-  /** Toggle locked track lines */
-  const toggleTrackLinesLocked = () => ({ type: "TOGGLE_TRACK_LINES_LOCKED" });
-
   /**
-  * Set the list of riders
-  * @param {Rider[]} riders Rider Array
+  * Set the skeleton mode
+  * @param {SkeletonMode} skeletonMode Skeleton Mode
   * @example
-  * // Remove all riders
-  * Actions.setRiders([])
-  * Actions.commitTrackChanges()
-  * Actions.revertTrackChanges()
+  * // Turn on both skeleton view and normal view
+  * Actions.setSkeleton(1)
   */
-  const setRiders = (riders) => ({
-    type: "SET_RIDERS",
-    payload: riders
+  const setSkeleton = (skeletonMode = 0) => ({
+    type: "SET_SKELETON",
+    payload: skeletonMode
   });
-
-  /**
-  * Set the fps of the playback renderer
-  * @param {number} fps Target Fps
-  * @example
-  * // Set the playback to 24 fps
-  * Actions.setPlayerFps(24)
-  */
-  const setPlayerFps = (fps = 40) => ({
-    type: "SET_PLAYER_FPS",
-    payload: fps
-  });
-
-  /** Toggle smooth playback */
-  const toggleInterpolate = () => ({ type: "TOGGLE_INTERPOLATE" });
   
-  /** 
-  * Toggle different smooth playback modes
-  * @param {PlaybackMode} playbackMode Playback Mode
-  * @example
-  * // Set playback mode to 60 fps
-  * Actions.setInterpolate(60)
-  */
-  const setInterpolate = (playbackMode = true) => ({
-    type: "SET_INTERPOLATE",
-    payload: playbackMode
-  });
-
-  /** Toggle slow motion playback */
-  const toggleSlowMotion = () => ({ type: "TOGGLE_SLOW_MOTION" });
-
-  /** Increment player timeline index if possible */
-  const incPlayerIndex = () => ({ type: "INC_PLAYER_INDEX" });
-
-  /** Decrement player timeline index if possible */
-  const decPlayerIndex = () => ({ type: "DEC_PLAYER_INDEX" });
-
-  /** Start playback */
-  const startPlayer = () => ({ type: "START_PLAYER" });
-
-  /** Stop playback */
-  const stopPlayer = () => ({ type: "STOP_PLAYER" });
-
-  /** Set the flag at the current timeline position */
-  const setFlag = () => ({ type: "SET_FLAG" });
-
-  /**
-  * Set the timeline index
-  * @param {number} index Index
-  * @example
-  * // Set the frame index to the beginning
-  * Actions.setFrameIndex(0)
-  */
-  const setFrameIndex = (index) => ({
-    type: "SET_PLAYER_INDEX",
-    payload: index
-  });
-
-  /**
-  * Set the max index of the timeline
-  * @param {number} maxIndex Max Index
-  * @example
-  * // Set the max index to 80 frames
-  * Actions.setPlayerMaxIndex(80)
-  */
-  const setPlayerMaxIndex = (maxIndex = 1200) => ({
-    type: "SET_PLAYER_MAX_INDEX",
-    payload: maxIndex
-  });
-
-  /**
-  * Set the flag index to a specific index
-  * @param {number} flagIndex Target Index
-  * @example
-  * // Set the flag index to frame 40
-  * Actions.setFlagIndex(40)
-  */
-  const setFlagIndex = (flagIndex) => ({
-    type: "SET_FLAG_INDEX",
-    payload: flagIndex
-  });
-
-  /**
-  * Toggle whether the track is playing
-  * @param {boolean} running Playback Running
-  * @example
-  * // Play the track
-  * Actions.setPlayerRunning(true)
-  */
-  const setPlayerRunning = (running) => ({
-    type: "SET_PLAYER_RUNNING",
-    payload: running
-  });
-
-  /**
-  * Toggle timeline fast forward
-  * @param {boolean} fastForward Fast Forward
-  * @example
-  * // Fast forward track
-  * Actions.setPlayerFastForward(true)
-  */
-  const setPlayerFastForward = (fastForward) => ({
-    type: "SET_PLAYER_FAST_FORWARD",
-    payload: fastForward
-  });
-
-  /**
-  * Toggle timeline rewind
-  * @param {boolean} rewind Rewind
-  * @example
-  * // Rewind track
-  * Actions.setPlayerRewind(true)
-  */
-  const setPlayerRewind = (rewind) => ({
-    type: "SET_PLAYER_REWIND",
-    payload: rewind
-  });
-
-  /**
-  * Toggle whether the timeline should stop at the max
-  * @param {boolean} stopAtEnd
-  * // Set track to not stop at the max index
-  * Actions.setPlayerStopAtEnd(false)
-  */
-  const setPlayerStopAtEnd = (stopAtEnd = false) => ({
-    type: "SET_PLAYER_STOP_AT_END",
-    payload: stopAtEnd
-  });
-
-  /**
-  * Set configuration settings for the timeline player
-  * @param {PlayerSettings} [settings] Player Settings 
-  * @example
-  * // Set base playback rate to be 2x speed
-  * Actions.setPlayerSettings({
-  *   baseRate: 2
-  * })
-  */
-  const setPlayerSettings = (settings) => ({
-    type: "SET_PLAYER_SETTINGS",
-    payload: settings
-  });
-
   /**
   * Toggle a renderer view option given a key and the new value
   * @param {RendererViewOption} viewOption Target View Option
@@ -482,6 +282,7 @@ const Actions = (function() {
 
   /** Toggle whether visible areas are shown */
   const toggleVisibleAreas = () => setViewOption("showVisibleAreas", null);
+
 
   /**
   * Toggle onion skinning
@@ -519,17 +320,6 @@ const Actions = (function() {
     payload: framesAfter
   });
 
-  /**
-  * Set the skeleton mode
-  * @param {SkeletonMode} skeletonMode Skeleton Mode
-  * @example
-  * // Turn on both skeleton view and normal view
-  * Actions.setSkeleton(1)
-  */
-  const setSkeleton = (skeletonMode = 0) => ({
-    type: "SET_SKELETON",
-    payload: skeletonMode
-  });
 
   /**
   * Create a new track 
@@ -576,6 +366,18 @@ const Actions = (function() {
   });
 
   /**
+  * Set whether track saves to local file
+  * @param {boolean} saveToFile Save Locally
+  * @example
+  * // Make track save locally
+  * Actions.setLocalFile(true)
+  */
+  const setLocalFile = (saveToFile = false) => ({
+    type: "trackData/SET_LOCAL_FILE",
+    payload: saveToFile
+  });
+
+  /**
   * Set details of the currently loaded track
   * @param {string} title Title
   * @param {string} creator Creator
@@ -594,18 +396,6 @@ const Actions = (function() {
   });
 
   /**
-  * Set whether track saves to local file
-  * @param {boolean} saveToFile Save Locally
-  * @example
-  * // Make track save locally
-  * Actions.setLocalFile(true)
-  */
-  const setLocalFile = (saveToFile = false) => ({
-    type: "trackData/SET_LOCAL_FILE",
-    payload: saveToFile
-  });
-
-  /**
   * Set the track script
   * @param {string} script Script
   * @example
@@ -618,121 +408,20 @@ const Actions = (function() {
   });
 
   /**
-  * Set whether the timeline is visible or not
-  * @param {boolean} active Timeline Active
+  * Set the list of riders
+  * @param {Rider[]} riders Rider Array
   * @example
-  * // Hide the timeline
-  * Actions.setControlsActive(false)
+  * // Remove all riders
+  * Actions.setRiders([])
+  * Actions.commitTrackChanges()
+  * Actions.revertTrackChanges()
   */
-  const setControlsActive = (active) => ({
-    type: "SET_CONTROLS_ACTIVE",
-    payload: active
+  const setRiders = (riders) => ({
+    type: "SET_RIDERS",
+    payload: riders
   });
-
-  /** Toggle whether the timeline is active */
-  const toggleControlsActive = () => ({ type: "TOGGLE_CONTROLS_ACTIVE" });
-
-  return {
-    addLayer,
-    addLines,
-    beginModifierCommand,
-    closeReleaseNotes,
-    closeSidebar,
-    closeTrackLoader,
-    closeTrackSaver,
-    closeVideoExporter,
-    commitTrackChanges,
-    decPlayerIndex,
-    endModifierCommand,
-    enterEditor,
-    hideNotification,
-    incPlayerIndex,
-    loadAutosave,
-    loadTrackAction,
-    moveLayer,
-    newTrack,
-    openHelpSidebar,
-    openInfoSidebar,
-    openReleaseNotes,
-    openSettingsSidebar,
-    openTrackLoader,
-    openTrackSaver,
-    openVideoExporter,
-    redoAction,
-    removeAudio,
-    removeLayer,
-    removeLines,
-    renameLayer,
-    revertTrackChanges,
-    selectLineType,
-    setAudioOffset,
-    setAudioVolume,
-    setAutosaveEnabled,
-    setCommandHotkeys,
-    setControlsActive,
-    setEditorCamera,
-    setEditorFollowerFocus,
-    setFlag,
-    setFlagIndex,
-    setFrameIndex,
-    setInterpolate,
-    setLayerActive,
-    setLayerEditable,
-    setLayerVisible,
-    setLocalFile,
-    setOnionSkin,
-    setOnionSkinFramesAfter,
-    setOnionSkinFramesBefore,
-    setPlaybackDimensions,
-    setPlaybackFollowerFocus,
-    setPlaybackZoom,
-    setPlayerFastForward,
-    setPlayerFps,
-    setPlayerMaxIndex,
-    setPlayerRewind,
-    setPlayerRunning,
-    setPlayerRunning,
-    setPlayerSettings,
-    setPlayerStopAtEnd,
-    setRiders,
-    setSkeleton,
-    setTool,
-    setTrackDetails,
-    setTrackScript,
-    setViews,
-    showNotification,
-    startPlayer,
-    stopPlayer,
-    toggleAudio,
-    toggleColorPlayback,
-    toggleControlsActive,
-    toggleEditorFollower,
-    toggleFlag,
-    toggleInterpolate,
-    togglePlaybackPreview,
-    toggleSlowMotion,
-    toggleTrackLinesLocked,
-    toggleViewport,
-    toggleVisibleAreas,
-    triggerCommand,
-    updateLines,
-    undoAction
-  };
 })();
 
-/**
-* @summary Namespace of callable selectors
-* @description
-* This object hosts selectors that can be used to access states within the state tree.
-* 
-* To use these selectors they must be called with the store.getState() function as a parameter.
-* @example
-* // This defines an object to be the current state
-* const state = window.store.getState();
-* 
-* // This logs whether audio is enabled in the current state
-* console.log(getAudioEnabled(state));
-*/
 const Selectors = (function() {
   /** Audio file enabled @returns {boolean} */
   function getAudioEnabled(state) {
@@ -1327,103 +1016,4 @@ const Selectors = (function() {
     state.views["VIDEO_EXPORTER"] ||
     state.views["RELEASE_NOTES"]
   );}
-
-  return {
-    getActiveLayerEditable,
-    getActiveTool,
-    getAudioEnabled,
-    getAudioFileLoader,
-    getAudioFileLoading,
-    getAudioOffset,
-    getAudioProps,
-    getAutosaveEnabled,
-    getAutosaveProgress,
-    getColorPlayback,
-    getCommandsToHotkeys,
-    getCommittedRiders,
-    getCommittedTrackLayers,
-    getControlsActive,
-    getCurrentCamera,
-    getCurrentPlayerRate,
-    getEditorCamera,
-    getEditorDimensions,
-    getEditorFollowerFocus,
-    getEditorFollowerFocus,
-    getEditorPosition,
-    getEditorZoom,
-    getHasOverlay,
-    getInEditor,
-    getInTrackLoader,
-    getInTrackSaver,
-    getInVideoExporter,
-    getInViewer,
-    getLineTypePickerActive,
-    getLocalAudioProps,
-    getMainPage,
-    getModifier,
-    getModifiersActive,
-    getNotification,
-    getNotificationProgressId,
-    getNotificationsCount,
-    getNumRiders,
-    getOnionBeginIndex,
-    getOnionEndIndex,
-    getOnionSkinActive,
-    getPlaybackCamera,
-    getPlaybackCameraFocus,
-    getPlaybackCameraParams,
-    getPlaybackDimensions,
-    getPlaybackDimensionsDefined,
-    getPlaybackPreview,
-    getPlaybackZoom,
-    getPlayerFlagActive,
-    getPlayerFlagIndex,
-    getPlayerFps,
-    getPlayerFrameRateSetting,
-    getPlayerIndex,
-    getPlayerMaxIndex,
-    getPlayerReversed,
-    getPlayerRunning,
-    getPlayerSettings,
-    getPlayerSlowMotion,
-    getPlayerTime,
-    getRiders,
-    getSavedTracks,
-    getSavedTracksAvailable,
-    getSelectedLineType,
-    getSelectedLineType,
-    getSelectedTool,
-    getSidebarPage,
-    getSimulatorCommittedLines,
-    getSimulatorCommittedTrack,
-    getSimulatorHasRedo,
-    getSimulatorHasUndo,
-    getSimulatorLines,
-    getSimulatorTrack,
-    getSimulatorTrackTotalLineCount,
-    getSimulatorVersion,
-    getToolState,
-    getTrackActiveLayerId,
-    getTrackCloudInfo,
-    getTrackDetails,
-    getTrackDetailsWithCloudInfo,
-    getTrackDuration,
-    getTrackIsDirty,
-    getTrackIsEmpty,
-    getTrackIsLocalFile,
-    getTrackLayers,
-    getTrackLinesLocked,
-    getTrackLoaderProgress,
-    getTrackObjectForAutosave,
-    getTrackObjectForSaving,
-    getTrackProps,
-    getTrackSaverInProgress,
-    getTrackSaverProgress,
-    getTrackScript,
-    getTriggerCounts,
-    getUseEditorFollower,
-    getViewOptions,
-    getViews,
-    getZoomSliderActive
-  };
 })();
