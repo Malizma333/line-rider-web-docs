@@ -14,10 +14,6 @@ None
 
 Adds a new layer to the layer array.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

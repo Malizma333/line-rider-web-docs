@@ -20,10 +20,6 @@ Whether or not the notification hides after a certain period of time
 
 Displays a notification message in the top right.
 
-### Returns
-
-None
-
 ## Examples
 
 Display the message "Hello, world!".

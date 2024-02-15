@@ -16,10 +16,6 @@ Max index for the timeline to render.
 
 Sets the max index that the timeline ends at.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the max index to frame 80.

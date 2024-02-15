@@ -14,10 +14,6 @@ None
 
 Sets the flag to the current index in the timeline.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

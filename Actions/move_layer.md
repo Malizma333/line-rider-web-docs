@@ -20,10 +20,6 @@ New index for the layer to move to.
 
 Moves a target layer to a new location in the layer array.
 
-### Returns
-
-None
-
 ## Examples
 
 Move layer 1 to the second position above the base layer.

@@ -20,10 +20,6 @@ The type of view action to execute. A list of available view actions can be foun
 
 Opens a specific UI menu area based on the name of the menu and the view object parameters.
 
-### Returns
-
-None
-
 ## Examples
 
 Opens the editor view.

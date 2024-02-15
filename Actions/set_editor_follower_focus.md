@@ -16,10 +16,6 @@ Target rider to focus on.
 
 Sets the rider that the editor camera should focus on.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the editor camera focus to the second rider.

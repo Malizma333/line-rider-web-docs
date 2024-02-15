@@ -16,10 +16,6 @@ Target layer to set active.
 
 Sets which layer is the active layer.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the base layer to be the active layer.

@@ -16,10 +16,6 @@ Frames per second to set playback to.
 
 Sets player fps rate.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the playback rate to 24 fps.

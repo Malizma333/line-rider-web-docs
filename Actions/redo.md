@@ -14,10 +14,6 @@ None
 
 Steps forward engine state from last undo state in history if available.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

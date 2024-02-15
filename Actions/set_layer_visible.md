@@ -16,10 +16,6 @@ Target layer to toggle visibility of.
 
 Toggles visibility of target layer.
 
-### Returns
-
-None
-
 ## Examples
 
 Set layer 1 to invisible.

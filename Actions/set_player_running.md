@@ -16,10 +16,6 @@ Whether the player should be running.
 
 Sets the player to start or stop running.
 
-### Returns
-
-None
-
 ## Examples
 
 Stop the player.

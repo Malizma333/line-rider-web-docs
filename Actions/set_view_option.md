@@ -20,10 +20,6 @@ Bool representing whether to turn on or off the target view option.
 
 Toggles a target view option.
 
-### Returns
-
-None
-
 ## Examples
 
 Turn on color playback.

@@ -16,10 +16,6 @@ Loads a track object into the editor. The shape of track objects can be found [h
 
 Loads a track object from its data.
 
-### Returns
-
-None
-
 ## Examples
 
 Loads a blank track with 2 riders.

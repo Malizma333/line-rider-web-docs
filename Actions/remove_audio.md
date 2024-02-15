@@ -14,10 +14,6 @@ None
 
 Clears the loaded audio file.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

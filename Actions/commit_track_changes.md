@@ -14,10 +14,6 @@ None
 
 Commits track changes to committed engine state.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

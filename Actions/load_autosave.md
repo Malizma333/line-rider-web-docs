@@ -14,10 +14,6 @@ None
 
 Loads the last cached autosave.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

@@ -16,10 +16,6 @@ Target zoom of the playback camera.
 
 Sets the zoom of the playback camera.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the playback camera's zoom to 4.

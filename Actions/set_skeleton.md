@@ -16,10 +16,6 @@ Target skeleton visual to switch to. The available modes are normal view (0), sk
 
 Toggles the advanced skeleton view, which shows the rider skeleton and gravity wells.
 
-### Returns
-
-None
-
 ## Examples
 
 Turn on skeleton view with sprites visible.

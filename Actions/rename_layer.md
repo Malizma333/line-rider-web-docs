@@ -20,10 +20,6 @@ New name of the target layer.
 
 Renames target layer.
 
-### Returns
-
-None
-
 ## Examples
 
 Rename layer 1 to "Background Layer".

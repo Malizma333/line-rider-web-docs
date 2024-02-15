@@ -24,10 +24,6 @@ The type of update line action to execute.
 
 Updates the line array in the non-committed engine. This must be used with `COMMIT_TRACK_CHANGES` and `REVERT_TRACK_CHANGES` to push changes to the committed engine and apply to edit history.
 
-### Returns
-
-None
-
 ## Examples
 
 Creates a triangle of lines.

@@ -16,10 +16,6 @@ Target layer to set editable.
 
 Sets edibility of target layer.
 
-### Returns
-
-None
-
 ## Examples
 
 Set layer 2 to be editable.

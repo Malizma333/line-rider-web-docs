@@ -16,10 +16,6 @@ Index in the timeline to set the flag to.
 
 Sets the flag to the target index in the timeline.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the flag index to the 40th frame.

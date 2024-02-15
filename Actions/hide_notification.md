@@ -16,10 +16,6 @@ The message of the notification to hide.
 
 Hides a notification based on its message.
 
-### Returns
-
-None
-
 ## Examples
 
 Hide the notification with the message "Hello, world!".

@@ -16,10 +16,6 @@ External script of the track file.
 
 Sets the track file script.
 
-### Returns
-
-None
-
 ## Examples
 
 Clear the script of the current track file.

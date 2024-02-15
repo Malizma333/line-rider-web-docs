@@ -16,10 +16,6 @@ Target line type to set the current tool's swatch to.
 
 Changes the color swatch of the current tool to a different line type if it's available.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the color swatch to blue.

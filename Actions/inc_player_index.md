@@ -14,10 +14,6 @@ None
 
 Increments the timeline index by 1 frame.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

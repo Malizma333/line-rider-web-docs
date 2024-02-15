@@ -16,10 +16,6 @@ Weights of each rider on the playback camera movement.
 
 Sets the camera to focus zero or more riders based on weights.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the playback to focus between the first and third riders.

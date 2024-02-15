@@ -16,10 +16,6 @@ Mode of interpolating. A `true` value represents smooth interpolation, while a `
 
 Toggles interpolation based on input interpolation.
 
-### Returns
-
-None
-
 ## Examples
 
 Set interpolation mode to 60 fps.

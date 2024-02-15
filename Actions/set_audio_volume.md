@@ -16,10 +16,6 @@ Percentage value ranging from `0` - `1` that determines the volume of the audio 
 
 Sets the volume of the audio file.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the audio volume to half volume.

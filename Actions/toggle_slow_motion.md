@@ -14,10 +14,6 @@ None
 
 Toggles slow motion playback.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

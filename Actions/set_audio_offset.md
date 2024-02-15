@@ -16,10 +16,6 @@ Time (in seconds) that audio starts playing from. Negative values correspond to 
 
 Sets the offset of the audio file.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the audio offset to play the song file 2 seconds in.

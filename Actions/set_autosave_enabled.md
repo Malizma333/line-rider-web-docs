@@ -16,10 +16,6 @@ Whether or not autosave should be enabled.
 
 Enables or disables autosaving.
 
-### Returns
-
-None
-
 ## Examples
 
 Disable autosave.

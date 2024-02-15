@@ -16,10 +16,6 @@ Target viewport dimensions to set playback camera to.
 
 Applies viewport dimensions to playback camera.
 
-### Returns
-
-None
-
 ## Examples
 
 Set viewport dimensions to 1080p resolution.

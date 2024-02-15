@@ -16,10 +16,6 @@ Object mapping command ids to their associated hotkey. A full list of available 
 
 Changes which hotkey triggers which command.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the flag command hotkey to "f".

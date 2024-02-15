@@ -16,10 +16,6 @@ Whether or not to turn on onion skinning.
 
 Toggles onion skinning.
 
-### Returns
-
-None
-
 ## Examples
 
 Turn on onion skinning.

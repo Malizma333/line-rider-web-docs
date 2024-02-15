@@ -14,10 +14,6 @@ None
 
 Toggles interpolated playback.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

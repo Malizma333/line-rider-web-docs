@@ -16,10 +16,6 @@ Settings object describing parameters for the player. The format of the player s
 
 Applies settings to the player.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the base rate of the player to 2 times speed.

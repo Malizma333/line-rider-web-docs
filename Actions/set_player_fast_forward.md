@@ -16,10 +16,6 @@ Whether or not the player should play faster.
 
 Toggles the player to play faster.
 
-### Returns
-
-None
-
 ## Examples
 
 Turn off fast-forwarding.

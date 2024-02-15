@@ -16,10 +16,6 @@ Modifier command to stop executing. This will stop any modifiers currently activ
 
 Stops the hotkey command given by the modifier id.
 
-### Returns
-
-None
-
 ## Examples
 
 Stop the fast-forward playback hotkey modifier.

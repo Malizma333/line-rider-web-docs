@@ -14,10 +14,6 @@ None
 
 Steps back engine state to previous state in history if available.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

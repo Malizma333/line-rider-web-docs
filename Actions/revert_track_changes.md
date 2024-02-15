@@ -14,10 +14,6 @@ None
 
 Clears track changes from uncommitted engine state.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

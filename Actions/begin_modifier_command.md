@@ -16,10 +16,6 @@ Modifier command to start executing. This command will not stop until an `END_MO
 
 Starts the hotkey command given by the modifier id.
 
-### Returns
-
-None
-
 ## Examples
 
 Start the fast-forward playback hotkey modifier.

@@ -16,10 +16,6 @@ Target index to skip to.
 
 Sets the current index of the timeline.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the index to frame 80.

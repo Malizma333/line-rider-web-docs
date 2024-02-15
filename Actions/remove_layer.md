@@ -16,10 +16,6 @@ Id of the layer to remove.
 
 Remove target layer from the layer array.
 
-### Returns
-
-None
-
 ## Examples
 
 Remove layer 1.

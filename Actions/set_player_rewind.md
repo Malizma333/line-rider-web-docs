@@ -16,10 +16,6 @@ Whether or not the player should rewind.
 
 Toggles the player to rewind.
 
-### Returns
-
-None
-
 ## Examples
 
 Turn on rewind.

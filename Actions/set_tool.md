@@ -16,10 +16,6 @@ Target tool to change to. List of available tools to switch to can be found [her
 
 Changes the tool to the target tool.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the active tool to the pencil tool.

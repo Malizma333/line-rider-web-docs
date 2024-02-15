@@ -16,10 +16,6 @@ Number of frames to render onion skinning before the current frame.
 
 Sets how many frames onion skinning renders before the current frame.
 
-### Returns
-
-None
-
 ## Examples
 
 Render 5 frames of onion skinning before the current frame.

@@ -16,10 +16,6 @@ Sets whether the current track should save to a local file.
 
 Toggles local file saving.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the track to save to a local file.

@@ -16,10 +16,6 @@ Array of rider objects to set the track riders to. The shape of a rider object c
 
 Sets the riders for the current track.
 
-### Returns
-
-None
-
 ## Examples
 
 Remove all riders from the current track.

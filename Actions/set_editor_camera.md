@@ -20,10 +20,6 @@ Target zoom to set the editor camera to.
 
 Applies position and zoom to the editor camera while in editor mode.
 
-### Returns
-
-None
-
 ## Examples
 
 Move the editor camera 20 pixels above the origin and apply a zoom of 3.

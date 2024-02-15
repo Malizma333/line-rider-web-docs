@@ -16,10 +16,6 @@ Creates a new track object and loads it into the editor. The shape of track obje
 
 Creates a new track.
 
-### Returns
-
-None
-
 ## Examples
 
 Create a blank legacy track.

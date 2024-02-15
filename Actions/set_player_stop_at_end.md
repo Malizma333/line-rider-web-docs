@@ -16,10 +16,6 @@ Whether or not the player stops at the end of the timeline.
 
 Toggles the player to stop at the end of the timeline.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the timeline to stop at the end.

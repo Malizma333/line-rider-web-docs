@@ -14,10 +14,6 @@ None
 
 Toggles the volume of the currently loaded audio file.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]

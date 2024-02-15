@@ -16,10 +16,6 @@ Trigger command to execute. A full list of available command ids and their defau
 
 Triggers the hotkey command given by the trigger id.
 
-### Returns
-
-None
-
 ## Examples
 
 Trigger the skeleton view hotkey.

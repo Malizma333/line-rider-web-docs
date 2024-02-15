@@ -24,10 +24,6 @@ A short description about the track.
 
 Sets the details of the currently loaded track.
 
-### Returns
-
-None
-
 ## Examples
 
 Set the title of the track with a blank author and description.

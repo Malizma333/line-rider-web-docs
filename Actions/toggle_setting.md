@@ -16,10 +16,6 @@ Id of the target setting to toggle. The only available setting for web is `'cam.
 
 Toggles the target setting given the key.
 
-### Returns
-
-None
-
 ## Examples
 
 Toggle whether the editor camera keeps the rider in view while scrubbing.

@@ -14,10 +14,6 @@ None
 
 Stops the player if it is running.
 
-### Returns
-
-None
-
 ## Examples
 
 [Example Needed]
