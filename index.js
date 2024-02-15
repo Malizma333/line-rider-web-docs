@@ -130,18 +130,6 @@
 * }} Progress
 */
 
-/** Advanced view options for the renderer
-* @typedef {...
-*   "showViewport" |
-*   "showVisibleAreas" |
-*    "playbackPreview" |
-*    "colorPlayback" |
-*    "flag" |
-*    "millionsEnabled" |
-*    "onionSkin"
-* } RendererViewOption
-*/
-
 /** Rider properties
 * @typedef {{
 *   remountable: boolean
@@ -149,15 +137,6 @@
 *   startPosition: {x: number, y: number}
 *   startVelocity: {x: number, y: number}
 * }} Rider
-*/
-
-/** Skeleton viewing modes
-* (Normal - 0, Normal + Skeleton - 1, Skeleton - 2)
-* @typedef {...
-*  0 |
-*  1 |
-*  2
-* } SkeletonMode
 */
 
 /** Full track properties
@@ -240,50 +219,6 @@
 */
 
 const Actions = (function() {
-  /**
-  * Set the skeleton mode
-  * @param {SkeletonMode} skeletonMode Skeleton Mode
-  * @example
-  * // Turn on both skeleton view and normal view
-  * Actions.setSkeleton(1)
-  */
-  const setSkeleton = (skeletonMode = 0) => ({
-    type: "SET_SKELETON",
-    payload: skeletonMode
-  });
-  
-  /**
-  * Toggle a renderer view option given a key and the new value
-  * @param {RendererViewOption} viewOption Target View Option
-  * @param {?boolean} value New Value
-  * @example
-  * // Turn off playback preview
-  * Actions.setViewOption("playbackPreview", false)
-  */
-  const setViewOption = (viewOption, value) => ({
-    type: "SET_VIEW_OPTION",
-    payload: {
-      key: viewOption,
-      value
-    }
-  });
-
-  /** Toggle whether flags render */
-  const toggleFlag = () => setViewOption("flag", null);
-
-  /** Toggle color playback */
-  const toggleColorPlayback = () => setViewOption("colorPlayback", null);
-
-  /** Toggle playback preview */
-  const togglePlaybackPreview = () => setViewOption("playbackPreview", null);
-
-  /** Toggle whether viewport dimensions are shown */
-  const toggleViewport = () => setViewOption("showViewport", null);
-
-  /** Toggle whether visible areas are shown */
-  const toggleVisibleAreas = () => setViewOption("showVisibleAreas", null);
-
-
   /**
   * Toggle onion skinning
   * @param {boolean} onionSkin Onion Skinning
