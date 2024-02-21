@@ -6,16 +6,28 @@ The contents of this repository document the [Redux](https://redux.js.org/)-base
 
 ## Documentation Structure
 
-Within each folder of this repository are documentation files detailing functions that are potentially useful. These files will consist of three sections: Description, Examples, and Related. More detail about each section can be found below.
+Within each folder of this repository are markdown documentation files relating to their directory. Details about each directory can be found below.
 
-### Description
+### Actions
 
-The description section provides syntax for the function in isolation. It also outlines parameters, effects, and the return object of the function.
+The `Actions` folder contains documentation for functions that alter the global state. These files are broken up into three sections, `Description`, `Examples`, and `Related`.
 
-### Examples
+The `Description` section details the effects of the function. It also outlines syntax for the function and relevant parameters, if any.
 
-The example section is used to demonstrate how the function is used within a larger context by providing one or more snippets of code.
+The `Examples` section is used to demonstrate how the function is used by providing one or more snippets of code.
 
-### Related
+The `Related` section links to action functions that affect similar states.
 
-The related section links to documentation for functions that affect similar states or return similar values.
+### Selectors
+
+The `Selectors` folder contains documentation for functions that read from the global state. These files are broken up into the same three sections, `Description`, `Examples`, and `Related`.
+
+The `Description` section details what the function returns. It also outlines syntax for the function and relevant parameters, if any.
+
+The `Examples` section is used to demonstrate how the function is used by providing one or more snippets of code.
+
+The `Related` section links to selector functions that affect similar states.
+
+### External
+
+The `External` folder contains documentation for object interfaces and enumerated data. These are usually referenced from within the action or selector docs, but don't do anything by themselves.
