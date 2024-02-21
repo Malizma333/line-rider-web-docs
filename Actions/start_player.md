@@ -14,10 +14,6 @@ None
 
 Starts the player if it is stopped.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [set_player_running](./set_player_running.md)

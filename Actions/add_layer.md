@@ -14,10 +14,6 @@ None
 
 Adds a new layer to the layer array.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [move_layer](./move_layer.md)

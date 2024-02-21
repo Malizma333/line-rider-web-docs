@@ -14,10 +14,6 @@ None
 
 Decrements the timeline index by 1 frame.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [inc_player_index](./inc_player_index.md)

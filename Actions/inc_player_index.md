@@ -14,10 +14,6 @@ None
 
 Increments the timeline index by 1 frame.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [dec_player_index](./dec_player_index.md)

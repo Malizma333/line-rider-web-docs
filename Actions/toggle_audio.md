@@ -14,10 +14,6 @@ None
 
 Toggles the volume of the currently loaded audio file.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [remove_audio](./remove_audio.md)

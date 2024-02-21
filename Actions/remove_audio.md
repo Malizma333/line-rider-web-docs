@@ -14,10 +14,6 @@ None
 
 Clears the loaded audio file.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [set_audio_offset](./set_audio_offset.md)

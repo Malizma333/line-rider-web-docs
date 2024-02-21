@@ -14,10 +14,6 @@ None
 
 Steps back engine state to previous state in history if available.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [commit_track_changes](./commit_track_changes.md)

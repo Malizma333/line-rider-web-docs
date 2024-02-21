@@ -14,10 +14,6 @@ None
 
 Sets the flag to the current index in the timeline.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [set_flag_index](./set_flag_index.md)

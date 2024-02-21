@@ -14,10 +14,6 @@ None
 
 Loads the last cached autosave.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [set_autosave_enabled](./set_autosave_enabled.md)

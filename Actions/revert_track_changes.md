@@ -14,10 +14,6 @@ None
 
 Clears track changes from uncommitted engine state.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [commit_track_changes](./commit_track_changes.md)

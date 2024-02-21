@@ -14,10 +14,6 @@ None
 
 Toggles interpolated playback.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [set_interpolate](./set_interpolate.md)

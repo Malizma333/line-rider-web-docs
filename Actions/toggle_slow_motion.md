@@ -14,10 +14,6 @@ None
 
 Toggles slow motion playback.
 
-## Examples
-
-[Example Needed]
-
 ## Related
 
 - [set_player_settings](./set_player_settings.md)
