@@ -23,7 +23,7 @@ Turn on skeleton view with sprites visible.
 ```javascript
 store.dispatch({
   type: "SET_SKELETON",
-  payload: 0
+  payload: 1
 });
 ```
 
