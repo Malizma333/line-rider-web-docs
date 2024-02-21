@@ -6,16 +6,16 @@ The contents of this repository document the [Redux](https://redux.js.org/)-base
 
 ## Documentation Structure
 
-Within each folder of this repository are documentation files detailing functions that are potentially useful. These files will consist of three sections: Description, Examples, and Related. More detail about each section can be found below.
+Within the `States` folder of this repository are documentation files detailing state functions that affect the global state. These files will consist of three sections: Description, Examples, and Related. More detail about each section can be found below.
 
 ### Description
 
-The description section provides syntax for the function in isolation. It also outlines parameters, effects, and the return object of the function.
+The description section details what state is affected by the function. It also outlines template syntax, parameters, and the selector path of the affected state.
 
 ### Examples
 
-The example section is used to demonstrate how the function is used within a larger context by providing one or more snippets of code.
+The example section is used to demonstrate how the function is used by providing one or more snippets of code.
 
 ### Related
 
-The related section links to documentation for functions that affect similar states or return similar values.
+The related section links to documentation for functions that affect similar states.
