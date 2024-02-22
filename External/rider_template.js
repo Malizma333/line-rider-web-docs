@@ -1,4 +1,4 @@
-/** Template for Rider object
+/**
 * @typedef {{
 *   remountable: boolean
 *   startAngle: number

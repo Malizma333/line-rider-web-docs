@@ -1,4 +1,4 @@
-/** Template for Line object
+/**
 * @typedef {{
 *   id?: number
 *   type: LineType
@@ -18,7 +18,7 @@
 * @typedef { 0 | 1 | 2 } LineType
 */
 
-/** Extended line properties
+/**
 * @typedef {{
 *   extension?: number
 *   flipped?: boolean

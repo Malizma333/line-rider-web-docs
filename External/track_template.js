@@ -1,4 +1,4 @@
-/** Template for Track object
+/**
 * @typedef {{
 *   audio?: AudioDataFragment
 *   creator?: string

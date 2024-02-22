@@ -1,4 +1,4 @@
-/** Template for Player Settings object
+/**
 * @typedef {{
 *   baseRate?: number
 *   fastForward?: number
