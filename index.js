@@ -1,172 +1,3 @@
-/** Partial audio data used in saves
-* @typedef {{
-*   name: ?string
-*   offset: number
-*   path: ?string
-* }} AudioDataFragment
-*/
-
-/** Data important to autosaving
-* @typedef {{
-*   cloudInfo: CloudInfo
-*   details: TrackDetails
-*   info: {duration: number}
-*   localFile: boolean
-*   props: TrackFragment
-* }} AutosaveData
-*/
-
-/** Camera position and zoom properties
-* @typedef {{
-*   position: V2
-*   zoom: number
-* }} Camera
-*/
-
-/** Cloud base properties
-* @typedef {{
-*   derivativeKey: string
-*   derivedFrom: DerivedFrom
-*   masterKey: string
-*   saveTime: number
-*   trackId: number
-*   versionTitle: string
-*   versionId: string
-* }} CloudInfo
-*/
-
-/** Cloud save peroperties
-* @typedef {{
-*   cloudInfo: CloudInfo
-*   details: TrackDetails
-* }} CloudSave
-*/
-
-/** Current ui view state
-* @typedef {{
-*   "About"?: string
-*   "Main"?: string
-*   "Sidebar"?: string
-*   "TrackLoader"?: string
-*   "TrackSaver"?: string
-* }} CurrentViews
-*/
-
-/** Cloud derived properties
-* @typedef {{
-*   creator: string
-*   title: string
-*   version: "6.1" | "6.2"
-* }} DerivedFrom
-*/
-
-/** Camera dimensions
-* @typedef {{
-*   height: number
-*   width: number
-* }} Dimensions
-*/
-
-/** Editor notification properties
-* @typedef {{
-*   autoHide: boolean
-*   message: string
-*   open: boolean
-* }} EditorNotification
-*/
-
-/** Engine state properties
-* @typedef {{
-*   _changeCount: number
-*   _computed?: Object
-*   _locked: boolean
-*   _target?: Object
-*   linesList: {buffer: LineBase[]}
-*   props: Object
-*   start: {
-*     position: {x: number, y: number}
-*     velocity: {x: number, y: number}
-*   }
-*   state: {
-*     activeLayerId: number
-*     layers: {buffer: Layer[]}
-*     lines: {buffer: Line[]}
-*     riders: {buffer: Rider[]}
-*   }
-* }} Engine
-*/
-
-/** Layer properties
-* @typedef {{
-*   editable: boolean
-*   id: number
-*   name: string
-*   visible: boolean
-* }} Layer
-*/
-
-/** Progress data for saves/loads 
-* @typedef {{
-*   error: ?string
-*   percent: ?(true | number)
-*   status: ?boolean
-* }} Progress
-*/
-
-/** Fragment of a track used in save data
-* @typedef {{
-*   audio: AudioDataFragment
-*   layers: {buffer: Layer[]}
-*   riders: {buffer: Rider[]}
-*   script: string
-*   version: "6.1" | "6.2"
-* }} TrackFragment
-*/
-
-/** Tool state
-* @typedef {{
-*   status: {
-*     inactive: boolean
-*   }
-* }} ToolState
-*/
-
-/** Available subactions for updating lines
-* @typedef {...
-*   "ADD_LINE" |
-*   "ADD_LINES" |
-*   "LOAD_LINES" |
-*   "DUPLICATE_LINES" |
-*   "REMOVE_LINE" |
-*   "REMOVE_LINES" |
-*   "SET_LINES" |
-*   "REPLACE_LINE"
-* } UpdateLineSubaction
-*/
-
-/** Two-dimensional vector
-* @typedef {{
-*   x: number
-*   y: number
-* }} V2
-*/
-
-/** Camera dimensions and zoom properties
-* @typedef {{
-*   height: number
-*   width: number
-*   zoom: number
-* }} Viewbox
-*/
-
-/** Renderer view settings
-* @typedef {{
-*   color: boolean
-*   flag: ?boolean
-*   skeleton: SkeletonMode
-* }} ViewSettings
-*/
-
 const Selectors = (function() {
   /** Editor zoom @returns {number} */
   function getEditorZoom(state) {
@@ -177,13 +8,6 @@ const Selectors = (function() {
   function getEditorPosition(state) {
     return state.camera.editorPosition;
   }
-
-  /** Editor camera properties @type {Camera} */
-  const getEditorCamera = Reselect.createSelector(
-    state => state.camera.editorPosition,
-    getEditorZoom,
-    (position, zoom) => ({ position, zoom })
-  );
 
   /** Keep rider in view while scrubbing timeline @returns {boolean} */
   function getUseEditorFollower(state) {
@@ -217,27 +41,6 @@ const Selectors = (function() {
     return state.camera.playbackDimensions || getEditorDimensions(state);
   }
 
-  /** Playback camera viewbox @type {Viewbox} */
-  const getPlaybackCameraParams = Reselect.createSelector(
-    getPlaybackZoom,
-    getPlaybackDimensions,
-    (zoom, { width, height }) => ({ zoom, width, height })
-  );
-
-  /** Playback camera properties @type {Camera} */
-  const getPlaybackCamera = Reselect.createSelector(
-    state => state.camera.playbackFollower,
-    getSimulatorTrack,
-    getPlayerIndex,
-    getPlaybackZoom,
-    getPlaybackCameraParams,
-    state => state.camera.playbackFixedPosition,
-    (playbackFollower, track, index, zoom, params, pan) => ({
-      position: playbackFollower.isFixed() ? pan : playbackFollower.getCamera(track, params, index),
-      zoom
-    })
-  );
-
   /** Playback camera focus array @returns {Array.<boolean|number>} */
   function getPlaybackCameraFocus(state) {
     return state.camera.playbackFollower.focus;
@@ -249,12 +52,6 @@ const Selectors = (function() {
       getPlaybackCamera(state) :
       getEditorCamera(state) ;
   }
-
-  /** Command hotkeys array @type {[Command, string][]}*/
-  const getCommandsToHotkeys = Reselect.createSelector(
-    state => state.command.hotkeys,
-    (hotkeys) => Object.keys(hotkeys).map(command => [command, hotkeys[command]])
-  );
 
   /**
   * Trigger activation count
@@ -283,14 +80,6 @@ const Selectors = (function() {
   function getZoomSliderActive(state) {
     return getModifier(state, "modifiers.zoom");
   }
-
-  /** Current active notification @type {EditorNotification} */
-  const getNotification = Reselect.createSelector(
-    state => state.notifications.message,
-    state => state.notifications.autoHide,
-    state => state.notifications.open,
-    (message, autoHide, open) => ({ message, autoHide, open })
-  );
 
   /** Active notification progress id @returns {?string} */
   function getNotificationProgressId(state) {
@@ -354,33 +143,6 @@ const Selectors = (function() {
     return state.player.settings.fps;
   }
 
-  /** Current player time in seconds @type {number} */
-  const getPlayerTime = Reselect.createSelector(
-    getPlayerIndex,
-    getPlayerFps,
-    (index, fps) => index / fps
-  );
-
-  /** Current playback rate @type {number} */
-  const getCurrentPlayerRate = Reselect.createSelector(
-    state => state.player.settings.baseRate,
-    state => state.player.settings.slowMotionRate,
-    state => state.player.settings.fastForwardRate,
-    state => state.player.slowMotion,
-    state => state.player.fastForward,
-    state => state.player.rewind,
-    getPlayerRunning,
-    (baseRate, slowMotionRate, fastForwardRate, slowMotion, fastForward, rewind, running) => {
-      if (slowMotion) {
-        baseRate *= slowMotionRate;
-      }
-      if (running && (fastForward || rewind)) {
-        baseRate *= fastForwardRate;
-      }
-      return baseRate;
-    }
-  );
-
   /** Current track saving progress @returns {Progress} */
   function getTrackSaverProgress(state) {
     return state.progress["SAVE_TRACK"];
@@ -431,14 +193,6 @@ const Selectors = (function() {
   function getColorPlayback(state) {
     return state.renderer.colorPlayback;
   }
-
-  /** Renderer view settings @type {ViewSettings} */
-  const getViewOptions = Reselect.createStructuredSelector({
-    color: state => getPlayerRunning(state) ? getColorPlayback(state) : !getPlaybackPreview(state),
-    flag: state => state.renderer.flag != null ? 
-      state.renderer.flag : !(getInViewer(state) && getPlayerRunning(state)),
-    skeleton: state => state.renderer.skeleton
-  });
 
   /** Track engine (uncommitted) @returns {{engine: Engine}} */
   function getSimulatorTrack(state) {
@@ -508,20 +262,6 @@ const Selectors = (function() {
     }
   }
 
-  /** Whether there are changes available to undo @type {boolean} */
-  const getSimulatorHasUndo = Reselect.createSelector(
-    state => state.simulator.history,
-    state => state.simulator.committedEngine,
-    (history, engine) => history.findIndex(e => e === engine) > 0
-  );
-
-  /** Whether there are undone changes available to redo @type {boolean} */
-  const getSimulatorHasRedo = Reselect.createSelector(
-    state => state.simulator.history,
-    state => state.simulator.committedEngine,
-    (history, engine) => history.findIndex(e => e === engine) < history.length - 1
-  );
-
   /** Track rider buffer @returns {{buffer: Rider[]}} */
   function getRiders(state) {
     return state.simulator.engine.engine.state.riders;
@@ -571,12 +311,6 @@ const Selectors = (function() {
     return state.selectedTool;
   }
 
-  /** Whether line color swatch is active @type {boolean} */
-  const getLineTypePickerActive = Reselect.createSelector(
-    getSelectedTool,
-    (selectedTool) => window.Tools[selectedTool].usesSwatches
-  );
-
   /** Whether track lines are locked @returns {boolean} */
   function getTrackLinesLocked(state) {
     return state.trackLinesLocked;
@@ -596,61 +330,6 @@ const Selectors = (function() {
   function getTrackScript(state) {
     return state.trackData.script;
   }
-
-  /** Notable track properties @type {TrackFragment}*/
-  const getTrackProps = Reselect.createStructuredSelector({
-    riders: getCommittedRiders,
-    version: getSimulatorVersion,
-    audio: getLocalAudioProps,
-    layers: getTrackLayers,
-    script: getTrackScript
-  });
-
-  /** Track details @type {TrackDetails} */
-  const getTrackDetails = Reselect.createStructuredSelector({
-    title: state => state.trackData.label,
-    creator: state => state.trackData.creator,
-    description: state => state.trackData.description
-  });
-
-  /** Track cloud data @type {CloudInfo} */
-  const getTrackCloudInfo = Reselect.createSelector(
-    state => state.trackData.cloudInfo,
-    state => state.trackData.derivedFrom,
-    state => state.trackData.saveTime,
-    (cloudInfo, derivedFrom, saveTime) => {
-      if (derivedFrom) {
-        return { saveTime, ...cloudInfo, derivedFrom };
-      }
-      if (cloudInfo) {
-        return { saveTime, ...cloudInfo };
-      }
-      if (saveTime) {
-        return { saveTime };
-      }
-      return undefined;
-    }
-  );
-
-  /** Track cloud data with track details @type {{details: TrackDetails, cloudInfo: CloudInfo}} */
-  const getTrackDetailsWithCloudInfo = Reselect.createStructuredSelector({
-    details: getTrackDetails,
-    cloudInfo: getTrackCloudInfo
-  });
-
-  /** Track duration @type {{duration: number}} */
-  const getTrackDuration = Reselect.createStructuredSelector({
-    duration: state => getPlayerMaxIndex(state)
-  });
-
-  /** Track data important for autosaving @type {AutosaveData} */
-  const getTrackObjectForAutosave = Reselect.createStructuredSelector({
-    props: getTrackProps,
-    details: getTrackDetails,
-    info: getTrackDuration,
-    cloudInfo: getTrackCloudInfo,
-    localFile: getTrackIsLocalFile
-  });
 
   /**
   * Track data important for saving

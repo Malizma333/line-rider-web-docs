@@ -16,11 +16,11 @@ The list of lines to remove by line id. Lines are indexed starting from one (1).
 
 `linesToAdd`
 
-The list of lines to add. The format of a line object can be found [here](../External/line_template.js).
+The list of lines to add. The format of a line object can be found [here](../External/templates.js).
 
 `name`
 
-The type of update line action to execute.
+The type of update line action to execute. A full list of line update subactions can be found [here](../External/update_lines_actions.json).
 
 ## Examples
 

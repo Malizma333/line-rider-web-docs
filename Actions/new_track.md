@@ -12,7 +12,7 @@ store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 
 `trackObject`
 
-The new track object to load. The shape of track objects can be found [here](../External/track_template.js).
+The new track object to load. The shape of track objects can be found [here](../External/templates.js).
 
 ## Examples
 

@@ -12,7 +12,7 @@ store.dispatch({ type: "SET_VIEWS", payload: views, meta: { name, auto: false } 
 
 `views`
 
-A view object that defines what view to open. The structure of a view object can be found [here](../External/view_template.js).
+A view object that defines what view to open. The structure of a view object can be found [here](../External/templates.js).
 
 `name`
 

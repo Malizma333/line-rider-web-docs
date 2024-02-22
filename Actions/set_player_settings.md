@@ -12,7 +12,7 @@ store.dispatch({ type: "SET_PLAYER_SETTINGS", payload: settings });
 
 `settings`
 
-The settings object describing parameters for the track player. The format of the player settings object can be found [here](../External/player_settings_template.js).
+The settings object describing parameters for the track player. The format of the player settings object can be found [here](../External/templates.js).
 
 ## Examples
 

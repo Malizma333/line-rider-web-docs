@@ -12,7 +12,7 @@ store.dispatch({ type: "LOAD_TRACK", payload: trackObject });
 
 `trackObject`
 
-The track object to load into the editor. The shape of track objects can be found [here](../External/track_template.js).
+The track object to load into the editor. The shape of track objects can be found [here](../External/templates.js).
 
 ## Examples
 
