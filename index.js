@@ -21,7 +21,7 @@ const Selectors = (function() {
 
   /** Rider being follow by editor camera @returns {number} */
   function getEditorFollowerFocus(state) {
-    return Math.min(getNumRiders(state) - 1, state.camera.editorFollowerFocus);
+    return state.camera.editorFollowerFocus;
   }
 
   /** Playback zoom @returns {number} */
@@ -38,7 +38,7 @@ const Selectors = (function() {
 
   /** Playback dimensions @returns {Dimensions} */
   function getPlaybackDimensions(state) {
-    return state.camera.playbackDimensions || getEditorDimensions(state);
+    return state.camera.playbackDimensions || state.camera.editorDimensions;
   }
 
   /** Playback camera focus array @returns {Array.<boolean|number>} */
@@ -109,11 +109,6 @@ const Selectors = (function() {
   /** Flag index @returns {number} */
   function getPlayerFlagIndex(state) {
     return state.player.flagIndex;
-  }
-
-  /** Flag active @returns {boolean} */
-  function getPlayerFlagActive(state) {
-    return getPlayerFlagIndex(state) !== 0;
   }
 
   /** Slow motion active @returns {boolean} */
@@ -224,11 +219,6 @@ const Selectors = (function() {
     return state.simulator.engine.linesList.size();
   }
 
-  /** Whether track is empty @returns {boolean} */
-  function getTrackIsEmpty(state) {
-    return getSimulatorTrackTotalLineCount(state) === 0;
-  }
-
   /** Whether track has uncommitted changes @returns {boolean} */
   function getTrackIsDirty(state) {
     return state.simulator.committedEngine !== state.simulator.lastSavedEngine;
@@ -249,19 +239,6 @@ const Selectors = (function() {
     return getSimulatorTrack(state).engine.state.activeLayerId;
   }
 
-  /** Whether the active layer is editable @returns {boolean} */
-  function getActiveLayerEditable(state) {
-    const id = getTrackActiveLayerId(state);
-    const layers = getTrackLayers(state);
-
-    const index = layers.findIndex(layer => layer.id === id);
-
-    if (index >= 0) {
-      const layer = layers.get(index);
-      return layer.visible && layer.editable;
-    }
-  }
-
   /** Track rider buffer @returns {{buffer: Rider[]}} */
   function getRiders(state) {
     return state.simulator.engine.engine.state.riders;
@@ -270,11 +247,6 @@ const Selectors = (function() {
   /** Buffer of committed track riders @returns {{buffer: Rider[]}} */
   function getCommittedRiders(state) {
     return state.simulator.committedEngine.engine.state.riders;
-  }
-
-  /** Number of riders @returns {number} */
-  function getNumRiders(state) {
-    return getRiders(state).length;
   }
 
   /** Cloud saved track data @returns {CloudSave[]} */
@@ -316,11 +288,6 @@ const Selectors = (function() {
     return state.trackLinesLocked;
   }
 
-  /** Currently selected line type in color swatch @returns {LineType} */
-  function getSelectedLineType(state) {
-    return getTrackLinesLocked(state) ? 2 : state.selectedLineType ;
-  }
-
   /** Whether track is a local file @returns {boolean} */
   function getTrackIsLocalFile(state) {
     return state.trackData.localFile;
@@ -329,27 +296,6 @@ const Selectors = (function() {
   /** Track script property @returns {string} */
   function getTrackScript(state) {
     return state.trackData.script;
-  }
-
-  /**
-  * Track data important for saving
-  * @param {TrackDetails} trackDetails
-  * @returns {Track}
-  */
-  function getTrackObjectForSaving(state, trackDetails) {
-    return ({
-      label: trackDetails.title,
-      creator: trackDetails.creator,
-      description: trackDetails.description,
-      duration: getPlayerMaxIndex(state),
-      version: getSimulatorVersion(state),
-      audio: getLocalAudioProps(state),
-      startPosition: state => state.simulator.engine.start.position,
-      riders: getCommittedRiders(state),
-      lines: getSimulatorLines(state).toJS(),
-      layers: getTrackLayers(state).toJS(),
-      script: getTrackScript(state)
-    });
   }
 
   /** Whether timeline is currently active @returns {boolean} */
