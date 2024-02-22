@@ -1,5 +1,7 @@
 ## Description
 
+Creates a new track object and loads it into the editor.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 
 `trackObject`
 
-Creates a new track object and loads it into the editor. The shape of track objects can be found [here](../External/track_template.js).
-
-### Effects
-
-Creates a new track.
+The new track object to load. The shape of track objects can be found [here](../External/track_template.js).
 
 ## Examples
 
-Create a blank legacy track.
+Creates a blank legacy track.
 
 ```javascript
 store.dispatch({

@@ -1,18 +1,12 @@
 ## Description
 
+Steps forward engine state to the last undone state in history if available.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "REDO" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Steps forward engine state from last undo state in history if available.
 
 ## Related
 

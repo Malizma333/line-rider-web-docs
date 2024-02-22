@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts the playback camera to focus on zero or more riders based on weights.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYBACK_FOLLOWER_FOCUS", payload: focusList });
 
 `focusList`
 
-Weights of each rider on the playback camera movement.
-
-### Effects
-
-Sets the camera to focus zero or more riders based on weights.
+The weights of each rider on the playback camera movement.
 
 ## Examples
 
-Set the playback to focus between the first and third riders.
+Adjusts the playback camera to focus between riders one (1) and three (3).
 
 ```javascript
 store.dispatch({

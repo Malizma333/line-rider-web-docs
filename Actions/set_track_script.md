@@ -1,5 +1,7 @@
 ## Description
 
+Configures the track file script.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "trackData/SET_TRACK_SCRIPT", payload: script });
 
 `script`
 
-External script of the track file.
-
-### Effects
-
-Sets the track file script.
+The new script to replace the current track script with.
 
 ## Examples
 
-Clear the script of the current track file.
+Clears the script of the current track file.
 
 ```javascript
 store.dispatch({

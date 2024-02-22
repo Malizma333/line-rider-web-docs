@@ -1,18 +1,12 @@
 ## Description
 
+Loads the last cached autosave.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "LOAD_AUTOSAVE" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Loads the last cached autosave.
 
 ## Related
 

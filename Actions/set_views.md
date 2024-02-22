@@ -1,5 +1,7 @@
 ## Description
 
+Opens a specific UI menu area based on the name of the menu and the view object parameters.
+
 ### Syntax
 
 ```javascript
@@ -15,10 +17,6 @@ A view object that defines what view to open. The structure of a view object can
 `name`
 
 The type of view action to execute. A list of available view actions can be found [here](../External/view_actions.json).
-
-### Effects
-
-Opens a specific UI menu area based on the name of the menu and the view object parameters.
 
 ## Examples
 

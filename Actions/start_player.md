@@ -1,18 +1,12 @@
 ## Description
 
+Starts the player if it is stopped.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "START_PLAYER" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Starts the player if it is stopped.
 
 ## Related
 

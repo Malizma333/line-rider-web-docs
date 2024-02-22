@@ -1,5 +1,7 @@
 ## Description
 
+Enables or disables autosaving.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_AUTOSAVE_ENABLED", payload: enabled });
 
 `enabled`
 
-Whether or not autosave should be enabled.
-
-### Effects
-
-Enables or disables autosaving.
+A boolean indicating whether the track should autosave.
 
 ## Examples
 
-Disable autosave.
+Disables autosaving.
 
 ```javascript
 store.dispatch({

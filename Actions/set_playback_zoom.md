@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts the zoom of the playback camera.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYBACK_ZOOM", payload: zoom });
 
 `zoom`
 
-Target zoom of the playback camera.
-
-### Effects
-
-Sets the zoom of the playback camera.
+The target zoom of the playback camera.
 
 ## Examples
 
-Set the playback camera's zoom to 4.
+Adjusts the zoom of the playback camera to four (4).
 
 ```javascript
 store.dispatch({

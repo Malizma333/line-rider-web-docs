@@ -1,5 +1,7 @@
 ## Description
 
+Applies viewport dimensions to playback camera.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ const setPlaybackDimensions = (dimensions) => ({ type: "SET_PLAYBACK_DIMENSIONS"
 
 `dimensions`
 
-Target viewport dimensions to set playback camera to.
-
-### Effects
-
-Applies viewport dimensions to playback camera.
+The target viewport dimensions to set the playback camera to.
 
 ## Examples
 
-Set viewport dimensions to 1080p resolution.
+Switches the viewport dimensions to high-definition (1080p) resolution.
 
 ```javascript
 const setPlaybackDimensions = (dimensions) => ({

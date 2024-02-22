@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts how many frames onion skinning renders before the current frame.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_ONION_SKIN_FRAMES_BEFORE", payload: framesBefore });
 
 `framesBefore`
 
-Number of frames to render onion skinning before the current frame.
-
-### Effects
-
-Sets how many frames onion skinning renders before the current frame.
+The number of frames to render onion skinning before the current frame.
 
 ## Examples
 
-Render 5 frames of onion skinning before the current frame.
+Renders five (5) frames of onion skinning before the current frame.
 
 ```javascript
 store.dispatch({

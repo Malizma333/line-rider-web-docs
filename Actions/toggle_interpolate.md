@@ -1,18 +1,12 @@
 ## Description
 
+Toggles playback interpolation.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "TOGGLE_INTERPOLATE" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Toggles interpolated playback.
 
 ## Related
 

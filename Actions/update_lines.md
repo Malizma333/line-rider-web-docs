@@ -1,5 +1,7 @@
 ## Description
 
+Updates the line array in the non-committed engine.
+
 ### Syntax
 
 ```javascript
@@ -10,7 +12,7 @@ store.dispatch({ type: "UPDATE_LINES", payload: { linesToRemove, linesToAdd, ini
 
 `linesToRemove`
 
-The list of lines to remove by line id. Lines are indexed starting from 1.
+The list of lines to remove by line id. Lines are indexed starting from one (1).
 
 `linesToAdd`
 
@@ -19,10 +21,6 @@ The list of lines to add. The format of a line object can be found [here](../Ext
 `name`
 
 The type of update line action to execute.
-
-### Effects
-
-Updates the line array in the non-committed engine. This must be used with `COMMIT_TRACK_CHANGES` and `REVERT_TRACK_CHANGES` to push changes to the committed engine and apply to edit history.
 
 ## Examples
 

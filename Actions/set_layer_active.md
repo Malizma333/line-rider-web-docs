@@ -1,5 +1,7 @@
 ## Description
 
+Switches which layer is the active layer.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_LAYER_ACTIVE", payload: {id} });
 
 `id`
 
-Target layer to set active.
-
-### Effects
-
-Sets which layer is the active layer.
+The target layer to set active.
 
 ## Examples
 
-Set the base layer to be the active layer.
+Switches the base layer to be the active layer.
 
 ```javascript
 store.dispatch({

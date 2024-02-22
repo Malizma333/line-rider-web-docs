@@ -1,18 +1,12 @@
 ## Description
 
+Moves the flag to the current index in the timeline.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "SET_FLAG" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Sets the flag to the current index in the timeline.
 
 ## Related
 

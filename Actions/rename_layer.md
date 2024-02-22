@@ -1,5 +1,7 @@
 ## Description
 
+Renames a specific layer.
+
 ### Syntax
 
 ```javascript
@@ -10,19 +12,15 @@ store.dispatch({ type: "RENAME_LAYER", payload: {id, name} });
 
 `id`
 
-Id of the layer to rename.
+The id of the layer to rename.
 
 `name`
 
-New name of the target layer.
-
-### Effects
-
-Renames target layer.
+The new name of the target layer.
 
 ## Examples
 
-Rename layer 1 to "Background Layer".
+Renames layer one (1) to "Background Layer".
 
 ```javascript
 store.dispatch({

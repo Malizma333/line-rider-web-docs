@@ -1,18 +1,12 @@
 ## Description
 
+Toggles slow motion playback.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "TOGGLE_SLOW_MOTION" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Toggles slow motion playback.
 
 ## Related
 

@@ -1,5 +1,7 @@
 ## Description
 
+Stops or starts running playback.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_RUNNING", payload: running });
 
 `running`
 
-Whether the player should be running.
-
-### Effects
-
-Sets the player to start or stop running.
+A boolean indicating whether the player should be running.
 
 ## Examples
 
-Stop the player.
+Stops playback.
 
 ```javascript
 store.dispatch({

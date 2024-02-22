@@ -1,5 +1,7 @@
 ## Description
 
+Toggles playing the playback in reverse.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_REWIND", payload: rewind });
 
 `rewind`
 
-Whether or not the player should rewind.
-
-### Effects
-
-Toggles the player to rewind.
+A boolean indicating whether or not the player should play in reverse.
 
 ## Examples
 
-Turn on rewind.
+Enables rewind mode.
 
 ```javascript
 store.dispatch({

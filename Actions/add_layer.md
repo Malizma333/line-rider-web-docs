@@ -1,18 +1,12 @@
 ## Description
 
+Adds a new layer to the layer array.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "ADD_LAYER" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Adds a new layer to the layer array.
 
 ## Related
 

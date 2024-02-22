@@ -1,18 +1,12 @@
 ## Description
 
+Removes the currently loaded audio file.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "REMOVE_AUDIO" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Clears the loaded audio file.
 
 ## Related
 

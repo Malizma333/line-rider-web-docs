@@ -1,18 +1,12 @@
 ## Description
 
+Decrements the timeline index by one (1) frame.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "DEC_PLAYER_INDEX", payload: index });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Decrements the timeline index by 1 frame.
 
 ## Related
 

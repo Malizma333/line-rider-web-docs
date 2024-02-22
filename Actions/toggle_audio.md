@@ -1,18 +1,12 @@
 ## Description
 
+Toggles the volume of the currently loaded audio file.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "TOGGLE_AUDIO" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Toggles the volume of the currently loaded audio file.
 
 ## Related
 

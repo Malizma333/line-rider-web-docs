@@ -1,5 +1,7 @@
 ## Description
 
+Removes target layer from the layer array.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "REMOVE_LAYER", payload: {id} });
 
 `id`
 
-Id of the layer to remove.
-
-### Effects
-
-Remove target layer from the layer array.
+The id of the layer to remove.
 
 ## Examples
 
-Remove layer 1.
+Removes the layer with an id of one (1).
 
 ```javascript
 store.dispatch({

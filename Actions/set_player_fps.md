@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts the player fps rate.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_FPS", payload: fps });
 
 `fps`
 
-Frames per second to set playback to.
-
-### Effects
-
-Sets player fps rate.
+The frames per second to set playback to.
 
 ## Examples
 
-Set the playback rate to 24 fps.
+Adjusts the playback rate to twenty-four (24) fps.
 
 ```javascript
 store.dispatch({

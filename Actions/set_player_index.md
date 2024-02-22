@@ -1,5 +1,7 @@
 ## Description
 
+Jumps to a specific frame in playback.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_INDEX", payload: index });
 
 `index`
 
-Target index to skip to.
-
-### Effects
-
-Sets the current index of the timeline.
+The target frame index to jump to.
 
 ## Examples
 
-Set the index to frame 80.
+Jumps to frame eighty (80).
 
 ```javascript
 store.dispatch({

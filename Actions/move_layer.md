@@ -1,5 +1,7 @@
 ## Description
 
+Moves a target layer to a new location in the layer array.
+
 ### Syntax
 
 ```javascript
@@ -10,19 +12,15 @@ store.dispatch({ type: "MOVE_LAYER", payload: {id, index} });
 
 `id`
 
-Id of the layer to move.
+The id of the layer to move.
 
 `index`
 
-New index for the layer to move to.
-
-### Effects
-
-Moves a target layer to a new location in the layer array.
+The new index for the layer to move to.
 
 ## Examples
 
-Move layer 1 to the second position above the base layer.
+Moves layer one (1) to the second position above the base layer.
 
 ```javascript
 store.dispatch({

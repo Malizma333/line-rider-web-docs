@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts how many frames onion skinning renders after the current frame.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_ONION_SKIN_FRAMES_AFTER", payload: framesAfter });
 
 `framesAfter`
 
-Number of frames to render onion skinning after the current frame.
-
-### Effects
-
-Sets how many frames onion skinning renders after the current frame.
+The number of frames to render onion skinning after the current frame.
 
 ## Examples
 
-Render 10 frames of onion skinning after the current frame.
+Renders ten (10) frames of onion skinning after the current frame.
 
 ```javascript
 store.dispatch({

@@ -1,5 +1,7 @@
 ## Description
 
+Toggles playing the playback faster than normal speed.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_FAST_FORWARD", payload: fastForward });
 
 `fastForward`
 
-Whether or not the player should play faster.
-
-### Effects
-
-Toggles the player to play faster.
+A boolean indicating whether the player should play faster.
 
 ## Examples
 
-Turn off fast-forwarding.
+Disables fast-forward mode.
 
 ```javascript
 store.dispatch({

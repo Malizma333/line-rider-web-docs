@@ -1,18 +1,12 @@
 ## Description
 
+Stops the player if it is running.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "STOP_PLAYER" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Stops the player if it is running.
 
 ## Related
 

@@ -1,5 +1,7 @@
 ## Description
 
+Switches which hotkey triggers which command.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_COMMAND_HOTKEYS", payload: commandHotkeys });
 
 `commandHotkeys`
 
-Object mapping command ids to their associated hotkey. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
-
-### Effects
-
-Changes which hotkey triggers which command.
+The object that maps command ids to their associated hotkey. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
 ## Examples
 
-Set the flag command hotkey to "f".
+Switches the flag command hotkey to "f".
 
 ```javascript
 store.dispatch({

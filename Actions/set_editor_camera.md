@@ -1,5 +1,7 @@
 ## Description
 
+Applies position and zoom to the editor camera while in editor mode.
+
 ### Syntax
 
 ```javascript
@@ -10,19 +12,15 @@ store.dispatch({ type: "SET_EDITOR_CAMERA", payload: { position, zoom } });
 
 `position`
 
-Target position to move the editor camera to.
+The target position to move the editor camera to.
 
 `zoom`
 
-Target zoom to set the editor camera to.
-
-### Effects
-
-Applies position and zoom to the editor camera while in editor mode.
+The target zoom to set the editor camera to.
 
 ## Examples
 
-Move the editor camera 20 pixels above the origin and apply a zoom of 3.
+Moves the editor camera twenty (20) pixels above the origin and applies a camera zoom of three (3).
 
 ```javascript
 store.dispatch({

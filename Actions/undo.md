@@ -1,18 +1,12 @@
 ## Description
 
+Steps back engine state to previous state in history if available.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "UNDO" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Steps back engine state to previous state in history if available.
 
 ## Related
 

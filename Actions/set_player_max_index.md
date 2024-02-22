@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts the index that the timeline ends at.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_MAX_INDEX", payload: maxIndex });
 
 `maxIndex`
 
-Max index for the timeline to render.
-
-### Effects
-
-Sets the max index that the timeline ends at.
+The max index for the timeline to render.
 
 ## Examples
 
-Set the max index to frame 80.
+Adjusts the max index to frame eighty (80).
 
 ```javascript
 store.dispatch({

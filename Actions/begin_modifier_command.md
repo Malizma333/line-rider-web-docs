@@ -1,5 +1,7 @@
 ## Description
 
+Begins running the modifier command given by the command id. This has a similar effect as holding the hotkey associated with that command.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "BEGIN_MODIFIER_COMMAND", payload: command, meta: { ignor
 
 `command`
 
-Modifier command to start executing. This command will not stop until an `END_MODIFIER_COMMAND` action with the same id is called or a user input triggers the end of the command. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
-
-### Effects
-
-Starts the hotkey command given by the modifier id.
+The modifier command to start executing. This command will not stop until an `END_MODIFIER_COMMAND` action with the same id is called or a user input triggers the end of the command. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
 ## Examples
 
-Start the fast-forward playback hotkey modifier.
+Starts fast-forwarding playback through the modifier hotkey.
 
 ```javascript
 store.dispatch({

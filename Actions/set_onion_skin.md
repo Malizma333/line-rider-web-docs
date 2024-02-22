@@ -1,5 +1,7 @@
 ## Description
 
+Enables or disables onion skinning.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_ONION_SKIN", payload: onionSkin });
 
 `onionSkin`
 
-Whether or not to turn on onion skinning.
-
-### Effects
-
-Toggles onion skinning.
+A boolean indicating whether the timeline should render onion skins.
 
 ## Examples
 
-Turn on onion skinning.
+Enables onion skinning.
 
 ```javascript
 store.dispatch({

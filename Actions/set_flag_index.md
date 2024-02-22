@@ -1,5 +1,7 @@
 ## Description
 
+Moves the flag to the target index in the timeline.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_FLAG_INDEX", payload: flagIndex });
 
 `flagIndex`
 
-Index in the timeline to set the flag to.
-
-### Effects
-
-Sets the flag to the target index in the timeline.
+The frame to set the flag to.
 
 ## Examples
 
-Set the flag index to the 40th frame.
+Moves the flag index to frame forty (40).
 
 ```javascript
 store.dispatch({

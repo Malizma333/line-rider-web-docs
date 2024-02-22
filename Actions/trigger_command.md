@@ -1,5 +1,7 @@
 ## Description
 
+Triggers the command given by the command id. This has a similar effect as pressing the hotkey associated with that command.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "TRIGGER_COMMAND", payload: command, meta: { ignorable: t
 
 `command`
 
-Trigger command to execute. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
-
-### Effects
-
-Triggers the hotkey command given by the trigger id.
+The trigger command to execute. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
 ## Examples
 
-Trigger the skeleton view hotkey.
+Triggers the skeleton view hotkey.
 
 ```javascript
 store.dispatch({

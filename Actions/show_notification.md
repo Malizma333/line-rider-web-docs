@@ -1,5 +1,7 @@
 ## Description
 
+Displays a notification message in the top right.
+
 ### Syntax
 
 ```javascript
@@ -14,15 +16,11 @@ The notification message to display
 
 `autohide`
 
-Whether or not the notification hides after a certain period of time
-
-### Effects
-
-Displays a notification message in the top right.
+A boolean indicating whether the notification hides after a certain period of time
 
 ## Examples
 
-Display the message "Hello, world!".
+Displays the message "Hello, world!".
 
 ```javascript
 store.dispatch({

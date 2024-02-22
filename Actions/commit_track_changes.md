@@ -1,18 +1,12 @@
 ## Description
 
+Commits track changes to the committed engine state.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "COMMIT_TRACK_CHANGES" });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Commits track changes to committed engine state.
 
 ## Related
 

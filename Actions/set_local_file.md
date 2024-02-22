@@ -1,5 +1,7 @@
 ## Description
 
+Enables or disables local file saving.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "trackData/SET_LOCAL_FILE", payload: saveToFile });
 
 `saveToFile`
 
-Sets whether the current track should save to a local file.
-
-### Effects
-
-Toggles local file saving.
+A boolean indicating whether the current track should save to a local file.
 
 ## Examples
 
-Set the track to save to a local file.
+Allows the current track to save to a local file.
 
 ```javascript
 store.dispatch({

@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts the offset of the audio file.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_AUDIO_OFFSET", payload: offset });
 
 `offset`
 
-Time (in seconds) that audio starts playing from. Negative values correspond to time until audio starts playing.
-
-### Effects
-
-Sets the offset of the audio file.
+The time (in seconds) that audio starts playing from. Negative values correspond to time until audio starts playing.
 
 ## Examples
 
-Set the audio offset to play the song file 2 seconds in.
+Adjusts the audio offset to play the song file two (2) seconds in.
 
 ```javascript
 store.dispatch({

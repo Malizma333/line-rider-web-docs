@@ -1,5 +1,7 @@
 ## Description
 
+Switches the interpolation mode to a target fps or smoothing value.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_INTERPOLATE", payload: playbackMode });
 
 `playbackMode`
 
-Mode of interpolating. A `true` value represents smooth interpolation, while a `false` value represents physics (no) interpolation. A numerical value represents fps interpolation.
-
-### Effects
-
-Toggles interpolation based on input interpolation.
+The mode of interpolation. A `true` value represents smooth interpolation, while a `false` value represents physics/no interpolation. A numerical value represents fps interpolation.
 
 ## Examples
 
-Set interpolation mode to 60 fps.
+Switches the interpolation mode to sixty (60) fps.
 
 ```javascript
 store.dispatch({

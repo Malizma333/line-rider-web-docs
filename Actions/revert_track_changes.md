@@ -1,18 +1,12 @@
 ## Description
 
+Clears track changes from uncommitted engine state.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "REVERT_TRACK_CHANGES", meta: { ignorable: true } });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Clears track changes from uncommitted engine state.
 
 ## Related
 

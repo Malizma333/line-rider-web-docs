@@ -1,18 +1,12 @@
 ## Description
 
+Increments the timeline index by one (1) frame.
+
 ### Syntax
 
 ```javascript
 store.dispatch({ type: "INC_PLAYER_INDEX", payload: index });
 ```
-
-### Parameters
-
-None
-
-### Effects
-
-Increments the timeline index by 1 frame.
 
 ## Related
 

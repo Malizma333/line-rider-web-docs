@@ -1,5 +1,7 @@
 ## Description
 
+Switches the rider that the editor camera should focus on.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_EDITOR_FOLLOWER_FOCUS", payload: focusIndex });
 
 `focusIndex`
 
-Target rider to focus on.
-
-### Effects
-
-Sets the rider that the editor camera should focus on.
+The target rider to focus on.
 
 ## Examples
 
-Set the editor camera focus to the second rider.
+Switches the editor camera focus to rider two (2).
 
 ```javascript
 store.dispatch({

@@ -1,5 +1,7 @@
 ## Description
 
+Toggles the player stopping at the end of the timeline.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_PLAYER_STOP_AT_END", payload: stopAtEnd });
 
 `stopAtEnd`
 
-Whether or not the player stops at the end of the timeline.
-
-### Effects
-
-Toggles the player to stop at the end of the timeline.
+A boolean indicating whether or not the player should stop at the end of the timeline.
 
 ## Examples
 
-Set the timeline to stop at the end.
+Enables stopping the player at the end of the timeline.
 
 ```javascript
 store.dispatch({

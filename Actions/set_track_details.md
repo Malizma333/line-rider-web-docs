@@ -1,5 +1,7 @@
 ## Description
 
+Configures the details of the currently loaded track.
+
 ### Syntax
 
 ```javascript
@@ -10,23 +12,19 @@ store.dispatch({ type: "trackData/SET_TRACK_DETAILS", payload: { title, creator,
 
 `title`
 
-Name of the track.
+The name of the track.
 
 `creator`
 
-Author of the track.
+The author of the track.
 
 `description`
 
 A short description about the track.
 
-### Effects
-
-Sets the details of the currently loaded track.
-
 ## Examples
 
-Set the title of the track with a blank author and description.
+Switches the title of the track to "My Track" and removes the author and description.
 
 ```javascript
 store.dispatch({

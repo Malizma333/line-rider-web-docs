@@ -1,5 +1,7 @@
 ## Description
 
+Toggles a target view option.
+
 ### Syntax
 
 ```javascript
@@ -10,19 +12,15 @@ store.dispatch({ type: "SET_VIEW_OPTION", payload: { key: viewOption, value } })
 
 `viewOption`
 
-Name of the view option to toggle. Available view options can be found [here](../External/view_options.json).
+The name of the view option to toggle. Available view options can be found [here](../External/view_options.json).
 
 `value`
 
-Bool representing whether to turn on or off the target view option.
-
-### Effects
-
-Toggles a target view option.
+A boolean indicating whether to enable the target view option.
 
 ## Examples
 
-Turn on color playback.
+Enables color playback.
 
 ```javascript
 store.dispatch({
@@ -31,7 +29,7 @@ store.dispatch({
 });
 ```
 
-Show the viewport (as long as the camera dimensions are specified).
+Shows the viewport (as long as the camera dimensions are specified).
 
 ```javascript
 store.dispatch({

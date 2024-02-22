@@ -1,5 +1,7 @@
 ## Description
 
+Stops running the modifier command given by the command id. This has a similar effect as letting go of the hotkey associated with that command after holding it.
+
 ### Syntax
 
 ```javascript
@@ -12,13 +14,9 @@ store.dispatch({ type: "END_MODIFIER_COMMAND", payload: command, meta: { ignorab
 
 Modifier command to stop executing. This will stop any modifiers currently active by `BEGIN_MODIFIER_COMMAND` or by user input until they are activated again. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
-### Effects
-
-Stops the hotkey command given by the modifier id.
-
 ## Examples
 
-Stop the fast-forward playback hotkey modifier.
+Stops the fast-forward playback hotkey modifier.
 
 ```javascript
 store.dispatch({

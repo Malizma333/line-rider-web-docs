@@ -1,5 +1,7 @@
 ## Description
 
+Adjusts the volume of the audio file.
+
 ### Syntax
 
 ```javascript
@@ -10,15 +12,11 @@ store.dispatch({ type: "SET_AUDIO_VOLUME", payload: volume });
 
 `volume`
 
-Percentage value ranging from `0` - `1` that determines the volume of the audio file.
-
-### Effects
-
-Sets the volume of the audio file.
+The percentage value ranging from `0` - `1` that determines the volume of the audio file.
 
 ## Examples
 
-Set the audio volume to half volume.
+Adjusts the audio volume to half of max volume.
 
 ```javascript
 store.dispatch({
