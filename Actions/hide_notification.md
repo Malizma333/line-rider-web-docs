@@ -4,7 +4,7 @@ Hides a notification based on its message.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "notifications/HIDE_NOTIFICATION", payload: message });
 ```
 
@@ -18,7 +18,7 @@ The message of the notification to hide.
 
 Hides the notification with the message "Hello, world!".
 
-```javascript
+```js
 store.dispatch({
   type: "notifications/HIDE_NOTIFICATION",
   payload: "Hello, world!"

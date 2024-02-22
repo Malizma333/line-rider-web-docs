@@ -4,7 +4,7 @@ Increments the timeline index by one (1) frame.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "INC_PLAYER_INDEX", payload: index });
 ```
 

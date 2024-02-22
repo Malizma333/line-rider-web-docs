@@ -4,7 +4,7 @@ Loads a track object from its data.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "LOAD_TRACK", payload: trackObject });
 ```
 
@@ -18,7 +18,7 @@ The track object to load into the editor. The shape of track objects can be foun
 
 Loads a blank track with two (2) riders.
 
-```javascript
+```js
 store.dispatch({
   type: "LOAD_TRACK",
   payload: {

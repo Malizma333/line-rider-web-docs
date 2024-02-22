@@ -4,7 +4,7 @@ Stops running the modifier command given by the command id. This has a similar e
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "END_MODIFIER_COMMAND", payload: command, meta: { ignorable: true } });
 ```
 
@@ -18,7 +18,7 @@ Modifier command to stop executing. This will stop any modifiers currently activ
 
 Stops the fast-forward playback hotkey modifier.
 
-```javascript
+```js
 store.dispatch({
   type: "END_MODIFIER_COMMAND",
   payload: "modifiers.fastForward",

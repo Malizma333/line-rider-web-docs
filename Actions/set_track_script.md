@@ -4,7 +4,7 @@ Configures the track file script.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "trackData/SET_TRACK_SCRIPT", payload: script });
 ```
 
@@ -18,7 +18,7 @@ The new script to replace the current track script with.
 
 Clears the script of the current track file.
 
-```javascript
+```js
 store.dispatch({
   type: "trackData/SET_TRACK_SCRIPT",
   payload: ""

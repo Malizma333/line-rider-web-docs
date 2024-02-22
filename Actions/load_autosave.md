@@ -4,7 +4,7 @@ Loads the last cached autosave.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "LOAD_AUTOSAVE" });
 ```
 

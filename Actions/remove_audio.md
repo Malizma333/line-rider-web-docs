@@ -4,7 +4,7 @@ Removes the currently loaded audio file.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "REMOVE_AUDIO" });
 ```
 

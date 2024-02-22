@@ -4,7 +4,7 @@ Begins running the modifier command given by the command id. This has a similar 
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "BEGIN_MODIFIER_COMMAND", payload: command, meta: { ignorable: true } });
 ```
 
@@ -18,7 +18,7 @@ The modifier command to start executing. This command will not stop until an `EN
 
 Starts fast-forwarding playback through the modifier hotkey.
 
-```javascript
+```js
 store.dispatch({
   type: "BEGIN_MODIFIER_COMMAND",
   payload: "modifiers.fastForward",

@@ -4,7 +4,7 @@ Switches the interpolation mode to a target fps or smoothing value.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_INTERPOLATE", payload: playbackMode });
 ```
 
@@ -18,7 +18,7 @@ The mode of interpolation. A `true` value represents smooth interpolation, while
 
 Switches the interpolation mode to sixty (60) fps.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_INTERPOLATE",
   payload: 60

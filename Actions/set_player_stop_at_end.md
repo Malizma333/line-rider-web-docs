@@ -4,7 +4,7 @@ Toggles the player stopping at the end of the timeline.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_STOP_AT_END", payload: stopAtEnd });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether or not the player should stop at the end of the tim
 
 Enables stopping the player at the end of the timeline.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_STOP_AT_END",
   payload: true

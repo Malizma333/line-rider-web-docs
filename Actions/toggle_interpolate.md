@@ -4,7 +4,7 @@ Toggles playback interpolation.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "TOGGLE_INTERPOLATE" });
 ```
 

@@ -4,7 +4,7 @@ Renames a specific layer.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "RENAME_LAYER", payload: {id, name} });
 ```
 
@@ -22,7 +22,7 @@ The new name of the target layer.
 
 Renames layer one (1) to "Background Layer".
 
-```javascript
+```js
 store.dispatch({
   type: "RENAME_LAYER",
   payload: {id: 1, name: "Background Layer"}

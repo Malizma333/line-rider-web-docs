@@ -4,7 +4,7 @@ Toggles playing the playback in reverse.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_REWIND", payload: rewind });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether or not the player should play in reverse.
 
 Enables rewind mode.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_REWIND",
   payload: true

@@ -4,7 +4,7 @@ Toggles playing the playback faster than normal speed.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_FAST_FORWARD", payload: fastForward });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether the player should play faster.
 
 Disables fast-forward mode.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_FAST_FORWARD",
   payload: false

@@ -4,7 +4,7 @@ Configures the rider properties for the current track.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_RIDERS", payload: riders });
 ```
 
@@ -18,7 +18,7 @@ The array of rider objects to set the track riders to. The shape of a rider obje
 
 Removes all riders from the current track.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_RIDERS",
   payload: []

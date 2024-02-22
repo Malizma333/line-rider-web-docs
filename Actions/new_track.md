@@ -4,7 +4,7 @@ Creates a new track object and loads it into the editor.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 ```
 
@@ -18,7 +18,7 @@ The new track object to load. The shape of track objects can be found [here](../
 
 Creates a blank legacy track.
 
-```javascript
+```js
 store.dispatch({
   type: "NEW_TRACK",
   payload: {

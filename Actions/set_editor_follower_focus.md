@@ -4,7 +4,7 @@ Switches the rider that the editor camera should focus on.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_EDITOR_FOLLOWER_FOCUS", payload: focusIndex });
 ```
 
@@ -18,7 +18,7 @@ The target rider to focus on.
 
 Switches the editor camera focus to rider two (2).
 
-```javascript
+```js
 store.dispatch({
   type: "SET_EDITOR_FOLLOWER_FOCUS",
   payload: 1

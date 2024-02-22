@@ -4,7 +4,7 @@ Removes target layer from the layer array.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "REMOVE_LAYER", payload: {id} });
 ```
 
@@ -18,7 +18,7 @@ The id of the layer to remove.
 
 Removes the layer with an id of one (1).
 
-```javascript
+```js
 store.dispatch({
   type: "REMOVE_LAYER",
   payload: {id: 1}

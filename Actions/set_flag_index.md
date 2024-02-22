@@ -4,7 +4,7 @@ Moves the flag to the target index in the timeline.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_FLAG_INDEX", payload: flagIndex });
 ```
 
@@ -18,7 +18,7 @@ The frame to set the flag to.
 
 Moves the flag index to frame forty (40).
 
-```javascript
+```js
 store.dispatch({
   type: "SET_FLAG_INDEX",
   payload: 40

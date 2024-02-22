@@ -4,7 +4,7 @@ Commits track changes to the committed engine state.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "COMMIT_TRACK_CHANGES" });
 ```
 

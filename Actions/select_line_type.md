@@ -4,7 +4,7 @@ Switches the color swatch of the current tool to a different line type if it's a
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SELECT_LINE_TYPE", payload: lineType });
 ```
 
@@ -18,7 +18,7 @@ The target line type to set the current tool's swatch to.
 
 Switches the color swatch to blue.
 
-```javascript
+```js
 store.dispatch({
   type: "SELECT_LINE_TYPE",
   payload: 0

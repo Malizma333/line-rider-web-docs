@@ -4,7 +4,7 @@ Switches between skeleton views.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_SKELETON", payload: skeletonMode });
 ```
 
@@ -18,7 +18,7 @@ The target skeleton visual to switch to. The available modes are `0` for normal 
 
 Enables skeleton view with sprites visible.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_SKELETON",
   payload: 1

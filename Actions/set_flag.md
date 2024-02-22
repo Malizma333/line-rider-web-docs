@@ -4,7 +4,7 @@ Moves the flag to the current index in the timeline.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_FLAG" });
 ```
 

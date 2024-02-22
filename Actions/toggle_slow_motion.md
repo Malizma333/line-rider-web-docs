@@ -4,7 +4,7 @@ Toggles slow motion playback.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "TOGGLE_SLOW_MOTION" });
 ```
 

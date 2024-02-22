@@ -4,7 +4,7 @@ Toggles whether the target layer is editable.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_LAYER_EDITABLE", payload: {id, editable} });
 ```
 
@@ -18,7 +18,7 @@ The target layer to set editable.
 
 Toggles layer two (2) to be editable.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_LAYER_EDITABLE",
   payload: {id: 2, editable: true}

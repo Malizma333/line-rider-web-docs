@@ -4,7 +4,7 @@ Steps back engine state to previous state in history if available.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "UNDO" });
 ```
 

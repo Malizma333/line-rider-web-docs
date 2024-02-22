@@ -4,7 +4,7 @@ Enables or disables onion skinning.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_ONION_SKIN", payload: onionSkin });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether the timeline should render onion skins.
 
 Enables onion skinning.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_ONION_SKIN",
   payload: true

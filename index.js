@@ -1,26 +1,9 @@
-/** Full audio data
-* @typedef {{
-*   enabled: boolean
-*   name: ?string
-*   offset: number
-*   path: ?string
-*   volume: number
-* }} AudioData
-*/
-
 /** Partial audio data used in saves
 * @typedef {{
 *   name: ?string
 *   offset: number
 *   path: ?string
 * }} AudioDataFragment
-*/
-
-/** Audio file loader properties
-* @typedef {{
-*   error: ?string
-*   loadingFile: boolean
-* }} AudioLoader
 */
 
 /** Data important to autosaving
@@ -185,40 +168,6 @@
 */
 
 const Selectors = (function() {
-  /** Audio file enabled @returns {boolean} */
-  function getAudioEnabled(state) {
-    return state.audio.enabled;
-  }
-
-  /** Audio file offset @returns {number} */
-  function getAudioOffset(state) {
-    return state.audio.offset;
-  }
-
-  /** Audio file is loading @returns {boolean} */
-  function getAudioFileLoading(state) {
-    return state.audioFileLoader.loadingFile;
-  }
-
-  /** Audio file properties @returns {AudioData} */
-  function getAudioProps(state) {
-    return state.audio;
-  }
-
-  /** Audio file loading properties @returns {AudioLoader} */
-  function getAudioFileLoader(state) {
-    return state.audioFileLoader;
-  }
-
-  /** Local audio file properties @returns {AudioDataFragment} */
-  function getLocalAudioProps (state) {
-    const {name, path, offset} = state.audio;
-    if (path) {
-      return {name, path, offset};
-    }
-    return null;
-  }
-
   /** Editor zoom @returns {number} */
   function getEditorZoom(state) {
     return state.camera.editorZoom;

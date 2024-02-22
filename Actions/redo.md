@@ -4,7 +4,7 @@ Steps forward engine state to the last undone state in history if available.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "REDO" });
 ```
 

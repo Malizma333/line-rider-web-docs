@@ -4,7 +4,7 @@ Stops the player if it is running.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "STOP_PLAYER" });
 ```
 

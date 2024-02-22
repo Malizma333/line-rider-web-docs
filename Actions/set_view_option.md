@@ -4,7 +4,7 @@ Toggles a target view option.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_VIEW_OPTION", payload: { key: viewOption, value } });
 ```
 
@@ -22,7 +22,7 @@ A boolean indicating whether to enable the target view option.
 
 Enables color playback.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_VIEW_OPTION",
   payload: {key: "colorPlayback", value: true }
@@ -31,7 +31,7 @@ store.dispatch({
 
 Shows the viewport (as long as the camera dimensions are specified).
 
-```javascript
+```js
 store.dispatch({
   type: "SET_VIEW_OPTION",
   payload: {key: "showViewport", value: true }

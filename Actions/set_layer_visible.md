@@ -4,7 +4,7 @@ Toggles the visibility of target layer.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_LAYER_VISIBLE", payload: {id, visible} });
 ```
 
@@ -18,7 +18,7 @@ The target layer to toggle visibility of.
 
 Toggles layer one (1) to be invisible.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_LAYER_VISIBLE",
   payload: {id: 1, visible: false}

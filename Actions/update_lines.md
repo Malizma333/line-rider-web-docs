@@ -4,7 +4,7 @@ Updates the line array in the non-committed engine.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "UPDATE_LINES", payload: { linesToRemove, linesToAdd, initialLoad: false }, meta: { name } });
 ```
 
@@ -26,7 +26,7 @@ The type of update line action to execute.
 
 Creates a triangle of lines.
 
-```javascript
+```js
 store.dispatch({
   type: "UPDATE_LINES",
   payload: { linesToAdd: [
@@ -40,7 +40,7 @@ store.dispatch({
 
 Removes the first three lines.
 
-```javascript
+```js
 store.dispatch({
   type: "UPDATE_LINES",
   payload: { linesToRemove: [1, 2, 3], initialLoad: false },

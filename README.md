@@ -22,7 +22,7 @@ The `Related` section links to action functions that affect similar states.
 
 The `Selectors` folder contains documentation for functions that read from the global state. These files are broken up into the same three sections, `Description`, `Examples`, and `Related`.
 
-The `Description` section details what the function returns. It also outlines syntax for the function and relevant parameters, if any.
+The `Description` section details what type and value the state path returns. It also outlines syntax for the function and relevant parameters, if any.
 
 The `Examples` section is used to demonstrate how the function is used by providing one or more snippets of code.
 

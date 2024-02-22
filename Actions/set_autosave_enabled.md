@@ -4,7 +4,7 @@ Enables or disables autosaving.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_AUTOSAVE_ENABLED", payload: enabled });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether the track should autosave.
 
 Disables autosaving.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_AUTOSAVE_ENABLED",
   payload: false

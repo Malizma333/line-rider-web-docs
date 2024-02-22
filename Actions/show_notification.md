@@ -4,7 +4,7 @@ Displays a notification message in the top right.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "notifications/SHOW_NOTIFICATION", payload: { message, autoHide } });
 ```
 
@@ -22,7 +22,7 @@ A boolean indicating whether the notification hides after a certain period of ti
 
 Displays the message "Hello, world!".
 
-```javascript
+```js
 store.dispatch({
   type: "notifications/SHOW_NOTIFICATION",
   payload: { message: "Hello, world!", autoHide: true }

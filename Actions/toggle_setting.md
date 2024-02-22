@@ -4,7 +4,7 @@ Toggles the target setting based on a key.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "TOGGLE_SETTING", payload: { key } });
 ```
 
@@ -18,7 +18,7 @@ The id of the target setting to toggle. The only available setting for web is `'
 
 Toggles whether the editor camera keeps the rider in view while scrubbing.
 
-```javascript
+```js
 store.dispatch({
   type: "TOGGLE_SETTING",
   payload: { key: 'cam.useEditorFollower' }

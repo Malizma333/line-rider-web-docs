@@ -4,7 +4,7 @@ Switches which layer is the active layer.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_LAYER_ACTIVE", payload: {id} });
 ```
 
@@ -18,7 +18,7 @@ The target layer to set active.
 
 Switches the base layer to be the active layer.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_LAYER_ACTIVE",
   payload: {id: 0}

@@ -4,7 +4,7 @@ Adjusts the player fps rate.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_FPS", payload: fps });
 ```
 
@@ -18,7 +18,7 @@ The frames per second to set playback to.
 
 Adjusts the playback rate to twenty-four (24) fps.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_FPS",
   payload: 24

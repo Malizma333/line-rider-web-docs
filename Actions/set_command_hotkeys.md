@@ -4,7 +4,7 @@ Switches which hotkey triggers which command.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_COMMAND_HOTKEYS", payload: commandHotkeys });
 ```
 
@@ -18,7 +18,7 @@ The object that maps command ids to their associated hotkey. A full list of avai
 
 Switches the flag command hotkey to "f".
 
-```javascript
+```js
 store.dispatch({
   type: "SET_COMMAND_HOTKEYS",
   payload: {"triggers.flag": "f"}

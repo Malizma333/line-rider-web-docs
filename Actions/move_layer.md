@@ -4,7 +4,7 @@ Moves a target layer to a new location in the layer array.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "MOVE_LAYER", payload: {id, index} });
 ```
 
@@ -22,7 +22,7 @@ The new index for the layer to move to.
 
 Moves layer one (1) to the second position above the base layer.
 
-```javascript
+```js
 store.dispatch({
   type: "MOVE_LAYER",
   payload: {id: 1, index: 2}

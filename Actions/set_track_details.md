@@ -4,7 +4,7 @@ Configures the details of the currently loaded track.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "trackData/SET_TRACK_DETAILS", payload: { title, creator, description } });
 ```
 
@@ -26,7 +26,7 @@ A short description about the track.
 
 Switches the title of the track to "My Track" and removes the author and description.
 
-```javascript
+```js
 store.dispatch({
   type: "trackData/SET_TRACK_DETAILS",
   payload: {

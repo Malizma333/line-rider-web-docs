@@ -4,7 +4,7 @@ Stops or starts running playback.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_RUNNING", payload: running });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether the player should be running.
 
 Stops playback.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_RUNNING",
   payload: false

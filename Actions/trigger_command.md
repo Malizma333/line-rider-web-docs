@@ -4,7 +4,7 @@ Triggers the command given by the command id. This has a similar effect as press
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "TRIGGER_COMMAND", payload: command, meta: { ignorable: true } });
 ```
 
@@ -18,7 +18,7 @@ The trigger command to execute. A full list of available command ids and their d
 
 Triggers the skeleton view hotkey.
 
-```javascript
+```js
 store.dispatch({
   type: "TRIGGER_COMMAND",
   payload: "triggers.toggleSkeleton",

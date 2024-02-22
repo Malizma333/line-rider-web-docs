@@ -4,7 +4,7 @@ Switches the current tool to the target tool.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_TOOL", payload: tool });
 ```
 
@@ -18,7 +18,7 @@ The target tool to change to. List of available tools to switch to can be found 
 
 Switches to the pencil tool.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_TOOL",
   payload: "PENCIL_TOOL"

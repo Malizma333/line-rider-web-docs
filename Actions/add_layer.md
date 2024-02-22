@@ -4,7 +4,7 @@ Adds a new layer to the layer array.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "ADD_LAYER" });
 ```
 

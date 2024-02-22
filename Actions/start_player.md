@@ -4,7 +4,7 @@ Starts the player if it is stopped.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "START_PLAYER" });
 ```
 

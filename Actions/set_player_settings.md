@@ -4,7 +4,7 @@ Applies speed settings to the track player.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_SETTINGS", payload: settings });
 ```
 
@@ -18,7 +18,7 @@ The settings object describing parameters for the track player. The format of th
 
 Adjusts the base rate of the track player to two (2) times speed.
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_SETTINGS",
   payload: { baseRate: 2 }

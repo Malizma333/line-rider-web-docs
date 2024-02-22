@@ -4,7 +4,7 @@ Adjusts the zoom of the playback camera.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYBACK_ZOOM", payload: zoom });
 ```
 
@@ -18,7 +18,7 @@ The target zoom of the playback camera.
 
 Adjusts the zoom of the playback camera to four (4).
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYBACK_ZOOM",
   payload: 4

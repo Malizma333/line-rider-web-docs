@@ -4,7 +4,7 @@ Clears track changes from uncommitted engine state.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "REVERT_TRACK_CHANGES", meta: { ignorable: true } });
 ```
 

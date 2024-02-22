@@ -4,7 +4,7 @@ Toggles the volume of the currently loaded audio file.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "TOGGLE_AUDIO" });
 ```
 

@@ -4,7 +4,7 @@ Decrements the timeline index by one (1) frame.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "DEC_PLAYER_INDEX", payload: index });
 ```
 

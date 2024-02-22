@@ -4,7 +4,7 @@ Enables or disables local file saving.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "trackData/SET_LOCAL_FILE", payload: saveToFile });
 ```
 
@@ -18,7 +18,7 @@ A boolean indicating whether the current track should save to a local file.
 
 Allows the current track to save to a local file.
 
-```javascript
+```js
 store.dispatch({
   type: "trackData/SET_LOCAL_FILE",
   payload: true

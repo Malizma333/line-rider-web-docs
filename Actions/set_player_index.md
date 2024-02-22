@@ -4,7 +4,7 @@ Jumps to a specific frame in playback.
 
 ### Syntax
 
-```javascript
+```js
 store.dispatch({ type: "SET_PLAYER_INDEX", payload: index });
 ```
 
@@ -18,7 +18,7 @@ The target frame index to jump to.
 
 Jumps to frame eighty (80).
 
-```javascript
+```js
 store.dispatch({
   type: "SET_PLAYER_INDEX",
   payload: 80
