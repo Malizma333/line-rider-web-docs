@@ -1,20 +1,13 @@
 ## Description
 
-Returns data associated with the audio file loader.
-
-```js
-/**
-* @typedef {{
-*   error: ?string
-*   loadingFile: boolean
-* }} AudioLoader
-*/
-```
+Returns an [AudioLoader](../External/templates.js) describing audio loader data.
 
 ### Syntax
 
 ```js
-store.getState().audioFileLoader;
+function getAudioFileLoader(state) {
+  return state.audioFileLoader;
+}
 ```
 
 ## Related

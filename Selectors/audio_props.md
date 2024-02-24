@@ -1,23 +1,13 @@
 ## Description
 
-Returns data associated with the audio file.
-
-```js
-/**
-* @typedef {{
-*   enabled: boolean
-*   name: ?string
-*   offset: number
-*   path: ?string
-*   volume: number
-* }} AudioData
-*/
-```
+Returns [AudioData](../External/templates.js) describing the currently loaded audio file.
 
 ### Syntax
 
 ```js
-store.getState().audio;
+function getAudioProps(state) {
+  return state.audio;
+}
 ```
 
 ## Related

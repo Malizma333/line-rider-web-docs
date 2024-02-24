@@ -5,7 +5,9 @@ Returns a `boolean` indicating whether audio is enabled.
 ### Syntax
 
 ```js
-store.getState().audio.enabled;
+function getAudioEnabled(state) {
+  return state.audio.enabled;
+}
 ```
 
 ## Related

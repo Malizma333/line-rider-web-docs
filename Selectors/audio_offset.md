@@ -5,7 +5,9 @@ Returns a `number` describing the offset of the audio file.
 ### Syntax
 
 ```js
-store.getState().audio.offset;
+function getAudioOffset(state) {
+  return state.audio.offset;
+}
 ```
 
 ## Related

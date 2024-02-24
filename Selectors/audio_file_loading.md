@@ -5,7 +5,9 @@ Returns a `boolean` indicating whether the audio file is loading.
 ### Syntax
 
 ```js
-store.getState().audioFileLoader.loadingFile;
+function getAudioFileLoading(state) {
+  return state.audioFileLoader.loadingFile;
+}
 ```
 
 ## Related
