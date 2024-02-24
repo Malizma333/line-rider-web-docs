@@ -1,31 +1,3 @@
-/**
-* Trigger activation count
-* @param {string} trigger Target Trigger
-* @return {number}
-*/
-function getTriggerCounts(state, trigger) {
-  return state.command.triggerCounts.get(trigger, 0);
-}
-
-/**
-* Target modifier is active
-* @param {string} modifier Target Modifier
-* @return {boolean}
-*/
-function getModifier(state, modifier) {
-  return state.command.activeModifiers.has(modifier);
-}
-
-/** Modifiers active @return {boolean} */
-function getModifiersActive(state) {
-  return !state.command.activeModifiers.isEmpty();
-}
-
-/** Zoom slider active @return {boolean} */
-function getZoomSliderActive(state) {
-  return getModifier(state, "modifiers.zoom");
-}
-
 /** Active notification progress id @returns {?string} */
 function getNotificationProgressId(state) {
   return state.notifications.progressId;
