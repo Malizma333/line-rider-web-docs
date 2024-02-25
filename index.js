@@ -1,13 +1,3 @@
-/** Active notification progress id @returns {?string} */
-function getNotificationProgressId(state) {
-  return state.notifications.progressId;
-}
-
-/** Count of notifications @returns {number} */
-function getNotificationsCount(state) {
-  return state.notifications.count;
-}
-
 /** Player running @returns {boolean} */
 function getPlayerRunning(state) {
   return state.player.running;
