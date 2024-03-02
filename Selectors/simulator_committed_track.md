@@ -15,3 +15,4 @@ function getSimulatorCommittedTrack(state) {
 - [committed_track_layers](./committed_track_layers.md)
 - [committed_riders](./committed_riders.md)
 - [simulator_committed_lines](./simulator_committed_lines.md)
+- [track_script](./track_script.md)

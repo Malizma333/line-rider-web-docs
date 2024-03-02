@@ -1,18 +1,3 @@
-/** Whether track lines are locked @returns {boolean} */
-function getTrackLinesLocked(state) {
-  return state.trackLinesLocked;
-}
-
-/** Whether track is a local file @returns {boolean} */
-function getTrackIsLocalFile(state) {
-  return state.trackData.localFile;
-}
-
-/** Track script property @returns {string} */
-function getTrackScript(state) {
-  return state.trackData.script;
-}
-
 /** Whether timeline is currently active @returns {boolean} */
 function getControlsActive(state) {
   return state.ui.controlsActive;

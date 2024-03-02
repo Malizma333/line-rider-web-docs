@@ -15,3 +15,4 @@ function getSimulatorTrack(state) {
 - [riders](./riders.md)
 - [simulator_lines](./simulator_lines.md)
 - [track_layers](./track_layers.md)
+- [track_script](./track_script.md)

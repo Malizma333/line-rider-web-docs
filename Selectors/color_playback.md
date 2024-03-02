@@ -14,4 +14,4 @@ function getColorPlayback(state) {
 
 - [playback_preview](./playback_preview.md)
 - [player_settings](./player_settings.md)
-
+- [track_lines_locked](./track_lines_locked.md)
