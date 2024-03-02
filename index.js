@@ -1,23 +1,3 @@
-/** Current track saving progress @returns {Progress} */
-function getTrackSaverProgress(state) {
-  return state.progress["SAVE_TRACK"];
-}
-
-/** Track saving in progress @returns {boolean} */
-function getTrackSaverInProgress(state) {
-  return state.progress["SAVE_TRACK"].percent != null;
-}
-
-/** Current track loading progress @returns {Progress} */
-function getTrackLoaderProgress(state) {
-  return state.progress["LOAD_TRACK"];
-}
-
-/** Current track autosaving progress @returns {Progress} */
-function getAutosaveProgress(state) {
-  return state.progress["AUTOSAVE"];
-}
-
 /** Onion skinning start index @returns {number} */
 function getOnionBeginIndex(state) {
   return Math.max(
