@@ -31,3 +31,7 @@ The `Related` section links to selector functions that affect similar states.
 ### External
 
 The `External` folder contains documentation for object interfaces and enumerated data. These are usually referenced from within the action or selector docs, but don't do anything by themselves.
+
+## Misc
+
+Have any suggestions for improvements or fixes? Make a [pull request](https://github.com/Malizma333/lr-userscript-library/compare)!
