@@ -1,6 +1,6 @@
 ## Description
 
-Returns [Rider[]](../External/templates.js) buffer describing the uncommitted track riders.
+Returns a [Rider[]](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L183-L190) buffer describing the uncommitted track riders.
 
 ### Syntax
 

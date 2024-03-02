@@ -1,6 +1,6 @@
 ## Description
 
-Returns [PlayerSettings](../External/templates.js) describing playback settings.
+Returns [PlayerSettings](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L164-L173) describing playback settings.
 
 ### Syntax
 

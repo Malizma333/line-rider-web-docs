@@ -12,7 +12,7 @@ store.dispatch({ type: "SET_RIDERS", payload: riders });
 
 `riders`
 
-The array of rider objects to set the track riders to. The shape of a rider object can be found [here](../External/templates.js).
+The array of rider objects to set the track riders to. The shape of a rider object can be found [here](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L183-L190).
 
 ## Examples
 

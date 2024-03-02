@@ -1,6 +1,6 @@
 ## Description
 
-Returns [LineBase[]](../External/templates.js) buffer describing the committed track lines.
+Returns [LineBase[]](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L141-L158) buffer describing the committed track lines.
 
 ### Syntax
 
