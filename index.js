@@ -1,24 +1,3 @@
-/** Onion skinning start index @returns {number} */
-function getOnionBeginIndex(state) {
-  return Math.max(
-    0, Math.ceil(state.player.index) - state.renderer.onionSkinFramesBefore
-  );
-}
-
-/** Onion skinning end index @returns {number} */
-function getOnionEndIndex(state) {
-  return Math.min(
-    state.player.maxIndex, Math.max(
-      0, Math.floor(state.player.index) + state.renderer.onionSkinFramesAfter
-    )
-  );
-}
-
-/** Onion skinning enabled @returns {boolean} */
-function getOnionSkinActive(state) {
-  return state.renderer.onionSkin;
-}
-
 /** Playback preview enabled @returns {boolean} */
 function getPlaybackPreview(state) {
   return state.renderer.playbackPreview;
