@@ -1,37 +1,3 @@
-/** Cloud saved track data @returns {CloudSave[]} */
-function getSavedTracks(state) {
-  return state.savedTracks;
-}
-
-/** Whether cloud saved tracks are available @returns {boolean} */
-function getSavedTracksAvailable(state) {
-  return !!state.savedTracks;
-}
-
-/** Whether autosave is enabled @returns {boolean} */
-function getAutosaveEnabled(state) {
-  return state.autosaveEnabled;
-}
-
-/** Currently active tool @returns {Tool} */
-function getActiveTool(state) {
-  return state.selectedTool;
-}
-
-/**
-* Tool state of target tool
-* @param {Tool} toolId Target Tool
-* @returns {ToolState}
-*/
-function getToolState(state, toolId) {
-  return state.toolState[toolId];
-}
-
-/** Currently selected tool @returns {Tool} */
-function getSelectedTool(state) {
-  return state.selectedTool;
-}
-
 /** Whether track lines are locked @returns {boolean} */
 function getTrackLinesLocked(state) {
   return state.trackLinesLocked;
