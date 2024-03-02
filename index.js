@@ -1,13 +1,3 @@
-/** Playback preview enabled @returns {boolean} */
-function getPlaybackPreview(state) {
-  return state.renderer.playbackPreview;
-}
-
-/** Color playback enabled @returns {boolean} */
-function getColorPlayback(state) {
-  return state.renderer.colorPlayback;
-}
-
 /** Track engine (uncommitted) @returns {{engine: Engine}} */
 function getSimulatorTrack(state) {
   return state.simulator.engine;
