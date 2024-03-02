@@ -1,6 +1,6 @@
 ## Description
 
-Returns [CurrentViews](../External/templates.js) describing which views are currently active
+Returns [CurrentViews](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L62-L71) describing which views are currently active
 
 ### Syntax
 

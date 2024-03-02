@@ -16,7 +16,7 @@ The list of lines to remove by line id. Lines are indexed starting from one (1).
 
 `linesToAdd`
 
-The list of lines to add. The format of a line object can be found [here](../External/templates.js).
+The list of lines to add. The format of a line object can be found [here](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L125-L139).
 
 `name`
 
