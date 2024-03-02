@@ -34,4 +34,10 @@ The `External` folder contains documentation for object interfaces and enumerate
 
 ## Misc
 
+### Suggestions
+
 Have any suggestions for improvements or fixes? Make a [pull request](https://github.com/Malizma333/lr-userscript-library/compare)!
+
+### Version
+
+This documentation is primarily compatible with version commit 1938.0. Using code from this documentation on other versions may cause unstable or buggy behaviour.
