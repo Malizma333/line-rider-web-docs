@@ -16,7 +16,7 @@ The number of frames to render onion skinning after the current frame.
 
 ## Examples
 
-Renders ten (10) frames of onion skinning after the current frame.
+Renders 10 frames of onion skinning after the current frame.
 
 ```js
 store.dispatch({

@@ -16,7 +16,7 @@ The number of frames to render onion skinning before the current frame.
 
 ## Examples
 
-Renders five (5) frames of onion skinning before the current frame.
+Renders 5 frames of onion skinning before the current frame.
 
 ```js
 store.dispatch({

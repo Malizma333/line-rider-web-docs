@@ -16,7 +16,7 @@ The target zoom of the playback camera.
 
 ## Examples
 
-Adjusts the zoom of the playback camera to four (4).
+Adjusts the zoom of the playback camera to 4.
 
 ```js
 store.dispatch({

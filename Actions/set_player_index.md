@@ -16,7 +16,7 @@ The target frame index to jump to.
 
 ## Examples
 
-Jumps to frame eighty (80).
+Jumps to frame 80.
 
 ```js
 store.dispatch({

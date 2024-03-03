@@ -1,6 +1,6 @@
 ## Description
 
-Styles each rider based on an array of string formatted CSS styles. Index one (1) represents the style of the first rider, index two (2) represents the style of the second rider, and so on, until it wraps back around to index zero (0).
+Styles each rider based on an array of string formatted CSS styles. Index 1 represents the style of the first rider, index 2 represents the style of the second rider, and so on, until it wraps back around to index 0.
 
 ### Syntax
 

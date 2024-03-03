@@ -16,7 +16,7 @@ The target layer to toggle visibility of.
 
 ## Examples
 
-Toggles layer one (1) to be invisible.
+Toggles layer 1 to be invisible.
 
 ```js
 store.dispatch({

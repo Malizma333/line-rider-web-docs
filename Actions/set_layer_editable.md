@@ -16,7 +16,7 @@ The target layer to set editable.
 
 ## Examples
 
-Toggles layer two (2) to be editable.
+Toggles layer 2 to be editable.
 
 ```js
 store.dispatch({

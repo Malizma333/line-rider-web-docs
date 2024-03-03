@@ -12,7 +12,7 @@ store.dispatch({ type: "UPDATE_LINES", payload: { linesToRemove, linesToAdd, ini
 
 `linesToRemove`
 
-The list of lines to remove by line id. Lines are indexed starting from one (1).
+The list of lines to remove by line id. Lines are indexed starting from 1.
 
 `linesToAdd`
 

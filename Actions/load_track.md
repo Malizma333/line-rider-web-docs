@@ -16,7 +16,7 @@ The track object to load into the editor. The shape of track objects can be foun
 
 ## Examples
 
-Loads a blank track with two (2) riders.
+Loads a blank track with 2 riders.
 
 ```js
 store.dispatch({

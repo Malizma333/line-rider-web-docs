@@ -1,6 +1,6 @@
 ## Description
 
-Increments the timeline index by one (1) frame.
+Increments the timeline index by 1 frame.
 
 ### Syntax
 

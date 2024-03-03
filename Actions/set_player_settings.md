@@ -16,7 +16,7 @@ The settings object describing parameters for the track player. The format of th
 
 ## Examples
 
-Adjusts the base rate of the track player to two (2) times speed.
+Adjusts the base rate of the track player to 2 times speed.
 
 ```js
 store.dispatch({

@@ -16,7 +16,7 @@ The max index for the timeline to render.
 
 ## Examples
 
-Adjusts the max index to frame eighty (80).
+Adjusts the max index to frame 80.
 
 ```js
 store.dispatch({

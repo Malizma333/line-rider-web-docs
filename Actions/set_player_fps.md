@@ -16,7 +16,7 @@ The frames per second to set playback to.
 
 ## Examples
 
-Adjusts the playback rate to twenty-four (24) fps.
+Adjusts the playback rate to 24 fps.
 
 ```js
 store.dispatch({
