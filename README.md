@@ -2,7 +2,7 @@
 
 ## About
 
-The contents of this repository document the [Redux](https://redux.js.org/)-based API for the website [linerider.com](https://www.linerider.com).
+The contents of this repository document the [Redux](https://redux.js.org/)-based API for the website [linerider.com](https://www.linerider.com). It also provides documentation for exposed methods on the window object and templates for commonly used components.
 
 ## Documentation Structure
 
@@ -31,6 +31,14 @@ The `Related` section links to selector functions that affect similar states.
 ### External
 
 The `External` folder contains documentation for object interfaces and enumerated data. These are usually referenced from within the action or selector docs, but don't do anything by themselves.
+
+### Components
+
+The `Components` folder contains templates for web components that are often used in the context of userscript mods. These will be provided in the form of a function and along with appropriate documentation about each parameter.
+
+### Globals
+
+The `Globals` folder contains documentation for methods and variables attached to the global window object.
 
 ## Misc
 
