@@ -12,7 +12,7 @@ getCamFocus = createFocuser(keyframes, smoothing = 10)
 
 `keyframes`
 
-An array of keyframes that define the zoom levels at specific times. The shape of a camera focus keyframe object can be found [here](../External/templates.js).
+A [`Keyframe`](../External/keyframe.js) array that defines the camera focus at specific times.
 
 `smoothing`
 

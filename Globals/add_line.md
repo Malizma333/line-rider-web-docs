@@ -16,7 +16,7 @@ The endpoints of the line to add.
 
 `lineType`
 
-The type of line to add. A full list of line types can be found [here](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L160-L162).
+The [`LineType`](../External/line_type.js) of the line to add.
 
 `flipped`
 

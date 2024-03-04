@@ -1,6 +1,6 @@
 ## Description
 
-Returns [Rider[]](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L183-L190) buffer describing the committed track riders.
+Returns [`Rider[]`](../External/rider.js) buffer describing the committed track riders.
 
 ### Syntax
 

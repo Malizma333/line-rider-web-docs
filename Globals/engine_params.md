@@ -1,6 +1,6 @@
 ## Description
 
-Contains a json object that holds an `(x,y)` gravity vector.
+Contains a json object that holds an `{x, y}` gravity vector.
 
 ### Syntax
 

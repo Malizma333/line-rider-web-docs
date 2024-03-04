@@ -12,7 +12,7 @@ getCamBounds = createBoundsPanner(keyframes, smoothing = 10)
 
 `keyframes`
 
-An array of keyframes that define the zoom levels at specific times. The shape of a camera bounds keyframe object can be found [here](../External/templates.js).
+A [`Keyframe`](../External/keyframe.js) array that defines the camera bounding box at specific times.
 
 `smoothing`
 

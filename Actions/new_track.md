@@ -12,7 +12,7 @@ store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 
 `trackObject`
 
-The new track object to load. The shape of track objects can be found [here](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L192-L207).
+The new [`Track`](../External/track.js) to load.
 
 ## Examples
 

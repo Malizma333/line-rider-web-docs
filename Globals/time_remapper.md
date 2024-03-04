@@ -12,7 +12,7 @@ timeRemapper = createTimeRemapper(keyframes, interpolate = false)
 
 `keyframes`
 
-An array of keyframes that define the zoom levels at specific times. The shape of a time remap keyframe object can be found [here](../External/templates.js).
+A [`Keyframe`](../External/keyframe.js) array that defines the playback speed at specific times.
 
 `interpolate`
 

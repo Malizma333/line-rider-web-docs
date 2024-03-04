@@ -1,6 +1,6 @@
 ## Description
 
-Returns an [AudioLoader](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L19-L24) describing audio loader data.
+Returns an [`AudioLoader`](../External/audio_loader.js) describing audio loader data.
 
 ### Syntax
 

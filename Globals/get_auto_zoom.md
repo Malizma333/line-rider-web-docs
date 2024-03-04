@@ -12,7 +12,7 @@ getAutoZoom = createZoomer(keyframes, smoothing = 10)
 
 `keyframes`
 
-An array of keyframes that define the zoom levels at specific times. The shape of a zoom keyframe object can be found [here](../External/templates.js).
+A [`Keyframe`](../External/keyframe.js) array that defines the zoom levels at specific times.
 
 `smoothing`
 

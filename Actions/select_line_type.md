@@ -12,7 +12,7 @@ store.dispatch({ type: "SELECT_LINE_TYPE", payload: lineType });
 
 `lineType`
 
-The target line type to set the current tool's swatch to. A full list of line types can be found [here](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L160-L162).
+The target [`LineType`](../External/line_type.js) to set the current tool's swatch to.
 
 ## Examples
 

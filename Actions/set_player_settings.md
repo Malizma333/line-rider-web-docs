@@ -12,7 +12,7 @@ store.dispatch({ type: "SET_PLAYER_SETTINGS", payload: settings });
 
 `settings`
 
-The settings object describing parameters for the track player. The format of the player settings object can be found [here](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L164-L173).
+The [`PlayerSettings`](../External/player_settings.js) describing parameters for the track player.
 
 ## Examples
 

@@ -1,6 +1,6 @@
 ## Description
 
-Returns [Progress](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L175-L181) describing the progress of the track saver.
+Returns [`Progress`](../External/progress.js) describing the progress of the track saver.
 
 ### Syntax
 

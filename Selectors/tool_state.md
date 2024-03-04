@@ -1,6 +1,6 @@
 ## Description
 
-Returns a [ToolState](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L219-L225) describing the state of a target tool.
+Returns a [`ToolState`](../External/tool_state.js) describing the state of a target tool.
 
 ### Syntax
 
