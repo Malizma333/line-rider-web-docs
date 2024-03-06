@@ -6,11 +6,11 @@ Creates a number picker with a label and optional slider that writes to a target
 
 ```js
 renderNumberPicker (key, label, range, step, forInt = false, slider = false) {
-  const parseCatch = (x) => isNan(x) ? this.state[key] : x;
+  const parseCatch = (x) => isNaN(x) ? this.state[key] : x;
   const settings = {
     min: range[0],
     max: range[1],
-    step
+    step,
     value: this.state[key],
     onChange: e => this.setState({ [key]: parseCatch(
       forInt ? parseInt(e.target.value) : parseFloat(e.target.value)

@@ -13,7 +13,7 @@ renderCheckbox (key, label) {
 
   return React.createElement("div", null,
     label,
-    React.createElement("input", { type: "checkbox" })
+    React.createElement("input", { type: "checkbox", ...settings })
   );
 }
 ```
