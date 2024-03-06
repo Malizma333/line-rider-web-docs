@@ -53,7 +53,7 @@ A `boolean` indicating whether to add an additional slider next to the number pi
 
 ## Examples
 
-Render a number picker for an angle value in degrees.
+Render a number picker for the `angle` state in degrees.
 
 ```js
 this.renderNumberPicker('angle', 'Angle', [0, 360], 0.1);

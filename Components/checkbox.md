@@ -30,7 +30,7 @@ The `string` of text for a label displayed next to the checkbox.
 
 ## Examples
 
-Create a checkbox for toggling whether lines added are flipped.
+Create a checkbox for the `flipLines` state.
 
 ```js
 this.renderCheckbox('flipLines', 'Flip Lines')
