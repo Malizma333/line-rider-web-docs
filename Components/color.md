@@ -12,7 +12,7 @@ renderColorPicker (key, label) {
   };
 
   return React.createElement("div", null,
-    label,
+    label+' ',
     React.createElement("input", { type: "color", style: {width: '2em'}, ...settings })
   );
 }

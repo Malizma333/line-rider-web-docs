@@ -18,7 +18,7 @@ renderNumberPicker (key, label, range, step, forInt = false, slider = false) {
   };
 
   return React.createElement("div", null,
-    label,
+    label+' ',
     React.createElement("input", { style: { width: "4em" }, type: "number", ...settings }),
     slider && React.createElement("input", { type: "range", ...settings, onFocus: e => e.target.blur() })
   );
