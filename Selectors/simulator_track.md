@@ -1,6 +1,6 @@
 ## Description
 
-Returns an [Engine](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L95-L114) describing the uncommitted track engine.
+Returns an [`Engine`](../External/engine.js) describing the uncommitted track engine.
 
 ### Syntax
 

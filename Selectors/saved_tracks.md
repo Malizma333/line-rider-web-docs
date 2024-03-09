@@ -1,6 +1,6 @@
 ## Description
 
-Returns a [CloudSave[]](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L55-L60) that holds information of each track saved to the cloud.
+Returns a [`CloudSave[]`](../External/cloud_save.js) that holds information of each track saved to the cloud.
 
 ### Syntax
 

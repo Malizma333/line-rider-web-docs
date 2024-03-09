@@ -16,7 +16,7 @@ The weights of each rider on the playback camera movement.
 
 ## Examples
 
-Adjusts the playback camera to focus between riders one (1) and three (3).
+Adjusts the playback camera to focus between riders 1 and 3.
 
 ```js
 store.dispatch({

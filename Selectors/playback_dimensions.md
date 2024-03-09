@@ -1,6 +1,6 @@
 ## Description
 
-Returns [Dimensions](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L80-L85) describing the viewport of the playback camera.
+Returns [`Dimensions`](../External/dimensions.js) describing the viewport of the playback camera.
 
 ### Syntax
 

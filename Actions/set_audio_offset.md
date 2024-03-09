@@ -16,7 +16,7 @@ The time (in seconds) that audio starts playing from. Negative values correspond
 
 ## Examples
 
-Adjusts the audio offset to play the song file two (2) seconds in.
+Adjusts the audio offset to play the song file 2 seconds in.
 
 ```js
 store.dispatch({

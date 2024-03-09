@@ -1,6 +1,6 @@
 ## Description
 
-Returns a [V2](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L227-L232) describing where the editor camera is located.
+Returns a [`V2`](../External/v2.js) describing where the editor camera is located.
 
 ### Syntax
 

@@ -1,6 +1,6 @@
 ## Description
 
-Returns [Layer[]](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L116-L123) buffer describing the uncommitted track layers.
+Returns [`Layer[]`](../External/layer.js) buffer describing the uncommitted track layers.
 
 ### Syntax
 

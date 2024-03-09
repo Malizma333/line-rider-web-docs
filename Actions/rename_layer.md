@@ -20,7 +20,7 @@ The new name of the target layer.
 
 ## Examples
 
-Renames layer one (1) to "Background Layer".
+Renames layer 1 to "Background Layer".
 
 ```js
 store.dispatch({

@@ -16,7 +16,7 @@ The id of the layer to remove.
 
 ## Examples
 
-Removes the layer with an id of one (1).
+Removes the layer with an id of one 1.
 
 ```js
 store.dispatch({

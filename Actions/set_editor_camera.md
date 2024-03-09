@@ -20,7 +20,7 @@ The target zoom to set the editor camera to.
 
 ## Examples
 
-Moves the editor camera twenty (20) pixels above the origin and applies a camera zoom of three (3).
+Moves the editor camera 20 pixels above the origin and applies a camera zoom of 3.
 
 ```js
 store.dispatch({

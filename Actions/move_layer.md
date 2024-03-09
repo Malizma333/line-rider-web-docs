@@ -20,7 +20,7 @@ The new index for the layer to move to.
 
 ## Examples
 
-Moves layer one (1) to the second position above the base layer.
+Moves layer 1 to the second position above the base layer.
 
 ```js
 store.dispatch({

@@ -16,7 +16,7 @@ The mode of interpolation. A `true` value represents smooth interpolation, while
 
 ## Examples
 
-Switches the interpolation mode to sixty (60) fps.
+Switches the interpolation mode to 60 fps.
 
 ```js
 store.dispatch({

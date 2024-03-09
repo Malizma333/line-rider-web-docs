@@ -16,6 +16,4 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 5) All phrases and sentences MUST end in a period (.).
 
-6) All numbers used within descriptions MUST be written in english form then have the decimal form in parenthesis. An example of this is the number three (3).
-
-7) Ordinal representations of numbers SHOULD be avoided, such as "first" and "third".
+6) Ordinal representations of numbers SHOULD be avoided, such as "first" and "third".

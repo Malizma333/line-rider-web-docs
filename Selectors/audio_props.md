@@ -1,6 +1,6 @@
 ## Description
 
-Returns [AudioData](https://github.com/Malizma333/line-rider-web-docs/blob/main/External/templates.js#L1-L9) describing the currently loaded audio file.
+Returns [`AudioData`](../External/audio_data.js) describing the currently loaded audio file.
 
 ### Syntax
 

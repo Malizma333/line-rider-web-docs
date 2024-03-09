@@ -16,7 +16,7 @@ The frame to set the flag to.
 
 ## Examples
 
-Moves the flag index to frame forty (40).
+Moves the flag index to frame 40.
 
 ```js
 store.dispatch({
