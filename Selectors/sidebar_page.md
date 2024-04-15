@@ -6,7 +6,7 @@ Returns nullable `string` describing which part of the sidebar page is open.
 
 ```js
 function getSidebarPage(state) {
-  return state.views["SIDEBAR"];
+  return state.views["Sidebar"];
 }
 ```
 
