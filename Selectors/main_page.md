@@ -6,7 +6,7 @@ Returns nullable `string` describing which part of the main page is open.
 
 ```js
 function getMainPage(state) {
-  return state.views["MAIN"];
+  return state.views["Main"];
 }
 ```
 
