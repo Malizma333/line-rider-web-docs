@@ -48,4 +48,4 @@ Have any suggestions for improvements or fixes? Make a [pull request](https://gi
 
 ### Version
 
-This documentation is primarily compatible with version commit 1938.0. Using code from this documentation on other versions may cause unstable or buggy behaviour.
+This documentation is primarily compatible with version commit 1945.0. Using code from this documentation on other versions may cause unstable or buggy behaviour.
