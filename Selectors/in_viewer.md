@@ -6,8 +6,8 @@ Returns a `boolean` indicating whether the track viewer is open.
 
 ```js
 function getInViewer(state) {
-  return state.views["MAIN"] === "viewer" || 
-          state.views["MAIN"] === "editable-viewer";
+  return state.views["Main"] === "viewer" || 
+          state.views["Main"] === "editable-viewer";
 }
 ```
 
