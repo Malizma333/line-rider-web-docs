@@ -6,11 +6,11 @@ Returns a nullable `string` indicating which window overlay is active.
 
 ```js
 function getHasOverlay(state) {return (
-  state.views["ABOUT"] ||
-  state.views["TRACK_LOADER"] ||
-  state.views["TRACK_SAVER"] ||
-  state.views["VIDEO_EXPORTER"] ||
-  state.views["RELEASE_NOTES"]
+  state.views["About"] ||
+  state.views["TrackLoader"] ||
+  state.views["TrackSaver"] ||
+  state.views["VideoExporter"] ||
+  state.views["ReleaseNotes"]
 );}
 ```
 
