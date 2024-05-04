@@ -9,12 +9,8 @@ The contents of this repository document the [Redux](https://redux.js.org/)-base
 
 ## Version
 
-This documentation is primarily compatible with version commit 1945.0. Using code from this documentation on other versions may cause unstable or buggy behaviour.
+This documentation is primarily compatible with version commit **1945.0**. Using code from this documentation on other versions may cause unstable or buggy behavior.
 
 ## Suggestions
 
 Have any suggestions for improvements or fixes? Make a [pull request](https://github.com/Malizma333/lr-userscript-library/compare)!
-
-### External
-
-The `External` folder contains documentation for object interfaces and enumerated data. These are usually referenced from within the action or selector docs, but don't do anything by themselves.
