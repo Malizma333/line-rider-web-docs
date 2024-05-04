@@ -5,7 +5,7 @@ nav_exclude: true
 
 ## About
 
-The contents of this repository document the [Redux](https://redux.js.org/)-based API for the website [linerider.com](https://www.linerider.com). It also provides documentation for exposed methods on the window object and templates for commonly used components.
+The contents of this repository document the [Redux](https://redux.js.org/)-based API for the website [linerider.com](https://www.linerider.com). It also provides documentation for global properties and methods, as well as templates for commonly used userscript components.
 
 ## Version
 
