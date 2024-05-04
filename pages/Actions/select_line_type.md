@@ -19,7 +19,7 @@ store.dispatch({ type: "SELECT_LINE_TYPE", payload: lineType });
 
 `lineType`
 
-The target [`LineType`](../External/line_type.js) to set the current tool's swatch to.
+The target [`LineType`](/externals/line/) to set the current tool's swatch to.
 
 ### Examples
 

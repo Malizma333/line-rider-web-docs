@@ -7,7 +7,7 @@ permalink: /selectors/active_tool/
 
 ## Active Tool
 
-Returns a [Tool](../External/tools.json) describing the currently active tool.
+Returns a [Tool](/externals/tools/) describing the currently active tool.
 
 ### Syntax
 

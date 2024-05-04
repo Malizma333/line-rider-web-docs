@@ -19,7 +19,7 @@ timeRemapper = createTimeRemapper(keyframes, interpolate = false)
 
 `keyframes`
 
-A [`Keyframe`](../External/keyframe.js) array that defines the playback speed at specific times.
+A [`Keyframe`](/externals/keyframes/) array that defines the playback speed at specific times.
 
 `interpolate`
 

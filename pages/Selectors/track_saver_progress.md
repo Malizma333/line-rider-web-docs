@@ -7,7 +7,7 @@ permalink: /selectors/track_saver_progress/
 
 ## Saver Progress
 
-Returns [`Progress`](../External/progress.js) describing the progress of the track saver.
+Returns [`Progress`](/externals/files/) describing the progress of the track saver.
 
 ### Syntax
 

@@ -19,7 +19,7 @@ getAutoZoom = createZoomer(keyframes, smoothing = 10)
 
 `keyframes`
 
-A [`Keyframe`](../External/keyframe.js) array that defines the zoom levels at specific times.
+A [`Keyframe`](/externals/keyframes/) array that defines the zoom levels at specific times.
 
 `smoothing`
 

@@ -19,7 +19,7 @@ store.dispatch({ type: "SET_VIEW_OPTION", payload: { key: viewOption, value } })
 
 `viewOption`
 
-The name of the view option to toggle. Available view options can be found [here](../External/view_options.json).
+The name of the view option to toggle. Available view options can be found [here](/externals/player/).
 
 `value`
 

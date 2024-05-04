@@ -19,7 +19,7 @@ store.dispatch({ type: "SET_RIDERS", payload: riders });
 
 `riders`
 
-The [`Rider`](../External/rider.js) array to set the track riders to.
+The [`Rider`](/externals/rider/) array to set the track riders to.
 
 ### Examples
 

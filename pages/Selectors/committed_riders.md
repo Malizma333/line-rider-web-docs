@@ -7,7 +7,7 @@ permalink: /selectors/committed_riders/
 
 ## Committed Riders
 
-Returns [`Rider[]`](../External/rider.js) buffer describing the committed track riders.
+Returns [`Rider[]`](/externals/rider/) buffer describing the committed track riders.
 
 ### Syntax
 

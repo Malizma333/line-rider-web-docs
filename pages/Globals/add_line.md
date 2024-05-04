@@ -23,7 +23,7 @@ The endpoints of the line to add.
 
 `lineType`
 
-The [`LineType`](../External/line_type.js) of the line to add.
+The [`LineType`](/externals/line/) of the line to add.
 
 `flipped`
 

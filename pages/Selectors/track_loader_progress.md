@@ -7,7 +7,7 @@ permalink: /selectors/track_loader_progress/
 
 ## Loader Progress
 
-Returns [`Progress`](../External/progress.js) describing the progress of the track loader.
+Returns [`Progress`](/externals/files/) describing the progress of the track loader.
 
 ### Syntax
 

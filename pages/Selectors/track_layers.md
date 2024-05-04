@@ -7,7 +7,7 @@ permalink: /selectors/track_layers/
 
 ## Uncommitted Layers
 
-Returns [`Layer[]`](../External/layer.js) buffer describing the uncommitted track layers.
+Returns [`Layer[]`](/externals/layer/) buffer describing the uncommitted track layers.
 
 ### Syntax
 

@@ -7,7 +7,7 @@ permalink: /selectors/simulator_committed_lines/
 
 ## Committed Lines
 
-Returns [`LineBase[]`](../External/line.js) buffer describing the committed track lines.
+Returns [`LineBase[]`](/externals/line/) buffer describing the committed track lines.
 
 ### Syntax
 

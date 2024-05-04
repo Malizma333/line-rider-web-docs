@@ -19,7 +19,7 @@ store.dispatch({ type: "BEGIN_MODIFIER_COMMAND", payload: command, meta: { ignor
 
 `command`
 
-The modifier command to start executing. This command will not stop until an `END_MODIFIER_COMMAND` action with the same id is called or a user input triggers the end of the command. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
+The modifier command to start executing. This command will not stop until an `END_MODIFIER_COMMAND` action with the same id is called or a user input triggers the end of the command. A full list of available command ids and their default hotkeys can be found [here](/externals/commands/).
 
 ### Examples
 

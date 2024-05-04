@@ -7,7 +7,7 @@ permalink: /selectors/riders/
 
 ## Riders
 
-Returns a [`Rider[]`](../External/rider.js) buffer describing the uncommitted track riders.
+Returns a [`Rider[]`](/externals/rider/) buffer describing the uncommitted track riders.
 
 ### Syntax
 

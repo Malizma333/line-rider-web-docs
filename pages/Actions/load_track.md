@@ -19,7 +19,7 @@ store.dispatch({ type: "LOAD_TRACK", payload: trackObject });
 
 `trackObject`
 
-The [`Track`](../External/track.js) to load into the editor.
+The [`Track`](/externals/track/) to load into the editor.
 
 ### Examples
 

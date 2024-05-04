@@ -31,7 +31,7 @@ The offset of the polygon from the origin.
 
 `lineType`
 
-The [`LineType`](../External/line_type.js) of the lines in the circle.
+The [`LineType`](/externals/line/) of the lines in the circle.
 
 `flipped`
 

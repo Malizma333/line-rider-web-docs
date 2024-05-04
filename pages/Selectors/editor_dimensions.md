@@ -7,7 +7,7 @@ permalink: /selectors/editor_dimensions/
 
 ## Editor Dimensions
 
-Returns [`Dimensions`](../External/dimensions.js) describing the viewport of the editor camera.
+Returns [`Dimensions`](/externals/camera/) describing the viewport of the editor camera.
 
 ### Syntax
 

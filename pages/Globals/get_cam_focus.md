@@ -19,7 +19,7 @@ getCamFocus = createFocuser(keyframes, smoothing = 10)
 
 `keyframes`
 
-A [`Keyframe`](../External/keyframe.js) array that defines the camera focus at specific times.
+A [`Keyframe`](/externals/keyframes/) array that defines the camera focus at specific times.
 
 `smoothing`
 

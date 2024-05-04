@@ -21,7 +21,7 @@ function getModifier(state, modifier) {
 
 `modifier`
 
-The target modifier that may be active. A full list of available command ids can be found [here](../External/commands.json).
+The target modifier that may be active. A full list of available command ids can be found [here](/externals/commands/).
 
 ### Examples
 

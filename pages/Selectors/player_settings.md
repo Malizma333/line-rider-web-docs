@@ -7,7 +7,7 @@ permalink: /selectors/player_settings/
 
 ## Player Settings
 
-Returns [`PlayerSettings`](../External/player_settings.js) describing playback settings.
+Returns [`PlayerSettings`](/externals/player/) describing playback settings.
 
 ### Syntax
 

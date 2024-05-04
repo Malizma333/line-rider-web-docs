@@ -1,3 +1,15 @@
+---
+layout: page
+title: Commands
+parent: Externals
+permalink: /externals/commands/
+---
+
+## Commands
+
+Object storing commands and their associated keybinds.
+
+```js
 {
   "triggers.pencilTool": "q",
   "triggers.lineTool": "w",
@@ -57,3 +69,4 @@
   "modifiers.fastForward": ".",
   "modifiers.rewind": ","
 }
+```

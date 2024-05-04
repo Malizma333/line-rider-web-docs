@@ -7,7 +7,7 @@ permalink: /selectors/simulator_lines/
 
 ## Uncommitted Lines
 
-Returns [`LineBase[]`](../External/line.js) buffer describing the uncommitted track lines.
+Returns [`LineBase[]`](/externals/line/) buffer describing the uncommitted track lines.
 
 ### Syntax
 

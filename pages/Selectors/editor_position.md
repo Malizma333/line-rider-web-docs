@@ -7,7 +7,7 @@ permalink: /selectors/editor_position/
 
 ## Editor Position
 
-Returns a [`V2`](../External/v2.js) describing where the editor camera is located.
+Returns a [`V2`](/externals/primitives/) describing where the editor camera is located.
 
 ### Syntax
 

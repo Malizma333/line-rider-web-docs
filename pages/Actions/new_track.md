@@ -19,7 +19,7 @@ store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 
 `trackObject`
 
-The new [`Track`](../External/track.js) to load.
+The new [`Track`](/externals/track/) to load.
 
 ### Examples
 

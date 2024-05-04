@@ -7,7 +7,7 @@ permalink: /selectors/committed_track_layers/
 
 ## Committed Layers
 
-Returns [`Layer[]`](../External/layer.js) buffer describing the committed track layers.
+Returns [`Layer[]`](/externals/layer/) buffer describing the committed track layers.
 
 ### Syntax
 

@@ -19,7 +19,7 @@ store.dispatch({ type: "SET_PLAYER_SETTINGS", payload: settings });
 
 `settings`
 
-The [`PlayerSettings`](../External/player_settings.js) describing parameters for the track player.
+The [`PlayerSettings`](/externals/player/) describing parameters for the track player.
 
 ### Examples
 

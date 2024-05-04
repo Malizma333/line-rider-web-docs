@@ -23,11 +23,11 @@ The list of lines to remove by line id. Lines are indexed starting from 1.
 
 `linesToAdd`
 
-The list of [`Line`](../External/line.js) objects to add.
+The list of [`Line`](/externals/line/) objects to add.
 
 `name`
 
-The type of update line action to execute. A full list of line update subactions can be found [here](../External/update_lines_actions.json).
+The type of update line action to execute. A full list of line update subactions can be found [here](/externals/line/).
 
 ### Examples
 

@@ -7,7 +7,7 @@ permalink: /selectors/audio_props/
 
 ## Audio Properties
 
-Returns [`AudioData`](../External/audio_data.js) describing the currently loaded audio file.
+Returns [`AudioData`](/externals/audio/) describing the currently loaded audio file.
 
 ### Syntax
 
