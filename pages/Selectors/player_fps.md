@@ -1,3 +1,10 @@
+---
+layout: page
+title: Player FPS
+parent: Selectors
+permalink: /selectors/player_fps/
+---
+
 ## Description
 
 Returns a `number` describing the frames per second of the player.

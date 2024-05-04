@@ -1,3 +1,10 @@
+---
+layout: page
+title: Playback Preview
+parent: Selectors
+permalink: /selectors/playback_preview/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether playback preview is enabled.

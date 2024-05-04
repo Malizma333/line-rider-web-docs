@@ -1,3 +1,10 @@
+---
+layout: page
+title: Physics Version
+parent: Selectors
+permalink: /selectors/simulator_version/
+---
+
 ## Description
 
 Returns a version string `6.1 | 6.2` indicating which physics version the track uses.

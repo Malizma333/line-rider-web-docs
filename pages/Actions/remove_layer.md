@@ -1,3 +1,10 @@
+---
+layout: page
+title: Remove Layer
+parent: Actions
+permalink: /actions/remove_layer/
+---
+
 ## Description
 
 Removes target layer from the layer array.

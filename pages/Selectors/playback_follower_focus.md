@@ -1,3 +1,10 @@
+---
+layout: page
+title: Playback Focuser
+parent: Selectors
+permalink: /selectors/playback_follower_focus/
+---
+
 ## Description
 
 Returns a `number` describing which rider is being followed by the playback camera.

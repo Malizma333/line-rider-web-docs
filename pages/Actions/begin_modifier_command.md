@@ -1,3 +1,10 @@
+---
+layout: page
+title: Begin Modifier Command
+parent: Actions
+permalink: /actions/begin_modifier_command/
+---
+
 ## Description
 
 Begins running the modifier command given by the command id. This has a similar effect as holding the hotkey associated with that command.

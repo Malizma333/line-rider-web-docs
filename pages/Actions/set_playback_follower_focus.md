@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Playback Focuser
+parent: Actions
+permalink: /actions/set_playback_follower_focus/
+---
+
 ## Description
 
 Adjusts the playback camera to focus on zero or more riders based on weights.

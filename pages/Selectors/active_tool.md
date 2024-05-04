@@ -1,3 +1,10 @@
+---
+layout: page
+title: Active Tool
+parent: Selectors
+permalink: /selectors/active_tool/
+---
+
 ## Description
 
 Returns a [Tool](../External/tools.json) describing the currently active tool.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Increase Player Index
+parent: Actions
+permalink: /actions/inc_player_index/
+---
+
 ## Description
 
 Increments the timeline index by 1 frame.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Load Autosave
+parent: Actions
+permalink: /actions/load_autosave/
+---
+
 ## Description
 
 Loads the last cached autosave.

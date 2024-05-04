@@ -1,3 +1,10 @@
+---
+layout: page
+title: Editor Zoom
+parent: Selectors
+permalink: /selectors/editor_zoom/
+---
+
 ## Description
 
 Returns a `number` describing the current zoom of the editor camera.

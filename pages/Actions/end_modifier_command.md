@@ -1,3 +1,10 @@
+---
+layout: page
+title: End Modifier Command
+parent: Actions
+permalink: /actions/end_modifier_command/
+---
+
 ## Description
 
 Stops running the modifier command given by the command id. This has a similar effect as letting go of the hotkey associated with that command after holding it.

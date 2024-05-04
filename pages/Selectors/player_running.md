@@ -1,3 +1,10 @@
+---
+layout: page
+title: Player Running
+parent: Selectors
+permalink: /selectors/player_running/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the player is running.

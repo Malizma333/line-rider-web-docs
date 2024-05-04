@@ -1,3 +1,10 @@
+---
+layout: page
+title: Editor Dimensions
+parent: Selectors
+permalink: /selectors/editor_dimensions/
+---
+
 ## Description
 
 Returns [`Dimensions`](../External/dimensions.js) describing the viewport of the editor camera.

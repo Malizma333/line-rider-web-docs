@@ -1,3 +1,10 @@
+---
+layout: page
+title: Loader Progress
+parent: Selectors
+permalink: /selectors/track_loader_progress/
+---
+
 ## Description
 
 Returns [`Progress`](../External/progress.js) describing the progress of the track loader.

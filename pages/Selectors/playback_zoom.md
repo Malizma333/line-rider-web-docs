@@ -1,3 +1,10 @@
+---
+layout: page
+title: Playback Zoom
+parent: Selectors
+permalink: /selectors/playback_zoom/
+---
+
 ## Description
 
 Returns a `number` describing the current zoom of the playback camera.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Autosave Progress
+parent: Selectors
+permalink: /selectors/autosave_progress/
+---
+
 ## Description
 
 Returns [`Progress`](../External/progress.js) describing the progress of the autosaver.

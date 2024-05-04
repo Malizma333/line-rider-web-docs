@@ -1,3 +1,10 @@
+---
+layout: page
+title: Editor Position
+parent: Selectors
+permalink: /selectors/editor_position/
+---
+
 ## Description
 
 Returns a [`V2`](../External/v2.js) describing where the editor camera is located.

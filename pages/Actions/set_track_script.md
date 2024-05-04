@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Track Script
+parent: Actions
+permalink: /actions/set_track_script/
+---
+
 ## Description
 
 Configures the track file script.

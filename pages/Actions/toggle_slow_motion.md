@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Slow Motion
+parent: Actions
+permalink: /actions/toggle_slow_motion/
+---
+
 ## Description
 
 Toggles slow motion playback.

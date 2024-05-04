@@ -1,3 +1,10 @@
+---
+layout: page
+title: Camera Boundary Triggers
+parent: Globals
+permalink: /globals/get_cam_bounds/
+---
+
 ## Description
 
 Creates an automated camera bounds function based on keyframes.

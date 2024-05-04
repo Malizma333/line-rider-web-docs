@@ -1,3 +1,10 @@
+---
+layout: page
+title: Track Loader Open
+parent: Selectors
+permalink: /selectors/in_track_loader/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the load window is open.

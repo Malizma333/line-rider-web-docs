@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Layer Editable
+parent: Actions
+permalink: /actions/set_layer_editable/
+---
+
 ## Description
 
 Toggles whether the target layer is editable.

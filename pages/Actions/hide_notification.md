@@ -1,3 +1,10 @@
+---
+layout: page
+title: Hide Notification
+parent: Actions
+permalink: /actions/hide_notification/
+---
+
 ## Description
 
 Hides a notification based on its message.

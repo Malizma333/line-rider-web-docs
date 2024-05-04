@@ -1,3 +1,10 @@
+---
+layout: page
+title: Sidebar Page
+parent: Selectors
+permalink: /selectors/sidebar_page/
+---
+
 ## Description
 
 Returns nullable `string` describing which part of the sidebar page is open.

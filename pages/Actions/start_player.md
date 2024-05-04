@@ -1,3 +1,10 @@
+---
+layout: page
+title: Start Player
+parent: Actions
+permalink: /actions/start_player/
+---
+
 ## Description
 
 Starts the player if it is stopped.

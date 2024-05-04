@@ -1,3 +1,10 @@
+---
+layout: page
+title: Onion Skin Active
+parent: Selectors
+permalink: /selectors/onion_skin_active/
+---
+
 ## Description
 
 Returns a `boolean` indicating if onion skinning is enabled.

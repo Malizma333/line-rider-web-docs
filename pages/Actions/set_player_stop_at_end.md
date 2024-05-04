@@ -1,3 +1,10 @@
+---
+layout: page
+title: Stop At End
+parent: Actions
+permalink: /actions/set_player_stop_at_end/
+---
+
 ## Description
 
 Toggles the player stopping at the end of the timeline.

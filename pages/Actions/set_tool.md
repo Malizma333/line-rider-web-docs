@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Tool
+parent: Actions
+permalink: /actions/set_tool/
+---
+
 ## Description
 
 Switches the current tool to the target tool.

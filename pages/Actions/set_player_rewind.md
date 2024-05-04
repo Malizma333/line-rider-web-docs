@@ -1,3 +1,10 @@
+---
+layout: page
+title: Rewind
+parent: Actions
+permalink: /actions/set_player_rewind/
+---
+
 ## Description
 
 Toggles playing the playback in reverse.

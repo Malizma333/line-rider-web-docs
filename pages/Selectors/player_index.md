@@ -1,3 +1,10 @@
+---
+layout: page
+title: Player Index
+parent: Selectors
+permalink: /selectors/player_index/
+---
+
 ## Description
 
 Returns a `number` describing the current index of the player.

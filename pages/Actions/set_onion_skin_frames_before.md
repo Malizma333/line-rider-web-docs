@@ -1,3 +1,10 @@
+---
+layout: page
+title: Onion Skins Before
+parent: Actions
+permalink: /actions/set_onion_skin_frames_before/
+---
+
 ## Description
 
 Adjusts how many frames onion skinning renders before the current frame.

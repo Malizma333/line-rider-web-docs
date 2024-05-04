@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Local File Saves
+parent: Actions
+permalink: /actions/set_local_file/
+---
+
 ## Description
 
 Enables or disables local file saving.

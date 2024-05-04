@@ -1,3 +1,10 @@
+---
+layout: page
+title: Zoom Tool Properties
+parent: Globals
+permalink: /globals/zoom/
+---
+
 ## Description
 
 Contains a json object that holds zoom properties `STRENGTH`, `MIN`, and `MAX`.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Layer Visible
+parent: Actions
+permalink: /actions/set_layer_visible/
+---
+
 ## Description
 
 Toggles the visibility of target layer.

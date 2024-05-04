@@ -1,3 +1,10 @@
+---
+layout: page
+title: Use Editor Follower
+parent: Selectors
+permalink: /selectors/use_editor_follower/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the editor camera should keep the rider in view while scrubbing.

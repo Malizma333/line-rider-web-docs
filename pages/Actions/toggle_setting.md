@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Setting
+parent: Actions
+permalink: /actions/toggle_setting/
+---
+
 ## Description
 
 Toggles the target setting based on a key.

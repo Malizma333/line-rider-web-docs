@@ -1,3 +1,10 @@
+---
+layout: page
+title: Has Overlay
+parent: Selectors
+permalink: /selectors/has_overlay/
+---
+
 ## Description
 
 Returns a nullable `string` indicating which window overlay is active.

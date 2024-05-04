@@ -1,3 +1,10 @@
+---
+layout: page
+title: Audio Properties
+parent: Selectors
+permalink: /selectors/audio_props/
+---
+
 ## Description
 
 Returns [`AudioData`](../External/audio_data.js) describing the currently loaded audio file.

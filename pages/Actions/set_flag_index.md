@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Flag Index
+parent: Actions
+permalink: /actions/set_flag_index/
+---
+
 ## Description
 
 Moves the flag to the target index in the timeline.

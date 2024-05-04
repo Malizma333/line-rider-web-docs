@@ -1,3 +1,10 @@
+---
+layout: page
+title: Uncommitted Track
+parent: Selectors
+permalink: /selectors/simulator_track/
+---
+
 ## Description
 
 Returns an [`Engine`](../External/engine.js) describing the uncommitted track engine.

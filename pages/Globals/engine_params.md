@@ -1,3 +1,10 @@
+---
+layout: page
+title: Engine Parameters
+parent: Globals
+permalink: /globals/engine_params/
+---
+
 ## Description
 
 Contains a json object that holds an `{x, y}` gravity vector.

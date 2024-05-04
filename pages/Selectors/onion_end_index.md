@@ -1,3 +1,10 @@
+---
+layout: page
+title: Onion Skin End
+parent: Selectors
+permalink: /selectors/onion_end_index/
+---
+
 ## Description
 
 Returns a `number` describing the end frame of onion skinning.

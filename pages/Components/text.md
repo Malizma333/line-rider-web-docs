@@ -1,3 +1,10 @@
+---
+layout: page
+title: Text Field
+parent: Components
+permalink: /components/text/
+---
+
 ## Description
 
 Creates a text field with a label that writes to a target `string` state.

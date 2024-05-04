@@ -1,3 +1,10 @@
+---
+layout: page
+title: Player Frame Rate
+parent: Selectors
+permalink: /selectors/player_frame_rate_settings/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether smooth playback is on.

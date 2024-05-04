@@ -1,3 +1,10 @@
+---
+layout: page
+title: Layer Automation Triggers
+parent: Globals
+permalink: /globals/get_layer_visible_at_time/
+---
+
 ## Description
 
 Creates an automated layer function based on layer ids and frame indices.

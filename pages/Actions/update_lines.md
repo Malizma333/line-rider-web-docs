@@ -1,3 +1,10 @@
+---
+layout: page
+title: Update Lines
+parent: Actions
+permalink: /actions/update_lines/
+---
+
 ## Description
 
 Updates the line array in the non-committed engine.

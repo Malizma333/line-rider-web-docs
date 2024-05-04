@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Riders
+parent: Actions
+permalink: /actions/set_riders/
+---
+
 ## Description
 
 Configures the rider properties for the current track.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Player Index
+parent: Actions
+permalink: /actions/set_player_index/
+---
+
 ## Description
 
 Jumps to a specific frame in playback.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Controls Active
+parent: Selectors
+permalink: /selectors/controls_active/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the timeline is active.

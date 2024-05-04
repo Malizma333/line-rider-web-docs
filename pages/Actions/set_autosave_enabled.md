@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Autosave
+parent: Actions
+permalink: /actions/set_autosave_enabled/
+---
+
 ## Description
 
 Enables or disables autosaving.

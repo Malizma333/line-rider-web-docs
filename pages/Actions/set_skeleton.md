@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Skeleton
+parent: Actions
+permalink: /actions/set_skeleton/
+---
+
 ## Description
 
 Switches between skeleton views.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Trigger Command
+parent: Actions
+permalink: /actions/trigger_command/
+---
+
 ## Description
 
 Triggers the command given by the command id. This has a similar effect as pressing the hotkey associated with that command.

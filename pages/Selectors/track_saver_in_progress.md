@@ -1,3 +1,10 @@
+---
+layout: page
+title: Saving
+parent: Selectors
+permalink: /selectors/track_saver_in_progress/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the track saver is currently in progress.

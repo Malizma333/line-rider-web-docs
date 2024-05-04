@@ -1,3 +1,10 @@
+---
+layout: page
+title: Audio Loading
+parent: Selectors
+permalink: /selectors/audio_file_loading/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the audio file is loading.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Notification Count
+parent: Selectors
+permalink: /selectors/notification_count/
+---
+
 ## Description
 
 Returns a `number` describing the number of notifications that have occurred.

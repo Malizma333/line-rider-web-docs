@@ -1,3 +1,10 @@
+---
+layout: page
+title: Editor Focuser
+parent: Selectors
+permalink: /selectors/editor_follower_focus/
+---
+
 ## Description
 
 Returns a `number` describing which rider is being followed by the editor camera.

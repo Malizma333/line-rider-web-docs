@@ -1,3 +1,10 @@
+---
+layout: page
+title: New Track
+parent: Actions
+permalink: /actions/new_track/
+---
+
 ## Description
 
 Creates a new track object and loads it into the editor.

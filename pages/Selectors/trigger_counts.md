@@ -1,3 +1,10 @@
+---
+layout: page
+title: Command Counts
+parent: Selectors
+permalink: /selectors/trigger_counts/
+---
+
 ## Description
 
 Returns a `number` describing the count of a target trigger being pressed.

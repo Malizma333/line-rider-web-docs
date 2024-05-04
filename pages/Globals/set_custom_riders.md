@@ -1,3 +1,10 @@
+---
+layout: page
+title: Custom Rider Skins
+parent: Globals
+permalink: /globals/set_custom_riders/
+---
+
 ## Description
 
 Styles each rider based on an array of string formatted CSS styles. Index 1 represents the style of the first rider, index 2 represents the style of the second rider, and so on, until it wraps back around to index 0.

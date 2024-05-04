@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Track Details
+parent: Actions
+permalink: /actions/set_track_details/
+---
+
 ## Description
 
 Configures the details of the currently loaded track.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Track Saver Open
+parent: Selectors
+permalink: /selectors/in_track_saver/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the save window is open.

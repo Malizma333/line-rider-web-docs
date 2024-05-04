@@ -1,3 +1,10 @@
+---
+layout: page
+title: Onion Skins After
+parent: Actions
+permalink: /actions/set_onion_skin_frames_after/
+---
+
 ## Description
 
 Adjusts how many frames onion skinning renders after the current frame.

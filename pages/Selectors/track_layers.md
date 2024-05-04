@@ -1,3 +1,10 @@
+---
+layout: page
+title: Uncommitted Layers
+parent: Selectors
+permalink: /selectors/track_layers/
+---
+
 ## Description
 
 Returns [`Layer[]`](../External/layer.js) buffer describing the uncommitted track layers.

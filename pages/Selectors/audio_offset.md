@@ -1,3 +1,10 @@
+---
+layout: page
+title: Audio Offset
+parent: Selectors
+permalink: /selectors/audio_offset/
+---
+
 ## Description
 
 Returns a `number` describing the offset of the audio file.

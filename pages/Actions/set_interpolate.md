@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Interpolate
+parent: Actions
+permalink: /actions/set_interpolate/
+---
+
 ## Description
 
 Switches the interpolation mode to a target fps or smoothing value.

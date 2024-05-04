@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Player Settings
+parent: Actions
+permalink: /actions/set_player_settings/
+---
+
 ## Description
 
 Applies speed settings to the track player.

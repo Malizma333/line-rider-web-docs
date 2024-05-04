@@ -1,3 +1,10 @@
+---
+layout: page
+title: Zoom Triggers
+parent: Globals
+permalink: /globals/get_auto_zoom/
+---
+
 ## Description
 
 Creates an automated zoom function based on keyframes.

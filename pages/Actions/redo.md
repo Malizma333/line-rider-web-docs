@@ -1,3 +1,10 @@
+---
+layout: page
+title: Redo
+parent: Actions
+permalink: /actions/redo/
+---
+
 ## Description
 
 Steps forward engine state to the last undone state in history if available.

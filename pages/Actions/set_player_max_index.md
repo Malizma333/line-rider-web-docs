@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Max Index
+parent: Actions
+permalink: /actions/set_player_max_index/
+---
+
 ## Description
 
 Adjusts the index that the timeline ends at.

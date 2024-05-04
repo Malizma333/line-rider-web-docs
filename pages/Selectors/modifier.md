@@ -1,3 +1,10 @@
+---
+layout: page
+title: Modifier Active
+parent: Selectors
+permalink: /selectors/modifier/
+---
+
 ## Description
 
 Returns a `boolean` indicating if the target modifier is active.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Video Exporter Open
+parent: Selectors
+permalink: /selectors/in_video_exporter/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the export window is open.

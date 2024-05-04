@@ -1,3 +1,10 @@
+---
+layout: page
+title: Viewer Open
+parent: Selectors
+permalink: /selectors/in_viewer/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the track viewer is open.

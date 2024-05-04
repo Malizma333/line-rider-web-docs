@@ -1,3 +1,10 @@
+---
+layout: page
+title: Cloud Saves
+parent: Selectors
+permalink: /selectors/saved_tracks/
+---
+
 ## Description
 
 Returns a [`CloudSave[]`](../External/cloud_save.js) that holds information of each track saved to the cloud.

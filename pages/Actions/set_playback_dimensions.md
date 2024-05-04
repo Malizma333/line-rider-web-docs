@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Playback Dimensions
+parent: Actions
+permalink: /actions/set_playback_dimensions/
+---
+
 ## Description
 
 Applies viewport dimensions to playback camera.

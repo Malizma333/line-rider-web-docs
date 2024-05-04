@@ -1,3 +1,10 @@
+---
+layout: page
+title: Committed Track
+parent: Selectors
+permalink: /selectors/simulator_committed_track/
+---
+
 ## Description
 
 Returns an [`Engine`](../External/engine.js) describing the committed track engine.

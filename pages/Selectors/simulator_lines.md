@@ -1,3 +1,10 @@
+---
+layout: page
+title: Uncommitted Lines
+parent: Selectors
+permalink: /selectors/simulator_lines/
+---
+
 ## Description
 
 Returns [`LineBase[]`](../External/line.js) buffer describing the uncommitted track lines.

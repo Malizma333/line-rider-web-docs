@@ -1,3 +1,10 @@
+---
+layout: page
+title: Cloud Saves Available
+parent: Selectors
+permalink: /selectors/saved_tracks_available/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether track saves are available in cloud storage.

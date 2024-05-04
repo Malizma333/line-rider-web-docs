@@ -1,3 +1,10 @@
+---
+layout: page
+title: Stop Player
+parent: Actions
+permalink: /actions/stop_player/
+---
+
 ## Description
 
 Stops the player if it is running.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Riders
+parent: Selectors
+permalink: /selectors/riders/
+---
+
 ## Description
 
 Returns a [`Rider[]`](../External/rider.js) buffer describing the uncommitted track riders.

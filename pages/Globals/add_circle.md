@@ -1,3 +1,10 @@
+---
+layout: page
+title: Add Circle
+parent: Globals
+permalink: /globals/add_circle/
+---
+
 ## Description
 
 Adds a polygon to the non-committed engine.

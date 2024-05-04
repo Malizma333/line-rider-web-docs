@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Audio Offset
+parent: Actions
+permalink: /actions/set_audio_offset/
+---
+
 ## Description
 
 Adjusts the offset of the audio file.

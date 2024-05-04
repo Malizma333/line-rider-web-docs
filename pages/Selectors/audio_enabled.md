@@ -1,3 +1,10 @@
+---
+layout: page
+title: Audio Enabled
+parent: Selectors
+permalink: /selectors/audio_enabled/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether audio is enabled.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Tool State
+parent: Selectors
+permalink: /selectors/tool_state/
+---
+
 ## Description
 
 Returns a [`ToolState`](../External/tool_state.js) describing the state of a target tool.

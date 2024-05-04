@@ -1,3 +1,10 @@
+---
+layout: page
+title: Select Line Type
+parent: Actions
+permalink: /actions/select_line_type/
+---
+
 ## Description
 
 Switches the color swatch of the current tool to a different line type if it's available.

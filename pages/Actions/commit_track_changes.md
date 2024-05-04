@@ -1,3 +1,10 @@
+---
+layout: page
+title: Commit Track Changes
+parent: Actions
+permalink: /actions/commit_track_changes/
+---
+
 ## Description
 
 Commits track changes to the committed engine state.

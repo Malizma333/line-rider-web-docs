@@ -1,3 +1,10 @@
+---
+layout: page
+title: Script
+parent: Selectors
+permalink: /selectors/track_script/
+---
+
 ## Description
 
 Returns a `string` that holds the track script.

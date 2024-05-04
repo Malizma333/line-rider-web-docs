@@ -1,3 +1,10 @@
+---
+layout: page
+title: Flag Index
+parent: Selectors
+permalink: /selectors/player_flag_index/
+---
+
 ## Description
 
 Returns a `number` describing the current index of the flag.

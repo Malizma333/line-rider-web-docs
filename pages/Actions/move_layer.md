@@ -1,3 +1,10 @@
+---
+layout: page
+title: Move Layer
+parent: Actions
+permalink: /actions/move_layer/
+---
+
 ## Description
 
 Moves a target layer to a new location in the layer array.

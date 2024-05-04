@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Onion Skinning
+parent: Actions
+permalink: /actions/set_onion_skin/
+---
+
 ## Description
 
 Enables or disables onion skinning.

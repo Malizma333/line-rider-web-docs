@@ -1,3 +1,10 @@
+---
+layout: page
+title: Views
+parent: Selectors
+permalink: /selectors/views/
+---
+
 ## Description
 
 Returns [`CurrentViews`](../External/view.js) describing which views are currently active

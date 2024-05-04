@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Layer Active
+parent: Actions
+permalink: /actions/set_layer_active/
+---
+
 ## Description
 
 Switches which layer is the active layer.

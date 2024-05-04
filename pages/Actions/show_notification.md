@@ -1,3 +1,10 @@
+---
+layout: page
+title: Show Notification
+parent: Actions
+permalink: /actions/show_notification/
+---
+
 ## Description
 
 Displays a notification message in the top right.

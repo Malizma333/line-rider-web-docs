@@ -1,3 +1,10 @@
+---
+layout: page
+title: Time Remapping Triggers
+parent: Globals
+permalink: /globals/add_line/
+---
+
 ## Description
 
 Creates an automated time remapping function based on keyframes.

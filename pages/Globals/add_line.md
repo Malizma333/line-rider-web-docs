@@ -1,3 +1,10 @@
+---
+layout: page
+title: Add Line
+parent: Globals
+permalink: /globals/add_line/
+---
+
 ## Description
 
 Adds a line to the non-committed engine.

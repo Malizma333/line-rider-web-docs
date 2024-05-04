@@ -1,3 +1,10 @@
+---
+layout: page
+title: Player Reversed
+parent: Selectors
+permalink: /selectors/player_reversed/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the player is playing in reverse.

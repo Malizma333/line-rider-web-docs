@@ -1,3 +1,10 @@
+---
+layout: page
+title: Active Layer Id
+parent: Selectors
+permalink: /selectors/track_active_layer_id/
+---
+
 ## Description
 
 Returns a `number` describing the currently active layer id.

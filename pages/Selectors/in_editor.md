@@ -1,3 +1,10 @@
+---
+layout: page
+title: Editor Open
+parent: Selectors
+permalink: /selectors/in_editor/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the editor view is open.

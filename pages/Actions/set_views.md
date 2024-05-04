@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set View
+parent: Actions
+permalink: /actions/set_views/
+---
+
 ## Description
 
 Opens a specific UI menu area based on the name of the menu and the view object parameters.

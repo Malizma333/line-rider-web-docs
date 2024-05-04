@@ -1,3 +1,10 @@
+---
+layout: page
+title: Remove Audio
+parent: Actions
+permalink: /actions/remove_audio/
+---
+
 ## Description
 
 Removes the currently loaded audio file.

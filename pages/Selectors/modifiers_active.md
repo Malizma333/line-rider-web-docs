@@ -1,3 +1,10 @@
+---
+layout: page
+title: Modifiers Are Active
+parent: Selectors
+permalink: /selectors/modifiers_active/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether there is any active modifiers.

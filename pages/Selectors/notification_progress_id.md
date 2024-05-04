@@ -1,3 +1,10 @@
+---
+layout: page
+title: Notification Progress Id
+parent: Selectors
+permalink: /selectors/notification_progress_id/
+---
+
 ## Description
 
 Returns a `string` describing the notification progress id, if available.

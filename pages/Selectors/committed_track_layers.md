@@ -1,3 +1,10 @@
+---
+layout: page
+title: Committed Layers
+parent: Selectors
+permalink: /selectors/committed_track_layers/
+---
+
 ## Description
 
 Returns [`Layer[]`](../External/layer.js) buffer describing the committed track layers.

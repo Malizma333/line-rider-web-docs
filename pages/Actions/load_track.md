@@ -1,3 +1,10 @@
+---
+layout: page
+title: Load Track
+parent: Actions
+permalink: /actions/load_track/
+---
+
 ## Description
 
 Loads a track object from its data.

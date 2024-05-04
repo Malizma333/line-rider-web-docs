@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Audio
+parent: Actions
+permalink: /actions/toggle_audio/
+---
+
 ## Description
 
 Toggles the volume of the currently loaded audio file.

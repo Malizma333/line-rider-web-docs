@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Editor Camera
+parent: Actions
+permalink: /actions/set_editor_camera/
+---
+
 ## Description
 
 Applies position and zoom to the editor camera while in editor mode.

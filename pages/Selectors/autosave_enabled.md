@@ -1,3 +1,10 @@
+---
+layout: page
+title: Autosave Enabled
+parent: Selectors
+permalink: /selectors/autosave_enabled/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether autosave is enabled.

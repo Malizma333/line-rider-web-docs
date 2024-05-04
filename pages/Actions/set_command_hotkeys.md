@@ -1,3 +1,10 @@
+---
+layout: page
+title: Command Hotkeys
+parent: Actions
+permalink: /actions/set_command_hotkeys/
+---
+
 ## Description
 
 Switches which hotkey triggers which command.

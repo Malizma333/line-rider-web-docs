@@ -1,3 +1,10 @@
+---
+layout: page
+title: Committed Riders
+parent: Selectors
+permalink: /selectors/committed_riders/
+---
+
 ## Description
 
 Returns [`Rider[]`](../External/rider.js) buffer describing the committed track riders.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Render Setting
+parent: Actions
+permalink: /actions/set_view_option/
+---
+
 ## Description
 
 Toggles a target view option.

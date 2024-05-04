@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Player
+parent: Actions
+permalink: /actions/set_player_running/
+---
+
 ## Description
 
 Stops or starts running playback.

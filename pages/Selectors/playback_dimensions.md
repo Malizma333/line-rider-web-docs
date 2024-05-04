@@ -1,3 +1,10 @@
+---
+layout: page
+title: Playback Dimensions
+parent: Selectors
+permalink: /selectors/playback_dimensions/
+---
+
 ## Description
 
 Returns [`Dimensions`](../External/dimensions.js) describing the viewport of the playback camera.

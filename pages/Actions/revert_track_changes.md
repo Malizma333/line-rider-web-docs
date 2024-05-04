@@ -1,3 +1,10 @@
+---
+layout: page
+title: Revert Track Changes
+parent: Actions
+permalink: /actions/revert_track_changes/
+---
+
 ## Description
 
 Clears track changes from uncommitted engine state.

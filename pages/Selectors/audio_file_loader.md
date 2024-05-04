@@ -1,3 +1,10 @@
+---
+layout: page
+title: Audio File Loader
+parent: Selectors
+permalink: /selectors/audio_file_loader/
+---
+
 ## Description
 
 Returns an [`AudioLoader`](../External/audio_loader.js) describing audio loader data.

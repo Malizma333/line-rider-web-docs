@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Editor Focuser
+parent: Actions
+permalink: /actions/set_editor_follower_focus/
+---
+
 ## Description
 
 Switches the rider that the editor camera should focus on.

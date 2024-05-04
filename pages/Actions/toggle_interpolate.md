@@ -1,3 +1,10 @@
+---
+layout: page
+title: Toggle Interpolation
+parent: Actions
+permalink: /actions/toggle_interpolate/
+---
+
 ## Description
 
 Toggles playback interpolation.

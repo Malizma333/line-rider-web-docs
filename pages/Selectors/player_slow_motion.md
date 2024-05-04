@@ -1,3 +1,10 @@
+---
+layout: page
+title: Slow Motion
+parent: Selectors
+permalink: /selectors/player_slow_motion/
+---
+
 ## Description
 
 Returns a `boolean` indicating whether the player is running in slow motion.

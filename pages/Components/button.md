@@ -1,3 +1,10 @@
+---
+layout: page
+title: Button
+parent: Components
+permalink: /components/button/
+---
+
 ## Description
 
 Creates a button with a label that triggers a target `function`.

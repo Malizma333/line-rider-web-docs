@@ -1,3 +1,10 @@
+---
+layout: page
+title: Player Settings
+parent: Selectors
+permalink: /selectors/player_settings/
+---
+
 ## Description
 
 Returns [`PlayerSettings`](../External/player_settings.js) describing playback settings.

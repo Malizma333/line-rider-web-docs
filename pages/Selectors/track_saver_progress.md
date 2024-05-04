@@ -1,3 +1,10 @@
+---
+layout: page
+title: Saver Progress
+parent: Selectors
+permalink: /selectors/track_saver_progress/
+---
+
 ## Description
 
 Returns [`Progress`](../External/progress.js) describing the progress of the track saver.

@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Audio Volume
+parent: Actions
+permalink: /actions/set_audio_volume/
+---
+
 ## Description
 
 Adjusts the volume of the audio file.

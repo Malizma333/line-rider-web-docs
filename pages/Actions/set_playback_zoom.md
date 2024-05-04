@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Playback Zoom
+parent: Actions
+permalink: /actions/set_playback_zoom/
+---
+
 ## Description
 
 Adjusts the zoom of the playback camera.

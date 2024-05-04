@@ -1,3 +1,10 @@
+---
+layout: page
+title: Set Player FPS
+parent: Actions
+permalink: /actions/set_player_fps/
+---
+
 ## Description
 
 Adjusts the player fps rate.

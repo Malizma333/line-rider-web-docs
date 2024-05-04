@@ -1,3 +1,10 @@
+---
+layout: page
+title: Decrease Player Index
+parent: Actions
+permalink: /actions/dec_player_index/
+---
+
 ## Description
 
 Decrements the timeline index by 1 frame.

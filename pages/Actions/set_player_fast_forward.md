@@ -1,3 +1,10 @@
+---
+layout: page
+title: Fast Forward
+parent: Actions
+permalink: /actions/set_player_fast_forward/
+---
+
 ## Description
 
 Toggles playing the playback faster than normal speed.

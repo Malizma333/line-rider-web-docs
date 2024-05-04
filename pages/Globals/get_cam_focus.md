@@ -1,3 +1,10 @@
+---
+layout: page
+title: Rider Focuser Triggers
+parent: Globals
+permalink: /globals/get_cam_focus/
+---
+
 ## Description
 
 Creates an automated camera focuser function based on keyframes.

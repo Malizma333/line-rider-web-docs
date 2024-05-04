@@ -1,3 +1,10 @@
+---
+layout: page
+title: Rename Layer
+parent: Actions
+permalink: /actions/rename_layer/
+---
+
 ## Description
 
 Renames a specific layer.

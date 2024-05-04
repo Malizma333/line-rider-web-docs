@@ -1,3 +1,10 @@
+---
+layout: page
+title: Max Index
+parent: Selectors
+permalink: /selectors/player_max_index/
+---
+
 ## Description
 
 Returns a `number` describing the max index of the player.
