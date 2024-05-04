@@ -1,0 +1,8 @@
+title: Line Rider Web Documentation
+description: Documentation site for the web edition of Line Rider.
+baseurl: ""
+repository: Malizma333/line-rider-web-docs
+open_url: true
+theme: just-the-docs
+plugins:
+  - jekyll-feed

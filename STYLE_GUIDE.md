@@ -1,8 +1,12 @@
-# Documentation Style Guide
+---
+layout: page
+title: Style Guide
+permalink: /style_guide/
+---
 
 This style guide document outlines some general rules for writing documentation within this repository.
 
-## General Rules
+### General Rules
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
