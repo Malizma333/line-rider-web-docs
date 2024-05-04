@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/update_lines/
 ---
 
-## Description
+## Update Lines
 
 Updates the line array in the non-committed engine.
 
@@ -29,7 +29,7 @@ The list of [`Line`](../External/line.js) objects to add.
 
 The type of update line action to execute. A full list of line update subactions can be found [here](../External/update_lines_actions.json).
 
-## Examples
+### Examples
 
 Creates a triangle of lines.
 
@@ -55,4 +55,4 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related

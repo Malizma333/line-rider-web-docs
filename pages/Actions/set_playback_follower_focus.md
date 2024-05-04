@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_playback_follower_focus/
 ---
 
-## Description
+## Set Playback Focuser
 
 Adjusts the playback camera to focus on zero or more riders based on weights.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYBACK_FOLLOWER_FOCUS", payload: focusList });
 
 The weights of each rider on the playback camera movement.
 
-## Examples
+### Examples
 
 Adjusts the playback camera to focus between riders 1 and 3.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_editor_camera](./set_editor_camera.md)
 - [set_editor_follower_focus](./set_editor_follower_focus.md)

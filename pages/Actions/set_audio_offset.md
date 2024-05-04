@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_audio_offset/
 ---
 
-## Description
+## Set Audio Offset
 
 Adjusts the offset of the audio file.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_AUDIO_OFFSET", payload: offset });
 
 The time (in seconds) that audio starts playing from. Negative values correspond to time until audio starts playing.
 
-## Examples
+### Examples
 
 Adjusts the audio offset to play the song file 2 seconds in.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [remove_audio](./remove_audio.md)
 - [set_audio_volume](./set_audio_volume.md)

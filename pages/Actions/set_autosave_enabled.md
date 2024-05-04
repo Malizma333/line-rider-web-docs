@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_autosave_enabled/
 ---
 
-## Description
+## Toggle Autosave
 
 Enables or disables autosaving.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_AUTOSAVE_ENABLED", payload: enabled });
 
 A boolean indicating whether the track should autosave.
 
-## Examples
+### Examples
 
 Disables autosaving.
 
@@ -32,6 +32,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [load_autosave](./load_autosave.md)

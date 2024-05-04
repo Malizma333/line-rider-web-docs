@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/main_page/
 ---
 
-## Description
+## Main Page
 
 Returns nullable `string` describing which part of the main page is open.
 
@@ -17,7 +17,7 @@ function getMainPage(state) {
 }
 ```
 
-## Related
+### Related
 
 - [sidebar_page](./sidebar_page.md)
 - [views](./views.md)

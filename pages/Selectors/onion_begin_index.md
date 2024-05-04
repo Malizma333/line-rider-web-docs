@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/onion_begin_index/
 ---
 
-## Description
+## Onion Skin Start
 
 Returns a `number` describing the start frame of onion skinning.
 
@@ -19,7 +19,7 @@ function getOnionBeginIndex(state) {
 }
 ```
 
-## Related
+### Related
 
 - [onion_end_index](./onion_end_index.md)
 - [onion_skin_active](./onion_skin_active.md)

@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/saved_tracks/
 ---
 
-## Description
+## Cloud Saves
 
 Returns a [`CloudSave[]`](../External/cloud_save.js) that holds information of each track saved to the cloud.
 
@@ -17,7 +17,7 @@ function getSavedTracks(state) {
 }
 ```
 
-## Related
+### Related
 
 - [saved_tracks_available](./saved_tracks_available.md)
 - [track_is_local_file](./track_is_local_file.md)

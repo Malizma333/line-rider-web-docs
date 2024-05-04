@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/engine_params/
 ---
 
-## Description
+## Engine Parameters
 
 Contains a json object that holds an `{x, y}` gravity vector.
 
@@ -15,7 +15,7 @@ Contains a json object that holds an `{x, y}` gravity vector.
 window.$ENGINE_PARAMS
 ```
 
-## Examples
+### Examples
 
 Disables gravity by setting it to zero.
 
@@ -40,4 +40,4 @@ Object.defineProperty(window.$ENGINE_PARAMS, "gravity", { get() {
 }})
 ```
 
-## Related
+### Related

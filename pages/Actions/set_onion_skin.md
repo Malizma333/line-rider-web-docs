@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_onion_skin/
 ---
 
-## Description
+## Toggle Onion Skinning
 
 Enables or disables onion skinning.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_ONION_SKIN", payload: onionSkin });
 
 A boolean indicating whether the timeline should render onion skins.
 
-## Examples
+### Examples
 
 Enables onion skinning.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_onion_skin_frames_after](./set_onion_skin_frames_after.md)
 - [set_onion_skin_frames_before](./set_onion_skin_frames_before.md)

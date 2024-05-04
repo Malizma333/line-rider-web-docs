@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/editor_dimensions/
 ---
 
-## Description
+## Editor Dimensions
 
 Returns [`Dimensions`](../External/dimensions.js) describing the viewport of the editor camera.
 
@@ -17,7 +17,7 @@ function getEditorDimensions(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_follower_focus](./editor_follower_focus.md)
 - [editor_position](./editor_position.md)

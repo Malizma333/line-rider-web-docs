@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/audio_enabled/
 ---
 
-## Description
+## Audio Enabled
 
 Returns a `boolean` indicating whether audio is enabled.
 
@@ -17,7 +17,7 @@ function getAudioEnabled(state) {
 }
 ```
 
-## Related
+### Related
 
 - [audio_file_loader](./audio_file_loader.md)
 - [audio_file_loading](./audio_file_loading.md)

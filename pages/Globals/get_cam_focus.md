@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/get_cam_focus/
 ---
 
-## Description
+## Rider Focuser Triggers
 
 Creates an automated camera focuser function based on keyframes.
 
@@ -25,7 +25,7 @@ A [`Keyframe`](../External/keyframe.js) array that defines the camera focus at s
 
 A `number` defining the smooth amount at the beginning and end of interpolation.
 
-## Examples
+### Examples
 
 Focuses from rider 1 to rider 2 interpolating from seconds 2 to 3, then focuses more on rider 3 than rider 2 interpolating from seconds 4 to 5.
 
@@ -39,7 +39,7 @@ getCamFocus = createFocuser([
 ])
 ```
 
-## Related
+### Related
 
 - [get_auto_zoom](./get_auto_zoom.md)
 - [get_cam_bounds](./get_cam_bounds.md)

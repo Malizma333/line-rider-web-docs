@@ -5,7 +5,7 @@ parent: Components
 permalink: /components/button/
 ---
 
-## Description
+## Button
 
 Creates a button with a label that triggers a target `function`.
 
@@ -31,7 +31,7 @@ The `string` of text for a label displayed inside the button.
 
 A `function` that affects the state based on the key value provided.
 
-## Examples
+### Examples
 
 Create a button for toggling the mod.
 

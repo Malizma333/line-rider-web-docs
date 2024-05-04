@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_flag_index/
 ---
 
-## Description
+## Set Flag Index
 
 Moves the flag to the target index in the timeline.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_FLAG_INDEX", payload: flagIndex });
 
 The frame to set the flag to.
 
-## Examples
+### Examples
 
 Moves the flag index to frame 40.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_flag](./set_flag.md)
 - [set_player_index](./set_player_index.md)

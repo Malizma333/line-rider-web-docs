@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/modifiers_active/
 ---
 
-## Description
+## Modifiers Are Active
 
 Returns a `boolean` indicating whether there is any active modifiers.
 
@@ -17,7 +17,7 @@ function getModifiersActive(state) {
 }
 ```
 
-## Related
+### Related
 
 - [modifiers](./modifiers.md)
 - [trigger_counts](./trigger_counts.md)

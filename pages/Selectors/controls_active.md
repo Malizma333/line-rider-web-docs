@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/controls_active/
 ---
 
-## Description
+## Controls Active
 
 Returns a `boolean` indicating whether the timeline is active.
 
@@ -17,7 +17,7 @@ function getControlsActive(state) {
 }
 ```
 
-## Related
+### Related
 
 - [has_overlay](./has_overlay.md)
 - [views](./views.md)

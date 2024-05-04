@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/editor_position/
 ---
 
-## Description
+## Editor Position
 
 Returns a [`V2`](../External/v2.js) describing where the editor camera is located.
 
@@ -17,7 +17,7 @@ function getEditorPosition(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_dimensions](./editor_dimensions.md)
 - [editor_follower_focus](./editor_follower_focus.md)

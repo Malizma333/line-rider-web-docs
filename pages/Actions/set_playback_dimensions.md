@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_playback_dimensions/
 ---
 
-## Description
+## Set Playback Dimensions
 
 Applies viewport dimensions to playback camera.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYBACK_DIMENSIONS", payload: dimensions });
 
 The target viewport dimensions to set the playback camera to.
 
-## Examples
+### Examples
 
 Switches the viewport dimensions to high-definition (1080p) resolution.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_editor_camera](./set_editor_camera.md)
 - [set_editor_follower_focus](./set_editor_follower_focus.md)

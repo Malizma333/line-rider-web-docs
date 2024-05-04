@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/show_notification/
 ---
 
-## Description
+## Show Notification
 
 Displays a notification message in the top right.
 
@@ -25,7 +25,7 @@ The notification message to display
 
 A boolean indicating whether the notification hides after a certain period of time
 
-## Examples
+### Examples
 
 Displays the message "Hello, world!".
 
@@ -36,6 +36,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [hide_notification](./hide_notification.md)

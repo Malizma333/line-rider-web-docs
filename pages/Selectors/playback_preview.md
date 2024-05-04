@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/playback_preview/
 ---
 
-## Description
+## Playback Preview
 
 Returns a `boolean` indicating whether playback preview is enabled.
 
@@ -17,7 +17,7 @@ function getPlaybackPreview(state) {
 }
 ```
 
-## Related
+### Related
 
 - [color_playback](./color_playback.md)
 - [player_settings](./player_settings.md)

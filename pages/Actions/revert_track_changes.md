@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/revert_track_changes/
 ---
 
-## Description
+## Revert Track Changes
 
 Clears track changes from uncommitted engine state.
 
@@ -15,7 +15,7 @@ Clears track changes from uncommitted engine state.
 store.dispatch({ type: "REVERT_TRACK_CHANGES", meta: { ignorable: true } });
 ```
 
-## Related
+### Related
 
 - [commit_track_changes](./commit_track_changes.md)
 - [redo](./redo.md)

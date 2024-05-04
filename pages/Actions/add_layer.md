@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/add_layer/
 ---
 
-## Description
+## Add Layer
 
 Adds a new layer to the layer array.
 
@@ -15,7 +15,7 @@ Adds a new layer to the layer array.
 store.dispatch({ type: "ADD_LAYER" });
 ```
 
-## Related
+### Related
 
 - [move_layer](./move_layer.md)
 - [remove_layer](./remove_layer.md)

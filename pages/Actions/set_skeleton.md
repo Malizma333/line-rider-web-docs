@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_skeleton/
 ---
 
-## Description
+## Set Skeleton
 
 Switches between skeleton views.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_SKELETON", payload: skeletonMode });
 
 The target skeleton visual to switch to. The available modes are `0` for normal view, `1` for skeleton view with sprites visible, and `2` for skeleton view with sprites hidden.
 
-## Examples
+### Examples
 
 Enables skeleton view with sprites visible.
 
@@ -32,6 +32,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_view_option](./set_view_option.md)

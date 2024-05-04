@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/notification_progress_id/
 ---
 
-## Description
+## Notification Progress Id
 
 Returns a `string` describing the notification progress id, if available.
 
@@ -17,6 +17,6 @@ function getNotificationProgressId(state) {
 }
 ```
 
-## Related
+### Related
 
 - [notification_count](./notification_count.md)

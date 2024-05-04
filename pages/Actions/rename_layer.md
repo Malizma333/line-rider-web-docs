@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/rename_layer/
 ---
 
-## Description
+## Rename Layer
 
 Renames a specific layer.
 
@@ -25,7 +25,7 @@ The id of the layer to rename.
 
 The new name of the target layer.
 
-## Examples
+### Examples
 
 Renames layer 1 to "Background Layer".
 
@@ -36,7 +36,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [add_layer](./add_layer.md)
 - [move_layer](./move_layer.md)

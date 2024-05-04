@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/editor_zoom/
 ---
 
-## Description
+## Editor Zoom
 
 Returns a `number` describing the current zoom of the editor camera.
 
@@ -17,7 +17,7 @@ function getEditorZoom(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_dimensions](./editor_dimensions.md)
 - [editor_follower_focus](./editor_follower_focus.md)

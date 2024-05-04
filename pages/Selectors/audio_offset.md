@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/audio_offset/
 ---
 
-## Description
+## Audio Offset
 
 Returns a `number` describing the offset of the audio file.
 
@@ -17,7 +17,7 @@ function getAudioOffset(state) {
 }
 ```
 
-## Related
+### Related
 
 - [audio_enabled](./audio_enabled.md)
 - [audio_file_loader](./audio_file_loader.md)

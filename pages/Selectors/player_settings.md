@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_settings/
 ---
 
-## Description
+## Player Settings
 
 Returns [`PlayerSettings`](../External/player_settings.js) describing playback settings.
 
@@ -17,7 +17,7 @@ function getPlayerSettings(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_flag_index](./player_flag_index.md)
 - [player_fps](./player_fps.md)

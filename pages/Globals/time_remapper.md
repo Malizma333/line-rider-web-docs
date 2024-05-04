@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/add_line/
 ---
 
-## Description
+## Time Remapping Triggers
 
 Creates an automated time remapping function based on keyframes.
 
@@ -25,7 +25,7 @@ A [`Keyframe`](../External/keyframe.js) array that defines the playback speed at
 
 A `boolean` indicating whether to interpolate the time delay between frames.
 
-## Examples
+### Examples
 
 Slows down to 1/4 speed at 1 second, then speeds up back to normal speed at 2 seconds.
 
@@ -49,7 +49,7 @@ timeRemapper = createTimeRemapper([
 ], true)
 ```
 
-## Related
+### Related
 
 - [get_auto_zoom](./get_auto_zoom.md)
 - [get_cam_bounds](./get_cam_bounds.md)

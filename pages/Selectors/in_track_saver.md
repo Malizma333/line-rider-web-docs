@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/in_track_saver/
 ---
 
-## Description
+## Track Saver Open
 
 Returns a `boolean` indicating whether the save window is open.
 
@@ -17,7 +17,7 @@ function getInTrackSaver(state) {
 }
 ```
 
-## Related
+### Related
 
 - [in_editor](./in_editor.md)
 - [in_track_loader](./in_track_loader.md)

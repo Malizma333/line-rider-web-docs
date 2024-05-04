@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/simulator_version/
 ---
 
-## Description
+## Physics Version
 
 Returns a version string `6.1 | 6.2` indicating which physics version the track uses.
 
@@ -17,4 +17,4 @@ function getSimulatorVersion(state) {
 }
 ```
 
-## Related
+### Related

@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/track_active_layer_id/
 ---
 
-## Description
+## Active Layer Id
 
 Returns a `number` describing the currently active layer id.
 
@@ -17,7 +17,7 @@ function getTrackActiveLayerId(state) {
 }
 ```
 
-## Related
+### Related
 
 - [committed_track_layers](./committed_track_layers.md)
 - [track_layers](./track_layers.md)

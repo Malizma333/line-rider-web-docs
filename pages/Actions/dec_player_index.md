@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/dec_player_index/
 ---
 
-## Description
+## Decrease Player Index
 
 Decrements the timeline index by 1 frame.
 
@@ -15,7 +15,7 @@ Decrements the timeline index by 1 frame.
 store.dispatch({ type: "DEC_PLAYER_INDEX", payload: index });
 ```
 
-## Related
+### Related
 
 - [inc_player_index](./inc_player_index.md)
 - [set_player_index](./set_flag_index.md)

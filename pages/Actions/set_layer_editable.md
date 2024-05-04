@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_layer_editable/
 ---
 
-## Description
+## Set Layer Editable
 
 Toggles whether the target layer is editable.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_LAYER_EDITABLE", payload: {id, editable} });
 
 The target layer to set editable.
 
-## Examples
+### Examples
 
 Toggles layer 2 to be editable.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_layer_active](./set_layer_active.md)
 - [set_layer_visible](./set_layer_visible.md)

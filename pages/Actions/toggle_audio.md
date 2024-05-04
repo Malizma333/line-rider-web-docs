@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/toggle_audio/
 ---
 
-## Description
+## Toggle Audio
 
 Toggles the volume of the currently loaded audio file.
 
@@ -15,7 +15,7 @@ Toggles the volume of the currently loaded audio file.
 store.dispatch({ type: "TOGGLE_AUDIO" });
 ```
 
-## Related
+### Related
 
 - [remove_audio](./remove_audio.md)
 - [set_audio_offset](./set_audio_offset.md)

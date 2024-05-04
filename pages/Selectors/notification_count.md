@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/notification_count/
 ---
 
-## Description
+## Notification Count
 
 Returns a `number` describing the number of notifications that have occurred.
 
@@ -17,6 +17,6 @@ function getNotificationsCount(state) {
 }
 ```
 
-## Related
+### Related
 
 - [notification_progress_id](./notification_progress_id.md)

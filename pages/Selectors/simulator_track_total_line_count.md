@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/simulator_track_total_line_count/
 ---
 
-## Description
+## Line Count
 
 Returns a `number` describing the total number of lines in the track.
 
@@ -17,4 +17,4 @@ function getSimulatorTrackTotalLineCount(state) {
 }
 ```
 
-## Related
+### Related

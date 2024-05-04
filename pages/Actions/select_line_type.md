@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/select_line_type/
 ---
 
-## Description
+## Select Line Type
 
 Switches the color swatch of the current tool to a different line type if it's available.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SELECT_LINE_TYPE", payload: lineType });
 
 The target [`LineType`](../External/line_type.js) to set the current tool's swatch to.
 
-## Examples
+### Examples
 
 Switches the color swatch to blue.
 
@@ -32,6 +32,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_tool](./set_tool.md)

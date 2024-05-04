@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_track_script/
 ---
 
-## Description
+## Set Track Script
 
 Configures the track file script.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "trackData/SET_TRACK_SCRIPT", payload: script });
 
 The new script to replace the current track script with.
 
-## Examples
+### Examples
 
 Clears the script of the current track file.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [load_track](./load_track.md)
 - [set_riders](./set_riders.md)

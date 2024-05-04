@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/views/
 ---
 
-## Description
+## Views
 
 Returns [`CurrentViews`](../External/view.js) describing which views are currently active
 
@@ -17,7 +17,7 @@ function getViews(state) {
 }
 ```
 
-## Related
+### Related
 
 - [controls_active](./controls_active.md)
 - [has_overlay](./has_overlay.md)

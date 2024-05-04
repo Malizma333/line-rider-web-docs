@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_interpolate/
 ---
 
-## Description
+## Set Interpolate
 
 Switches the interpolation mode to a target fps or smoothing value.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_INTERPOLATE", payload: playbackMode });
 
 The mode of interpolation. A `true` value represents smooth interpolation, while a `false` value represents physics/no interpolation. A numerical value represents fps interpolation.
 
-## Examples
+### Examples
 
 Switches the interpolation mode to 60 fps.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_player_settings](./set_player_settings.md)
 - [toggle_interpolate](./toggle_interpolate.md)

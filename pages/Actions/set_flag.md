@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_flag/
 ---
 
-## Description
+## Place Flag
 
 Moves the flag to the current index in the timeline.
 
@@ -15,6 +15,6 @@ Moves the flag to the current index in the timeline.
 store.dispatch({ type: "SET_FLAG" });
 ```
 
-## Related
+### Related
 
 - [set_flag_index](./set_flag_index.md)

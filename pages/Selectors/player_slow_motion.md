@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_slow_motion/
 ---
 
-## Description
+## Slow Motion
 
 Returns a `boolean` indicating whether the player is running in slow motion.
 
@@ -17,7 +17,7 @@ function getPlayerSlowMotion(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_reversed](./player_reversed.md)
 - [player_running](./player_running.md)

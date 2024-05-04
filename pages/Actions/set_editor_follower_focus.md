@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_editor_follower_focus/
 ---
 
-## Description
+## Set Editor Focuser
 
 Switches the rider that the editor camera should focus on.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_EDITOR_FOLLOWER_FOCUS", payload: focusIndex });
 
 The target rider to focus on.
 
-## Examples
+### Examples
 
 Switches the editor camera focus to rider two (2).
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_editor_camera](./set_editor_camera.md)
 - [set_playback_dimensions](./set_playback_dimensions.md)

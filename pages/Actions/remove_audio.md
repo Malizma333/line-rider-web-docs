@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/remove_audio/
 ---
 
-## Description
+## Remove Audio
 
 Removes the currently loaded audio file.
 
@@ -15,7 +15,7 @@ Removes the currently loaded audio file.
 store.dispatch({ type: "REMOVE_AUDIO" });
 ```
 
-## Related
+### Related
 
 - [set_audio_offset](./set_audio_offset.md)
 - [set_audio_volume](./set_audio_volume.md)

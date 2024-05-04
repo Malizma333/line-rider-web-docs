@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/zoom/
 ---
 
-## Description
+## Zoom Tool Properties
 
 Contains a json object that holds zoom properties `STRENGTH`, `MIN`, and `MAX`.
 
@@ -15,7 +15,7 @@ Contains a json object that holds zoom properties `STRENGTH`, `MIN`, and `MAX`.
 window.$Zoom
 ```
 
-## Examples
+### Examples
 
 Increases the max zoom level to 50.
 
@@ -23,4 +23,4 @@ Increases the max zoom level to 50.
 $Zoom.MAX = 50
 ```
 
-## Related
+### Related

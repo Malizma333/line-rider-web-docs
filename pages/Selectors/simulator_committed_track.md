@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/simulator_committed_track/
 ---
 
-## Description
+## Committed Track
 
 Returns an [`Engine`](../External/engine.js) describing the committed track engine.
 
@@ -17,7 +17,7 @@ function getSimulatorCommittedTrack(state) {
 }
 ```
 
-## Related
+### Related
 
 - [committed_track_layers](./committed_track_layers.md)
 - [committed_riders](./committed_riders.md)

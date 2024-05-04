@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_stop_at_end/
 ---
 
-## Description
+## Stop At End
 
 Toggles the player stopping at the end of the timeline.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_STOP_AT_END", payload: stopAtEnd });
 
 A boolean indicating whether or not the player should stop at the end of the timeline.
 
-## Examples
+### Examples
 
 Enables stopping the player at the end of the timeline.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_player_max_index](./set_player_max_index.md)
 - [set_player_settings](./set_player_settings.md)

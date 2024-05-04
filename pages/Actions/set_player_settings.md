@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_settings/
 ---
 
-## Description
+## Set Player Settings
 
 Applies speed settings to the track player.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_SETTINGS", payload: settings });
 
 The [`PlayerSettings`](../External/player_settings.js) describing parameters for the track player.
 
-## Examples
+### Examples
 
 Adjusts the base rate of the track player to 2 times speed.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_interpolate](./set_interpolate.md)
 - [set_player_fast_forward](./set_player_fast_forward.md)

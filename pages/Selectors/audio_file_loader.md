@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/audio_file_loader/
 ---
 
-## Description
+## Audio File Loader
 
 Returns an [`AudioLoader`](../External/audio_loader.js) describing audio loader data.
 
@@ -17,7 +17,7 @@ function getAudioFileLoader(state) {
 }
 ```
 
-## Related
+### Related
 
 - [audio_enabled](./audio_enabled.md)
 - [audio_file_loading](./audio_file_loading.md)

@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/add_line/
 ---
 
-## Description
+## Add Line
 
 Adds a line to the non-committed engine.
 
@@ -29,7 +29,7 @@ The [`LineType`](../External/line_type.js) of the line to add.
 
 A boolean indicating whether the line to add is flipped.
 
-## Examples
+### Examples
 
 Adds a green diagonal line at the origin of the track.
 
@@ -37,6 +37,6 @@ Adds a green diagonal line at the origin of the track.
 addLine(0, 0, 20, 20, 2, false)
 ```
 
-## Related
+### Related
 
 - [add_circle](./add_circle.md)

@@ -5,7 +5,7 @@ parent: Components
 permalink: /components/color/
 ---
 
-## Description
+## Color Picker
 
 Creates a color picker with a label that writes to a target `string` state.
 
@@ -36,7 +36,7 @@ The key `string` of the state value that this color picker changes.
 
 The `string` of text for a label displayed next to the color picker.
 
-## Examples
+### Examples
 
 Creates a color picker for the `scarfColor` state.
 

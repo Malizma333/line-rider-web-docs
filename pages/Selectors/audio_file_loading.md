@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/audio_file_loading/
 ---
 
-## Description
+## Audio Loading
 
 Returns a `boolean` indicating whether the audio file is loading.
 
@@ -17,7 +17,7 @@ function getAudioFileLoading(state) {
 }
 ```
 
-## Related
+### Related
 
 - [audio_enabled](./audio_enabled.md)
 - [audio_file_loader](./audio_file_loader.md)

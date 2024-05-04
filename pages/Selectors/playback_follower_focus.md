@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/playback_follower_focus/
 ---
 
-## Description
+## Playback Focuser
 
 Returns a `number` describing which rider is being followed by the playback camera.
 
@@ -17,7 +17,7 @@ function getPlaybackCameraFocus(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_follower_focus](./editor_follower_focus.md)
 - [playback_dimensions](./playback_dimensions.md)

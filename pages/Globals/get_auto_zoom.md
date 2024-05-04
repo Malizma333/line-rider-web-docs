@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/get_auto_zoom/
 ---
 
-## Description
+## Zoom Triggers
 
 Creates an automated zoom function based on keyframes.
 
@@ -25,7 +25,7 @@ A [`Keyframe`](../External/keyframe.js) array that defines the zoom levels at sp
 
 A `number` defining the smooth amount at the beginning and end of interpolation.
 
-## Examples
+### Examples
 
 Zooms in interpolating from seconds 2 to 3.
 
@@ -47,7 +47,7 @@ getAutoZoom = createZoomer([
 ], 0)
 ```
 
-## Related
+### Related
 
 - [get_cam_bounds](./get_cam_bounds.md)
 - [get_cam_focus](./get_cam_focus.md)

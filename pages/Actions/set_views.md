@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_views/
 ---
 
-## Description
+## Set View
 
 Opens a specific UI menu area based on the name of the menu and the view object parameters.
 
@@ -25,7 +25,7 @@ A [`View`](../External/view.js) object that specifies which view to open.
 
 The type of view action to execute. A list of available view actions can be found [here](../External/view_actions.json).
 
-## Examples
+### Examples
 
 Opens the editor view.
 
@@ -57,4 +57,4 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related

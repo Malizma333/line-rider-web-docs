@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_riders/
 ---
 
-## Description
+## Set Riders
 
 Configures the rider properties for the current track.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_RIDERS", payload: riders });
 
 The [`Rider`](../External/rider.js) array to set the track riders to.
 
-## Examples
+### Examples
 
 Removes all riders from the current track.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [load_track](./load_track.md)
 - [set_local_file](./set_local_file.md)

@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/add_circle/
 ---
 
-## Description
+## Add Circle
 
 Adds a polygon to the non-committed engine.
 
@@ -37,7 +37,7 @@ The [`LineType`](../External/line_type.js) of the lines in the circle.
 
 A boolean indicating whether the lines within the polygon are flipped.
 
-## Examples
+### Examples
 
 Adds a green circle above the origin of the track.
 
@@ -45,6 +45,6 @@ Adds a green circle above the origin of the track.
 addCircle(30, 100, 0, -50, 2, false)
 ```
 
-## Related
+### Related
 
 - [add_line](./add_line.md)

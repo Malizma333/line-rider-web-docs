@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_audio_volume/
 ---
 
-## Description
+## Set Audio Volume
 
 Adjusts the volume of the audio file.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_AUDIO_VOLUME", payload: volume });
 
 The percentage value ranging from `0` - `1` that determines the volume of the audio file.
 
-## Examples
+### Examples
 
 Adjusts the audio volume to half of max volume.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [remove_audio](./remove_audio.md)
 - [set_audio_offset](./set_audio_offset.md)

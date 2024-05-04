@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_max_index/
 ---
 
-## Description
+## Max Index
 
 Returns a `number` describing the max index of the player.
 
@@ -17,7 +17,7 @@ function getPlayerMaxIndex(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_flag_index](./player_flag_index.md)
 - [player_index](./player_index.md)

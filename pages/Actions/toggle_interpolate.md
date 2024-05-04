@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/toggle_interpolate/
 ---
 
-## Description
+## Toggle Interpolation
 
 Toggles playback interpolation.
 
@@ -15,7 +15,7 @@ Toggles playback interpolation.
 store.dispatch({ type: "TOGGLE_INTERPOLATE" });
 ```
 
-## Related
+### Related
 
 - [set_interpolate](./set_interpolate.md)
 - [set_player_settings](./set_player_settings.md)

@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/track_is_dirty/
 ---
 
-## Description
+## Track Is Dirty
 
 Returns a `boolean` indicating whether the track has unsaved changes.
 
@@ -17,4 +17,4 @@ function getTrackIsDirty(state) {
 }
 ```
 
-## Related
+### Related

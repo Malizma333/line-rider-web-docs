@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_track_details/
 ---
 
-## Description
+## Set Track Details
 
 Configures the details of the currently loaded track.
 
@@ -29,7 +29,7 @@ The author of the track.
 
 A short description about the track.
 
-## Examples
+### Examples
 
 Switches the title of the track to "My Track" and removes the author and description.
 
@@ -44,7 +44,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [load_track](./load_track.md)
 - [set_riders](./set_riders.md)

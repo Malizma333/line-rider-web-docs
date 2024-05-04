@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_editor_camera/
 ---
 
-## Description
+## Set Editor Camera
 
 Applies position and zoom to the editor camera while in editor mode.
 
@@ -25,7 +25,7 @@ The target position to move the editor camera to.
 
 The target zoom to set the editor camera to.
 
-## Examples
+### Examples
 
 Moves the editor camera 20 pixels above the origin and applies a camera zoom of 3.
 
@@ -36,7 +36,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_editor_follower_focus](./set_editor_follower_focus.md)
 - [set_playback_dimensions](./set_playback_dimensions.md)

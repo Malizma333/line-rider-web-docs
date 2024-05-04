@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_layer_active/
 ---
 
-## Description
+## Set Layer Active
 
 Switches which layer is the active layer.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_LAYER_ACTIVE", payload: {id} });
 
 The target layer to set active.
 
-## Examples
+### Examples
 
 Switches the base layer to be the active layer.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_layer_editable](./set_layer_editable.md)
 - [set_layer_visible](./set_layer_visible.md)

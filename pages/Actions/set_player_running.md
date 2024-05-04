@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_running/
 ---
 
-## Description
+## Toggle Player
 
 Stops or starts running playback.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_RUNNING", payload: running });
 
 A boolean indicating whether the player should be running.
 
-## Examples
+### Examples
 
 Stops playback.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_player_fast_forward](./set_player_fast_forward.md)
 - [set_player_rewind](./set_player_rewind.md)

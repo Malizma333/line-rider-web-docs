@@ -5,7 +5,7 @@ parent: Components
 permalink: /components/number/
 ---
 
-## Description
+## Number Picker
 
 Creates a number picker with a label and optional slider that writes to a target `number` state.
 
@@ -58,7 +58,7 @@ A `boolean` indicating whether to parse the number as an integer instead of a fl
 
 A `boolean` indicating whether to add an additional slider next to the number picker. This value is `false` by default.
 
-## Examples
+### Examples
 
 Render a number picker for the `angle` state in degrees.
 

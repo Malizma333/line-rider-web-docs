@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/playback_dimensions/
 ---
 
-## Description
+## Playback Dimensions
 
 Returns [`Dimensions`](../External/dimensions.js) describing the viewport of the playback camera.
 
@@ -17,7 +17,7 @@ function getPlaybackDimensions(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_dimensions](./editor_dimensions.md)
 - [playback_follower_focus](./playback_follower_focus.md)

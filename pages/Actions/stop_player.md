@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/stop_player/
 ---
 
-## Description
+## Stop Player
 
 Stops the player if it is running.
 
@@ -15,7 +15,7 @@ Stops the player if it is running.
 store.dispatch({ type: "STOP_PLAYER" });
 ```
 
-## Related
+### Related
 
 - [set_player_running](./set_player_running.md)
 - [set_player_stop_at_end](./set_player_stop_at_end.md)

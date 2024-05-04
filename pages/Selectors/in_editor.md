@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/in_editor/
 ---
 
-## Description
+## Editor Open
 
 Returns a `boolean` indicating whether the editor view is open.
 
@@ -17,7 +17,7 @@ function getInEditor(state) {
 }
 ```
 
-## Related
+### Related
 
 - [in_track_loader](./in_track_loader.md)
 - [in_track_saver](./in_track_saver.md)

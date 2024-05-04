@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/in_viewer/
 ---
 
-## Description
+## Viewer Open
 
 Returns a `boolean` indicating whether the track viewer is open.
 
@@ -18,7 +18,7 @@ function getInViewer(state) {
 }
 ```
 
-## Related
+### Related
 
 - [in_editor](./in_editor.md)
 - [in_track_loader](./in_track_loader.md)

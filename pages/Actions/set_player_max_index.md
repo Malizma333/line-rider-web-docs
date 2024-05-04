@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_max_index/
 ---
 
-## Description
+## Set Max Index
 
 Adjusts the index that the timeline ends at.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_MAX_INDEX", payload: maxIndex });
 
 The max index for the timeline to render.
 
-## Examples
+### Examples
 
 Adjusts the max index to frame 80.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_player_index](./set_player_index.md)
 - [set_player_settings](./set_player_settings.md)

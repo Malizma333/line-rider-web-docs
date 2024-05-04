@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/playback_zoom/
 ---
 
-## Description
+## Playback Zoom
 
 Returns a `number` describing the current zoom of the playback camera.
 
@@ -19,7 +19,7 @@ function getPlaybackZoom(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_zoom](./editor_zoom.md)
 - [playback_dimensions](./playback_dimensions.md)

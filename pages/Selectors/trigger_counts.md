@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/trigger_counts/
 ---
 
-## Description
+## Command Counts
 
 Returns a `number` describing the count of a target trigger being pressed.
 
@@ -23,7 +23,7 @@ function getTriggerCounts(state, trigger) {
 
 The target trigger to retrieve the pressed count of. A full list of available command ids can be found [here](../External/commands.json).
 
-## Examples
+### Examples
 
 Returns the number of times the undo hotkey has been pressed.
 
@@ -34,7 +34,7 @@ getModifier(
 )
 ```
 
-## Related
+### Related
 
 - [modifiers](./modifiers.md)
 - [modifiers_active](./modifiers_active.md)

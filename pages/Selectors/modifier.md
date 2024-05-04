@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/modifier/
 ---
 
-## Description
+## Modifier Active
 
 Returns a `boolean` indicating if the target modifier is active.
 
@@ -23,7 +23,7 @@ function getModifier(state, modifier) {
 
 The target modifier that may be active. A full list of available command ids can be found [here](../External/commands.json).
 
-## Examples
+### Examples
 
 Returns whether the fast forward hotkey is currently active.
 
@@ -34,7 +34,7 @@ getModifier(
 )
 ```
 
-## Related
+### Related
 
 - [modifiers_active](./modifiers_active.md)
 - [trigger_counts](./trigger_counts.md)

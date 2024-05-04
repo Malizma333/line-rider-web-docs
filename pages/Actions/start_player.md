@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/start_player/
 ---
 
-## Description
+## Start Player
 
 Starts the player if it is stopped.
 
@@ -15,7 +15,7 @@ Starts the player if it is stopped.
 store.dispatch({ type: "START_PLAYER" });
 ```
 
-## Related
+### Related
 
 - [set_player_running](./set_player_running.md)
 - [stop_player](./stop_player.md)

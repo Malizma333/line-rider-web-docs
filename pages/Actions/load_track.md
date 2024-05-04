@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/load_track/
 ---
 
-## Description
+## Load Track
 
 Loads a track object from its data.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "LOAD_TRACK", payload: trackObject });
 
 The [`Track`](../External/track.js) to load into the editor.
 
-## Examples
+### Examples
 
 Loads a blank track with 2 riders.
 
@@ -39,6 +39,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [new_track](./new_track.md)

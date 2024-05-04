@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/color_playback/
 ---
 
-## Description
+## Color Playback
 
 Returns a `boolean` indicating whether color playback is enabled.
 
@@ -17,7 +17,7 @@ function getColorPlayback(state) {
 }
 ```
 
-## Related
+### Related
 
 - [playback_preview](./playback_preview.md)
 - [player_settings](./player_settings.md)

@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/inc_player_index/
 ---
 
-## Description
+## Increase Player Index
 
 Increments the timeline index by 1 frame.
 
@@ -15,7 +15,7 @@ Increments the timeline index by 1 frame.
 store.dispatch({ type: "INC_PLAYER_INDEX", payload: index });
 ```
 
-## Related
+### Related
 
 - [dec_player_index](./dec_player_index.md)
 - [set_player_index](./set_flag_index.md)

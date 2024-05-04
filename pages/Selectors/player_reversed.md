@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_reversed/
 ---
 
-## Description
+## Player Reversed
 
 Returns a `boolean` indicating whether the player is playing in reverse.
 
@@ -17,7 +17,7 @@ function getPlayerReversed(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_running](./player_running.md)
 - [player_slow_motion](./player_slow_motion.md)

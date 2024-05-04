@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_fast_forward/
 ---
 
-## Description
+## Fast Forward
 
 Toggles playing the playback faster than normal speed.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_FAST_FORWARD", payload: fastForward });
 
 A boolean indicating whether the player should play faster.
 
-## Examples
+### Examples
 
 Disables fast-forward mode.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_player_rewind](./set_player_rewind.md)
 - [set_player_running](./set_player_running.md)

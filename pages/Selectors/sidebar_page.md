@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/sidebar_page/
 ---
 
-## Description
+## Sidebar Page
 
 Returns nullable `string` describing which part of the sidebar page is open.
 
@@ -17,7 +17,7 @@ function getSidebarPage(state) {
 }
 ```
 
-## Related
+### Related
 
 - [main_page](./main_page.md)
 - [views](./views.md)

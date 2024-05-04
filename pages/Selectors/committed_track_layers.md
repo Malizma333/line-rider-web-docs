@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/committed_track_layers/
 ---
 
-## Description
+## Committed Layers
 
 Returns [`Layer[]`](../External/layer.js) buffer describing the committed track layers.
 
@@ -17,7 +17,7 @@ function getCommittedTrackLayers(state) {
 }
 ```
 
-## Related
+### Related
 
 - [simulator_committed_track](./simulator_committed_track.md)
 - [track_active_layer_id](./track_active_layer_id.md)

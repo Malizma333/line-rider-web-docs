@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/autosave_enabled/
 ---
 
-## Description
+## Autosave Enabled
 
 Returns a `boolean` indicating whether autosave is enabled.
 
@@ -17,4 +17,4 @@ function getAutosaveEnabled(state) {
 }
 ```
 
-## Related
+### Related

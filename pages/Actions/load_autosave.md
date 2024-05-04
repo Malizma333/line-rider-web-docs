@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/load_autosave/
 ---
 
-## Description
+## Load Autosave
 
 Loads the last cached autosave.
 
@@ -15,6 +15,6 @@ Loads the last cached autosave.
 store.dispatch({ type: "LOAD_AUTOSAVE" });
 ```
 
-## Related
+### Related
 
 - [set_autosave_enabled](./set_autosave_enabled.md)

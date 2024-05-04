@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/in_video_exporter/
 ---
 
-## Description
+## Video Exporter Open
 
 Returns a `boolean` indicating whether the export window is open.
 
@@ -17,7 +17,7 @@ function getInVideoExporter(state) {
 }
 ```
 
-## Related
+### Related
 
 - [in_editor](./in_editor.md)
 - [in_track_loader](./in_track_loader.md)

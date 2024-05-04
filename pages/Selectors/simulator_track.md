@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/simulator_track/
 ---
 
-## Description
+## Uncommitted Track
 
 Returns an [`Engine`](../External/engine.js) describing the uncommitted track engine.
 
@@ -17,7 +17,7 @@ function getSimulatorTrack(state) {
 }
 ```
 
-## Related
+### Related
 
 - [riders](./riders.md)
 - [simulator_lines](./simulator_lines.md)

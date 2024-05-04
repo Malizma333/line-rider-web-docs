@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_tool/
 ---
 
-## Description
+## Set Tool
 
 Switches the current tool to the target tool.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_TOOL", payload: tool });
 
 The target tool to change to. List of available tools to switch to can be found [here](../External/tools.json)
 
-## Examples
+### Examples
 
 Switches to the pencil tool.
 
@@ -32,6 +32,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [select_line_type](./select_line_type.md)

@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/active_tool/
 ---
 
-## Description
+## Active Tool
 
 Returns a [Tool](../External/tools.json) describing the currently active tool.
 
@@ -17,6 +17,6 @@ function getActiveTool(state) {
 }
 ```
 
-## Related
+### Related
 
 - [tool_state](./tool_state.md)

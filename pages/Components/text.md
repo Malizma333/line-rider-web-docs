@@ -5,7 +5,7 @@ parent: Components
 permalink: /components/text/
 ---
 
-## Description
+## Text Field
 
 Creates a text field with a label that writes to a target `string` state.
 
@@ -35,7 +35,7 @@ The key `string` of the state value that this textbox changes.
 
 The `string` of text for a label displayed next to the textbox.
 
-## Examples
+### Examples
 
 Creates a textbox for the `userText` state.
 

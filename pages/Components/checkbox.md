@@ -5,7 +5,7 @@ parent: Components
 permalink: /components/checkbox/
 ---
 
-## Description
+## Checkbox
 
 Creates a checkbox with a label that toggles a target `boolean` state.
 
@@ -35,7 +35,7 @@ The key `string` of the state value that this checkbox toggles.
 
 The `string` of text for a label displayed next to the checkbox.
 
-## Examples
+### Examples
 
 Create a checkbox for the `flipLines` state.
 

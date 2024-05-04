@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/audio_props/
 ---
 
-## Description
+## Audio Properties
 
 Returns [`AudioData`](../External/audio_data.js) describing the currently loaded audio file.
 
@@ -17,7 +17,7 @@ function getAudioProps(state) {
 }
 ```
 
-## Related
+### Related
 
 - [audio_enabled](./audio_enabled.md)
 - [audio_file_loader](./audio_file_loader.md)

@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_rewind/
 ---
 
-## Description
+## Rewind
 
 Toggles playing the playback in reverse.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_REWIND", payload: rewind });
 
 A boolean indicating whether or not the player should play in reverse.
 
-## Examples
+### Examples
 
 Enables rewind mode.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_player_fast_forward](./set_player_fast_forward.md)
 - [set_player_running](./set_player_running.md)

@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/onion_skin_active/
 ---
 
-## Description
+## Onion Skin Active
 
 Returns a `boolean` indicating if onion skinning is enabled.
 
@@ -17,7 +17,7 @@ function getOnionSkinActive(state) {
 }
 ```
 
-## Related
+### Related
 
 - [onion_begin_index](./onion_begin_index.md)
 - [onion_end_index](./onion_end_index.md)

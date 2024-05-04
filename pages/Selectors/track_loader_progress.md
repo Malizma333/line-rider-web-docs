@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/track_loader_progress/
 ---
 
-## Description
+## Loader Progress
 
 Returns [`Progress`](../External/progress.js) describing the progress of the track loader.
 
@@ -17,7 +17,7 @@ function getTrackLoaderProgress(state) {
 }
 ```
 
-## Related
+### Related
 
 - [autosave_progress](./autosave_progress.md)
 - [track_saver_progress](./track_saver_progress.md)

@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_view_option/
 ---
 
-## Description
+## Set Render Setting
 
 Toggles a target view option.
 
@@ -25,7 +25,7 @@ The name of the view option to toggle. Available view options can be found [here
 
 A boolean indicating whether to enable the target view option.
 
-## Examples
+### Examples
 
 Enables color playback.
 
@@ -45,6 +45,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_skeleton](./set_skeleton.md)

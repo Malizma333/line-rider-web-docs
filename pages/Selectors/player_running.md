@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_running/
 ---
 
-## Description
+## Player Running
 
 Returns a `boolean` indicating whether the player is running.
 
@@ -17,7 +17,7 @@ function getPlayerRunning(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_reversed](./player_reversed.md)
 - [player_slow_motion](./player_slow_motion.md)

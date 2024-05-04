@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/undo/
 ---
 
-## Description
+## Undo
 
 Steps back engine state to previous state in history if available.
 
@@ -15,7 +15,7 @@ Steps back engine state to previous state in history if available.
 store.dispatch({ type: "UNDO" });
 ```
 
-## Related
+### Related
 
 - [commit_track_changes](./commit_track_changes.md)
 - [revert_track_changes](./revert_track_changes.md)

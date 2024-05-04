@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_frame_rate_settings/
 ---
 
-## Description
+## Player Frame Rate
 
 Returns a `boolean` indicating whether smooth playback is on.
 
@@ -19,7 +19,7 @@ function getPlayerFrameRateSetting(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_fps](./player_fps.md)
 - [player_settings](./player_settings.md)

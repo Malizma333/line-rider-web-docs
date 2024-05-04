@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/committed_riders/
 ---
 
-## Description
+## Committed Riders
 
 Returns [`Rider[]`](../External/rider.js) buffer describing the committed track riders.
 
@@ -17,7 +17,7 @@ function getCommittedRiders(state) {
 }
 ```
 
-## Related
+### Related
 
 - [riders](./riders.md)
 - [simulator_committed_track](./simulator_committed_track.md)

@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/hide_notification/
 ---
 
-## Description
+## Hide Notification
 
 Hides a notification based on its message.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "notifications/HIDE_NOTIFICATION", payload: message });
 
 The message of the notification to hide.
 
-## Examples
+### Examples
 
 Hides the notification with the message "Hello, world!".
 
@@ -32,6 +32,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [show_notification](./show_notification.md)

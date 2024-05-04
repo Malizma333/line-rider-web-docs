@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/new_track/
 ---
 
-## Description
+## New Track
 
 Creates a new track object and loads it into the editor.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 
 The new [`Track`](../External/track.js) to load.
 
-## Examples
+### Examples
 
 Creates a blank legacy track.
 
@@ -42,6 +42,6 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [load_track](./load_track.md)

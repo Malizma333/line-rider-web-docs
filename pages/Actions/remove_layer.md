@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/remove_layer/
 ---
 
-## Description
+## Remove Layer
 
 Removes target layer from the layer array.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "REMOVE_LAYER", payload: {id} });
 
 The id of the layer to remove.
 
-## Examples
+### Examples
 
 Removes the layer with an id of one 1.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [add_layer](./add_layer.md)
 - [move_layer](./move_layer.md)

@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/onion_end_index/
 ---
 
-## Description
+## Onion Skin End
 
 Returns a `number` describing the end frame of onion skinning.
 
@@ -21,7 +21,7 @@ function getOnionEndIndex(state) {
 }
 ```
 
-## Related
+### Related
 
 - [onion_begin_index](./onion_begin_index.md)
 - [onion_skin_active](./onion_skin_active.md)

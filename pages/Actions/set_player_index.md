@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_index/
 ---
 
-## Description
+## Set Player Index
 
 Jumps to a specific frame in playback.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_INDEX", payload: index });
 
 The target frame index to jump to.
 
-## Examples
+### Examples
 
 Jumps to frame 80.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [dec_player_index](./dec_player_index.md)
 - [inc_player_index](./inc_player_index.md)

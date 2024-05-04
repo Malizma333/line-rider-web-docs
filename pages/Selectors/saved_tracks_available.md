@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/saved_tracks_available/
 ---
 
-## Description
+## Cloud Saves Available
 
 Returns a `boolean` indicating whether track saves are available in cloud storage.
 
@@ -17,6 +17,6 @@ function getSavedTracksAvailable(state) {
 }
 ```
 
-## Related
+### Related
 
 - [saved_tracks](./saved_tracks.md)

@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/get_layer_visible_at_time/
 ---
 
-## Description
+## Layer Automation Triggers
 
 Creates an automated layer function based on layer ids and frame indices.
 
@@ -29,7 +29,7 @@ A `number` describing which frame is being checked.
 
 A `boolean` indicating whether the layer of the specified id should be visible at the specified index.
 
-## Examples
+### Examples
 
 Shows layer 1 after 1 second and toggles layer 2 every 5 frames.
 
@@ -64,4 +64,4 @@ getLayerVisibleAtTime = (id, ind) => {
 }
 ```
 
-## Related
+### Related

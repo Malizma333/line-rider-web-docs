@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/trigger_command/
 ---
 
-## Description
+## Trigger Command
 
 Triggers the command given by the command id. This has a similar effect as pressing the hotkey associated with that command.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "TRIGGER_COMMAND", payload: command, meta: { ignorable: t
 
 The trigger command to execute. A full list of available command ids and their default hotkeys can be found [here](../External/commands.json).
 
-## Examples
+### Examples
 
 Triggers the skeleton view hotkey.
 
@@ -33,7 +33,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [begin_modifier_command](./begin_modifier_command.md)
 - [end_modifier_command](./end_modifier_command.md)

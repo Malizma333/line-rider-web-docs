@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_player_fps/
 ---
 
-## Description
+## Set Player FPS
 
 Adjusts the player fps rate.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_PLAYER_FPS", payload: fps });
 
 The frames per second to set playback to.
 
-## Examples
+### Examples
 
 Adjusts the playback rate to 24 fps.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_interpolate](./set_interpolate.md)
 - [set_player_settings](./set_player_settings.md)

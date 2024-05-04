@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/track_script/
 ---
 
-## Description
+## Script
 
 Returns a `string` that holds the track script.
 
@@ -17,7 +17,7 @@ function getTrackScript(state) {
 }
 ```
 
-## Related
+### Related
 
 - [simulator_committed_track](./simulator_committed_track.md)
 - [simulator_track](./simulator_track.md)

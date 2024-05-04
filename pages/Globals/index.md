@@ -6,6 +6,6 @@ has_children: true
 nav_order: 3
 ---
 
-### Globals
+## Globals
 
 The `Globals` category contains documentation for methods and variables attached to the global window object.

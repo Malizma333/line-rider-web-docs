@@ -5,7 +5,7 @@ parent: Globals
 permalink: /globals/get_cam_bounds/
 ---
 
-## Description
+## Camera Boundary Triggers
 
 Creates an automated camera bounds function based on keyframes.
 
@@ -25,7 +25,7 @@ A [`Keyframe`](../External/keyframe.js) array that defines the camera bounding b
 
 A `number` defining the smooth amount at the beginning and end of interpolation.
 
-## Examples
+### Examples
 
 Increases the pull radius and moves the camera up interpolating from seconds 2 to 3, then centers the camera on the rider at 4 seconds.
 
@@ -39,7 +39,7 @@ getCamBounds = createBoundsPanner([
 ])
 ```
 
-## Related
+### Related
 
 - [get_auto_zoom](./get_auto_zoom.md)
 - [get_cam_focus](./get_cam_focus.md)

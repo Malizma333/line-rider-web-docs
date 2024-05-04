@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/simulator_lines/
 ---
 
-## Description
+## Uncommitted Lines
 
 Returns [`LineBase[]`](../External/line.js) buffer describing the uncommitted track lines.
 
@@ -17,7 +17,7 @@ function getSimulatorLines(state) {
 }
 ```
 
-## Related
+### Related
 
 - [simulator_committed_lines](./simulator_committed_lines.md)
 - [simulator_track](./simulator_track.md)

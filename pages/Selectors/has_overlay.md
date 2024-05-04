@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/has_overlay/
 ---
 
-## Description
+## Has Overlay
 
 Returns a nullable `string` indicating which window overlay is active.
 
@@ -21,7 +21,7 @@ function getHasOverlay(state) {return (
 );}
 ```
 
-## Related
+### Related
 
 - [controls_active](./controls_active.md)
 - [in_editor](./in_editor.md)

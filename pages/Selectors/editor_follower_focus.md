@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/editor_follower_focus/
 ---
 
-## Description
+## Editor Focuser
 
 Returns a `number` describing which rider is being followed by the editor camera.
 
@@ -17,7 +17,7 @@ function getEditorFollowerFocus(state) {
 }
 ```
 
-## Related
+### Related
 
 - [editor_dimensions](./editor_dimensions.md)
 - [editor_position](./editor_position.md)

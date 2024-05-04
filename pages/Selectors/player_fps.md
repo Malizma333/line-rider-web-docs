@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/player_fps/
 ---
 
-## Description
+## Player FPS
 
 Returns a `number` describing the frames per second of the player.
 
@@ -17,7 +17,7 @@ function getPlayerFps(state) {
 }
 ```
 
-## Related
+### Related
 
 - [player_frame_rate_settings](./player_frame_rate_settings.md)
 - [player_settings](./player_settings.md)

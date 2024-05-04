@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/autosave_progress/
 ---
 
-## Description
+## Autosave Progress
 
 Returns [`Progress`](../External/progress.js) describing the progress of the autosaver.
 
@@ -17,7 +17,7 @@ function getAutosaveProgress(state) {
 }
 ```
 
-## Related
+### Related
 
 - [track_loader_progress](./track_loader_progress.md)
 - [track_saver_progress](./track_saver_progress.md)

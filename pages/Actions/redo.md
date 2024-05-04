@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/redo/
 ---
 
-## Description
+## Redo
 
 Steps forward engine state to the last undone state in history if available.
 
@@ -15,7 +15,7 @@ Steps forward engine state to the last undone state in history if available.
 store.dispatch({ type: "REDO" });
 ```
 
-## Related
+### Related
 
 - [commit_track_changes](./commit_track_changes.md)
 - [revert_track_changes](./revert_track_changes.md)

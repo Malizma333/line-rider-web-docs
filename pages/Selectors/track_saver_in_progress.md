@@ -5,7 +5,7 @@ parent: Selectors
 permalink: /selectors/track_saver_in_progress/
 ---
 
-## Description
+## Saving
 
 Returns a `boolean` indicating whether the track saver is currently in progress.
 
@@ -17,6 +17,6 @@ function getTrackSaverInProgress(state) {
 }
 ```
 
-## Related
+### Related
 
 - [track_saver_progress](./track_saver_progress.md)

@@ -5,7 +5,7 @@ parent: Actions
 permalink: /actions/set_layer_visible/
 ---
 
-## Description
+## Set Layer Visible
 
 Toggles the visibility of target layer.
 
@@ -21,7 +21,7 @@ store.dispatch({ type: "SET_LAYER_VISIBLE", payload: {id, visible} });
 
 The target layer to toggle visibility of.
 
-## Examples
+### Examples
 
 Toggles layer 1 to be invisible.
 
@@ -32,7 +32,7 @@ store.dispatch({
 });
 ```
 
-## Related
+### Related
 
 - [set_layer_active](./set_layer_active.md)
 - [set_layer_editable](./set_layer_editable.md)
