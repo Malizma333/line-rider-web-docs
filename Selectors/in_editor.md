@@ -6,7 +6,7 @@ Returns a `boolean` indicating whether the editor view is open.
 
 ```js
 function getInEditor(state) {
-  return state.views["MAIN"] === "editor";
+  return state.views["Main"] === "editor";
 }
 ```
 

@@ -6,7 +6,7 @@ Returns a `boolean` indicating whether the load window is open.
 
 ```js
 function getInTrackLoader(state) {
-  return state.views["TRACK_LOADER"] === "load";
+  return state.views["TrackLoader"] === "load";
 }
 ```
 

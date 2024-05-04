@@ -6,7 +6,7 @@ Returns a `boolean` indicating whether the save window is open.
 
 ```js
 function getInTrackSaver(state) {
-  return state.views["TRACK_SAVER"] === "save";
+  return state.views["TrackSaver"] === "save";
 }
 ```
 

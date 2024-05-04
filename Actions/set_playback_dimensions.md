@@ -5,7 +5,7 @@ Applies viewport dimensions to playback camera.
 ### Syntax
 
 ```js
-const setPlaybackDimensions = (dimensions) => ({ type: "SET_PLAYBACK_DIMENSIONS", payload: dimensions });
+store.dispatch({ type: "SET_PLAYBACK_DIMENSIONS", payload: dimensions });
 ```
 
 ### Parameters
@@ -19,7 +19,7 @@ The target viewport dimensions to set the playback camera to.
 Switches the viewport dimensions to high-definition (1080p) resolution.
 
 ```js
-const setPlaybackDimensions = (dimensions) => ({
+store.dispatch({
   type: "SET_PLAYBACK_DIMENSIONS",
   payload: { width: 1920, height: 1080 }
 });

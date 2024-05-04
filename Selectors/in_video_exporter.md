@@ -6,7 +6,7 @@ Returns a `boolean` indicating whether the export window is open.
 
 ```js
 function getInVideoExporter(state) {
-  return state.views["VIDEO_EXPORTER"] === "export";
+  return state.views["VideoExporter"] === "export";
 }
 ```
 
