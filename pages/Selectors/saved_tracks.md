@@ -7,7 +7,7 @@ permalink: /selectors/saved_tracks/
 
 ## Cloud Saves
 
-Returns a [`CloudSave[]`]({% link pages/External/files.md %}) that holds information of each track saved to the cloud.
+Returns a [`CloudSave[]`]({{ site.baseurl }}{% link pages/External/files.md %}) that holds information of each track saved to the cloud.
 
 ### Syntax
 

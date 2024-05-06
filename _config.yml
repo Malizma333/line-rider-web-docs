@@ -1,6 +1,7 @@
 title: Line Rider Web Documentation
 description: API documentation for the web edition of Line Rider.
-baseurl: ""
+url: "malizma333.github.io"
+baseurl: "/line-rider-web-docs"
 repository: Malizma333/line-rider-web-docs
 
 # Build Settings

@@ -19,7 +19,7 @@ store.dispatch({ type: "LOAD_TRACK", payload: trackObject });
 
 `trackObject`
 
-The [`Track`]({% link pages/External/track.md %}) to load into the editor.
+The [`Track`]({{ site.baseurl }}{% link pages/External/track.md %}) to load into the editor.
 
 ### Examples
 

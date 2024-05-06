@@ -7,7 +7,7 @@ permalink: /selectors/views/
 
 ## Views
 
-Returns [`CurrentViews`]({% link pages/External/views.md %}) describing which views are currently active
+Returns [`CurrentViews`]({{ site.baseurl }}{% link pages/External/views.md %}) describing which views are currently active
 
 ### Syntax
 

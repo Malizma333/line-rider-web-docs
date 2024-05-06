@@ -7,7 +7,7 @@ permalink: /selectors/audio_props/
 
 ## Audio Properties
 
-Returns [`AudioData`]({% link pages/External/audio.md %}) describing the currently loaded audio file.
+Returns [`AudioData`]({{ site.baseurl }}{% link pages/External/audio.md %}) describing the currently loaded audio file.
 
 ### Syntax
 

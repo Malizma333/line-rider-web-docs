@@ -19,7 +19,7 @@ store.dispatch({ type: "NEW_TRACK", payload: trackObject });
 
 `trackObject`
 
-The new [`Track`]({% link pages/External/track.md %}) to load.
+The new [`Track`]({{ site.baseurl }}{% link pages/External/track.md %}) to load.
 
 ### Examples
 

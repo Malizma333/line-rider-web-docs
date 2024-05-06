@@ -23,7 +23,7 @@ The endpoints of the line to add.
 
 `lineType`
 
-The [`LineType`]({% link pages/External/line.md %}) of the line to add.
+The [`LineType`]({{ site.baseurl }}{% link pages/External/line.md %}) of the line to add.
 
 `flipped`
 

@@ -19,7 +19,7 @@ store.dispatch({ type: "SET_PLAYER_SETTINGS", payload: settings });
 
 `settings`
 
-The [`PlayerSettings`]({% link pages/External/player.md %}) describing parameters for the track player.
+The [`PlayerSettings`]({{ site.baseurl }}{% link pages/External/player.md %}) describing parameters for the track player.
 
 ### Examples
 

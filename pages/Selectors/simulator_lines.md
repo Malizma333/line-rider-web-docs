@@ -7,7 +7,7 @@ permalink: /selectors/simulator_lines/
 
 ## Uncommitted Lines
 
-Returns [`LineBase[]`]({% link pages/External/line.md %}) buffer describing the uncommitted track lines.
+Returns [`LineBase[]`]({{ site.baseurl }}{% link pages/External/line.md %}) buffer describing the uncommitted track lines.
 
 ### Syntax
 

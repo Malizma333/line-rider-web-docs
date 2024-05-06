@@ -19,7 +19,7 @@ store.dispatch({ type: "SET_TOOL", payload: tool });
 
 `tool`
 
-The target tool to change to. List of available tools to switch to can be found [here]({% link pages/External/tools.md %})
+The target tool to change to. List of available tools to switch to can be found [here]({{ site.baseurl }}{% link pages/External/tools.md %})
 
 ### Examples
 

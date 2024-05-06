@@ -7,7 +7,7 @@ permalink: /selectors/track_saver_progress/
 
 ## Saver Progress
 
-Returns [`Progress`]({% link pages/External/files.md %}) describing the progress of the track saver.
+Returns [`Progress`]({{ site.baseurl }}{% link pages/External/files.md %}) describing the progress of the track saver.
 
 ### Syntax
 

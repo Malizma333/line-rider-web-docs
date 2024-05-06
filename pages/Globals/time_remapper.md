@@ -19,7 +19,7 @@ timeRemapper = createTimeRemapper(keyframes, interpolate = false)
 
 `keyframes`
 
-A [`Keyframe`]({% link pages/External/keyframe.md %}) array that defines the playback speed at specific times.
+A [`Keyframe`]({{ site.baseurl }}{% link pages/External/keyframe.md %}) array that defines the playback speed at specific times.
 
 `interpolate`
 

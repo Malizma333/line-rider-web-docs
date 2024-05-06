@@ -7,7 +7,7 @@ permalink: /selectors/track_loader_progress/
 
 ## Loader Progress
 
-Returns [`Progress`]({% link pages/External/files.md %}) describing the progress of the track loader.
+Returns [`Progress`]({{ site.baseurl }}{% link pages/External/files.md %}) describing the progress of the track loader.
 
 ### Syntax
 

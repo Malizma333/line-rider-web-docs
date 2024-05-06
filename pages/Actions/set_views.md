@@ -19,11 +19,11 @@ store.dispatch({ type: "SET_VIEWS", payload: views, meta: { name, auto: false } 
 
 `views`
 
-A [`View`]({% link pages/External/views.md %}) object that specifies which view to open.
+A [`View`]({{ site.baseurl }}{% link pages/External/views.md %}) object that specifies which view to open.
 
 `name`
 
-The type of view action to execute. A list of available view actions can be found [here]({% link pages/External/views.md %}).
+The type of view action to execute. A list of available view actions can be found [here]({{ site.baseurl }}{% link pages/External/views.md %}).
 
 ### Examples
 
