@@ -7,7 +7,7 @@ permalink: /selectors/playback_dimensions/
 
 ## Playback Dimensions
 
-Returns [`Dimensions`](/externals/camera/) describing the viewport of the playback camera.
+Returns [`Dimensions`]({% link pages/External/camera.md %}) describing the viewport of the playback camera.
 
 ### Syntax
 

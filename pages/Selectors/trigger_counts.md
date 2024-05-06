@@ -21,7 +21,7 @@ function getTriggerCounts(state, trigger) {
 
 `trigger`
 
-The target trigger to retrieve the pressed count of. A full list of available command ids can be found [here](/externals/commands/).
+The target trigger to retrieve the pressed count of. A full list of available command ids can be found [here]({% link pages/External/commands.md %}).
 
 ### Examples
 

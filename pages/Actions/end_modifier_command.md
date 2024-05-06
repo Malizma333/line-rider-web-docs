@@ -19,7 +19,7 @@ store.dispatch({ type: "END_MODIFIER_COMMAND", payload: command, meta: { ignorab
 
 `command`
 
-Modifier command to stop executing. This will stop any modifiers currently active by `BEGIN_MODIFIER_COMMAND` or by user input until they are activated again. A full list of available command ids and their default hotkeys can be found [here](/externals/commands/).
+Modifier command to stop executing. This will stop any modifiers currently active by `BEGIN_MODIFIER_COMMAND` or by user input until they are activated again. A full list of available command ids and their default hotkeys can be found [here]({% link pages/External/commands.md %}).
 
 ### Examples
 

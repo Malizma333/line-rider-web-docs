@@ -7,7 +7,7 @@ permalink: /selectors/autosave_progress/
 
 ## Autosave Progress
 
-Returns [`Progress`](/externals/files/) describing the progress of the autosaver.
+Returns [`Progress`]({% link pages/External/files.md %}) describing the progress of the autosaver.
 
 ### Syntax
 

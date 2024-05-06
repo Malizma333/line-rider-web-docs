@@ -7,7 +7,7 @@ permalink: /selectors/simulator_committed_lines/
 
 ## Committed Lines
 
-Returns [`LineBase[]`](/externals/line/) buffer describing the committed track lines.
+Returns [`LineBase[]`]({% link pages/External/line.md %}) buffer describing the committed track lines.
 
 ### Syntax
 

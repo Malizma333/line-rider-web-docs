@@ -7,7 +7,7 @@ permalink: /selectors/simulator_track/
 
 ## Uncommitted Track
 
-Returns an [`Engine`](/externals/engine/) describing the uncommitted track engine.
+Returns an [`Engine`]({% link pages/External/engine.md %}) describing the uncommitted track engine.
 
 ### Syntax
 
