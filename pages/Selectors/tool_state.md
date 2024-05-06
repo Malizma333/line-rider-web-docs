@@ -7,7 +7,7 @@ permalink: /selectors/tool_state/
 
 ## Tool State
 
-Returns a [`ToolState`](/externals/tools/) describing the state of a target tool.
+Returns a [`ToolState`]({% link pages/External/tools.md %}) describing the state of a target tool.
 
 ### Syntax
 
@@ -21,7 +21,7 @@ function getToolState(state, toolId) {
 
 `toolId`
 
-The id of the target tool. A full list of available tool ids can be found [here](/externals/tools/).
+The id of the target tool. A full list of available tool ids can be found [here]({% link pages/External/tools.md %}).
 
 ### Examples
 

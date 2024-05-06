@@ -19,7 +19,7 @@ getCamBounds = createBoundsPanner(keyframes, smoothing = 10)
 
 `keyframes`
 
-A [`Keyframe`](/externals/keyframes/) array that defines the camera bounding box at specific times.
+A [`Keyframe`]({% link pages/External/keyframe.md %}) array that defines the camera bounding box at specific times.
 
 `smoothing`
 

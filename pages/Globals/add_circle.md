@@ -31,7 +31,7 @@ The offset of the polygon from the origin.
 
 `lineType`
 
-The [`LineType`](/externals/line/) of the lines in the circle.
+The [`LineType`]({% link pages/External/line.md %}) of the lines in the circle.
 
 `flipped`
 
