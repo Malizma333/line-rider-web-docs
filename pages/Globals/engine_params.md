@@ -26,9 +26,14 @@ $ENGINE_PARAMS.gravity = {x:0, y:0}
 Disables gravity for the first second, then enables default gravity.
 
 ```js
-// Clears physics and camera cache
-window.store.getState().camera.playbackFollower._frames.length = 0;
-window.store.getState().simulator.engine.engine._computed._frames.length = 1;
+// Clears physics and camera cache and resets current frame
+(function() {
+    window.store.getState().camera.playbackFollower._frames.length = 0;
+    window.store.getState().simulator.engine.engine._computed._frames.length = 1;
+    const currentIndex = store.getState().player.index;
+    store.dispatch({type: "SET_PLAYER_INDEX", payload: 0});
+    requestAnimationFrame(() => store.dispatch({type: "SET_PLAYER_INDEX", payload: currentIndex}));
+})();
 
 Object.defineProperty(window.$ENGINE_PARAMS, "gravity", { get() {
   const index = window.store.getState().simulator.engine.engine._computed._frames.length;

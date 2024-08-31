@@ -35,23 +35,6 @@ Shows layer 1 after 1 second and toggles layer 2 every 5 frames.
 
 ```js
 getLayerVisibleAtTime = (id, ind) => {
-  /** Boilerplate to convert layer id to index */
-  if (!window.idToIndex) { 
-    window.idToIndex = []
-
-    const getSimulatorTrack = (state) => state.simulator.engine
-    const getTrackLayers = (state) => getSimulatorTrack(state).engine.state.layers
-
-    for (let [i, layer] of [
-      ...getTrackLayers(window.store.getState()),
-    ].entries()) {
-      window.idToIndex[layer.id] = i
-    }
-  }
-  
-  id = window.idToIndex[id]
-  /** End of boilerplate */
-
   if(id === 1) {
     return ind > 40
   }
