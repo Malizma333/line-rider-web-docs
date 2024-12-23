@@ -53,3 +53,5 @@ callouts:
   warning:
     title: Warning
     color: red
+
+permalink: /:categories/:title

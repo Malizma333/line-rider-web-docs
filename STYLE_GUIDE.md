@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Style Guide
-permalink: /style_guide/
 ---
 
 This style guide document outlines some general rules for writing documentation within this repository.
