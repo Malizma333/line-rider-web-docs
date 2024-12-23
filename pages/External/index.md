@@ -3,7 +3,6 @@ layout: page
 title: Externals
 permalink: /externals/
 has_children: true
-nav_order: 5
 ---
 
 ## Externals
