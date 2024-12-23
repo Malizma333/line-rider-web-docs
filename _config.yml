@@ -1,16 +1,49 @@
+open_url: true
+
+theme: just-the-docs
+plugins:
+  - jekyll-feed
+
 title: Line Rider Web Documentation
 description: API documentation for the web edition of Line Rider.
 url: "malizma333.github.io"
 baseurl: "/line-rider-web-docs"
 repository: Malizma333/line-rider-web-docs
 
-# Build Settings
-open_url: true
-theme: just-the-docs
-plugins:
-  - jekyll-feed
+defaults:
+  - scope:
+      path: "docs" # an empty string here means all files in the project
+      type: "pages"
+    values:
+      layout: "default"
 
-# Customization
+enable_copy_code_button: true
+
+color_scheme: dark
+
+nav_sort: case_sensitive
+
+back_to_top: true
+back_to_top_text: "Back to top"
+
+permalink: pretty
+
+exclude:
+  # from https://github.com/jekyll/jekyll/blob/master/lib/site_template/_config.yml:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  # Custom
+  - LICENSE
+  - start.sh
+
 search_enabled: true
 search:
   heading_level: 2
@@ -26,16 +59,7 @@ aux_links:
   "View on GitHub":
     - "https://github.com/Malizma333/line-rider-web-docs/"
 
-back_to_top: true
-back_to_top_text: "Back to top"
-
-gh_edit_link: true
-gh_edit_link_text: "Contribute to these docs on GitHub"
-gh_edit_repository: "https://github.com/Malizma333/line-rider-web-docs/"
-gh_edit_branch: "main"
-gh_edit_view_mode: "edit"
-
-color_scheme: dark
+gh_edit_link: false
 
 callouts_level: quiet
 callouts:
@@ -53,5 +77,3 @@ callouts:
   warning:
     title: Warning
     color: red
-
-permalink: /:categories/:title
