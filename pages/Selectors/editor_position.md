@@ -7,7 +7,7 @@ permalink: /selectors/editor_position/
 
 ## Editor Position
 
-Returns a [`V2`]({{ site.baseurl }}{% link pages/External/primitives.md %}) describing where the editor camera is located.
+Returns a [`V2`]({{ site.baseurl }}{% link pages/external/primitives.md %}) describing where the editor camera is located.
 
 ### Syntax
 

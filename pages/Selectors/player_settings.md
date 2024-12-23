@@ -7,7 +7,7 @@ permalink: /selectors/player_settings/
 
 ## Player Settings
 
-Returns [`PlayerSettings`]({{ site.baseurl }}{% link pages/External/player.md %}) describing playback settings.
+Returns [`PlayerSettings`]({{ site.baseurl }}{% link pages/external/player.md %}) describing playback settings.
 
 ### Syntax
 

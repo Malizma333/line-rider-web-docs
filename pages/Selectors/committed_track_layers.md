@@ -7,7 +7,7 @@ permalink: /selectors/committed_track_layers/
 
 ## Committed Layers
 
-Returns [`Layer[]`]({{ site.baseurl }}{% link pages/External/layer.md %}) buffer describing the committed track layers.
+Returns [`Layer[]`]({{ site.baseurl }}{% link pages/external/layer.md %}) buffer describing the committed track layers.
 
 ### Syntax
 

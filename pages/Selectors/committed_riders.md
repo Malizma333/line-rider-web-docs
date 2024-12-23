@@ -7,7 +7,7 @@ permalink: /selectors/committed_riders/
 
 ## Committed Riders
 
-Returns [`Rider[]`]({{ site.baseurl }}{% link pages/External/rider.md %}) buffer describing the committed track riders.
+Returns [`Rider[]`]({{ site.baseurl }}{% link pages/external/rider.md %}) buffer describing the committed track riders.
 
 ### Syntax
 

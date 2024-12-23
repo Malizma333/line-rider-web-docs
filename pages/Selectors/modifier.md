@@ -21,7 +21,7 @@ function getModifier(state, modifier) {
 
 `modifier`
 
-The target modifier that may be active. A full list of available command ids can be found [here]({{ site.baseurl }}{% link pages/External/commands.md %}).
+The target modifier that may be active. A full list of available command ids can be found [here]({{ site.baseurl }}{% link pages/external/commands.md %}).
 
 ### Examples
 

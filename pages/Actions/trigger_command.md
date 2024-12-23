@@ -19,7 +19,7 @@ store.dispatch({ type: "TRIGGER_COMMAND", payload: command, meta: { ignorable: t
 
 `command`
 
-The trigger command to execute. A full list of available command ids and their default hotkeys can be found [here]({{ site.baseurl }}{% link pages/External/commands.md %}).
+The trigger command to execute. A full list of available command ids and their default hotkeys can be found [here]({{ site.baseurl }}{% link pages/external/commands.md %}).
 
 ### Examples
 

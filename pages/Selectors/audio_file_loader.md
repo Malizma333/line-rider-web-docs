@@ -7,7 +7,7 @@ permalink: /selectors/audio_file_loader/
 
 ## Audio File Loader
 
-Returns an [`AudioLoader`]({{ site.baseurl }}{% link pages/External/audio.md %}) describing audio loader data.
+Returns an [`AudioLoader`]({{ site.baseurl }}{% link pages/external/audio.md %}) describing audio loader data.
 
 ### Syntax
 

@@ -19,7 +19,7 @@ store.dispatch({ type: "SELECT_LINE_TYPE", payload: lineType });
 
 `lineType`
 
-The target [`LineType`]({{ site.baseurl }}{% link pages/External/line.md %}) to set the current tool's swatch to.
+The target [`LineType`]({{ site.baseurl }}{% link pages/external/line.md %}) to set the current tool's swatch to.
 
 ### Examples
 

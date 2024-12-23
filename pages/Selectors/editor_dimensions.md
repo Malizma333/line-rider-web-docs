@@ -7,7 +7,7 @@ permalink: /selectors/editor_dimensions/
 
 ## Editor Dimensions
 
-Returns [`Dimensions`]({{ site.baseurl }}{% link pages/External/camera.md %}) describing the viewport of the editor camera.
+Returns [`Dimensions`]({{ site.baseurl }}{% link pages/external/camera.md %}) describing the viewport of the editor camera.
 
 ### Syntax
 

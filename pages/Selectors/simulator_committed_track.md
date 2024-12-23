@@ -7,7 +7,7 @@ permalink: /selectors/simulator_committed_track/
 
 ## Committed Track
 
-Returns an [`Engine`]({{ site.baseurl }}{% link pages/External/engine.md %}) describing the committed track engine.
+Returns an [`Engine`]({{ site.baseurl }}{% link pages/external/engine.md %}) describing the committed track engine.
 
 ### Syntax
 

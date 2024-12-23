@@ -19,7 +19,7 @@ store.dispatch({ type: "SET_VIEW_OPTION", payload: { key: viewOption, value } })
 
 `viewOption`
 
-The name of the view option to toggle. Available view options can be found [here]({{ site.baseurl }}{% link pages/External/player.md %}).
+The name of the view option to toggle. Available view options can be found [here]({{ site.baseurl }}{% link pages/external/player.md %}).
 
 `value`
 

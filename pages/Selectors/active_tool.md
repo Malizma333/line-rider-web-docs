@@ -7,7 +7,7 @@ permalink: /selectors/active_tool/
 
 ## Active Tool
 
-Returns a [Tool]({{ site.baseurl }}{% link pages/External/tools.md %}) describing the currently active tool.
+Returns a [Tool]({{ site.baseurl }}{% link pages/external/tools.md %}) describing the currently active tool.
 
 ### Syntax
 

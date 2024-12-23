@@ -23,11 +23,11 @@ The list of lines to remove by line id. Lines are indexed starting from 1.
 
 `linesToAdd`
 
-The list of [`Line`]({{ site.baseurl }}{% link pages/External/line.md %}) objects to add.
+The list of [`Line`]({{ site.baseurl }}{% link pages/external/line.md %}) objects to add.
 
 `name`
 
-The type of update line action to execute. A full list of line update subactions can be found [here]({{ site.baseurl }}{% link pages/External/line.md %}).
+The type of update line action to execute. A full list of line update subactions can be found [here]({{ site.baseurl }}{% link pages/external/line.md %}).
 
 ### Examples
 
