@@ -17,7 +17,7 @@ getAutoZoom = createZoomer(keyframes, smoothing = 10)
 
 `keyframes`
 
-A [`Keyframe`]({{ site.baseurl }}{% link docs/external/keyframe.md %}) array that defines the zoom levels at specific times.
+An array of [`Keyframes`]({{ site.baseurl }}{% link docs/external/keyframe.md %}) that defines the zoom levels at specific times.
 
 `smoothing`
 

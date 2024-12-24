@@ -1,5 +1,5 @@
 ---
-title: Files
+title: Storage
 parent: Externals
 ---
 

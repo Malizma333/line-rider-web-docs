@@ -5,4 +5,4 @@ has_children: true
 
 ## Externals
 
-The `Externals` category contains definitions for frequently used structs and enumerables referenced throughout other categories.
+The `Externals` category contains definitions for frequently used object schemas referenced throughout other categories.

@@ -5,7 +5,7 @@ parent: Selectors
 
 ## Saver Progress
 
-Returns [`Progress`]({{ site.baseurl }}{% link docs/external/files.md %}) describing the progress of the track saver.
+Returns [`Progress`]({{ site.baseurl }}{% link docs/external/storage.md %}) describing the progress of the track saver.
 
 ### Syntax
 

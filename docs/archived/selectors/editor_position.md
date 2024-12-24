@@ -5,7 +5,7 @@ parent: Selectors
 
 ## Editor Position
 
-Returns a [`V2`]({{ site.baseurl }}{% link docs/external/primitives.md %}) describing where the editor camera is located.
+Returns a [`V2`]({{ site.baseurl }}{% link docs/globals/V2.md %}) describing where the editor camera is located.
 
 ### Syntax
 

@@ -92,29 +92,12 @@ Direction of the line.
 
 ## Line Type
 
-List of types for line objects.
+Available types for line objects.
 
 ```js
-[
-  0, // Blue
-  1, // Red
-  2 // Green
-]
-```
-
-## Update Line Actions
-
-List of actions available for updating lines.
-
-```js
-[
-  "ADD_LINE",
-  "ADD_LINES",
-  "LOAD_LINES",
-  "DUPLICATE_LINES",
-  "REMOVE_LINE",
-  "REMOVE_LINES",
-  "SET_LINES",
-  "REPLACE_LINE"
-]
+{
+  BLUE: 0,
+  RED: 1,
+  GREEN: 2
+}
 ```

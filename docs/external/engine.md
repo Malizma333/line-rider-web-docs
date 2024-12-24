@@ -40,13 +40,13 @@ Current state of the engine.
 ### Properties
 
 `activeLayerId: number`\
-List of line base objects that are used to compute track physics.
+Id of the active layer, on which lines are drawn.
 
 `layers: List.<Layer>`\
-Properties about how the engine functions.
+List of track layers.
 
 `lines: List.<Line>`\
-Start properties for the rider.
+List of base track lines.
 
 `riders: List.<Rider>`\
-State properties related to the editor.
+List of initial track riders.

@@ -5,7 +5,7 @@ parent: Selectors
 
 ## Cloud Saves
 
-Returns a [`CloudSave[]`]({{ site.baseurl }}{% link docs/external/files.md %}) that holds information of each track saved to the cloud.
+Returns a [`CloudSave[]`]({{ site.baseurl }}{% link docs/external/storage.md %}) that holds information of each track saved to the cloud.
 
 ### Syntax
 

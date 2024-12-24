@@ -21,7 +21,29 @@ A [`View`]({{ site.baseurl }}{% link docs/external/views.md %}) object that spec
 
 `name`
 
-The type of view action to execute. A list of available view actions can be found [here]({{ site.baseurl }}{% link docs/external/views.md %}).
+## View Actions
+
+List of available actions to interact with the current view.
+
+"SET_SIDEBAR_PAGE"
+"CLOSE_SIDEBAR"
+"ENTER_VIEWER"
+"ENTER_EDITABLE_VIEWER"
+"CLOSE_LOAD_SCREEN"
+"ENTER_EDITOR"
+"OPEN_SETTING_SIDEBAR"
+"OPEN_HELP_SIDEBAR"
+"OPEN_INFO_SIDEBAR"
+"OPEN_TRACK_LOADER"
+"CLOSE_TRACK_LOADER"
+"SWITCH_FROM_TRACK_LOADER_TO_EDITOR"
+"OPEN_TRACK_SAVER"
+"CLOSE_TRACK_SAVER"
+"OPEN_SIDEBAR_SHARE_PAGE"
+"OPEN_VIDEO_EXPORTER"
+"CLOSE_VIDEO_EXPORTER"
+"OPEN_RELEASE_NOTES"
+"CLOSE_RELEASE_NOTES"
 
 ### Examples
 

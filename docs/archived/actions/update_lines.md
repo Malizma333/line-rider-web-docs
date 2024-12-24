@@ -25,7 +25,15 @@ The list of [`Line`]({{ site.baseurl }}{% link docs/external/line.md %}) objects
 
 `name`
 
-The type of update line action to execute. A full list of line update subactions can be found [here]({{ site.baseurl }}{% link docs/external/line.md %}).
+The type of update line action to execute.
+"ADD_LINE"
+"ADD_LINES"
+"LOAD_LINES"
+"DUPLICATE_LINES"
+"REMOVE_LINE"
+"REMOVE_LINES"
+"SET_LINES"
+"REPLACE_LINE"
 
 ### Examples
 

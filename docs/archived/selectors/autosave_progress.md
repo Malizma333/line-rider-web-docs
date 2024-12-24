@@ -5,7 +5,7 @@ parent: Selectors
 
 ## Autosave Progress
 
-Returns [`Progress`]({{ site.baseurl }}{% link docs/external/files.md %}) describing the progress of the autosaver.
+Returns [`Progress`]({{ site.baseurl }}{% link docs/external/storage.md %}) describing the progress of the autosaver.
 
 ### Syntax
 

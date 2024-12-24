@@ -17,7 +17,7 @@ getCamFocus = createFocuser(keyframes, smoothing = 10)
 
 `keyframes`
 
-A [`Keyframe`]({{ site.baseurl }}{% link docs/external/keyframe.md %}) array that defines the camera focus at specific times.
+An array of [`Keyframes`]({{ site.baseurl }}{% link docs/external/keyframe.md %}) that defines the camera focus at specific times.
 
 `smoothing`
 

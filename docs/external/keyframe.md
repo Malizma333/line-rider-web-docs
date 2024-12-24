@@ -7,33 +7,28 @@ parent: Externals
 
 Timestamp property used in keyframes.
 
-`frames:number | [seconds:number, frames:number] | [minutes:number, seconds:number, frames:number]`\
-Data forms of timestamps.
+`frames: number | [seconds: number, frames: number] | [minutes: number, seconds: number, frames: number]`\
 
 ## Zoom Keyframe
 
 Array representing a zoom keyframe.
 
-`[timestamp: Timestamp, zoom: number]`\
-Data forms of zoom keyframe.
+`[timestamp: Timestamp, zoom: number]`
 
 ## Camera Bounds Keyframe
 
 Array representing a camera panning keyframe.
 
-`[timestamp: Timestamp, bounds: {width: number, height: number, x: number, y: number}]`\
-Data form of camera pan keyframe.
+`[timestamp: Timestamp, bounds: {width: number, height: number, x: number, y: number}]`
 
 ## Camera Focuser Keyframe
 
 Array representing a camera focuser keyframe.
 
-`[timestamp: Timestamp, weights: Array.<number>]`\
-Data form of camera focuser keyframe.
+`[timestamp: Timestamp, weights: Array.<number>]`
 
 ## Time Remap Keyframe
 
 Array representing a time remapping keyframe.
 
-`[timestamp: Timestamp, speed: number]`\
-Data form of time remap keyframe.
+`[timestamp: Timestamp, speed: number]`
