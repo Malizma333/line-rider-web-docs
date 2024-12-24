@@ -43,6 +43,7 @@ exclude:
   # Custom
   - LICENSE
   - start.sh
+  - docs/templates/
 
 search_enabled: true
 search:
