@@ -22,7 +22,7 @@ Offset to start playing the audio from.
 Path to the audio file.
 
 `volume: number`\
-Volume of the audio file.
+Volume that the audio plays back at.
 
 ## Audio Fragment
 

@@ -1,8 +1,9 @@
 ---
 title: Globals
 has_children: true
+nav_order: 3
 ---
 
-## Globals
+## {{ page.title }}
 
-The `Globals` category contains documentation for methods and variables attached to the global window object.
+The `Globals` category documents methods and variables attached to the global `window` object.

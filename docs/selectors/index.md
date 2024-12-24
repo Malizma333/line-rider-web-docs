@@ -4,6 +4,6 @@ nav_order: 2
 has_children: true
 ---
 
-## Selectors
+## {{ page.title }}
 
 The `Selectors` category documents functions that read from the global state.
