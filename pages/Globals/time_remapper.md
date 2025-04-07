@@ -2,7 +2,7 @@
 layout: page
 title: Time Remapping Triggers
 parent: Globals
-permalink: /globals/add_line/
+permalink: /globals/time_remap/
 ---
 
 ## Time Remapping Triggers
