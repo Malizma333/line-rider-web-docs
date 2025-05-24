@@ -1,6 +1,7 @@
 ---
 title: Time Remapping Triggers
 parent: Globals
+permalink: /globals/time_remap/
 ---
 
 ## Time Remapping Triggers
