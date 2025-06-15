@@ -29,7 +29,3 @@ permalink: /actions/add_lines/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

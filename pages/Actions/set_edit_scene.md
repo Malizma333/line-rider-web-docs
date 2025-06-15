@@ -29,7 +29,3 @@ permalink: /actions/set_edit_scene/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

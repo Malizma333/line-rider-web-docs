@@ -29,7 +29,3 @@ permalink: /actions/set_folder_visible/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

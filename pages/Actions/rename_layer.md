@@ -29,7 +29,3 @@ permalink: /actions/rename_layer/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

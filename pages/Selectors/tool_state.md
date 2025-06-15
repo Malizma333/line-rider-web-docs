@@ -15,7 +15,3 @@ permalink: /selectors/tool_state/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

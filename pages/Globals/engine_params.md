@@ -44,5 +44,3 @@ Object.defineProperty(window.$ENGINE_PARAMS, "gravity", { get() {
   }
 }})
 ```
-
-### Related

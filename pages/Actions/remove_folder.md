@@ -29,7 +29,3 @@ permalink: /actions/remove_folder/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

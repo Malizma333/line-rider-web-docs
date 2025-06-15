@@ -29,7 +29,3 @@ permalink: /actions/set_layer_editable/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

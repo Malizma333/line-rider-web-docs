@@ -46,5 +46,3 @@ getLayerVisibleAtTime = (id, ind) => {
   return true;
 }
 ```
-
-### Related

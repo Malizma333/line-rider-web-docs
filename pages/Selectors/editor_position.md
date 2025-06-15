@@ -15,7 +15,3 @@ permalink: /selectors/editor_position/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

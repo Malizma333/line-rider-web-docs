@@ -15,7 +15,3 @@ permalink: /selectors/selected_scenery_width/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

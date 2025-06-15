@@ -48,9 +48,3 @@ timeRemapper = createTimeRemapper([
   [[2,20], 1] // for jumps
 ], true)
 ```
-
-### Related
-
-- [get_auto_zoom](./get_auto_zoom.md)
-- [get_cam_bounds](./get_cam_bounds.md)
-- [get_cam_focus](./get_cam_focus.md)

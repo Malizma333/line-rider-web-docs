@@ -15,7 +15,3 @@ permalink: /selectors/playback_camera_at_index/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

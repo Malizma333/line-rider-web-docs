@@ -29,7 +29,3 @@ permalink: /actions/remove_lines/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

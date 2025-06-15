@@ -15,7 +15,3 @@ permalink: /selectors/player_index/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

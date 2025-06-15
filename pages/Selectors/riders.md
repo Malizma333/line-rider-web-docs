@@ -15,7 +15,3 @@ permalink: /selectors/riders/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

@@ -15,7 +15,3 @@ permalink: /selectors/selected_line_type/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

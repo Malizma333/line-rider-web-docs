@@ -15,7 +15,3 @@ permalink: /selectors/track_layers/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

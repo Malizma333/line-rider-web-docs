@@ -29,7 +29,3 @@ permalink: /actions/set_sprite_sheet/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

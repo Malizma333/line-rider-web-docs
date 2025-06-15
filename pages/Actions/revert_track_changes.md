@@ -29,7 +29,3 @@ permalink: /actions/revert_track_changes/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

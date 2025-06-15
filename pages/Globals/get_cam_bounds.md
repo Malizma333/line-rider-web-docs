@@ -38,9 +38,3 @@ getCamBounds = createBoundsPanner([
   [[4,1], {w: 0, h: 0, x: 0, y: 0}]
 ])
 ```
-
-### Related
-
-- [get_auto_zoom](./get_auto_zoom.md)
-- [get_cam_focus](./get_cam_focus.md)
-- [time_remapper](./time_remapper.md)

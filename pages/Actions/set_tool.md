@@ -29,7 +29,3 @@ permalink: /actions/set_tool/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

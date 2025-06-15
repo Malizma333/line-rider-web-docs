@@ -15,7 +15,3 @@ permalink: /selectors/simulator_committed_track/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-

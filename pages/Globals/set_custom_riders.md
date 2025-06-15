@@ -37,5 +37,3 @@ Logs a list of CSS properties available to the console.
 ```js
 setCustomRiders.parts
 ```
-
-### Related

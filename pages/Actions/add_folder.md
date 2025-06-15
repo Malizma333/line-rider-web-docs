@@ -29,7 +29,3 @@ permalink: /actions/add_folder/
 
 ```
 
-### Related
-
-- [another_one](./another_one.md)
-
