@@ -7,11 +7,10 @@ permalink: /selectors/editor_position/
 
 ## Editor Position
 
-[Description]
+The current (x, y) position of the editor camera.
 
 ### Syntax
 
 ```js
-
+Selectors.getEditorPosition()
 ```
-

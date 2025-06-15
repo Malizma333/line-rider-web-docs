@@ -7,11 +7,10 @@ permalink: /selectors/selected_scenery_width/
 
 ## Selected Scenery Width
 
-[Description]
+The actively selected scenery width when editing.
 
 ### Syntax
 
 ```js
-
+Selectors.getSelectedSceneryWidth()
 ```
-

@@ -7,11 +7,10 @@ permalink: /selectors/riders/
 
 ## Riders
 
-[Description]
+A list of non-committed [`Rider`]({{ site.baseurl }}{% link pages/External/rider.md %}) objects.
 
 ### Syntax
 
 ```js
-
+Selectors.getRiders()
 ```
-
