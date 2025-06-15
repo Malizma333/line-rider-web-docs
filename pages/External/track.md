@@ -53,9 +53,6 @@ Partial track data used for saving.
 
 ### Properties
 
-`audio?: AudioDataFragment`\
-Information about the audio file.
-
 `layers?: Layer[]`\
 Array of track layers.
 
