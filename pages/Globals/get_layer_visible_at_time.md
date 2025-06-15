@@ -1,11 +1,11 @@
 ---
 layout: page
-title: Layer Automation Triggers
+title: Layer Automation Function
 parent: Globals
 permalink: /globals/get_layer_visible_at_time/
 ---
 
-## Layer Automation Triggers
+## Layer Automation Function
 
 Creates an automated layer function based on layer ids and frame indices.
 
