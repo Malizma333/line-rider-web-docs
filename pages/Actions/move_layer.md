@@ -7,25 +7,20 @@ permalink: /actions/move_layer/
 
 ## Move Layer
 
-[Description]
+Moves a layer or layer folder to a target index in the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.moveLayer(id, index)
 ```
 
 ### Parameters
 
-`temp: type`
+`id: number`
 
-[Description of the parameter]
+The id of the layer to move.
 
-### Examples
+`index: number`
 
-[Description of the example]
-
-```js
-
-```
-
+The index in the layer array to move the layer to. An index of `1` is right above the base layer.

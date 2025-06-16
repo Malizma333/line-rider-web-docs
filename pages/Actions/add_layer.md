@@ -7,25 +7,24 @@ permalink: /actions/add_layer/
 
 ## Add Layer
 
-[Description]
+Creates a new layer or layer folder in the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.addLayer(name, type)
 ```
 
 ### Parameters
 
-`temp: type`
+`name?: string`
 
-[Description of the parameter]
+The name of the newly created layer.
 
-### Examples
+`type?: number`
 
-[Description of the example]
+The type of layer to add, where 0 is a layer and 1 is a folder. Defaults to layer.
 
-```js
+### Returns
 
-```
-
+A `number` corresponding to the id of the layer.

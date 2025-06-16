@@ -7,7 +7,7 @@ permalink: /selectors/selected_line_type/
 
 ## Selected Line Type
 
-The actively selected line color when editing. Blue is 0, red is 1, green is 2.
+The actively selected [`Line Type`]({{ site.baseurl }}{% link pages/External/line.md %}) when editing.
 
 ### Syntax
 

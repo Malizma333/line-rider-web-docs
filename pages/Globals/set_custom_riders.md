@@ -31,7 +31,6 @@ setCustomRiders([
   ".scarfOdd{fill:green} .scarfEven{fill:green}"
 ])
 ```
-
 Logs a list of CSS properties available to the console.
 
 ```js

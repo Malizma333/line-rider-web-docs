@@ -17,7 +17,7 @@ permalink: /actions/set_edit_scene/
 
 ### Parameters
 
-`temp: type`
+`temp`
 
 [Description of the parameter]
 
@@ -28,4 +28,3 @@ permalink: /actions/set_edit_scene/
 ```js
 
 ```
-

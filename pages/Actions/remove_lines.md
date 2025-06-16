@@ -7,25 +7,16 @@ permalink: /actions/remove_lines/
 
 ## Remove Lines
 
-[Description]
+Removes lines from the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.removeLines(ids)
 ```
 
 ### Parameters
 
-`temp: type`
+`ids: number[]`
 
-[Description of the parameter]
-
-### Examples
-
-[Description of the example]
-
-```js
-
-```
-
+A list of line ids to remove.

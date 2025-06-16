@@ -7,25 +7,20 @@ permalink: /actions/set_layer_visible/
 
 ## Set Layer Visible
 
-[Description]
+Sets a layer to be visible in the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.setLayerVisible(id, visible)
 ```
 
 ### Parameters
 
-`temp: type`
+`id: number`
 
-[Description of the parameter]
+The id of the layer to make visible.
 
-### Examples
+`visible: boolean`
 
-[Description of the example]
-
-```js
-
-```
-
+Whether or not the layer should be visible.

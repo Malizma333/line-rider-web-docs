@@ -7,25 +7,20 @@ permalink: /actions/rename_layer/
 
 ## Rename Layer
 
-[Description]
+Renames a layer or layer folder in the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.renameLayer(id, name)
 ```
 
 ### Parameters
 
-`temp: type`
+`id: number`
 
-[Description of the parameter]
+The id of the layer to rename.
 
-### Examples
+`name: string`
 
-[Description of the example]
-
-```js
-
-```
-
+The new name for the layer.

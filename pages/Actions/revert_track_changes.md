@@ -7,25 +7,10 @@ permalink: /actions/revert_track_changes/
 
 ## Revert Track Changes
 
-[Description]
+Reverts track changes by copying the committed engine to the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.revertTrackChanges()
 ```
-
-### Parameters
-
-`temp: type`
-
-[Description of the parameter]
-
-### Examples
-
-[Description of the example]
-
-```js
-
-```
-

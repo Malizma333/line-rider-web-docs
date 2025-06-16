@@ -7,25 +7,16 @@ permalink: /actions/set_tool/
 
 ## Set Tool
 
-[Description]
+Sets the active editor tool.
 
 ### Syntax
 
 ```js
-
+Actions.setTool(tool)
 ```
 
 ### Parameters
 
-`temp: type`
+`tool: string`
 
-[Description of the parameter]
-
-### Examples
-
-[Description of the example]
-
-```js
-
-```
-
+The name of an available editor [`Tool`]({{ site.baseurl }}{% link pages/External/tools.md %}).

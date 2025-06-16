@@ -7,25 +7,20 @@ permalink: /actions/set_layer_editable/
 
 ## Set Layer Editable
 
-[Description]
+Sets a layer to be editable in the uncommitted engine.
 
 ### Syntax
 
 ```js
-
+Actions.setLayerEditable(id, editable)
 ```
 
 ### Parameters
 
-`temp: type`
+`id: number`
 
-[Description of the parameter]
+The id of the layer to make editable.
 
-### Examples
+`editable: boolean`
 
-[Description of the example]
-
-```js
-
-```
-
+Whether or not the layer should be editable.

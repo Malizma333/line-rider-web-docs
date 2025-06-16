@@ -36,7 +36,6 @@ timeRemapper = createTimeRemapper([
   [[2,0], 1]
 ])
 ```
-
 Slows down to 1/8 speed between 1 and 2 seconds, then speeds back up to normal speed at 2.5 seconds.
 
 ```js

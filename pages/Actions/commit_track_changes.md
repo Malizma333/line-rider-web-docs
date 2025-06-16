@@ -7,25 +7,10 @@ permalink: /actions/commit_track_changes/
 
 ## Commit Track Changes
 
-[Description]
+Commits track changes by copying the uncommitted engine to the committed engine.
 
 ### Syntax
 
 ```js
-
+Actions.commitTrackChanges()
 ```
-
-### Parameters
-
-`temp: type`
-
-[Description of the parameter]
-
-### Examples
-
-[Description of the example]
-
-```js
-
-```
-

@@ -36,7 +36,6 @@ getAutoZoom = createZoomer([
   [[3,0], 4]
 ])
 ```
-
 Zooms out interpolating from seconds 2 to 3 without smoothing.
 
 ```js

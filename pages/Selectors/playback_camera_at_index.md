@@ -17,6 +17,6 @@ Selectors.getPlaybackCameraAtIndex(index)
 
 ### Parameters
 
-`index`
+`index: number`
 
-A `number` corresponding to an index along the timeline. Does not have to be an integer. Integers correspond to 40fps.
+An index along the timeline. Does not have to be an integer. Integers correspond to 40fps.

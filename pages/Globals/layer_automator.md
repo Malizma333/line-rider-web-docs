@@ -31,7 +31,6 @@ keyframes = {
   ...
 }
 ```
-
 `sixty_fps`
 
 A `boolean` indicating whether to target sixty fps instead of forty.

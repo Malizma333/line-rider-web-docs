@@ -17,7 +17,6 @@ Selectors.getToolState(tool)
 
 ### Parameters
 
-`tool`
+`tool: string`
 
-A [`string`]({{ site.baseurl }}{% link pages/External/tools.md %}) representing one of the registered editor tools available.
-
+The name of an available editor [`Tool`]({{ site.baseurl }}{% link pages/External/tools.md %}).

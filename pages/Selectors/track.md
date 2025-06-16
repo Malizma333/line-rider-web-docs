@@ -14,4 +14,3 @@ The non-committed [`Track`]({{ site.baseurl }}{% link pages/External/track.md %}
 ```js
 Selectors.getTrack()
 ```
-
