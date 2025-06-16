@@ -7,32 +7,20 @@ permalink: /actions/set_layer_visible/
 
 ## Set Layer Visible
 
-Toggles the visibility of target layer.
+Sets a layer to be visible in the uncommitted engine.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "SET_LAYER_VISIBLE", payload: {id, visible} });
+Actions.setLayerVisible(id, visible)
 ```
 
 ### Parameters
 
-`id`
+`id: number`
 
-The target layer to toggle visibility of.
+The id of the layer to make visible.
 
-### Examples
+`visible: boolean`
 
-Toggles layer 1 to be invisible.
-
-```js
-store.dispatch({
-  type: "SET_LAYER_VISIBLE",
-  payload: {id: 1, visible: false}
-});
-```
-
-### Related
-
-- [set_layer_active](./set_layer_active.md)
-- [set_layer_editable](./set_layer_editable.md)
+Whether or not the layer should be visible.

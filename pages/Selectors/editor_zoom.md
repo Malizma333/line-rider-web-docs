@@ -7,19 +7,10 @@ permalink: /selectors/editor_zoom/
 
 ## Editor Zoom
 
-Returns a `number` describing the current zoom of the editor camera.
+The current zoom of the editor camera, as a power of 2. For example, a track zoom of 3 corresponds to an editor camera zoom of 8.
 
 ### Syntax
 
 ```js
-function getEditorZoom(state) {
-  return state.camera.editorZoom;
-}
+Selectors.getEditorZoom()
 ```
-
-### Related
-
-- [editor_dimensions](./editor_dimensions.md)
-- [editor_follower_focus](./editor_follower_focus.md)
-- [editor_position](./editor_position.md)
-- [playback_zoom](./playback_zoom.md)

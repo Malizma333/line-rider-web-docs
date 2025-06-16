@@ -7,16 +7,24 @@ permalink: /actions/add_layer/
 
 ## Add Layer
 
-Adds a new layer to the layer array.
+Creates a new layer or layer folder in the uncommitted engine.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "ADD_LAYER" });
+Actions.addLayer(name, type)
 ```
 
-### Related
+### Parameters
 
-- [move_layer](./move_layer.md)
-- [remove_layer](./remove_layer.md)
-- [rename_layer](./rename_layer.md)
+`name?: string`
+
+The name of the newly created layer.
+
+`type?: number`
+
+The type of layer to add, where 0 is a layer and 1 is a folder. Defaults to layer.
+
+### Returns
+
+A `number` corresponding to the id of the layer.

@@ -8,4 +8,4 @@ nav_order: 3
 
 ## Selectors
 
-The `Selectors` category documents functions that read from the global state.
+The `Selectors` category contains functions that read from the global state. These functions are attached to the `window.Selectors` object, and deeply access the redux store behind the scenes.

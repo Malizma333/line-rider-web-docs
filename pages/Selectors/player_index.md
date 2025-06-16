@@ -7,17 +7,10 @@ permalink: /selectors/player_index/
 
 ## Player Index
 
-Returns a `number` describing the current index of the player.
+The current index of the timeline. Not an integer. Integers represent 40fps frames.
 
 ### Syntax
 
 ```js
-function getPlayerIndex(state) {
-  return state.player.index;
-}
+Selectors.getPlayerIndex()
 ```
-
-### Related
-
-- [player_flag_index](./player_flag_index.md)
-- [player_max_index](./player_max_index.md)

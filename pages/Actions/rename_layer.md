@@ -7,37 +7,20 @@ permalink: /actions/rename_layer/
 
 ## Rename Layer
 
-Renames a specific layer.
+Renames a layer or layer folder in the uncommitted engine.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "RENAME_LAYER", payload: {id, name} });
+Actions.renameLayer(id, name)
 ```
 
 ### Parameters
 
-`id`
+`id: number`
 
 The id of the layer to rename.
 
-`name`
+`name: string`
 
-The new name of the target layer.
-
-### Examples
-
-Renames layer 1 to "Background Layer".
-
-```js
-store.dispatch({
-  type: "RENAME_LAYER",
-  payload: {id: 1, name: "Background Layer"}
-});
-```
-
-### Related
-
-- [add_layer](./add_layer.md)
-- [move_layer](./move_layer.md)
-- [remove_layer](./remove_layer.md)
+The new name for the layer.

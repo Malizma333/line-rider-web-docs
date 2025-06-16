@@ -36,7 +36,3 @@ Adds a green diagonal line at the origin of the track.
 ```js
 addLine(0, 0, 20, 20, 2, false)
 ```
-
-### Related
-
-- [add_circle](./add_circle.md)

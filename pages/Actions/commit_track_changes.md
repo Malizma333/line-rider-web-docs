@@ -7,16 +7,10 @@ permalink: /actions/commit_track_changes/
 
 ## Commit Track Changes
 
-Commits track changes to the committed engine state.
+Commits track changes by copying the uncommitted engine to the committed engine. See [Engine]({{ site.baseurl }}{% link pages/External/engine.md %}).
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "COMMIT_TRACK_CHANGES" });
+Actions.commitTrackChanges()
 ```
-
-### Related
-
-- [revert_track_changes](./revert_track_changes.md)
-- [redo](./redo.md)
-- [undo](./undo.md)

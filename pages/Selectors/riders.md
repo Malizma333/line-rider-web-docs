@@ -7,17 +7,10 @@ permalink: /selectors/riders/
 
 ## Riders
 
-Returns a [`Rider[]`]({{ site.baseurl }}{% link pages/External/rider.md %}) buffer describing the uncommitted track riders.
+A list of non-committed [`Rider`]({{ site.baseurl }}{% link pages/External/rider.md %}) objects.
 
 ### Syntax
 
 ```js
-function getRiders(state) {
-  return state.simulator.engine.engine.state.riders;
-}
+Selectors.getRiders()
 ```
-
-### Related
-
-- [committed_riders](./committed_riders.md)
-- [simulator_track](./simulator_track.md)

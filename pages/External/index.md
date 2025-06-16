@@ -8,4 +8,4 @@ nav_order: 5
 
 ## Externals
 
-The `Externals` category contains definitions for frequently used structs and enumerables referenced throughout other categories.
+The `Externals` category contains definitions for frequently used interfaces and enums referenced throughout other categories.

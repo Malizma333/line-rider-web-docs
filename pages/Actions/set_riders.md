@@ -7,34 +7,27 @@ permalink: /actions/set_riders/
 
 ## Set Riders
 
-Configures the rider properties for the current track.
+Sets the riders of the uncommitted track.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "SET_RIDERS", payload: riders });
+Actions.setRiders(riders)
 ```
 
 ### Parameters
 
-`riders`
+`riders: Rider[]`
 
-The [`Rider`]({{ site.baseurl }}{% link pages/External/rider.md %}) array to set the track riders to.
+A list of [`Rider`]({{ site.baseurl }}{% link pages/External/rider.md %}) objects.
 
 ### Examples
 
-Removes all riders from the current track.
+Adds two riders to the track, space apart and upside-down.
 
 ```js
-store.dispatch({
-  type: "SET_RIDERS",
-  payload: []
-});
+Actions.setRiders([
+  { startPosition: { x: 0, y: 0 }, startVelocity: { x: 0.4, y: 0 }, startAngle: 180 },
+  { startPosition: { x: 50, y: 0 }, startVelocity: { x: 0.4, y: 0 }, startAngle: 180, remountable: true },
+])
 ```
-
-### Related
-
-- [load_track](./load_track.md)
-- [set_local_file](./set_local_file.md)
-- [set_track_details](./set_track_details.md)
-- [set_track_script](./set_track_script.md)

@@ -36,7 +36,6 @@ getAutoZoom = createZoomer([
   [[3,0], 4]
 ])
 ```
-
 Zooms out interpolating from seconds 2 to 3 without smoothing.
 
 ```js
@@ -46,9 +45,3 @@ getAutoZoom = createZoomer([
   [[3,0], 1]
 ], 0)
 ```
-
-### Related
-
-- [get_cam_bounds](./get_cam_bounds.md)
-- [get_cam_focus](./get_cam_focus.md)
-- [time_remapper](./time_remapper.md)

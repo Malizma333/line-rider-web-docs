@@ -36,7 +36,6 @@ timeRemapper = createTimeRemapper([
   [[2,0], 1]
 ])
 ```
-
 Slows down to 1/8 speed between 1 and 2 seconds, then speeds back up to normal speed at 2.5 seconds.
 
 ```js
@@ -48,9 +47,3 @@ timeRemapper = createTimeRemapper([
   [[2,20], 1] // for jumps
 ], true)
 ```
-
-### Related
-
-- [get_auto_zoom](./get_auto_zoom.md)
-- [get_cam_bounds](./get_cam_bounds.md)
-- [get_cam_focus](./get_cam_focus.md)

@@ -7,32 +7,20 @@ permalink: /actions/set_layer_editable/
 
 ## Set Layer Editable
 
-Toggles whether the target layer is editable.
+Sets a layer to be editable in the uncommitted engine.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "SET_LAYER_EDITABLE", payload: {id, editable} });
+Actions.setLayerEditable(id, editable)
 ```
 
 ### Parameters
 
-`id`
+`id: number`
 
-The target layer to set editable.
+The id of the layer to make editable.
 
-### Examples
+`editable: boolean`
 
-Toggles layer 2 to be editable.
-
-```js
-store.dispatch({
-  type: "SET_LAYER_EDITABLE",
-  payload: {id: 2, editable: true}
-});
-```
-
-### Related
-
-- [set_layer_active](./set_layer_active.md)
-- [set_layer_visible](./set_layer_visible.md)
+Whether or not the layer should be editable.

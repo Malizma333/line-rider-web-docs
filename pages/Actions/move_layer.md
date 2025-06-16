@@ -7,37 +7,20 @@ permalink: /actions/move_layer/
 
 ## Move Layer
 
-Moves a target layer to a new location in the layer array.
+Moves a layer or layer folder to a target index in the uncommitted engine.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "MOVE_LAYER", payload: {id, index} });
+Actions.moveLayer(id, index)
 ```
 
 ### Parameters
 
-`id`
+`id: number`
 
 The id of the layer to move.
 
-`index`
+`index: number`
 
-The new index for the layer to move to.
-
-### Examples
-
-Moves layer 1 to the second position above the base layer.
-
-```js
-store.dispatch({
-  type: "MOVE_LAYER",
-  payload: {id: 1, index: 2}
-});
-```
-
-### Related
-
-- [add_layer](./add_layer.md)
-- [remove_layer](./remove_layer.md)
-- [rename_layer](./rename_layer.md)
+The index in the layer array to move the layer to. An index of `1` is right above the base layer.

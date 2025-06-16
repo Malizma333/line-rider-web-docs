@@ -44,7 +44,7 @@ Layer id that the line is on.
 `multiplier?: number`\
 Acceleration multiplier of the line if it does have one.
 
-## Line Base
+## Computed Line
 
 Object associated with track lines and computed data.
 

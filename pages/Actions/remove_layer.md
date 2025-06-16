@@ -7,33 +7,16 @@ permalink: /actions/remove_layer/
 
 ## Remove Layer
 
-Removes target layer from the layer array.
+Removes a layer or layer folder from the uncommitted engine.
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "REMOVE_LAYER", payload: {id} });
+Actions.removeLayer(id)
 ```
 
 ### Parameters
 
-`id`
+`id: number`
 
 The id of the layer to remove.
-
-### Examples
-
-Removes the layer with an id of one 1.
-
-```js
-store.dispatch({
-  type: "REMOVE_LAYER",
-  payload: {id: 1}
-});
-```
-
-### Related
-
-- [add_layer](./add_layer.md)
-- [move_layer](./move_layer.md)
-- [rename_layer](./rename_layer.md)

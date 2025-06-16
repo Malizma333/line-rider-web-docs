@@ -7,13 +7,6 @@ permalink: /externals/track/
 
 ## Track
 
-Full track data.
-
-### Properties
-
-`audio?: AudioDataFragment`\
-Information about the audio file.
-
 `creator?: string`\
 Creator of the track.
 
@@ -46,27 +39,3 @@ Physics version of the track.
 
 `viewOnly?: boolean`\
 Whether the track is editable.
-
-## Track Save
-
-Partial track data used for saving.
-
-### Properties
-
-`audio?: AudioDataFragment`\
-Information about the audio file.
-
-`layers?: Layer[]`\
-Array of track layers.
-
-`lines?: Line[]`\
-Array of track lines.
-
-`riders?: Rider[]`\
-Array of track riders.
-
-`script?: string`\
-Track script.
-
-`version: "6.1" | "6.2"`\
-Physics version of the track.

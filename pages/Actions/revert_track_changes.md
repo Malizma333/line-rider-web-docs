@@ -7,16 +7,10 @@ permalink: /actions/revert_track_changes/
 
 ## Revert Track Changes
 
-Clears track changes from uncommitted engine state.
+Reverts track changes by copying the committed engine to the uncommitted engine. See [Engine]({{ site.baseurl }}{% link pages/External/engine.md %}).
 
 ### Syntax
 
 ```js
-store.dispatch({ type: "REVERT_TRACK_CHANGES", meta: { ignorable: true } });
+Actions.revertTrackChanges()
 ```
-
-### Related
-
-- [commit_track_changes](./commit_track_changes.md)
-- [redo](./redo.md)
-- [undo](./undo.md)

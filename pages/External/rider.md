@@ -11,10 +11,10 @@ Object associated with track riders.
 
 ### Properties
 
-`remountable: boolean`\
+`remountable?: boolean`\
 Whether the rider can be remounted.
 
-`startAngle: number`\
+`startAngle?: number`\
 The initial angle of the rider.
 
 `startPosition: V2`\

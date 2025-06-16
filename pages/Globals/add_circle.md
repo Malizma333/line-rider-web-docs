@@ -44,7 +44,3 @@ Adds a green circle above the origin of the track.
 ```js
 addCircle(30, 100, 0, -50, 2, false)
 ```
-
-### Related
-
-- [add_line](./add_line.md)

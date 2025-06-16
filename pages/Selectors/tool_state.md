@@ -7,33 +7,16 @@ permalink: /selectors/tool_state/
 
 ## Tool State
 
-Returns a [`ToolState`]({{ site.baseurl }}{% link pages/External/tools.md %}) describing the state of a target tool.
+The editor state of a specific tool. Undefined for tools without data and for tools that haven't been selected yet.
 
 ### Syntax
 
 ```js
-function getToolState(state, toolId) {
-  return state.toolState[toolId];
-}
+Selectors.getToolState(tool)
 ```
 
 ### Parameters
 
-`toolId`
+`tool: string`
 
-The id of the target tool. A full list of available tool ids can be found [here]({{ site.baseurl }}{% link pages/External/tools.md %}).
-
-### Examples
-
-Returns the state of the select tool.
-
-```js
-getToolState(
-  store.getState(),
-  "SELECT_TOOL"
-)
-```
-
-### Related
-
-- [active_tool](./active_tool.md)
+The name of an available editor [`Tool`]({{ site.baseurl }}{% link pages/External/tools.md %}).

@@ -22,7 +22,6 @@ Disables gravity by setting it to zero.
 ```js
 $ENGINE_PARAMS.gravity = {x:0, y:0}
 ```
-
 Disables gravity for the first second, then enables default gravity.
 
 ```js
@@ -44,5 +43,3 @@ Object.defineProperty(window.$ENGINE_PARAMS, "gravity", { get() {
   }
 }})
 ```
-
-### Related

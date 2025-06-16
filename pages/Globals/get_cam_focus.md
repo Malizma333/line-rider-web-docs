@@ -38,9 +38,3 @@ getCamFocus = createFocuser([
   [[5,0], [0,0.5,1]]
 ])
 ```
-
-### Related
-
-- [get_auto_zoom](./get_auto_zoom.md)
-- [get_cam_bounds](./get_cam_bounds.md)
-- [time_remapper](./time_remapper.md)
