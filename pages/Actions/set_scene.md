@@ -19,7 +19,7 @@ Actions.setScene(scene, type);
 
 `scene: Millions.Scene`
 
-A WebGL [Millions]({{ site.baseurl }}{% link pages/External/millions.md %}) scene to render.
+A WebGL [Millions]({{ site.baseurl }}{% link pages/Globals/millions.md %}) scene to render.
 
 `type?: number`
 

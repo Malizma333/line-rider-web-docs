@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Millions
-parent: Externals
-permalink: /externals/millions/
+parent: Globals
+permalink: /globals/millions/
 ---
 
 ## Millions
