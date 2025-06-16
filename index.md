@@ -9,7 +9,7 @@ The contents of this repository document the [Redux](https://redux.js.org/)-base
 
 ## Version
 
-This documentation is primarily compatible with version commit **2153.0**. Using code from this documentation on other versions may cause unstable or buggy behavior.
+This documentation is primarily compatible with version commit **2165.0**. Using code from this documentation on other versions may cause unexpected or buggy behavior.
 
 ## Suggestions
 
