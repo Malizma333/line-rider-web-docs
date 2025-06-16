@@ -7,7 +7,7 @@ permalink: /actions/set_scene/
 
 ## Set Scene
 
-Draws shapes in the editor or playback scene. Helpful for custom tools and renders.
+Draws shapes in the editor or playback scene. Helpful for custom tools and renders. Read more [here]({{ site.baseurl }}{% link pages/Globals/millions.md %})
 
 ### Syntax
 
@@ -19,11 +19,11 @@ Actions.setScene(scene, type);
 
 `scene: Millions.Scene`
 
-A WebGL [Millions]({{ site.baseurl }}{% link pages/Globals/millions.md %}) scene to render.
+A WebGL Millions scene to render.
 
 `type?: number`
 
-The scene to replace, where 0 is edit and 1 is playback. Defaults to edit.
+The scene to merge, where 0 is edit and 1 is playback. Defaults to edit.
 
 ### Examples
 
@@ -36,8 +36,8 @@ Actions.setScene(
       {x: 0, y: 0, color: new Millions.Color(255, 0, 0, 255)},
       {x: 10, y: 0, color: new Millions.Color(0, 255, 0, 255)},
       {x: 10, y: 10, color: new Millions.Color(0, 0, 255, 255)},
-      0,
-      1
+      1,
+      0
     )
   ])
 )
