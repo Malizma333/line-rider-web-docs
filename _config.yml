@@ -20,7 +20,6 @@ search:
   tokenizer_separator: /[\s/]+/
   rel_url: true
   button: false
-  focus_shortcut_key: 'f'
 
 aux_links:
   "View on GitHub":
